@@ -3,7 +3,7 @@
 We now pass from correlations in finite boxes to correlations on~$\R^4$.
 The moments are those of Definition~\ref{def:moments}, for the one Wilson family of Proposition~\ref{prop:uv}.
 The difficulty is to control a fixed collection of local observations as the surrounding box grows.
-Reflection positivity compares their joint expectation with repeated copies of each observation, whose bounds do not depend on box size.
+The reflection inequality, which pairs an observation with its reflected conjugate, compares their joint expectation with repeated copies of each observation, whose bounds do not depend on box size.
 
 The section follows five steps.
 Subsection~\ref{subsec:iv-lattice} proves these reflection estimates.
@@ -12,18 +12,41 @@ Subsection~\ref{subsec:iv-equations} identifies the coefficients that disappear 
 Subsection~\ref{subsec:iv-smoothness} obtains smooth fields, their symmetries and reflection positivity.
 Finally, Subsection~\ref{subsec:iv-full-spacing} uses the fixed-volume limit to remove the auxiliary spacing subsequence, leaving only a volume refinement.
 
-The ultraviolet estimates used at these steps are stated where they enter, with three explicit deferred-proof markers.
-The phase decomposition of Proposition~\ref{prop:limit} requires the later Hilbert-space and rotation arguments.
+Three kinds of ultraviolet estimates enter the construction: bounds for repeated insertions in cells, stated in~\eqref{eq:iv-centered}; comparisons that replace lattice differences by other polynomials, stated in Subsection~\ref{subsec:iv-equations}; and convergence at fixed volume, used in Subsection~\ref{subsec:iv-full-spacing}.
+Under these estimates, the correlations define fields on~$\R^4$.
+The later Hilbert-space construction interprets reflection positivity as a scalar product, and the rotation argument restores covariance under arbitrary orthogonal transformations.
+These are needed before decomposing this theory into the phases of Proposition~\ref{prop:limit}.
 
 \subsection{Lattice estimates}\label{subsec:iv-lattice}
 
-We use the polynomial coefficient spaces~$V_d$ of Lemma~\ref{lem:uv-labels} and the insertions~$I_{N,p}$ of~\eqref{eq:uv-insertion}.
-Use the fixed bases there to choose norms on~$V_d$ and operator norms on maps between these spaces.
-A list~$v=(v_1,\ldots,v_n)$ always includes specified degrees~$d_i$, with~$v_i\in V_{d_i}$; we suppress these degrees in~$I_{N,p}(v_i,y)$.
-The action~\eqref{eq:uv-label-action}, restricted to the signed coordinate permutations~$h\in H_4$, is written~$\rho_d(h)$.
-Coefficient conjugation and the unit~$u_d=a_{r(d)}^d1$ are those of Proposition~\ref{prop:uv-insertions}; in particular, the reference-normalized unit need not be the polynomial~$1$.
+The classical polynomials of Definition~\ref{def:uv-labels} provide the concrete observable indices of Definition~\ref{def:observables}: an index is a pair~$(d,v)$ with~$v\in V_d$.
+Its insertion is the function~\eqref{eq:uv-insertion}.
+We retain the degree when following an insertion through the limiting procedure, since the same polynomial may belong to several~$V_d$.
 
-The following scale conditions are specific to the constructed family, beyond Definition~\ref{def:family}:
+\begin{definition}[Coefficient conventions]\label{def:iv-coefficients}
+For the Wilson measures of Definitions~\ref{def:family} and~\ref{def:wilson-law}, write
+\begin{equation}\label{eq:iv-expectation}
+ \langle F\rangle_{N,p}=\int F\,d\mu_{N,p},\qquad
+ \langle F\rangle_\beta=\int F\,d\mu_{\ell,\beta}
+\end{equation}
+when the current torus has~$\ell$ sites per side.
+Choose norms on~$V_d$ using the fixed bases of Lemma~\ref{lem:uv-labels}, and equip linear maps with the induced operator norms.
+For the signed permutation group~$H_4$ of Definition~\ref{def:uv-symmetries}, write
+\begin{equation*}
+ \rho_d(h)v=h\cdot v,\qquad
+ u_d=a_{r(d)}^d1,\qquad v\in V_d,\ h\in H_4.
+\end{equation*}
+The action is~\eqref{eq:uv-label-action}; $r(d)$ is the reference level of Definition~\ref{def:uv-reference-normalisation}, and~$u_d$ is the physical unit polynomial of Proposition~\ref{prop:uv-insertions}.
+A list~$v=(v_1,\ldots,v_n)$ includes specified degrees~$d_i$ with~$v_i\in V_{d_i}$.
+We suppress the pairs~$(d_i,v_i)$ in insertion and moment notation.
+For a coefficient or field list, $v_{i\to w}$ means replacement of its~$i$th entry by~$w$.
+The symbol~$\partial_{i,\mu}$ means differentiation in coordinate~$\mu$ of the~$i$th physical insertion point.
+\end{definition}
+
+On physical coordinate spaces, $|\cdot|$ denotes the Euclidean norm and~$|\cdot|_\infty$ the maximum of the absolute coordinate values.
+The sites and links are those of Definition~\ref{def:lattice}, with physical positions as in Definition~\ref{def:moments}.
+
+The block factors~$\ell_j$ are the odd integers relating successive spacings; the following conditions are specific to the constructed family, beyond Definition~\ref{def:family}:
 \begin{equation}\label{eq:iv-scales}
  a_0=1,\qquad a_{j+1}=\frac{a_j}{\ell_j},\qquad
  \ell_j\in2\N+1,\quad \ell_j\ge3,\qquad L_p\in4\N,\qquad \beta_{N,p}\ge0\,.
@@ -36,30 +59,74 @@ We also require these block factors to grow slowly relative to the inverse spaci
 The quotient at~$j=0$ plays no role.
 The translation, conjugation, signed-permutation and unit identities in Proposition~\ref{prop:uv-insertions} are assumed beyond the reference levels.
 
-To use reflection positivity, divide the torus into congruent cubical cells, with the same even number of cells in each coordinate direction.
-In each tiling, all dividing planes pass through lattice sites, or all bisect links; these give site and bond reflections, respectively.
-An observable is interior to a cell if it is bounded, measurable, gauge invariant and depends only on links with both endpoints strictly inside that cell.
-For such an observable~$F$ in the base cell of a tiling~$\mathcal C$, reflect it into every cell.
-Conjugate its value whenever an odd number of coordinate reflections has been used, and denote the resulting copy in cell~$C$ by~$\Theta_C F$.
-The chessboard quantity compares one local observable with a product of its reflected copies filling the torus:
-\begin{equation}\label{eq:iv-root}
-\|F\|_{\mathcal C}
- =\left|\left\langle\prod_{C\in\mathcal C}\Theta_C F\right\rangle_{N,p}\right|^{\frac{1}{|\mathcal C|}}\,.
+\begin{definition}[Lattice reflections and cells]\label{def:iv-reflections}
+For a coordinate unit vector~$e_\mu$, reflection in the physical plane~$x^\mu=c$ is
+\begin{equation}\label{eq:iv-reflections}
+ r_{\mu,c}x=x+2(c-x^\mu)e_\mu,\qquad
+ \begin{cases}
+ c\in a_N\Z,&\text{site reflection},\\
+ c\in a_N\bigl(\Z+\frac{1}{2}\bigr),&\text{bond reflection}.
+ \end{cases}
 \end{equation}
-The centered tiling $\mathcal C_j(y)$ has physical cell side $a_j$ and base cell centered at $y$.
+The site plane passes through lattice points; the bond plane lies halfway between two neighbouring layers of sites and bisects their connecting links.
+On the torus, coordinates are reduced modulo~$L_p$.
+The pullback~$r^*U$ on link configurations is the coordinate action of Definition~\ref{def:uv-symmetries}; a reversed link uses its inverse matrix.
+Set~$\Theta_rF=\overline{F\circ r^*}$.
+
+A cell tiling~$\mathcal C$ divides the torus into congruent cubes, with the same even number of cells along each axis.
+All its boundary planes are site planes, or all are bond planes.
+An observable is interior to a cell or half-torus if it is bounded, Borel measurable, gauge invariant, and depends only on links whose two endpoints lie strictly inside that region.
+Choose one cell as the base cell, where the observable is initially given.
+For an observable~$F$ in that cell, let~$\Theta_CF$ be its reflected copy in cell~$C$, conjugated after an odd number of reflections.
+Its chessboard root is
+\begin{equation}\label{eq:iv-root}
+ \|F\|_{\mathcal C}
+ =\left|\left\langle\prod_{C\in\mathcal C}\Theta_CF\right\rangle_{N,p}\right|^{\frac{1}{|\mathcal C|}}.
+\end{equation}
+The centred tiling~$\mathcal C_j(y)$ has cell side~$a_j$ and base cell centred at the physical point~$\widehat y$ of Definition~\ref{def:moments}:
+\begin{equation*}
+ \bigl(\mathcal C_j(y)\bigr)_0
+ =\widehat y+\Bigl[-\frac{a_j}{2},\frac{a_j}{2}\Bigr]^4
+ \pmod{L_p}.
+\end{equation*}
+Its boundary planes are bond planes because~$\frac{a_j}{a_N}$ is odd for~$N\ge j$.
+\end{definition}
+
+This root compares a single local observation with copies filling the torus.
 The ultraviolet estimate bounds this quantity at every fixed physical cell size.
 For every $d\in\N$ and $R,\varepsilon>0$, there exists $A\ge0$ such that, for every $j\ge r(d)$, eventually in $N$, uniformly in $p$, $y$ and $\|v\|_{V_d}\le R$, the insertion is interior and
 \begin{equation}\label{eq:iv-centered}
 \|I_{N,p}(v,y)\|_{\mathcal C_j(y)}\le A a_j^{-d-\varepsilon}\,.
 \end{equation}
 The cutoff threshold may depend on $j$.
-A fixed finite collection of transformed labels is included by enlarging $R$.\sourcefootnote{\nolinkurl{Extraction/Center.lean}: the uniform centered estimate and its projection to each extraction}
+A fixed finite collection of transformed polynomials is included by enlarging $R$.\sourcefootnote{\nolinkurl{Extraction/Center.lean}: the uniform centred estimate and its projection to each extraction}
 
 \gap{The ultraviolet part must establish~\eqref{eq:iv-scales}, \eqref{eq:iv-gentle}, \eqref{eq:iv-centered} and the insertion identities for the particular family of Proposition~\ref{prop:uv}. A bound for a different family would not suffice. These are the hypotheses used below, not consequences of Definition~\ref{def:regular}.\sourcefootnote{\nolinkurl{MergeProof/Gardens.lean} and \nolinkurl{Source/Construction.lean}}}
 
-Reflection positivity is the inequality that makes the chessboard bound possible.
-If~$r$ reflects the lattice in one of the dividing planes, write~$\Theta_r F=\overline{F\circ r^*}$, where~$r^*$ reflects the link configuration.
-It pairs an observable on one side of the plane with its reflected complex conjugate on the other side.
+\begin{definition}[Ordered tails]\label{def:iv-tails}
+For chosen spacing and volume refinements~$N_j,p_k$, an assertion~$B(N,p)$ holds eventually on ordered tails if
+\begin{equation}\label{eq:iv-tails}
+ \exists k_0\ \forall k\ge k_0\ \exists j_0(k)\ \forall j\ge j_0(k),
+ \qquad B(N_j,p_k).
+\end{equation}
+A coefficient or error tends to zero on these tails if its norm is eventually less than every positive tolerance in this order.
+Before a refinement is selected, use~$N_j=j$ and~$p_k=k$.
+A refining ultrafilter is a maximal proper filter on index pairs containing every such tail; it provides common limits for bounded families in compact finite-dimensional sets.
+\end{definition}
+
+Thus the fine-spacing threshold may depend on the volume.
+This is the order of the two limits in Definition~\ref{def:ordered}.
+
+Reflection positivity pairs an observable with its reflected complex conjugate nonnegatively.
+The kernel form used to prove it will also control the movement of insertion points.
+
+\begin{definition}[Positive kernels]\label{def:iv-positive-kernel}
+A complex kernel~$K$ on a set~$E$ is positive if, for every finite list~$X_i\in E$ and~$c_i\in\C$,
+\begin{equation*}
+ \sum_{i,j}\bar c_ic_jK(X_i,X_j)\ge0.
+\end{equation*}
+For a measured configuration space~$(E,\mu)$, it acts by~$(Kf)(X)=\int_EK(X,Y)f(Y)\,d\mu(Y)$ whenever the integral exists.
+\end{definition}
 
 \begin{lemma}[Reflection estimates]\label{lem:iv-reflection}
 For the Wilson measure of Definition~\ref{def:wilson-law} on an even torus, $\beta\ge0$, and observables interior to the indicated half-torus or cells,
@@ -70,7 +137,7 @@ For the Wilson measure of Definition~\ref{def:wilson-law} on an even torus, $\be
  &\le\prod_{C\in\mathcal C}\|F_C\|_{\mathcal C},\label{eq:iv-chessboard}\\
  \|F+G\|_{\mathcal C}&\le\|F\|_{\mathcal C}+\|G\|_{\mathcal C}.\nonumber
 \end{align}
-Here the chessboard quantities are those of~\eqref{eq:iv-root}.
+The reflections, interiority and chessboard roots are those of Definition~\ref{def:iv-reflections}.
 \end{lemma}
 
 \begin{proof}
@@ -79,9 +146,11 @@ Cauchy--Schwarz then compares a mixed arrangement of observables with two reflec
 Repeated reflections make an arrangement constant, which gives the product bound.
 
 \emph{Positivity.}
-The real inner product~$\operatorname{Re}\tr(UV^*)$ is a positive kernel on~$G$.
-Schur products and the exponential series preserve positivity, so the Wilson interaction with crossing links set to the identity, including its half-slice weights, gives a continuous positive kernel~$K_0(X,Y)$.
-Haar invariance restores the crossing links by independent averages:
+The real inner product~$\operatorname{Re}\tr(UV^*)$ is a positive kernel on~$G$ in Definition~\ref{def:iv-positive-kernel}.
+Entrywise products of positive matrices and the exponential series preserve positivity, so the Wilson interaction with crossing links set to the identity, including half of each boundary slice's weight on either side, gives a continuous positive kernel~$K_0(X,Y)$ of the two slice configurations~$X,Y$.
+Here crossing links join adjacent slices.
+Vertexwise gauge transformations on a slice are written~$g\cdot X$, as in Definition~\ref{def:gauge-transform}.
+Haar invariance restores the crossing links by averaging these transformations independently:
 \begin{equation*}
  K(X,Y)=\iint K_0(g\cdot X,h\cdot Y)\,dg\,dh.
 \end{equation*}
@@ -94,7 +163,7 @@ Then
 The last inequality follows by approximation with finite sums in the positive quadratic form of~$K_0$.
 The integrand with independent~$g,h$ need not be nonnegative.
 
-Now split the lattice into its fixed boundary data~$u$ and its two open halves~$v,w$.
+Now split the lattice into fixed boundary link data~$u$ and open-half configurations~$v,w$.
 The boundary kernel after integrating crossing links is
 \begin{equation*}
  P_u(v,w)=
@@ -106,9 +175,11 @@ The boundary kernel after integrating crossing links is
 \end{equation*}
 where~$X_-,X_+$ read the first and last slice of a half-torus.
 It is positive: in the bond case it is a product of two positive kernels, one with exchanged arguments.
-Let~$A_u(v)$ be the half-weight in this factorization of the Wilson density, and set~$f_u(v)=A_u(v)F(U_{u,v})$.
+Let~$Z$ be the Wilson normalising constant of~\eqref{eq:wilson-law}, and~$A_u(v)$ the half-weight in this factorisation of its density.
+Let~$U_{u,v}$ be any full configuration agreeing with~$u,v$ on the boundary and chosen half.
+Set~$f_u(v)=A_u(v)F(U_{u,v})$.
 Interiority makes its value independent of unused links in a completion to the full torus.
-With normalized product Haar measures on these data, the exact factorization is
+With normalised product Haar measures on these data, the exact factorisation is
 \begin{equation}\label{eq:iv-boundary-form}
  \langle\Theta_rF\,F\rangle_\beta
  =\frac{1}{Z}\int
@@ -120,42 +191,42 @@ All functions are measurable and bounded on compact configuration spaces, so the
 Choose a finite list of base-cell observables~$F_1,\ldots,F_s$.
 An assignment~$i=(i_C)_{C\in\mathcal C}$ chooses which observable occupies each cell, and we write
 \begin{equation*}
- Z(i)=\left|\left\langle\prod_{C\in\mathcal C}\Theta_C F_{i_C}\right\rangle_\beta\right|.
+ \mathcal Z(i)=\left|\left\langle\prod_{C\in\mathcal C}\Theta_C F_{i_C}\right\rangle_\beta\right|.
 \end{equation*}
 A fold keeps the assignment on one half-torus and reflects it onto the other half.
 Let~$i^+,i^-$ be the two choices.
 Cauchy--Schwarz for the reflected form gives
 \begin{equation}\label{eq:iv-fold}
- Z(i)^2\le Z(i^+)Z(i^-).
+ \mathcal Z(i)^2\le \mathcal Z(i^+)\mathcal Z(i^-).
 \end{equation}
-Thus a maximizing assignment stays maximizing under either fold:
+Thus a maximising assignment stays maximising under either fold:
 \begin{equation*}
- M=\max_i Z(i),\quad Z(i)=M
+ M=\max_i \mathcal Z(i),\quad \mathcal Z(i)=M
  \quad\Longrightarrow\quad
- M^2\le Z(i^+)Z(i^-)\le M^2.
+ M^2\le \mathcal Z(i^+)\mathcal Z(i^-)\le M^2.
 \end{equation*}
-If~$M=0$, every assignment is maximizing; otherwise both factors equal~$M$.
+If~$M=0$, every assignment is maximising; otherwise both factors equal~$M$.
 
-It remains to make a maximizing assignment constant.
+It remains to make a maximising assignment constant.
 Fix a coordinate with~$2q$ cells, and call a band of width~$w$ constant in this coordinate when the assignment does not change along the coordinate inside that band.
 Every assignment has such a band of width one.
 A fold at its initial boundary copies the first layer to the preceding layer; it preserves all the existing layers.
-With~$s$ denoting the band's initial cell, the two useful steps are
+With~$t$ denoting the band's initial cell, the two useful steps are
 \begin{equation*}
- (s,w)\longmapsto(s-1,w+1)\quad(1\le w<q),
- \qquad (s,q)\longmapsto\text{the whole coordinate circle}.
+ (t,w)\longmapsto(t-1,w+1)\quad(1\le w<q),
+ \qquad (t,q)\longmapsto\text{the whole coordinate circle}.
 \end{equation*}
 The second step reflects a constant half-circle onto its complement.
 These folds preserve constancy in coordinates already treated.
-Doing this in all four coordinates gives a constant maximizing assignment.
+Doing this in all four coordinates gives a constant maximising assignment.
 
-\emph{Normalization.}
+\emph{Normalisation.}
 For the observables in~\eqref{eq:iv-chessboard}, set
 \begin{equation*}
  \widetilde F_C=\frac{F_C}{\|F_C\|_{\mathcal C}+\eta},\qquad \eta>0.
 \end{equation*}
 Every constant assignment from this finite list has expectation of absolute value at most~$1$, by~\eqref{eq:iv-root}.
-The maximizing argument therefore gives
+The maximising argument therefore gives
 \begin{equation*}
  \left|\left\langle\prod_C\Theta_C\widetilde F_C\right\rangle_\beta\right|\le1,
  \qquad
@@ -168,99 +239,56 @@ Finally, expand the reflected product of~$F+G$ and apply that estimate term by t
  \|F+G\|_{\mathcal C}^{|\mathcal C|}
  \le\bigl(\|F\|_{\mathcal C}+\|G\|_{\mathcal C}\bigr)^{|\mathcal C|}.
 \end{equation*}
-Taking the root proves subadditivity.\sourcefootnote{\nolinkurl{Cells/Flood.lean}: extension of a band by one cell and successive coordinates; \nolinkurl{Cells/Chess.lean}: maximization, normalization and subadditivity}
+Taking the root proves subadditivity.\sourcefootnote{\nolinkurl{Cells/Flood.lean}: extension of a band by one cell and successive coordinates; \nolinkurl{Cells/Chess.lean}: maximisation, normalisation and subadditivity}
 \end{proof}
 
 \subsection{Bounds and compactness}\label{subsec:iv-compactness}
 
-Centered estimates control an insertion well inside a translated larger cell.
-For aligned fine-cell centers, repeat the larger-cell observable throughout the torus and apply~\eqref{eq:iv-chessboard} on the finer tiling, putting $1$ in unused cells.
-The root is bounded by the largest centered root of the transformed labels.
-In one coordinate, let~$R(z)$ be the chessboard quantity as the anchor moves by~$z$ lattice steps inside a fixed cell.
-Between consecutive aligned centers, translation invariance and the fold estimate give
-\begin{equation*}
-R(z)^2\le R(z-1)R(z+1)\,.
-\end{equation*}
-A nonnegative log-convex sequence is bounded by its endpoint maximum.
-Applying this in each coordinate proves the translated-cell bound when the anchor is at least $3a_k$ from the boundary and the links on which it depends lie within distance~$a_k$, where $a_k$ is the finer cell side.\sourcefootnote{\nolinkurl{Extraction/Around.lean}: transfer to interior positions; \nolinkurl{Cells/Slide.lean}: translation log-convexity}
+A small movement of an insertion should change its correlation only slightly when the other insertions stay away.
+The Wilson measure lets us quantify this: integrate successive lattice slices, and moving an insertion merely changes the number of empty slices between observations.
+Positivity controls that change by the chessboard bounds of Subsection~\ref{subsec:iv-lattice}.
+The resulting bound is independent of the fine lattice spacing.
+Together with boundedness, it allows us to select a convergent subsequence on each compact set.
+Finite polynomial bases then give one subsequence for all correlations.
 
-Suppose $n$ insertion sites have mutual physical torus sup-distance at least $r$.
-Choose two cell scales: the larger cells separate the sites, while the smaller cells leave room around their boundaries.
-The resulting estimate is
-\begin{equation}\label{eq:iv-separated-bound}
- m\le k,\quad a_m<r,\quad6na_k<a_m
- \quad\Longrightarrow\quad
- \left|\left\langle\prod_{i=1}^n I_{N,p}(v_i,y_i)\right\rangle_{N,p}\right|\le A^n
-\end{equation}
-for sufficiently large~$N$.
-Here~$A$ bounds the centered quantities at level~$k$ for the finitely many transformed coefficients.
-In each coordinate the translations placing an anchor within $3a_k$ of a cell boundary occupy at most $6na_k$ of one period $a_m$.
-Choose a translation outside these strips.
-Different sites occupy different cells, so the translated-cell bound and~\eqref{eq:iv-chessboard} bound their correlation by $A^n$.
-The finite sets of links fit once~$N$ is sufficiently large.
-This gives local bounds at each fixed volume and bounds independent of the volume on every compact subset of $\Conf n$ along ordered tails.
-An ordered tail means: first the volume index is large, then the spacing index is large with a threshold allowed to depend on that volume.
+We first separate points by planes perpendicular to each coordinate axis.
+For example, if their first coordinates are distinct, a plane perpendicular to the first axis can be placed between any two consecutive first coordinates.
+The empty interval around each such plane is where an insertion can move without reaching another insertion.
+This explains the temporary restriction below.
 
-The transfer argument separates insertions by coordinate hyperplanes.
-We therefore first work on configurations whose points have different projections onto each coordinate axis:
+\begin{definition}[Coordinate separation]\label{def:iv-coordinate-separated}
+For the configuration space of Definition~\ref{def:tests}, put
 \begin{equation}\label{eq:iv-coordinate-separated}
-\operatorname{Gen}_n
- =\{x\in\Conf n:x_i^\mu\ne x_j^\mu\text{ for }i\ne j,\ \mu=1,\ldots,4\}\,.
+ \operatorname{Gen}_n
+ =\{x\in\Conf n:x_i^\mu\ne x_j^\mu
+       \text{ for }i\ne j,\ \mu=1,\ldots,4\}.
 \end{equation}
-At fixed period replace inequality of coordinates by inequality modulo~$L_p\Z$, and denote the set by~$\operatorname{Gen}^{(p)}_n$; it is contained in the periodically separated set of Definition~\ref{def:periodic}.
-These sets are open and dense in the distinct-point configurations~\eqref{eq:conf}; their complements have measure zero.
-For example, two distinct points with the same first coordinate lie outside~$\operatorname{Gen}_2$.
-Smoothness will later recover the correlations at such configurations.
+At fixed period~$L_p$, let~$\operatorname{Gen}^{(p)}_n$ be the same set with inequalities taken modulo~$L_p\Z$.
+These are the coordinate-separated configurations, in ordinary space and on the periodic lattice respectively.
+\end{definition}
 
-Equicontinuity on these sets comes from propagation between parallel lattice slices.
-Fix a coordinate direction, let~$M$ be the number of slices around the torus, and enclose each insertion in a slab of~$w$ consecutive slices.
-Integration over the links between successive slices gives a positive kernel~$K$.
-Let~$B_i$ be the kernel obtained by integrating within the~$i$th slab with its observable inserted, and let~$Y_i$ be the number of steps between slabs.
-Assigning half the slice action to each neighbor expresses the correlation as
-\begin{equation*}
-\frac{\operatorname{Tr}(B_1K^{Y_1}\cdots B_nK^{Y_n})}{Z},
-\qquad Z=\operatorname{Tr}K^M>0,\qquad nw+\sum_iY_i=M\,.
-\end{equation*}
-Here traces denote cyclic integrals of kernels on the compact slice configuration space.
-The kernels are continuous.
-If~$A_i$ bounds the chessboard quantity of the~$i$th observable and~$M=2qw$, the reflected-product bound is
-\begin{equation*}
-\left(\frac{\operatorname{Tr}\bigl((B_i^*B_i)^q\bigr)}{Z}\right)^{\frac{1}{2q}}\le A_i\,.
-\end{equation*}
-Apply~\eqref{eq:iv-chessboard} to $2q$ alternating copies of the observable and its reflected conjugate.
-Divisibility of the period by four supplies the integer $q$ when the slabs have twice a centered cell's width.
+Both sets are open, and their complements in the corresponding distinct-point configuration spaces have measure zero.
+The periodic set lies in the periodically separated set of Definition~\ref{def:periodic}.
+Two distinct points with the same first coordinate are excluded for now; Subsection~\ref{subsec:iv-smoothness} will recover their correlations by smoothness.
 
-Changing two distances between slabs by~$+h$ and~$-h$, where~$0\le h\le b$ and all original distances exceed~$2b$, changes the normalized trace by at most $(\prod_i A_i)\frac{h}{b}$.
-Here is the estimate that avoids a factor depending on the dimension of the slice space.
-Approximate every cyclic integral by the same finite weighted sum, with nonnegative weights.
-For its positive matrix $K$, define $K^z=\exp(z\log K)$ on the positive eigenspaces and zero on the kernel.
-The trace with two exponents $Y_i+z,Y_j-z$ is entire.
-For a matrix~$T$, write~$\|T\|_s=(\operatorname{Tr}|T|^s)^{\frac{1}{s}}$ for its Schatten norm.
-For~$|z|\le2b$, the Schatten Hölder inequality bounds the trace by
-\begin{equation*}
-\prod_i\|B_i\|_{2q}\,Z^{1-\frac{n}{2q}},\qquad
-\frac{n}{2q}+\frac{\sum_i\operatorname{Re}Y_i(z)}{M}=1\,.
-\end{equation*}
-Imaginary powers are contractions, and the real powers have the indicated Schatten norms.
-Cauchy's estimate on discs of radius $b$ centered on $[0,h]$ bounds the derivative by this expression divided by $b$.
-Integrate and pass to the limit in the finite weighted sums.
-Every endpoint exponent is positive, so the convention on the kernel changes no endpoint value.\sourcefootnote{\nolinkurl{Complex/Gaps.lean}: trace bounds and finite differences; \nolinkurl{Slice/Calendar.lean}: kernel passage; \nolinkurl{Extraction/Difference.lean}: columns and one-coordinate shifts}
+To compare different spacings on a common domain, extend each lattice correlation to a step function on physical space.
 
-A site move changes two distances.
-In physical units the preceding estimate gives a Lipschitz bound; telescoping over the $4n$ coordinates gives equicontinuity on compact subsets of~\eqref{eq:iv-coordinate-separated}.
-The centered estimates make its constant independent of the volume along ordered tails.
-For $n=1$ use translation invariance; for $n=0$ the moment is $1$.
-No derivative bound has been used.
-
-These bounds let us choose one subsequence for all correlations at once.
-The essential point is that each coefficient space has a finite basis, while the arities, degrees, volumes and compact exhaustions form countable collections.
-Write~$M^{\mathrm{step}}_{N,p}(v;x)$ for the moment~\eqref{eq:smear} evaluated at the grid configuration obtained by rounding~$x$ to the lattice.
+\begin{definition}[Lattice extensions]\label{def:iv-grid}
+With~$\ell_{N,p}=\frac{L_p}{a_N}$ as in~\eqref{eq:physical-scales}, round each coordinate up to the next lattice point and reduce it modulo the period:
+\begin{equation}\label{eq:iv-step}
+ y_{N,p}(x)=\bigl[\lceil a_N^{-1}x\rceil\bigr]
+       \in\Lambda_{\ell_{N,p}}^n,\qquad
+ M^{\mathrm{step}}_{N,p}(v;x)=M_{N,p}(v;y_{N,p}(x)).
+\end{equation}
+Brackets denote the periodic class, the ceiling acts componentwise, and~$M_{N,p}$ is the moment of Definition~\ref{def:moments}.
+The physical displacement caused by rounding is at most~$4na_N$ modulo~$L_p$.
+\end{definition}
 
 \begin{proposition}[Auxiliary extraction]\label{prop:iv-raw}
 Assume~\eqref{eq:iv-scales}, \eqref{eq:iv-gentle} and~\eqref{eq:iv-centered} and the insertion identities of Proposition~\ref{prop:uv-insertions}.
 Every pair of strictly increasing spacing and volume sequences has refinements~$N_j,p_k$ and multilinear kernels~$P_p,S_0$ with the following properties, simultaneously for all~$n\in\N$, degrees~$d_i\in\N$ and coefficients~$v_i\in V_{d_i}$.
 \begin{enumerate}[label=\textup{(\roman*)},ref=\theproposition(\roman*)]
-\item\label{item:iv-raw-points} Locally uniformly on the sets~\eqref{eq:iv-coordinate-separated},
+\item\label{item:iv-raw-points} Locally uniformly on the sets of Definition~\ref{def:iv-coordinate-separated},
 \begin{equation}\label{eq:iv-point-limits}
 \begin{aligned}
  M^{\mathrm{step}}_{N_j,p}(v;\cdot)&\longrightarrow P_p(v;\cdot)\in C(\operatorname{Gen}^{(p)}_n)
@@ -280,35 +308,139 @@ Every pair of strictly increasing spacing and volume sequences has refinements~$
 \end{proposition}
 
 \begin{proof}
-We select convergence on countably many coefficient bases and compact sets, then use local bounds to pass to every separated test.
-The grid extensions need not be continuous; their oscillation estimates are enough.
+We bound the correlations first, then their change under small movements.
+These two bounds give compactness on the coordinate-separated configurations.
+An integral bound will then pass to every separated test, including those meeting the excluded coordinate hyperplanes.
 
-Extend the lattice functions by rounding points to the grid.
-Rounding moves a configuration by $O(na_N)$; on a compact neighborhood inside~\eqref{eq:iv-coordinate-separated} the oscillation of these step functions is therefore bounded by $C|x-y|+o(1)$, uniformly in $x,y$.
-Choose a countable dense set in each such neighborhood and extract convergence at its points.
-A finite net and this oscillation estimate make the subsequence uniformly Cauchy on each compact set; its limit is continuous.
-This is the compactness argument underlying Arzelà--Ascoli, without requiring the step functions themselves to be continuous.
-Apply it over all fixed periods, arities, degree lists, basis labels and compact exhaustions of~\eqref{eq:iv-coordinate-separated}.
-These indices are countable, so one spacing subsequence gives all the kernels $P_p$.
-The volume bounds and moduli pass to $P_p$ by taking the spacing limit at moving lattice points.
-A second countable extraction gives the volume subsequence and $S_0$.
-Extend from basis labels by multilinearity.
-Set the raw kernels equal to zero off their coordinate-separated sets~\eqref{eq:iv-coordinate-separated}; these measurable extensions change no integral.
+\emph{Local bounds.}
+The centred estimate~\eqref{eq:iv-centered} controls an observable repeated in cells centred on its insertion site.
+It also controls repetitions in translated cells, provided the insertion stays away from their boundaries.
+At aligned smaller-cell centres, apply~\eqref{eq:iv-chessboard} and put~$1$ in the unused cells.
+Between these centres, let~$R(z)$ be the chessboard root as the insertion moves by~$z$ lattice steps along one axis.
+A fold gives the discrete convexity inequality
+\begin{equation*}
+ R(z)^2\le R(z-1)R(z+1)
+ \quad\Longrightarrow\quad
+ R(z)\le\max\{R(z_-),R(z_+)\}\qquad(z_-\le z\le z_+).
+\end{equation*}
+Here~$z_-,z_+$ are consecutive aligned centres.
+Applying this in each direction bounds every translated root by the largest centred root of the reflected coefficients.
+It suffices that the insertion site is at least~$3a_k$ from each boundary and its supporting links lie within distance~$a_k$ of that site.\sourcefootnote{\nolinkurl{YM/Extraction/Around.lean}: translated cells; \nolinkurl{YM/Cells/Slide.lean}: discrete convexity}
 
-Write each weighted lattice sum as an integral of a step function.
-A compact neighborhood of $\supp f$ remains separated; at a fixed volume containing its support in Definition~\ref{def:admissible}, it also avoids periodic collisions.
-Local bounds dominate the integrands there, and rounding changes $f$ uniformly by a quantity tending to zero.
-Almost-everywhere convergence on $\operatorname{Gen}^{(p)}_n$ gives the first limit by dominated convergence.
-Apply dominated convergence again on $\supp f$, using the volume-independent bound and the full-measure set $\operatorname{Gen}_n$.
-This gives the second limit and integrability.
-Eventual containment in the volume follows from $L_{p_k}\to\infty$.\sourcefootnote{\nolinkurl{Extraction/Lipschitz.lean}: the two extractions; \nolinkurl{Extraction/Integrate.lean}: dominated convergence; \nolinkurl{Extraction/Held.lean}: their combination}
+Now suppose~$n$ insertion sites have pairwise physical torus sup-distance at least~$r>0$.
+Choose a cell size~$a_m<r$ to put different sites in different cells, and then a smaller size~$a_k$ for the boundary margins.
+The forbidden translations in each coordinate have total length at most~$6na_k$ in one period~$a_m$.
+Consequently
+\begin{equation}\label{eq:iv-separated-bound}
+ m\le k,\quad a_m<r,\quad6na_k<a_m
+ \quad\Longrightarrow\quad
+ \left|\left\langle\prod_{i=1}^n I_{N,p}(v_i,y_i)\right\rangle_{N,p}\right|\le A^n
+\end{equation}
+for sufficiently large~$N$, where~$A$ bounds the centred roots at level~$k$ for the finitely many reflected coefficients.
+Choose a translation outside the forbidden intervals and apply the translated-root bound and~\eqref{eq:iv-chessboard}.
+The finite supports fit inside their cells once~$N$ is sufficiently large.
+Thus fixed separated compact sets have local bounds, uniform in volume on the ordered tails of Definition~\ref{def:iv-tails}.
+
+\emph{Moving an insertion.}
+For at least two insertions, fix an axis and integrate the lattice one slice at a time, perpendicular to that axis.
+The positive integral kernel~$K$ propagates through one empty slice; $B_i$ integrates a slab containing the~$i$th insertion.
+Let~$Y_i$ count the empty slices before the next slab.
+The trace closes this chain around the periodic direction.
+If the torus has~$M$ slices and each slab has~$w$ slices, the Wilson factorisation gives
+\begin{equation*}
+ \langle\prod_i I_i\rangle
+ =\frac{\operatorname{Tr}(B_1K^{Y_1}\cdots B_nK^{Y_n})}{Z},
+ \qquad Z=\operatorname{Tr}K^M>0,\qquad nw+\sum_iY_i=M.
+\end{equation*}
+Here~$I_i=I_{N,p}(v_i,y_i)$; the trace is the cyclic integral of these kernels over the slice configurations.
+The slice kernel and inserted kernels are continuous, since the original insertions are continuous by~\ref{reg:2}.
+The adjoint kernel is~$B_i^*(X,Y)=\overline{B_i(Y,X)}$.
+Let~$A_i$ bound the chessboard root of the~$i$th insertion.
+For~$M=2qw$, the alternating reflected product and~\eqref{eq:iv-chessboard} give
+\begin{equation*}
+ \left(\frac{\operatorname{Tr}\bigl((B_i^*B_i)^q\bigr)}{Z}\right)^{\frac{1}{2q}}
+ \le A_i,
+\end{equation*}
+The period condition in~\eqref{eq:iv-scales} makes~$q$ an integer when the slabs have twice a centred cell's width.
+
+Moving one slab by~$h$ steps changes the two adjacent distances by~$+h$ and~$-h$.
+Approximate the cyclic integrals by finite weighted sums with nonnegative weights.
+For the resulting positive matrix~$K$, define~$K^z=\exp(z\log K)$ on its positive eigenspaces and set it equal to zero on its kernel.
+Its matrix entries are entire in~$z$, and it agrees with the ordinary powers at positive integer exponents.
+For the two adjacent interval indices~$i,j$, set
+\begin{equation*}
+ T(z)=\operatorname{Tr}\bigl(B_1K^{Y_1(z)}\cdots B_nK^{Y_n(z)}\bigr),
+ \qquad
+ Y_l(z)=\begin{cases}Y_i+z,&l=i,\\Y_j-z,&l=j,\\Y_l,&l\ne i,j.\end{cases}
+\end{equation*}
+For a finite matrix, let~$B^*$ be its conjugate transpose and~$|B|=(B^*B)^{\frac{1}{2}}$.
+Its Schatten norm is~$\|B\|_s=(\operatorname{Tr}|B|^s)^{\frac{1}{s}}$, the~$\ell^s$ norm of its singular values.
+Choose~$b>0$ with all~$Y_l>2b$.
+For~$|z|\le2b$, imaginary powers have operator norm at most one, and Schatten H\"older gives
+\begin{equation*}
+ |T(z)|\le\prod_l\|B_l\|_{2q}\,Z^{1-\frac{n}{2q}},
+ \qquad
+ \frac{n}{2q}+\frac{\sum_l\operatorname{Re}Y_l(z)}{M}=1.
+\end{equation*}
+For~$0\le h\le b$, Cauchy's estimate on discs of radius~$b$ centred on~$[0,h]$ therefore yields
+\begin{equation*}
+ \frac{|T(h)-T(0)|}{Z}
+ \le\frac{h}{b}
+       \prod_l\left(\frac{\operatorname{Tr}|B_l|^{2q}}{Z}\right)^{\frac{1}{2q}}
+ \le\frac{h}{b}\prod_l A_l.
+\end{equation*}
+Pass to the limit in the finite weighted sums.
+The integer endpoint exponents stay positive, so the choice on the zero eigenspace changes neither endpoint.\sourcefootnote{\nolinkurl{YM/Complex/Gaps.lean}: finite trace difference; \nolinkurl{YM/Slice/Calendar.lean}: passage to kernels; \nolinkurl{YM/Extraction/Difference.lean}: insertion movements}
+
+On a compact coordinate-separated set, choose fixed slabs leaving a positive physical interval between successive insertions in each coordinate direction.
+The integer~$b$ can then be chosen with~$a_Nb$ bounded below, independently of sufficiently fine~$N$.
+The preceding estimate costs at most a constant times the physical displacement~$a_Nh$.
+Move the~$4n$ coordinates in turn and include the rounding error of Definition~\ref{def:iv-grid}.
+On each compact neighbourhood~$K$ in~$\operatorname{Gen}^{(p)}_n$, this gives, for sufficiently close~$x,y\in K$,
+\begin{equation}\label{eq:iv-oscillation}
+ |M^{\mathrm{step}}_{N,p}(v;x)-M^{\mathrm{step}}_{N,p}(v;y)|
+ \le C_K|x-y|+o(1),\qquad N\longrightarrow\infty,
+\end{equation}
+uniformly in~$x,y$.
+For fixed~$K\subset\operatorname{Gen}_n$, the same constants work independently of sufficiently large volumes on ordered tails.
+For one insertion use translation invariance; for no insertions the moment is~$1$.
+
+\emph{Common subsequences.}
+Fix a coefficient basis tuple and a compact set~$K$.
+Local boundedness gives a subsequence converging at every point of a countable dense subset.
+Choose a finite~$\delta$-net~$E_\delta$ from that subset, so every point of~$K$ is within~$\delta$ of a point of~$E_\delta$.
+Then~\eqref{eq:iv-oscillation} gives
+\begin{equation*}
+ \sup_K|M_j-M_l|
+ \le 2C_K\delta+o_j(1)+o_l(1)
+       +\max_{z\in E_\delta}|M_j(z)-M_l(z)|.
+\end{equation*}
+Here~$M_j$ denotes the corresponding lattice extension along the selected subsequence.
+First let~$j,l\to\infty$ and then~$\delta\downarrow0$.
+The sequence is uniformly Cauchy on~$K$, and its limit is continuous.
+This is the compactness mechanism of Arzel\`a--Ascoli, even though the approximating step functions need not be continuous.
+
+Take the diagonal over all fixed volumes, numbers of insertions, degree lists, basis tuples and compact exhaustions.
+These choices are countable, so one spacing subsequence gives every~$P_p$ in~\eqref{eq:iv-point-limits}.
+Pass the volume-independent bounds and movement estimates to these limits.
+The same argument gives one volume subsequence and~$S_0$.
+Extend from the bases by multilinearity.
+Set these raw kernels to zero off their coordinate-separated domains; their complements have measure zero.
+
+\emph{Smeared limits.}
+Write the weighted lattice sum as an integral of the associated step functions.
+A compact neighbourhood of~$\supp f$ stays separated, and at a volume containing the support it avoids periodic collisions.
+The local bounds dominate the integrands there, while rounding changes~$f$ uniformly by~$o(1)$.
+Dominated convergence first in~$N_j$ and then in~$p_k$ gives both limits in~\eqref{eq:iv-auxiliary-limit}.
+Finally~$L_{p_k}\to\infty$ ensures eventual containment of the support.\sourcefootnote{\nolinkurl{YM/Extraction/Lipschitz.lean}: common subsequences; \nolinkurl{YM/Extraction/Integrate.lean}: dominated convergence; \nolinkurl{YM/Extraction/Held.lean}: their combination}
 \end{proof}
 
 \subsection{Equation relations}\label{subsec:iv-equations}
 
 Compactness gives correlations only where all coordinate projections are distinct.
-To extend them smoothly across the remaining configurations, we identify every weak derivative with the correlation of another observable.
-A lattice difference is represented by a label of higher degree, whose coefficients may grow as the spacing shrinks.
+To extend them smoothly across the remaining configurations, we first differentiate against test functions by integration by parts.
+These weak derivatives will be correlations of other observables.
+A lattice difference is represented by a polynomial of higher degree, whose coefficients may grow as the spacing shrinks.
 The equation comparisons remove the part invisible to correlations; the rank estimate prevents the remaining coefficients from escaping to infinity.
 
 We now state these additional ultraviolet inputs precisely.
@@ -318,8 +450,8 @@ Along a further common refinement, preserving Proposition~\ref{prop:iv-raw}, ass
  P_{d,N,p}\longrightarrow P_d,\qquad P_d^2=P_d
  \quad\text{in operator norm}.
 \end{equation}
-All limits and eventual assertions in this subsection use the ordered tails described in Subsection~\ref{subsec:iv-compactness}.
-The inverse reference map in~\eqref{eq:uv-reference-coordinates} measures the size of a coefficient family~$w_{N,p}$ at the fine cutoff.
+All limits and eventual assertions in this subsection use the ordered tails of Definition~\ref{def:iv-tails}.
+The inverse coefficient transfer~$\tau_{N,p,d}^{-1}$ of~\eqref{eq:uv-reference-coordinates} measures the size of a coefficient family~$w_{N,p}$ at the fine cutoff.
 We allow families satisfying
 \begin{equation}\label{eq:iv-coefficient-cost}
  \forall\varepsilon>0,\qquad
@@ -329,41 +461,44 @@ We allow families satisfying
 The ultraviolet estimates must imply~\eqref{eq:iv-coefficient-cost} for bounded coefficient families.
 They do so by bounding the growth at each intervening scale: the logarithm of the product of these bounds is~$o(\log a_N^{-1})$.
 
-An error~$E_{N,p}(y)$ is small in reflected cells if one nonnegative rate $\eta_{N,p}\to0$ along ordered tails has the following property.
-For every integer $q\ge0$ and lower level $m$, there exists $k\ge m$ such that eventually, for every translated bond cell of side $a_k$ and every anchor with relative lattice coordinates $z$ satisfying
+\begin{definition}[Cell errors]\label{def:iv-errors}
+An error~$E_{N,p}(y)$ is a lattice observable, with its link configuration argument suppressed.
+It is small in reflected cells if one nonnegative rate $\eta_{N,p}\to0$ along ordered tails has the following property.
+For every integer $q\ge0$ and lower level $m$, there exists $k\ge m$ such that eventually, for every translated bond cell of side $a_k$ and every insertion site with integer coordinates~$z$ measured from the cell's first site in each direction and satisfying
 \begin{equation}\label{eq:iv-error-cells}
 M\le z^\mu,\quad z^\mu+M+1\le \frac{a_k}{a_N},\quad
 M=\left\lfloor\frac{a_k}{8(q+1)a_N}\right\rfloor
 \quad(\mu=1,\ldots,4),
 \end{equation}
-the error is interior and its root is at most $\eta_{N,p}$.
+the error is interior in Definition~\ref{def:iv-reflections} and its chessboard root~\eqref{eq:iv-root} is at most~$\eta_{N,p}$.
 This condition keeps the error away from cell boundaries, where the chessboard estimate can be applied.
 A degree-$e$ representative means an insertion~$I_{N,p}(w_{N,p},y)$ with~$w_{N,p}\in V_e$.
+\end{definition}
 At every degree we require the following three comparisons:
 \begin{enumerate}[label=\textup{(C\arabic*)},ref=C\arabic*]
 \item\label{item:iv-comparison-inclusion} Each fixed degree-$d$ insertion has a degree-$e$ representative satisfying~\eqref{eq:iv-coefficient-cost} for $d\le e$, differing by an error small in reflected cells.
-\item\label{item:iv-comparison-difference} The forward difference $a_N^{-1}(I(v,y+e_\mu)-I(v,y))$ has such a representative of degree $d+1$.
+\item\label{item:iv-comparison-difference} The forward difference $\frac{I_{N,p}(v,y+e_\mu)-I_{N,p}(v,y)}{a_N}$ has such a representative of degree $d+1$.
 \item\label{item:iv-comparison-null} A family satisfying~\eqref{eq:iv-coefficient-cost} in $\ker P_{d,N,p}$ differs by such an error from bounded measurable observables whose correlations with every fixed list of the other insertions vanish exactly, eventually at each positive separation.
 \end{enumerate}
 Boundedness in~\ref{item:iv-comparison-null} is only at each cutoff and site, which suffices for integration against the finite Wilson law.
 
-Fix an arity, one slot~$i$, all coefficients in the other slots, and a separated test~$f$ of Definition~\ref{def:tests}.
+Fix a number of insertions, one slot~$i$ (one position in the list), all coefficients in the other slots, and a separated test~$f$ of Definition~\ref{def:tests}.
 Varying the coefficient~$w\in V_d$ in that slot gives linear functionals
 \begin{equation}\label{eq:iv-null-functionals}
  L_{N,p}(w)=C_{N,p}(v_{i\to w};f),\qquad
  L(w)=\int f(x)S_0(v_{i\to w};x)\,dx,\qquad
  N_d=\bigcap_L\ker L.
 \end{equation}
-Here~$v_{i\to w}$ means replacement of the coefficient in slot~$i$ by~$w$; the intersection includes every choice of the other data.
+The intersection includes every choice of the number of insertions, position, other polynomials and test.
 Thus~$N_d$ consists of coefficients invisible to every separated smeared correlation.
-The additional rank input is
+In the following rank input and comparisons, eventual assertions retain Definition~\ref{def:iv-tails}:
 \begin{equation}\label{eq:iv-rank-input}
 \dim_\C N_d\le\dim_\C\ker P_d\,.
 \end{equation}
 The projectors and this inequality are obtained on a further common refinement, retaining all previous limits.
-\gap{Supply comparisons~\ref{item:iv-comparison-inclusion}--\ref{item:iv-comparison-null}, the coefficient bound~\eqref{eq:iv-coefficient-cost} for bounded families, and the finite-dimensional detection argument for \eqref{eq:iv-rank-input} for the chosen family. The dimension inequality is additional to the centered-root estimate.\sourcefootnote{\nolinkurl{MergeProof/Powder.lean} and \nolinkurl{Next/RANK/Beam.lean}: same-family assembly and retained rank comparison}}
+\gap{Supply comparisons~\ref{item:iv-comparison-inclusion}--\ref{item:iv-comparison-null}, the coefficient bound~\eqref{eq:iv-coefficient-cost} for bounded families, and the finite-dimensional detection argument for \eqref{eq:iv-rank-input} for the chosen family. The dimension inequality is additional to the centred-root estimate.\sourcefootnote{\nolinkurl{MergeProof/Powder.lean} and \nolinkurl{Next/RANK/Beam.lean}: same-family assembly and retained rank comparison}}
 
-The following lemma replaces the cutoff-dependent coefficients in these comparisons by fixed coefficients.
+The following lemma replaces the coefficients depending on the fine cutoff in these comparisons by fixed coefficients.
 Its conclusion holds against every list of other fields, so that it gives genuine field operations rather than representatives depending on a particular test.
 
 \begin{lemma}[Fixed representatives]\label{lem:iv-representatives}
@@ -384,13 +519,13 @@ such that, for every separated test of Definition~\ref{def:tests} and functional
 
 \begin{proof}
 Projection discards directions invisible to all observations.
-The rank bound shows that these are exactly the discarded directions; a normalized compactness argument then prevents the remaining representatives from becoming unbounded.
+The rank bound shows that these are exactly the discarded directions; a normalised compactness argument then prevents the remaining representatives from becoming unbounded.
 
 An error small in reflected cells has vanishing separated smearings.
-Choose its cell below the fixed separation and a finer centered scale for the other insertions.
+Choose its cell below the fixed separation and a finer centred scale for the other insertions.
 Avoid boundary strips as before, with margin $M$; the factor $8(q+1)$ permits this for any fixed number of slots.
 The translated-cell estimate and~\eqref{eq:iv-chessboard} bound the mixed moment by $C\eta_{N,p}$.
-The weighted count of sites meeting $\supp f$ is bounded by the volume of a fixed neighborhood, independently of $N,p$.
+The weighted count of sites meeting $\supp f$ is bounded by the volume of a fixed neighbourhood, independently of $N,p$.
 Thus its smear tends to zero.
 
 The maps $L_{N,p}$ converge in operator norm because they converge on a finite basis.
@@ -402,37 +537,38 @@ The dimension input closes the identification:
  \quad\Longrightarrow\quad N_d=\ker P_d.
 \end{equation*}
 
+Let~$\Delta_{i,\mu}$ be the forward lattice difference in slot~$i$ and direction~$\mu$, and let~$e_{i,\mu}$ be that coordinate vector in the point list.
 Summation by parts on the torus gives
 \begin{equation*}
 a_N^{4n}\sum_y f(\widehat y)\Delta_{i,\mu}M_{N,p}(v;y)
 =a_N^{4n}\sum_y\frac{f(\widehat y-a_Ne_{i,\mu})-f(\widehat y)}{a_N}M_{N,p}(v;y)\,.
 \end{equation*}
-Here $\Delta_{i,\mu}$ is the forward quotient in slot $i$, and $e_{i,\mu}$ its unit coordinate vector.
 The test support stays inside the fundamental box eventually, so there is no wrapping.
-Its backward quotient tends uniformly to $-\partial_{i,\mu}f$ on a fixed neighborhood.
+Its backward quotient tends uniformly to $-\partial_{i,\mu}f$ on a fixed neighbourhood.
 Local boundedness and the bounded weighted site count make the error vanish.
 Comparisons~\ref{item:iv-comparison-inclusion}--\ref{item:iv-comparison-difference} therefore give coefficient families $w_{N,p}$ with the required target limits for every choice of the other insertions and test at once.
 
 Write $p_{N,p}=P_{e,N,p}w_{N,p}$, where $e$ is the representing degree.
-Comparison~\ref{item:iv-comparison-null} applied to the normalized remainder gives
+Comparison~\ref{item:iv-comparison-null} applied to the normalised remainder gives
 \begin{equation*}
 L_{N,p}\left(\frac{w_{N,p}-p_{N,p}}{1+\|p_{N,p}\|_{V_e}}\right)\longrightarrow0\,.
 \end{equation*}
-Division by~$1+\|p_{N,p}\|_{V_e}\ge1$ preserves~\eqref{eq:iv-coefficient-cost}, and the normalized projected vector is bounded.
+Division by~$1+\|p_{N,p}\|_{V_e}\ge1$ preserves~\eqref{eq:iv-coefficient-cost}, and the normalised projected vector is bounded.
 Take a cluster limit $(c,z)$ of
 \begin{equation*}
 \left(\frac{1}{1+\|p_{N,p}\|_{V_e}},\frac{p_{N,p}}{1+\|p_{N,p}\|_{V_e}}\right)
 \end{equation*}
-in $[0,1]\times\overline B_{V_e}(0,1)$, using a refining ultrafilter of the ordered tails.
-Then $P_ez=z$, $c+\|z\|_{V_e}=1$, and $Lz=c\,t_L$ for every target $t_L$.
-A vanishing~$c$ would contradict the normalization:
+in $[0,1]\times\overline B_{V_e}(0,1)$, where~$\overline B_{V_e}(0,1)$ is the closed unit ball.
+Use an ultrafilter containing every ordered tail of Definition~\ref{def:iv-tails}; this selects one common cluster limit for all finite-dimensional coordinates.
+If~$t_L$ is the target correlation or weak derivative in~\eqref{eq:iv-weak-identities}, the limits satisfy~$P_ez=z$, $c+\|z\|_{V_e}=1$ and~$Lz=c\,t_L$.
+A vanishing~$c$ would contradict the normalisation:
 \begin{equation*}
  c=0\ \Longrightarrow\ z\in\operatorname{im}P_e\cap\ker P_e=\{0\}
  \ \Longrightarrow\ c+\|z\|_{V_e}=0\ne1.
 \end{equation*}
 Thus $\frac{z}{c}$ represents every target simultaneously.
 Choose representatives on each source basis and extend linearly.
-No further subsequence has been chosen for the uncountable collection of tests.\sourcefootnote{\nolinkurl{Work/D01.lean}--\nolinkurl{D04.lean}: coefficient costs, errors and differences; \nolinkurl{Dash/Limits.lean}: normalized compactness; \nolinkurl{Dash/Inert.lean}: fixed representatives}
+No further subsequence has been chosen for the uncountable collection of tests.\sourcefootnote{\nolinkurl{Work/D01.lean}--\nolinkurl{D04.lean}: coefficient costs, errors and differences; \nolinkurl{Dash/Limits.lean}: normalised compactness; \nolinkurl{Dash/Inert.lean}: fixed representatives}
 \end{proof}
 
 \subsection{Smooth fields and positivity}\label{subsec:iv-smoothness}
@@ -443,8 +579,28 @@ A coefficient vanishing in every correlation is discarded; the resulting quotien
 The maps between degrees and the derivatives are independent of all choices of coefficient representatives.
 These will be the finite-degree spaces and projection in Definition~\ref{def:hierarchy}.
 
+\begin{definition}[Continuum fields]\label{def:iv-fields}
+For the null subspace~$N_d$ in~\eqref{eq:iv-null-functionals}, set
+\begin{equation}\label{eq:iv-fields}
+ F_d=V_d/N_d,\qquad \pi_dv=[v],\qquad
+ \|[v]\|_{F_d}=\inf_{w\in N_d}\|v+w\|_{V_d}.
+\end{equation}
+These are normed finite-dimensional spaces.
+The class~$\pi_du_d$ is denoted by~$\mathbf1$ at degree~$d$.
+\end{definition}
+
+\begin{definition}[Analytic conventions]\label{def:iv-analysis}
+For a function on~$\R^a$, $D_x^s$ denotes its~$s$th total Fr\'echet derivative, with its operator norm.
+For a multi-index~$\alpha\in\N^a$, put~$|\alpha|=\sum_l\alpha_l$ and~$D^\alpha=\partial_1^{\alpha_1}\cdots\partial_a^{\alpha_a}$.
+For~$u\in L^1(\R^a)$, use the Fourier transform
+\begin{equation*}
+ \widehat u(\xi)=\int_{\R^a}e^{-i\xi\cdot x}u(x)\,dx.
+\end{equation*}
+In applications to~$n$ insertion points, $a=4n$.
+\end{definition}
+
 \begin{proposition}[Smooth correlations]\label{prop:iv-smooth}
-Under the hypotheses of Lemma~\ref{lem:iv-representatives}, there are multilinear kernels~$S_n$ and quotient maps~$\pi_d:V_d\to F_d=V_d/N_d$ such that:
+Under the hypotheses of Lemma~\ref{lem:iv-representatives}, there is a collection~$S=(S_n)_{n\ge0}$ of multilinear kernels on the polynomial lists of Definition~\ref{def:iv-coefficients}, with quotient spaces as in Definition~\ref{def:iv-fields}, such that:
 \begin{enumerate}[label=\textup{(\roman*)},ref=\theproposition(\roman*)]
 \item\label{item:iv-smooth-limits} $S_n(v;\cdot)\in C^\infty(\Conf n)$ on~\eqref{eq:conf},
 $S_n|_{\operatorname{Gen}_n}=S_0$ on~\eqref{eq:iv-coordinate-separated}, and~\eqref{eq:iv-auxiliary-limit} holds with~$S_n$.
@@ -466,7 +622,7 @@ Fourier inversion produces smooth local representatives; their correlation ident
 
 Equation~\eqref{eq:iv-weak-identities} represents every weak coordinate derivative by another locally integrable kernel.
 Iteration gives derivatives of every order.
-For a smooth cutoff $\chi$ supported in $\Conf n$, each derivative of $\chi S_0(v)$ is a finite sum of integrable compactly supported kernels.
+For a smooth cutoff function~$\chi$ supported in~$\Conf n$, meaning a smooth function with compact support there, each derivative of $\chi S_0(v)$ is a finite sum of integrable compactly supported kernels.
 Integration by parts in the Fourier transform gives, for every integer $b\ge0$,
 \begin{equation*}
 \sup_\xi(1+|\xi|)^b\left|\widehat{\chi S_0(v)}(\xi)\right|<\infty\,.
@@ -477,7 +633,7 @@ The local representatives agree almost everywhere on overlaps, hence everywhere 
 They glue to $S$ and equal $S_0$ on the set~\eqref{eq:iv-coordinate-separated}.
 The same argument preserves multilinearity and smearings.\sourcefootnote{\nolinkurl{Dash/Regular.lean}, \nolinkurl{Dash/Twist.lean}, and \nolinkurl{Org/Input.lean}: smooth representatives with the retained extraction}
 
-The null-space description in~\ref{item:iv-smooth-null} follows in both directions: pointwise vanishing implies vanishing smearings, while smoothness and testing in small neighborhoods recover pointwise vanishing from~\eqref{eq:iv-null-functionals}.
+The null-space description in~\ref{item:iv-smooth-null} follows in both directions: pointwise vanishing implies vanishing smearings, while smoothness and testing in small neighbourhoods recover pointwise vanishing from~\eqref{eq:iv-null-functionals}.
 The identities~\eqref{eq:iv-weak-identities} then hold pointwise.
 A null input has a null image under~$\kappa$ or~$\delta$, since all its correlations, and hence their derivatives, vanish.
 Thus the maps descend to~$F_d$.
@@ -488,7 +644,7 @@ The symmetries and positivity of the Wilson measure survive the ordered limit.
 The scale condition~\eqref{eq:iv-gentle} also converts the bounds at fixed cell sizes into bounds in terms of the distance between insertions.
 We spell these out because they are the inputs to the later Hilbert-space construction.
 
-For a coordinate reflection~$r_\mu$, a positive configuration has~$x_i^\mu>0$ and pairwise distinct points.
+For~$r_\mu=r_{\mu,0}$ of Definition~\ref{def:iv-reflections}, a positive configuration has~$x_i^\mu>0$ and pairwise distinct points.
 For two such lists of lengths~$n$ and~$m$, define the reflected correlation
 \begin{equation}\label{eq:iv-os-form}
  G_S\bigl((v,x),(w,y)\bigr)
@@ -501,8 +657,9 @@ For joint separated tests~$f_\alpha$ of Definition~\ref{def:tests} supported on 
  =\iint\overline{f_\alpha(x)}f_\beta(y)
  G_S\bigl((v^\alpha,x),(v^\beta,y)\bigr)\,dx\,dy.
 \end{equation}
-These are the Osterwalder--Schrader forms for point insertions and their smearings.
-In the estimate below, $D_x^m$ is the $m$th Fr\'echet derivative, equipped with its operator norm.
+These are the Osterwalder--Schrader forms: they pair observations with their reflected conjugates.
+For a matrix~$G$, the notation~$G\succeq0$ means~$\sum_{\alpha,\beta}\bar c_\alpha c_\beta G_{\alpha\beta}\ge0$ for every complex vector~$c$.
+Derivative and norm notation is that of Definition~\ref{def:iv-analysis}; $m$ in the estimate below is a derivative order, independently of the gauge matrix size.
 
 \begin{proposition}[Euclidean properties]\label{prop:iv-euclidean}
 The kernels of Proposition~\ref{prop:iv-smooth} satisfy the following identities and bounds.
@@ -533,17 +690,17 @@ The identities descend through~$\pi_d$ to the quotient fields.
 
 \begin{proof}
 We pass the lattice identities and positive Gram matrices to the limit.
-For the quantitative bound, two cell sizes chosen in terms of the point separation turn the centered estimates into a power of that separation.
+For the quantitative bound, two cell sizes chosen in terms of the point separation turn the centred estimates into a power of that separation.
 
 Exact lattice symmetries and unit identities pass at grid configurations in~\eqref{eq:iv-coordinate-separated} and grid translations.
 Density and continuity give these identities throughout $\Conf n$ and for every real translation.
 For reflection positivity, fix finitely many joint tests supported in positive-side separated configurations.
-Their smeared lattice observables are strictly inside the positive half-torus for large $p$ and then large $N$, since each insertion depends on finitely many links whose physical distances from its anchor tend to zero.
+Their smeared lattice observables are strictly inside the positive half-torus for large $p$ and then large $N$, since each insertion depends on finitely many links whose physical distances from its insertion site tend to zero.
 Lemma~\ref{lem:iv-reflection} makes their Gram matrix positive semidefinite.
 Every entry is a separated smear: its two halves are internally separated and lie strictly on opposite sides of the plane.
 Pass each entry to its ordered limit.
 The limiting integrals converge absolutely by smoothness on their compact supports, and the positive-semidefinite cone is closed.
-Normalized smooth bumps concentrating at fixed positive configurations give point reflection positivity.
+Normalised smooth bumps concentrating at fixed positive configurations give point reflection positivity.
 
 For the position-independent bound, \eqref{eq:iv-gentle} implies $a_{j+1}\ge ca_j^2$ for some $c>0$, after adjusting finitely many levels.
 The first $j\ge j_0$ with $a_j<\delta\le1$ therefore satisfies $a_j\ge c_{j_0}\delta^2$.
@@ -556,12 +713,12 @@ Equation~\eqref{eq:iv-centered} with $\varepsilon=1$ and the separated-cell argu
 (0<r\le1,\ \forall i\ne j,\ |x_i-x_j|_\infty\ge r)\,.
 \end{equation*}
 First pass the estimate at points of~\eqref{eq:iv-coordinate-separated}, then use density, retaining separation~$\frac{r}{2}$ before taking limits.
-Repeated derivative identities apply this bound to finitely many lists of higher-degree coefficients.
+Repeated derivative identities apply this bound to finitely many lists of higher-degree polynomials.
 A finite-dimensional norm comparison then bounds each Fr\'echet derivative norm.
-Arity zero uses $S_{\varnothing}=1$.\sourcefootnote{\nolinkurl{Extraction/Harvest.lean}: symmetry and positivity; \nolinkurl{Work/D05.lean}: two-scale bound; \nolinkurl{Work/B10.lean}: derivative bounds}
+For no insertions use $S_{\varnothing}=1$.\sourcefootnote{\nolinkurl{Extraction/Harvest.lean}: symmetry and positivity; \nolinkurl{Work/D05.lean}: two-scale bound; \nolinkurl{Work/B10.lean}: derivative bounds}
 \end{proof}
 
-The null-space characterization~\ref{item:iv-smooth-null} also gives the field symmetries.
+The null-space characterisation~\ref{item:iv-smooth-null} also gives the field symmetries.
 Inclusions commute with conjugation and $H_4$ and preserve unit classes.
 Derivatives commute with conjugation; the chain rule in $S(\rho(h)v;hx)=S(v;x)$ gives
 \begin{equation*}
@@ -591,6 +748,7 @@ This is precisely the ordered Wilson limit of Definition~\ref{def:ordered}, for 
 \gap{The full-spacing fixed-volume theorem for the chosen Wilson family remains to be proved in the ultraviolet part, using its fixed-level Cauchy estimates and positional-limit construction. The uniqueness argument above uses this input; it does not prove it.\sourcefootnote{\nolinkurl{FullVolume/Fields/Filled.lean}: full-spacing fixed-volume convergence for the chosen run}}
 
 The smooth null-space definition agrees with the one using separated tests.
-Consequently the projection~$\pi_d(v)=[v]$ of Proposition~\ref{prop:iv-smooth} identifies lattice representatives with quotient fields in every separated correlation.
+The public observable projection of Definition~\ref{def:hierarchy} is therefore~$\pi(d,v)=(d,\pi_dv)$.
+It identifies lattice representatives with quotient fields in every separated correlation.
 Multiply that equality by $f$ to transport~\eqref{eq:iv-full-limit} to the field correlations in Proposition~\ref{prop:limit}.
 The remaining phase assertions of that proposition require the later construction on these same correlations.

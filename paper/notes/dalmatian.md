@@ -293,3 +293,270 @@ Snapshot hashes (later concurrent builds may replace the canonical PDF):
 - `part2/limit/02-maxwell.tex`: `5c20af030905483d59c67840933cba79d1a27b6aa4e75861c3725f5e84af551d`
 
 Validation recorded 2026-11-11 15:25:07 UTC. The next and final action is report 3; dalmatian then stops and waits.
+
+
+## Requests — round 4
+
+Read all of `feedback/round-3.md`, with rounds 1–2 still binding. This round is revision only: no new section. British spelling with -ise endings is standing throughout reader-facing prose, titles, theorem names and reader comments; preserve Lean identifiers, cited titles and quotations. Keep the symbol/term self-check table for each owned section in your notes, with definition labels, first uses and status.
+
+### Shared terminology — editor's decision
+
+- **Observable index**: an element v of the public set T. It is a fixed name used to follow a lattice observable across spacings and volumes while its formula changes. An **insertion** is the resulting function of link configurations at a specified site. Replace generic “lattice observable label” by “observable index”. T remains an arbitrary set in the public definition; do not impose a vector-space or degree structure on it.
+- **Gauge-invariant polynomial**, or **classical polynomial** after its meaning is recalled: an element of V_d, a polynomial in radial Taylor coefficients. Say what it is instead of “classical label”. In this construction the observable index is the pair (d,v), and its insertion is the polynomial function selected and rescaled in UV01. Preserve all existing symbols and reference labels such as def:uv-labels and lem:uv-labels.
+- **Field label**: a vector ell in L indexing the quantum fields Phi(ell,f). It specifies the field, while f specifies the smearing. It is distinct from an observable index or a polynomial. A continuum field A in F_d maps to the field label iota_d A. I will explain the purpose of these names in def:observables and their precise relation in def:hierarchy, with a displayed chain T -> disjoint union F_d -> L; there is no new assumption on these maps.
+- Sites are the points of the lattice. I will say this explicitly in def:lattice. Please link that definition when the term is first needed away from the public setup.
+
+### To greyhound
+
+- 2026-11-11, round 4 coordination: Apply the terminology above to UV01/UV02; keep mathematical labels unchanged. In UV01 call V_d polynomial spaces and its basis elements basis polynomials; use observable indices for pairs (d,v) when discussing I. Define the shared truncated connection A^J in a displayed construction-specific definition with a label before its transport equation, since UV02 needs it; point to that label and recall its meaning in lem:uv-sampling. “Left-link increments” should be replaced by the actual change U(e) -> exp(s A(e)) U(e), with the derivative label linked. More concrete audit requests will follow after I read the current four sections.
+
+### To weimaraner
+
+- 2026-11-11, round 4 coordination: Apply the terminology above to limit01/Maxwell; retain the existing mathematical labels. Generic T is an observable-index set; V_d consists of classical polynomials; the quotient F_d consists of continuum fields; only ell in L is called a field label. Link Part I's forthcoming explanation through def:observables and def:hierarchy (labels unchanged). Explain site/bond reflections by their actual coordinate formulas and planes, with a small diagram if it helps. In subsec:iv-compactness explain the slice propagation idea first and place the scale and transfer calculations in proofs. Replace the vague “transfer argument” sentence by what separates the insertion supports and why distinct coordinate projections make that possible. More concrete audit requests will follow.
+
+
+### Round 4 responses and concrete four-section audit
+
+To both owners: your round-4 terminology proposals are compatible with the editor's decision above. “Classical observable polynomial” is a useful full name; thereafter “polynomial” or “polynomial coefficient” is fine. Reserve “field label” for ell in L. Call the generic public v in T an “observable index”, including the special pair (d,v) in the construction. Preserve all mathematical labels. No extra structure is added to the public set T. The existing def:observables/def:hierarchy targets will contain the explanation and displayed relation.
+
+| ID / section | First problematic use or location | Concrete request / disposition |
+|---|---|---|
+| UV4-1 / UV01 | U(w), “ordered transport along a walk” before eq:uv-gauge; reused in UV02 | Put the finite ordered product, including the reverse-link convention, in a labelled displayed definition outside the proof; UV02 links it. It should say what the walk records, not just name transport. |
+| UV4-2 / UV01 | “distinct cover links/vertices” after eq:uv-placement and in locality proof | Replace “cover” language by vertices/links of Z^4 that become identical after reduction modulo ell. The reduction is already explained in def:uv-polynomials. |
+| UV4-3 / UV01 | def:uv-actions, def:uv-bases, def:uv-test-links | The new displayed actions/bases/test-link definitions address the earlier scope problem. Add the meaning of O(4), and define the indicator 1_{condition} at its first use in the image-square calculation. Check that the chosen bases, factors S_t and reference level r(d), reused in limit01, each have a linkable definition rather than only an unlabelled paragraph. |
+| UV4-4 / UV02 | “A plaquette transport measures curvature averaged over a square” | Qualify this as the first-order statement near the zero connection; a nonabelian plaquette is not literally a curvature average. Show the linearised curvature components in eq:uv-linear-square and recall the truncated A^J by def:uv-test-links. |
+| UV4-5 / UV02 | J_d setup, U_{J,1}, sc_epsilon and “classical labels” | Reuse the new shared construction definition of J_d/A^J/sc/test links instead of defining J_d again. Replace the remaining classical-label prose by polynomials, including the Taylor truncation proof. Recall what R_d^{[d]} truncates and what the input tuple of transported plaquettes is. |
+| UV4-6 / UV02 | “cover distance”, “read links”, “left-link increments”, “unmasked polynomial” | State distance in Z^4 followed by its periodic bound; say links occurring in the fixed walks. Explain the derivative through U(e) -> exp(s A(e))U(e), link eq:uv-left-derivative at reuse, and say differentiation occurs before multiplication by the good-set indicator. Do not add another coined term for this. |
+| UV4-7 / UV02 | support weight c_B(X), support/eligibility sets, indicator multiplication | Make the connected ball-cover count a displayed, labelled construction definition; identify X,Y as subsets of the periodic sites and give the ball/connectedness meaning. Explain “activity” at its first substantial use, “regular” as the good-set contribution, and the other contribution through its exact bad-site condition. Replace “charged”, “masked” and “reset” where the explicit site sum or displayed product says what is meant. Keep exact coverage and enlarged indicator support. |
+| IV4-1 / limit01 | expectation brackets and operator norms at the first lattice estimate | Define the Wilson expectation notation and the fixed coefficient/operator norms outside proofs, with labels reused by Maxwell. Link the reference-scaled unit and distinguish it from the polynomial 1. |
+| IV4-2 / limit01 | site/bond reflection, base/centred cell C_j(y), root | Give the coordinate reflection formula and plane position; identify the base cell and the reflected-copy rule. Define an “interior” observable by its supporting links, then recall this definition in the reflection statement. Keep the cubical/common-period and seam hypotheses. |
+| IV4-3 / limit01 | “ordered tails” and “eventually” used in several subsections and Maxwell | Use one displayed labelled quantifier convention outside the proofs. Link it at coefficient/error/rank comparisons and in Maxwell. The new def:iv-grid should use frac for L_p/a_N and explain rounding once, then be linked from the extraction proof. |
+| IV4-4 / limit01 | compactness rewrite: slice kernel K, inserted B_i, powers, trace, Schatten norm | The revised intuitive opening and moved calculations are the right organisation. Before the formulas explain that K propagates through an empty slice, B_i integrates a slab with an insertion, and the trace closes the periodic chain. Define the adjoint kernel and the Schatten modulus/norm where used; do not assume the reader supplies these from a word like “transfer”. Keep constants independent of lattice spacing/volume in the precise statements. |
+| IV4-5 / limit01 | error representative, root, arity/slot, cluster limit, refining ultrafilter | Say “number of insertions” and “position in the list” before using arity/slot. Link the root and explicit error-cell condition. Explain that a cluster limit is a limit in the finite-dimensional compact normalised set, chosen with one ultrafilter containing the ordered tails; do not define the common tail convention only in that proof. The important point is one limit for all tests. |
+| MX4-1 / Maxwell | colour, two-form, radial potential, d(kappa_j Q), “Taylor legs”, “linear probe” | Explain colour as a Lie-algebra coordinate; write the component meaning of the exterior derivative d before its radial identity. Define a probe as a real linear functional on the constrained Taylor space before calling it a probe. Replace “legs” by the two endpoints/Taylor arguments. Keep factorial and endpoint-sign conventions. |
+| MX4-2 / Maxwell | res_d, quotient norms, Wick ordering and perfect matchings | Give the substitution map in a displayed labelled definition, link the coefficient norms from limit01, and explain Wick ordering here as excluding pairs at the same insertion. A perfect matching is a partition of all occurrences into disjoint pairs; say this before the matching sum. Avoid reusing the shared iota field-label map for an unrelated occurrence-to-insertion index. |
+| MX4-3 / Maxwell | reflected probe R_theta, positive-side points, P_gamma/Q_gamma in the Gram formula | Display the reflected action on the form/Taylor arguments or link its precise action definition. Define the positive half-space and explain that P_gamma is a monomial coefficient and gamma! its multi-index factorial. The finite polynomial factorisation is then understandable without a new unexplained “Fock” object. |
+| MX4-4 / Maxwell | A_{N,p}q, Uq, rx, D_x^s, K compact-subset notation | Declare componentwise application of maps to a list and simultaneous dilation of all points before the first comparison. Recall the derivative-order/norm convention and what K compactly contained in Conf means. Preserve the all-test bound and same-family quantifier order. |
+| MX4-5 / Maxwell | “equivariant splitting”, corrected maps and weak-to-smooth passage | Explain the left inverse as a projection onto the lower-degree fields and “equivariant” as commuting with conjugation/signed symmetries. For the last passage retain the finite-test derivative recovery and write the L1/Fourier estimates; do not replace those steps by jargon. Link definitions reused away from their first introduction. |
+
+These are editorial and definition-closure findings, not authority to alter a mathematical contract. All four current sections were read; I will recheck their owner responses before reporting. The per-section self-check tables should account for these findings and any additional first-use errors you find. Keep all visible mathematical proof obligations, but remove prose about the marker mechanism itself.
+
+## Round 4 self-check tables — owned sections
+
+Method: read each owned section in reader order, list every mathematical object and technical term (grouping bound variables with the expression that declares them), and trace its first use to a definition or an immediate explanatory gloss. Ordinary arithmetic, logical symbols and standard real/complex linear algebra are grouped rather than repeated for every bound variable. A first-use explanation in the opening may precede its full formal definition, which is then explicitly linked; it must not require the reader to supply the meaning privately. Technical TeX commands, labels and source paths are not reader-facing terminology. No reusable mathematical object below is defined only inside a proof.
+
+### The result — `sec:result`
+
+| Symbols / terms | Definition or explanation (label) | First use in this section | Status / repair |
+|---|---|---|---|
+| lattice, unitary matrix variables, Wilson model | def:lattice, def:gauge, def:wilson-law | opening question and finite probability model | Concrete finite-matrix explanation; formal definitions follow in the next section |
+| quantum field theory; fields on a Hilbert space | def:relativistic, def:wightman | opening question; second paragraph gives the operational content | Wightman definition linked where its properties are described |
+| coupling; local observable | local gloss in first paragraph; def:wilson-law, def:observables | choice of the lattice model's parameter and local functions | Explicitly explained before the limiting question |
+| correlation | first paragraph; def:moments | average of products | Explained immediately, no new meaning of expectation |
+| simple nonabelian Lie algebra | def:gauge | class of matrix groups in second paragraph | Direct definition link added |
+| spacing, fixed volume, subsequence, order of limits | def:family, def:ordered | first and second limiting sentences | Plain two-stage explanation; precise order retained |
+| phases, average of phases, selected phase | local component-correlation gloss; def:hierarchy, eq:mixture | second paragraph | Explained as component correlations before use |
+| positive energy, relativistic covariance, spacelike commutativity | def:spacetime, def:wightman and wightman:0–3 | description of the selected theory | Direct Wightman link; no stronger axiom asserted |
+| local product expansion | def:cluster, def:ope | same expansion in every phase | Explained as replacing nearby fields by a sum at one point |
+| two-field correlation; logarithmic correction; finite free-field comparisons | def:trace-pair, def:wick, def:trace | short-distance conclusion | “Two-point function” replaced here by its plain meaning |
+| mass gap, vacuum | def:relativistic, def:wightman | last sentence of result paragraph | Local gloss: positive lower bound on energies above the vacuum; remains a nonclaim |
+| ultraviolet integration; continuum limit; reconstruction; trace law | sec:strategy, subsec:principal | whole-paper outline | Each operation described by what it does; no new formal object |
+
+### Definitions — `sec:definitions`
+
+| Symbols / terms | Definition / defining display | First use | Status / repair |
+|---|---|---|---|
+| N including 0, empty products, order zero; R,C,Z | sec:definitions convention paragraph; ordinary scalar notation | section convention / def:gauge | Explicit zero convention; standard scalar notation |
+| m, U(m), M_m(C), G, gauge group | def:gauge, eq:gauge | def:gauge | Matrix kinds now stated in the defining sentence |
+| g, X,Y,s, exponential one-parameter subgroup | def:gauge, eq:gauge | def:gauge | Real Lie algebra determined by the displayed equivalence |
+| commutator [X,Y], simple/nonabelian, ideal J | def:gauge | simplicity clause | Bracket formula and subspace condition explicit |
+| tr, Re, matrix embedding | def:gauge commentary, def:plaquette | embedding explanation / Wilson energy | Ordinary matrix trace and real part; fixed embedding retained |
+| ell, Lambda_ell, sites, y, axes mu,nu, e_mu | def:lattice | def:lattice | Sites explicitly defined as lattice points |
+| positive/reversed link, configuration U | def:lattice, eq:link-configuration | def:lattice | Endpoints and inverse reverse transport explicit |
+| parallel transport, plaquette U_{y;mu nu} | def:lattice, def:plaquette, eq:wilson-energy | paragraph before def:plaquette | Explained as product around an elementary square |
+| E_ell, plaquette energy, increasing axis pairs | def:plaquette, eq:wilson-energy | def:plaquette | One unordered axis pair per site; formula unchanged |
+| h, Haar measure, probability, beta | def:wilson-law | def:wilson-law | Haar now glossed as left-invariant probability; beta is the energy weight |
+| Z_{ell,beta}, mu_{ell,beta}, normalisation | def:wilson-law, eq:wilson-law | def:wilson-law | Finite positive denominator explained |
+| bare inverse coupling | commentary following def:wilson-law | interpretation of beta | Original-law parameter explained before later scale language |
+| gamma, U^gamma, gauge transformation, gauge invariance | def:gauge-transform, eq:gauge-transform | pre-definition sentence / definition | Sitewise coordinate change explained; invariance equation explicit |
+| observable index v, T, local observable | def:observables | subsection opening / def:observables | Fixed index versus changing lattice formula explained |
+| insertion I(v,y;U), domain G^{Lambda x axes} | def:observables, eq:observable-insertion | def:observables | New displayed function definition; no continuity added |
+| Sigma, Sigma mod ell, translated support; both endpoints | def:observables | support clause | Reduction explicitly defined; exact locality retained |
+| classical connection, classical observable polynomial | local gloss after def:observables; def:uv-labels | explanation of the construction's indices | Smooth g-valued one-form gloss and formal construction definition linked |
+| W, D_N,L_p, N,p, beta_{N,p}, I_{N,p} | def:family | family setup | Sequences, arbitrary index set and original insertions unchanged |
+| a_N, ell_{N,p}, mu_{N,p} | eq:physical-scales | def:family | Displayed together; spacing versus physical side explained |
+| cutoff, ultraviolet limit | def:family commentary | after physical sizes | Explained as short-distance spacing and its zero limit |
+| regularity, Reg1–Reg4, b_*, epsilon,N_0 | def:regular, reg:1–4, eq:running | def:regular | Quantifiers and positive slope unchanged; every referred tag linked |
+| Sigma_v, support independent of N,p,y | reg:4, def:observables | reg:4 | Same finite set at every lattice size; physical shrinkage explained |
+| r_ell(j), hat y, physical position | def:moments, eq:physical-position | def:moments | Half-open representative interval explicitly fixed |
+| n, v=(v_i), y=(y_i), M_{N,p}, C_{N,p}, f | def:moments, eq:smear | def:moments | Number of insertions, joint product and weighted sum explicit |
+| smearing, moment, correlation | def:moments and following paragraph | def:moments / commentary | Test-weighted average versus probability expectation distinguished |
+| Conf_n, distinct points, separated test | def:tests, eq:conf | def:tests | Joint smooth compact support away from coincidences |
+| supp f, closed support | def:tests | def:tests | Closure of the nonzero set now stated; applies also to Schwartz tests |
+| support inside volume p, open physical box | def:admissible, eq:admissible | def:admissible | Exact strict support condition retained |
+| P:N->N, K_n, R_p, ordered limit, eventually | def:ordered, eq:ordered | def:ordered | Full inner sequence and refined outer sequence explained separately |
+| periodic separation, L_p Z^4 | def:periodic, eq:periodic-separated | def:periodic | Ordinary versus periodic coincidence explained |
+| x=(vec x,t), x^4, |x|, mathsf m, forward cone V_+ | def:spacetime, eq:spacetime | def:spacetime | Fourth coordinate time; Euclidean norm and Minkowski square explicit |
+| spacelike | def:spacetime | after eq:spacetime | Negative Minkowski square, used later in locality |
+| S=Schwartz space, f, Schwartz topology | def:spacetime | def:spacetime | Rapid decrease of all derivatives explained |
+| H,L,D,Omega,Phi(ell,f), relativistic datum | def:relativistic | def:relativistic | L explicitly field labels; Omega named vacuum; field/test roles explained |
+| field label ell versus observable index v | def:relativistic, eq:observable-field-maps | def:relativistic | Distinct spaces and uses explicit |
+| ell*, antilinear; conjugated test bar f | def:relativistic, eq:adjoint | datum / W1 | Adjoint relation explicit; no involution assumption added |
+| inner product, psi,chi, domain norm | before def:relativistic; def:wightman | Hilbert conventions / W0–W1 | Antilinear first argument; vectors locally quantified |
+| T(b), spectral PVM E, mu_psi, Borel A | def:relativistic, eq:spectrum | def:relativistic | PVM conventions stated outside proofs; W0 imposes the spectral relation |
+| Poincare group P, U(g), kappa, Lambda_g,b_g | def:relativistic, eq:poincare | def:relativistic | Identified group, multiplication and cone-preserving linear part explicit |
+| tau(b), rho(g), g dot f | def:relativistic | pure translation / test action sentences | Translation and label actions distinguished; no extra regularity imposed |
+| W0–W3, positive spectrum, unique vacuum, locality/covariance | def:wightman, wightman:0–3 | definition heading / items | Displayed conditions retain exact public scope |
+| Span_C, field words, empty word, cyclic domain | eq:domain and following explanation | W1 display | Finite field products and their vacuum vectors explained |
+| hierarchy; continuum fields F_d; d; mathbb F; deg | def:hierarchy, hierarchy:1–2 | hierarchy introduction / H2 | Data family explained, disjoint union retained |
+| iota_d,iota; pi | hierarchy:2–3, eq:observable-field-maps | H2/H3 | New displayed chain is a consequence of existing data, not a new requirement |
+| X,nu,xi_*, phase space, selected phase | hierarchy:4 | H4 | Compact metric space / measure / point explicit |
+| mix, state s, phase xi, S^s(a;x) | hierarchy:5 | H5 | Moved symbolic mixture/phase explanation after X is introduced |
+| mathsf F_n(a;z,vec x), continuation | hierarchy:6 | H6 | Complex-time versus real-space arguments explicit |
+| Ch_j, j,kappa,O_{j,kappa}, coefficient c_{j,kappa} | hierarchy:7 | H7 | Finite index set, fields and coefficient functions explicit |
+| Theta | hierarchy:8 | H8 | Degree-four field; no stress interpretation assumed here |
+| faithful, injective, surjective, R1–R6 | def:reconstructed, recon:1–6 | reconstruction clauses | Faithfulness explicitly explained in R2 |
+| probability, full support, phase smoothness/continuity, symmetry | recon:7–11 | reconstruction clauses | Full support named at its open-set definition |
+| mixture, phase average | recon:12, eq:mixture | reconstruction introduction / R12 | Formula distinguishes mixed and selected states |
+| Z_n, z_i, ordered complex times, holomorphic | recon:13, eq:tube | R13 | Domain displayed; spatial configuration fixed |
+| ordered imaginary times, t(x_i), Euclidean values | recon:14, eq:euclidean-root | R14 | Equality and order explicit |
+| h_i heights, r down to 0, f_i, product-test boundary values | recon:15, eq:boundary | R15 | Products of Schwartz tests displayed, scalar named vacuum expectation |
+| nonintegrable integral convention | commentary after eq:boundary | boundary-value scope note | Source convention retained, no hidden integrability claim |
+| cluster, spectators, I,J,a,b,x,y,o | def:cluster, eq:cluster | product subsection opening / def:cluster | Nearby versus distant field insertions explained |
+| r,M,eta, c-clear configuration, w(a) | eq:cluster, eq:clear, def:cluster | cluster geometry | Bounds and sum of degrees displayed |
+| OPE, truncation D, delta, epsilon | def:ope, ope:1–2 | definition heading / estimates | Coefficient/remainder domains, threshold order and powers unchanged |
+| G_Theta(r), e_4, selected-phase two-point function | def:trace-pair, eq:trace-pair | def:trace-pair | r in R now explicit; later conclusions use positive r |
+| mode, mass mathsf m, momentum p, E_mathsf m(p) | def:wick, eq:mode | free-field comparison introduction / definition | Energy relation displayed; matrix size m remains distinct |
+| numerator h, homogeneity lambda,j; time order q; K_mathsf m,q,h | def:wick, eq:mode | mode definition | Real continuous numerator and positive scaling condition explicit |
+| W(r), A,n_alpha,c_alpha,alpha,beta; finite Wick profile | def:wick, eq:wick | finite profile display | Finite sums/products including empty cases retained |
+| trace test T1–T4, A_G, dim_R g, pi constant, full right limit | def:trace, trace:1–4, eq:trace-law | trace definition | Centring, positive amplitude and all-radii limit unchanged |
+| stress tensor, stress trace, centred field | paragraph after def:trace; def:trace and trace:1 | final definition commentary | Integral symmetry identities and diagonal sum explained; not added to public data |
+
+### The main theorem — `sec:theorem`
+
+| Symbols / terms | Definition (label) | First use | Status / repair |
+|---|---|---|---|
+| (m,G,g), simple; W; regularity | def:gauge, def:family, def:regular | theorem binder | Direct links retained |
+| p,q,k,N,j; strict increase and refinement | theorem binder, def:ordered | theorem binder / P1 | Quantifiers and p(q(k)) unchanged |
+| hierarchy; T,v; n; f and support; C_{N,j},R_j | def:hierarchy, def:observables, def:tests, def:admissible, def:moments | P1 | All direct definitions linked |
+| pi,S^mix,fields | hierarchy:2–5, eq:observable-field-maps | P1 limit | Symbol meanings unchanged; observable indices used consistently |
+| Wightman theory, field labels, faithfulness, iota, Phi | def:relativistic, def:wightman, recon:2–6 | P2 | Field labels only; faithfulness now explained at R2 |
+| nu,X,phase average/full support; F_n,continuation | def:hierarchy, def:reconstructed | P2 | Domains and all fifteen clauses linked |
+| boundary values against products of Schwartz tests | recon:15, eq:boundary | P2 | Replaced opaque “product-test boundary values” by its meaning |
+| c-system, OPE, clusters/spectators, states | hierarchy:7, def:ope, def:cluster | P3 | Direct links and threshold order retained |
+| Theta,G_Theta,r,A_G,finite W profile | def:trace-pair, def:wick, def:trace | P4 | No change in formula or excluded class |
+| lattice choices, simultaneous limits, mixed factorisation | theorem following paragraphs, def:ordered, eq:mixture | nonclaims | Universality/clustering replaced by concrete descriptions |
+| distributional extension at coincident points | def:tests, theorem nonclaims | nonclaims | “Contact extension” replaced by explicit mathematical meaning |
+| Gaussian composites, continuous-mass generalised free fields | def:wick; local gloss in nonclaims | final nonclaim | Continuous mass spectrum explained; exclusion not enlarged |
+
+### Strategy — `sec:strategy`
+
+| Symbols / terms | Definition or explanation (label) | First use | Status / repair |
+|---|---|---|---|
+| lattice spacing, physical box, volume subsequence | def:family, def:ordered | opening | Already defined; two limiting operations recalled |
+| bare/effective/reference coupling; scale | def:wilson-law; local second paragraph | first mechanism | Effective law explained as law after integration; reference spacing fixed |
+| observable adjustment, fixed-volume kernels | def:observables, prop:uv | first mechanism | Observable index explanation now available in Definitions |
+| compactness, common subsequence | def:ordered, prop:limit; plain local-bounds sentence | boxes-to-phases paragraph | Mechanism described without unnamed input |
+| reflection positivity, positive-time inner products | lem:iv-reflection; def:wightman | phase mechanism | Immediate inner-product explanation; later proof linked by main propositions |
+| rotations, commuting averages, phase functions, nu | eq:mixture, prop:limit | phase mechanism | Purpose and required order stated, not inferred from compactness |
+| unique vacuum; continuation; relativistic fields | def:wightman, prop:reconstruction | three-conclusions paragraph | Direct proposition link |
+| local products, coefficients, every phase | def:ope, prop:ope | same paragraph | Replacement and shared coefficients explained |
+| stress trace, centred; finite Wick profiles | def:trace, def:wick, prop:trace | trace description | Defined/glossed before this section; British spelling |
+| five diagram nodes and arrows | prop:uv through prop:trace | diagram | Each node links its result; arrows explicitly describe construction order |
+| gauge group, family, hierarchy, refinement; joint choice | def:gauge, def:family, def:hierarchy; thm:main | final paragraph | Order of choices retained; no arbitrary-family extension |
+
+### Principal propositions — `subsec:principal`
+
+| Symbols / terms | Definition or explanation (label) | First use | Status / repair |
+|---|---|---|---|
+| every formal object in prop:uv | def:gauge, def:family, def:regular, def:periodic, def:moments, def:tests, def:admissible | UV statement | Direct definition links retained |
+| K_{p,v}; full spacing limit | prop:uv, eq:fixed-volume | UV statement | Kernel introduced there; formula unchanged |
+| Gaussian integral, small/large fluctuations | UV proof idea; same scope as sec:strategy | first proof idea | Quadratic-energy meaning added; no estimate assumed proved |
+| reference spacing, cutoff, effective law, Cauchy estimate | def:family, sec:strategy, first proof idea | UV mechanism | Order of intermediate scale then cutoff made explicit |
+| polynomial basis tuples, slice integration, uniform movement bounds | lem:uv-labels, subsec:iv-compactness | limit proof idea | Replaced finite label bases and unexplained transfer operator |
+| every formal object in prop:limit | def:hierarchy, def:reconstructed, main:1 | limit statement | Formal clauses and common hierarchy retained |
+| long-time evolution, zero energy, commuting operators, phase functions | def:wightman, eq:mixture; limit proof idea | phase mechanism | Gives the operation and consequence rather than only “spectral representation of an algebra” |
+| every formal object in prop:reconstruction | def:hierarchy, def:reconstructed | reconstruction statement | Links retained |
+| field words, vacuum, operator action, distributional limits | eq:domain, eq:boundary | reconstruction proof idea | Word definition linked; “adding a letter” replaced by multiplying a smeared field |
+| polynomial null relations, quotient, faithful field labels; constant 1 | prop:iv-smooth, recon:2 | end of reconstruction idea | Generic discarded “label” replaced by precise object and references |
+| every formal object in prop:ope | hierarchy:7, def:ope, def:cluster | OPE statement | Existing direct links retained |
+| D,D+1,logarithmic loss; spectators; operator-norm error | def:ope, def:cluster; OPE proof idea | OPE mechanism | Operator bound is explained before evaluation in a phase |
+| every formal object in prop:trace | def:trace, def:trace-pair, prop:reconstruction | trace statement | Exact scopes retained |
+| free Maxwell fields | sec:maxwell, eq:mx-equations | trace proof idea | Section linked at first sustained use |
+| positive spectral representation, decaying exponentials, r | trace proof idea; def:wightman, def:trace-pair | full-radius mechanism | Positive-weight exponential meaning supplied; checked against Cape.lean |
+| finite comparison kernels, small-radius expansion | def:wick, eq:mode | final analytic obligation | “Finite mass-shell expansion” replaced by kernels and their actual expansion |
+| p,q,family,regularity slope,hierarchy,P1–P4,R7–R12 | theorem binder and five propositions | final deduction | Only assembly; no new objects defined inside this proof |
+
+### Construction opening — `sec:construction-guide`
+
+| Symbols / terms | Definition or explanation (label) | First use | Status / repair |
+|---|---|---|---|
+| Wilson law; fine/coarse lattice, physical observation | def:wilson-law, def:family, def:observables | opening | Previously defined; probability model linked |
+| classical connection, gauge-invariant polynomial | def:uv-labels; def:observables gloss | first mechanism | Exact definition linked at reuse |
+| observable index, insertion, reference coefficients | def:observables, eq:uv-insertion | first mechanism | Classical-label prose removed |
+| products of insertions, activity organisation, local regions | sec:uv-activities | following paragraph | Section linked; preparation separated from proving estimates |
+| Gaussian comparison, plaquette deviations, energy cost | def:plaquette; local quadratic-energy explanation | integration paragraph | Bare “Gaussian estimates” replaced by the comparison performed |
+| running coupling, fixed reference law | def:regular, sec:strategy | integration paragraph | Existing concepts recalled, no new coefficient law |
+| C,R,p,q,N,k,f,pi,S^mix | def:moments, def:tests, def:admissible, def:ordered, def:hierarchy | displayed two-stage passage | Links and full-inner/outer-refinement choices unchanged |
+| reflection positivity; difference representative; quotient | lem:iv-reflection, prop:iv-smooth, sec:infinite-volume | fields paragraph | Explanatory operation; no undeclared supplier |
+| Maxwell curvature and finite tests, independent dimension bound | sec:maxwell | Maxwell paragraph | Linked and distinguished from stress normalisation |
+| Hilbert space; reflected positive-time products | def:relativistic, def:wightman; fields paragraph | symmetry preparation | Inner-product meaning explicit |
+| stress tensor, symmetry identities, rotations | def:trace commentary; prop:limit, prop:trace | symmetry paragraph | Earlier gloss; later proof still deferred |
+| zero-energy subspace, long-time operators | def:wightman, phase paragraph | phase paragraph | Positive energies suppressed and intermediate observables explained |
+| commuting operators, phase functions and measure | def:hierarchy, eq:mixture | phase paragraph | Phase-space definition now linked |
+| selected phase, continuation, full-radius trace and common OPE | def:reconstructed, def:trace, def:ope; prop:reconstruction | final mechanism | Same family and retained correlations required |
+| constants, fixed parameters, volume independence | def:family, def:regular; reading guide | final reading paragraph | Reading instruction only; no new quantified estimate |
+
+### Reserved constants input and shared files
+
+`part1/06-constants.tex` is still empty: no section, symbol or technical term has been added. `main.tex` adds only the title, contents, part headings and existing inputs. `macros.tex` supplies typesetting commands; TeX spellings such as center and xcolor are preserved. The bibliography retains the original titles and identifiers. `notation.md` records the definitions above rather than creating a second mathematical setup. The self-check's definition/first-use phase is complete; final rendered-page verification is recorded separately below when finished.
+
+
+### Round 4 owner responses and measured allowance
+
+- 2026-11-11, to greyhound: Read your UV4-1–UV4-7 response and the new definition targets. The terminology and displayed walks/actions/bases/test-links/reference-normalisation/covers are consistent with Part I's generic index set. The public explanation is now installed at def:observables, with `eq:observable-insertion`; the existing def:hierarchy contains `eq:observable-field-maps`. Your stable historical labels need no renaming. I will use your current sources when checking the shared build.
+- 2026-11-11, to weimaraner: Read your IV4/MX4 response and measured request. Cap **15 touched pages** for limit01 is approved for this revision; PLAN target/cap is now 12/15. This is the measured cost of the requested explicit definitions and slice calculations, with the same result/obligations; no new section or result is authorised. Maxwell remains cap fourteen. Please use `def:uv-reference-normalisation` for the shared r(d), factor scaling and reference coefficients, as greyhound requests. The public terminology explanation and displayed map targets are installed as above. Your IV4/MX4 definitions resolve the reported owner-target dependency; complete the tables and your final source/render checks.
+
+## Round 4 correspondence and final verification
+
+2026-11-11 UTC. Read BRIEF and rounds 1–3 in full. This is revision only of the owned Part I, shared files and unnumbered construction opening. No new section or theorem, source-tree modification, Lean/Lake build, commit, push or delegated review. The live formal-source revision remains `3456e5e75cf8d4cd558955a5c7638fba2d68f464`.
+
+The earlier correspondence tables continue to cover the 35 existing labelled displays: a final comparison against the saved checkpoint-3 owned sources finds every one unchanged modulo whitespace. No old reference label is removed. Inline mathematics in Theorem A and all five principal proposition statements is identical. All 41 public Reg/W/H/R/O/T/P item targets survive, as do the five Part I analytic proof obligations. `main.tex`, `macros.tex` and `references.bib` are byte-identical to the start of this round. British spelling changes prose; TeX commands, Lean identifiers, cited titles and historical label names retain their spellings.
+
+| New display or explanatory repair | Pinned correspondence and scope |
+|---|---|
+| `eq:observable-insertion` in `def:observables` | `PublicWilson.lean:36–90`, the observable-index set, insertion function and original-law moments. The displayed function type merely expands the insertion already in Definition 2.6. Continuity remains a later regularity condition, not a new condition on arbitrary insertions. Both-endpoint link support is unchanged. |
+| `eq:observable-field-maps` in `def:hierarchy` | `ChallengeSpec.lean:1–55`, hierarchy field spaces, projection and degree maps. It displays the existing H2/H3 maps, without requiring the generic index set to be linear, graded or a polynomial space. The construction-specific polynomial description links `def:uv-labels`; only the quantum operator's index in L is called a field label. |
+| Positive-exponential explanation of the full-radius passage | Reread `YM/TraceExtension/Verse/Cape.lean`, especially `monotone_axis:13–21`: positive spectral Laplace weights give monotonicity on positive radii. This explains the already stated subsequence squeezing; it does not supply its deferred analytic proof. |
+| Stress and centred trace explanation | Reread `YM/Euclid/Stress.lean`: the stress is a tensor of fields with conservation/tensorial/Ward identities. Euclidean trace means the sum of its diagonal components. The public trace test still supplies only its distinguished degree-four field, not a stress tensor as extra hierarchy data. |
+
+**Self-check status.** All six owned-section tables above are complete, including the unnumbered construction opening; the empty constants file and shared entry-point/macros/bibliography have their explicit scope entry. The definition/first-use repairs are installed and their rendered passages have been read. Shared objects use labelled definitions outside proofs; distant uses link their definitions. These tables document a source-reading and editorial check, not an independent proof audit.
+
+**Four-section audit.** Read all four Part II sources in full, recorded UV4-1–7, IV4-1–5 and MX4-1–5, and rechecked both owners' concrete responses. Greyhound reports the walk/action/basis/test-link/reference-normalisation/cover definitions and the derivative/curvature/indicator explanations installed; his UV01/UV02 tables contain 46/51 rows. Weimaraner reports the coefficient/reflection/tail/grid/error/analysis and Maxwell definitions installed, the slice calculations moved into proofs, the occurrence index renamed, and both tables complete. Their source-correspondence records are in their notes; greyhound has recorded his final rendered receipt, and weimaraner retains responsibility for completing his. The editor accepts these as responses to the editorial requests; mathematical source verification remains with the owners. No shared terminology decision is pending.
+
+**Build and rendered receipt.** Ran `latexmk -pdf -interaction=nonstopmode main.tex` inside `paper/`: exit 0, 56 pages. The final `main.log` contains no warning, error, undefined-reference, overfull or underfull report. The last build was up to date with the frozen inspected PDF. Read the final rendered contents, every owned page and the adjacent construction boundary (printed pages 1–19). The map and its explanation now fit together on page 7. All 375 hyperlinks extracted from pages 1–18 have valid numbered targets in the 56-page PDF; this check does not claim semantic verification of every destination.
+
+Measured touched-page ranges: result 2; definitions 2–10; theorem 10–11; strategy 11–12; propositions 13–16; construction opening 17–18; UV01 18–25; UV02 25–32; infinite volume 33–46; Maxwell 46–56. No isolated section page break is added; page 16 ends Part I before the required part break. All caps are met, including the approved limit01 cap 15. The observed limit01 uses fourteen touched pages after final shared reflow.
+
+Snapshot SHA-256:
+
+| Artifact | SHA-256 |
+|---|---|
+| `main.pdf` (56 pages) | `b6198abd8ffb68345642d4cdb18be8c1da0e25105955846420826aa122774e3c` |
+| `main.log` | `8fcedf05b311cf7528bbd03d8208b3a4a7a71fb9b42723cd6780145d6d66a13b` |
+| `main.aux` | `a031dc28515cb85524a4ab8d075503d9185ef724508fdd57633181849c8a3c46` |
+| `part1/01-result.tex` | `37be5ce5c3827ae967257d6c21763fea17d4fc3c111db8756ae7c23964be0085` |
+| `part1/02-definitions.tex` | `0422e7722139598cdd651e83fb2ae0021b81a16227cc486b7f2ab47d582b3946` |
+| `part1/03-theorem.tex` | `8fdaec3650616d9db8a6e534528440fb9adfd1e1e558ec8b045eba2f0fc824b7` |
+| `part1/04-strategy.tex` | `5f3d6018f3e6d5c1b5e4130991070b745dd79ba1c2a6a9caff0012680492b6b8` |
+| `part1/05-propositions.tex` | `f890e23fbf273488dd2e5dadd0ec21fd111fcc8c50406b1e8fa08a7f7d837071` |
+| `part1/06-constants.tex` (empty) | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `part2/00-opening.tex` | `27b1b037f4c6a462e5e844a5573a18bba7fa2c9ee079b72a58f144178869f13c` |
+| `part2/uv/01-lattice.tex` (owner) | `ad08b5cd0280d7fd9be1a60ebee805deb1a498481c7fb177137327f438779983` |
+| `part2/uv/02-activities.tex` (owner) | `3a25bb0cc11bb91a9614332b521de65ea79db40e576e867d915acf5e9cc9eb12` |
+| `part2/limit/01-infinite-volume.tex` (owner) | `a62ee06b6f76428dd436539956279fef62ff38bd9fbf1c9e511575eba0504c70` |
+| `part2/limit/02-maxwell.tex` (owner) | `9746eddf0b9699a198fc03782afb7cb9e37ff3d7b310790584fb845c1093cce1` |
+
+Typography and definition closure do not close the five public analytic proofs: those remain OPEN, and the upstream `prop:uv-inputs` remains PLANNED. No independent mathematical audit is claimed. No new mathematical scope decision is requested. The next action is the at-most-one-page report `reports/dalmatian-4.md`, followed immediately by the required stop and wait.
+
+Final static check before reporting: no duplicate assembled labels, missing reference targets, unexpected control bytes or owned prose about the marker mechanism. The canonical PDF still matched the inspected snapshot. Removed only dalmatian round-4 render/link scratch and the temporary PDF copy; retained `main.pdf`, its build artifacts and `dalmatian-round4-build.txt`. No further TeX edit followed the inspected build.

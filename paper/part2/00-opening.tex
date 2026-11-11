@@ -9,20 +9,20 @@ Only after these two tasks can we ask how the limit describes fields, symmetries
 \paragraph{Following an observable across scales.}
 Section~\ref{sec:uv-lattice} begins with the exact finite probability model.
 Its symmetries hold before any limiting argument.
-It then describes a local observable by a polynomial in Taylor coefficients of a classical connection, and represents that polynomial using finitely many lattice links.
+It then describes a local observable by a gauge-invariant polynomial in the Taylor coefficients of a classical connection (Definition~\ref{def:uv-labels}), and represents that polynomial using finitely many lattice links.
 The coefficients of this representative change when short-distance variables are integrated out.
-Fixing its normalization at a reference scale lets us compare different fine lattices through the same classical label.
+Fixing its coefficients at a reference scale lets us follow the same observable index through different fine lattices, as in Definition~\ref{def:observables} and~\eqref{eq:uv-insertion}.
 
-Section~\ref{sec:uv-activities} constructs the local polynomial representatives and organizes products of insertions so that their coefficients can be followed through integration.
+Section~\ref{sec:uv-activities} constructs the local polynomial representatives and organises products of insertions so that their coefficients can be followed through integration.
 The density expansions also record which lattice regions contribute and which plaquettes have large deviations.
-This organization prepares the estimates; it does not itself prove them.
+This organisation prepares the estimates; it does not itself prove them.
 
 The later ultraviolet sections perform the integrations.
-Averaging over finer variables produces a probability density for coarser variables; the averaging is normalized so that it preserves the original integrals.
+Averaging over finer variables produces a probability density for coarser variables; the averaging is normalised so that it preserves the original integrals.
 The difficulty is to control the density and the observables after this operation has been repeated many times.
-Configurations with small plaquette deviations admit Gaussian estimates.
+Configurations with plaquette matrices close to the identity admit comparison with an integral having quadratic energy.
 The complementary configurations must be bounded using their energy cost.
-Local contributions are organized by the regions of the lattice on which they depend, so that estimates for a fixed local observable can be made independent of the surrounding volume.
+Local contributions are organised by the regions of the lattice on which they depend, so that estimates for a fixed local observable can be made independent of the surrounding volume.
 The change in the coefficient of squared curvature is included in the running coupling.
 
 These arguments have two different uses.
@@ -57,18 +57,17 @@ In that space, integral identities for the stress tensor will give continuous ro
 This is why the construction of that Hilbert space precedes the rotation argument, while the decomposition into phases comes afterward.
 
 \paragraph{Phases and short distances.}
-Long-time averages act on the zero-energy subspace of this Hilbert space.
+Long-time evolution suppresses positive energies and leaves the zero-energy vectors.
+Observables placed between long evolutions therefore act on this zero-energy subspace.
 The rotation identities are used to prove that the resulting operators commute.
-They can then be represented as continuous functions on the compact phase space, with expectation given by the measure in~\eqref{eq:mixture}.
+These operators can then be represented as continuous functions on the compact phase space of Definition~\ref{def:hierarchy}, with expectation given by the measure in~\eqref{eq:mixture}.
 A selected phase is continued in time to obtain the relativistic fields of Proposition~\ref{prop:reconstruction}.
 The trace and product sections return to the short-distance estimates for the same construction: the former prove the full-radius logarithmic law, and the latter choose one system of product coefficients valid in every phase.
 
 \paragraph{Reading the construction.}
-On a first reading, follow the lattice law and the reference normalization in Section~\ref{sec:uv-lattice}, then the passage from bounded correlations to smooth fields in Section~\ref{sec:infinite-volume}.
+On a first reading, follow the lattice law and the reference normalisation in Section~\ref{sec:uv-lattice}, then the passage from bounded correlations to smooth fields in Section~\ref{sec:infinite-volume}.
 The intervening ultraviolet arguments explain why those bounds hold for one chosen family.
 The later Maxwell, symmetry, phase and reconstruction arguments explain what additional information is needed to turn that limit into the hierarchy of Theorem~\ref{thm:main}.
 For each quantitative estimate, keep track of what is fixed, what tends to a limit, and whether its constants depend on the volume.
 The proofs must use the same family and the same retained correlations throughout.
 
-This review version contains only the sections drafted so far.
-The visible unresolved markers identify estimates or analytic arguments still needed in the written proof; the reading guide describes their intended places without assuming them proved.

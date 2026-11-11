@@ -8,7 +8,7 @@ Throughout, $\N=\{0,1,\ldots\}$; empty products equal $1$, and correlation funct
 \subsection{The lattice and its measure}\label{subsec:lattice-family}
 
 \begin{definition}[Gauge group]\label{def:gauge}
-A gauge group consists of an integer $m\ge1$, a closed subgroup $G\subset U(m)$ and a real linear subspace $\g\subset M_m(\C)$ such that
+A gauge group consists of an integer $m\ge1$, a closed subgroup $G$ of the group $U(m)$ of unitary $m\times m$ matrices, and a real linear subspace $\g$ of the complex matrix space $M_m(\C)$ such that
 \begin{equation}\label{eq:gauge}
 X\in\g\quad\Longleftrightarrow\quad \exp(sX)\in G\text{ for every }s\in\R\,.
 \end{equation}
@@ -21,6 +21,7 @@ We do not assume that $G$ is connected.
 
 \begin{definition}[Periodic lattice]\label{def:lattice}
 For $G$ as in Definition~\ref{def:gauge} and a positive integer $\ell$, let $\Lambda_\ell=(\Z/\ell\Z)^4$ and write $e_\mu$, $1\le\mu\le4$, for its coordinate unit vectors.
+The sites are the points of $\Lambda_\ell$.
 A positive link $(y,\mu)$ joins $y$ to $y+e_\mu$.
 A link configuration is a map
 \begin{equation}\label{eq:link-configuration}
@@ -49,7 +50,7 @@ Each summand lies in $[0,2]$, so $0\le E_\ell\le12\ell^4$.
 The probability measure weights configurations according to this energy.
 
 \begin{definition}[Wilson measure]\label{def:wilson-law}
-Let $G$ be as in Definition~\ref{def:gauge} and let $h$ be normalized Haar measure on $G$.
+Let $G$ be as in Definition~\ref{def:gauge} and let $h$ be normalised Haar measure on $G$, the left-translation-invariant probability measure.
 For $\beta\in\R$, the Wilson measure on the configurations of Definition~\ref{def:lattice} is
 \begin{equation}\label{eq:wilson-law}
 \begin{aligned}
@@ -61,6 +62,7 @@ Z_{\ell,\beta}&=\int e^{-\beta E_\ell(U)}\prod_{y,\mu}h(dU(y,\mu)),\\
 
 The bound on $E_\ell$ makes $Z_{\ell,\beta}$ finite and strictly positive for every real $\beta$.
 Increasing $\beta$ gives greater relative weight to configurations with smaller energy.
+This parameter is called the bare inverse coupling: it is specified in the original lattice measure, before any variables are integrated out.
 Changing coordinates in the internal matrix space independently at each site acts as follows.
 
 \begin{definition}[Gauge transformations]\label{def:gauge-transform}
@@ -76,20 +78,28 @@ An observable $F$ on the configurations of Definition~\ref{def:lattice} is gauge
 An observable is a function of the link matrices; its expectation is a measurement in the finite lattice model.
 To pass to a field at a point, we use observables that depend on links near one site.
 Their coefficients may change as the lattice is refined.
+To follow one observable through these changes, we give it a fixed index, separate from its formula on a particular lattice.
 
-\begin{definition}[Lattice observable labels and insertions]\label{def:observables}
-Let $\mathcal T$ be a set of labels for lattice observables.
-An insertion of label $v\in\mathcal T$ at $y\in\Lambda_\ell$ is a complex-valued function $U\mapsto I(v,y;U)$ on link configurations (Definition~\ref{def:lattice}).
-For a finite set $\Sigma\subset\Z^4$, the insertion is supported on the links inside $y+(\Sigma\bmod\ell)$ if it takes the same value on any two configurations that agree on all links whose two endpoints belong to this set.
+\begin{definition}[Observable indices and insertions]\label{def:observables}
+Let $\mathcal T$ be a set of observable indices.
+An insertion with index $v\in\mathcal T$ at a site $y\in\Lambda_\ell$ is a function on link configurations (Definition~\ref{def:lattice}):
+\begin{equation}\label{eq:observable-insertion}
+I(v,y;\cdot):G^{\Lambda_\ell\times\{1,2,3,4\}}\longrightarrow\C,
+\qquad U\longmapsto I(v,y;U)\,.
+\end{equation}
+For a finite set $\Sigma\subset\Z^4$, write $\Sigma\bmod\ell$ for its image in $\Lambda_\ell$.
+The insertion is supported on the links inside $y+(\Sigma\bmod\ell)$ if it takes the same value on any two configurations that agree on all links whose two endpoints belong to this set.
 \end{definition}
 
-At this stage a label only names an observable; it need not yet name a continuum field.
-The map relating the two kinds of labels will be part of the continuum data.
+The index set is arbitrary at this stage; no linear structure or degree is required.
+Our construction uses pairs consisting of a degree and a gauge-invariant polynomial in the Taylor coefficients of a classical connection, a smooth $\g$-valued one-form describing parallel transport (Definition~\ref{def:uv-labels}).
+That polynomial specifies the classical observable to be represented, while the insertion is its actual function of link matrices.
+The continuum field obtained from an observable index will be part of the hierarchy below.
 We next choose the physical sizes of the lattices.
 The index $N$ refines the spacing and $p$ increases the volume.
 
 \begin{definition}[Wilson family]\label{def:family}
-For a gauge group (Definition~\ref{def:gauge}), a Wilson family $\W$ consists of strictly increasing positive integer sequences $(D_N)_{N\in\N}$ and $(L_p)_{p\in\N}$, real numbers $\beta_{N,p}$, normalized Haar measure $h$ on $G$, a label set $\mathcal T$, and insertions $I_{N,p}(v,y;U)$ as in Definition~\ref{def:observables} on $\Lambda_{L_pD_N}$.
+For a gauge group (Definition~\ref{def:gauge}), a Wilson family $\W$ consists of strictly increasing positive integer sequences $(D_N)_{N\in\N}$ and $(L_p)_{p\in\N}$, real numbers $\beta_{N,p}$, normalised Haar measure $h$ on $G$, a set $\mathcal T$ of observable indices, and insertions $I_{N,p}(v,y;U)$ as in Definition~\ref{def:observables} on $\Lambda_{L_pD_N}$.
 We write
 \begin{equation}\label{eq:physical-scales}
 a_N=\frac{1}{D_N},\qquad \ell_{N,p}=L_pD_N,\qquad
@@ -100,6 +110,7 @@ a_N=\frac{1}{D_N},\qquad \ell_{N,p}=L_pD_N,\qquad
 The lattice has $L_pD_N$ sites per side, separated by physical distance $a_N$; thus its physical side is $L_p$.
 Taking $N\to\infty$ at fixed $p$ refines the lattice without enlarging the box.
 Taking $p\to\infty$ enlarges the box.
+The spacing $a_N$ is a short-distance cutoff; its limit to zero is called the ultraviolet limit.
 The family also specifies the observables whose averages are to have limits.
 
 \begin{definition}[Regularity]\label{def:regular}
@@ -147,6 +158,7 @@ For $n\in\N$, put
 \Conf n=\{x\in(\R^4)^n:x_i\ne x_j\text{ whenever }i\ne j\}\,.
 \end{equation}
 A separated test is a smooth function $f:(\R^4)^n\to\C$ whose closed support is compact and contained in $\Conf n$.
+We write $\supp f$ for the closed support, the closure of the set on which $f$ is nonzero.
 \end{definition}
 
 Such a test vanishes near every coincidence of two points.
@@ -198,7 +210,7 @@ Write $x=(\vec x,t(x))\in\R^3\times\R$ for spacetime, with $t(x)=x^4$, Euclidean
 \qquad \overline V_+=\{x:|\vec x|\le t(x)\}\,.
 \end{equation}
 A vector is spacelike if $\mathsf m(x)<0$.
-Let $\mathcal S=\Sch$, with its Schwartz topology.
+Let $\mathcal S=\Sch$, the smooth complex functions whose derivatives decay faster than every inverse power of $|x|$, with the corresponding Schwartz topology.
 \end{definition}
 
 Hilbert inner products are antilinear in the first variable.
@@ -206,7 +218,8 @@ The next definition lists the Hilbert space and fields before imposing their phy
 A field is smeared against a Schwartz function because its value at a single point need not be an operator.
 
 \begin{definition}[Relativistic data]\label{def:relativistic}
-A relativistic datum consists of a complex Hilbert space $\mathcal H$, a complex vector space $\mathcal L$ of labels, a linear subspace $\mathcal D\subset\mathcal H$, a vector $\Omega\in\mathcal D$ and fields $\Phi(\ell,f):\mathcal D\to\mathcal D$ linear over $\C$ in $\ell\in\mathcal L$ and $f\in\mathcal S$ (Definition~\ref{def:spacetime}).
+A relativistic datum consists of a complex Hilbert space $\mathcal H$, a complex vector space $\mathcal L$ of field labels, a linear subspace $\mathcal D\subset\mathcal H$, a vector $\Omega\in\mathcal D$ called the vacuum, and fields $\Phi(\ell,f):\mathcal D\to\mathcal D$ linear over $\C$ in $\ell\in\mathcal L$ and $f\in\mathcal S$ (Definition~\ref{def:spacetime}).
+The field label $\ell$ specifies which quantum field is smeared; the test function $f$ specifies how it is tested in space and time.
 It includes an antilinear map $\ell\mapsto\ell^*$, a strongly continuous unitary translation representation $T(b)$ and a projection-valued Borel measure $E$ on $\R^4$.
 Its diagonal finite measures satisfy $\mu_\psi(A)=\langle\psi,E(A)\psi\rangle$ on Borel sets.
 
@@ -221,9 +234,9 @@ For each $g\in\mathcal P$ there is a complex linear bijection $\rho(g)$ of $\mat
 The action on tests is $(g\cdot f)(x)=f(\Lambda_g^{-1}(x-b_g))$.
 \end{definition}
 
-A projection-valued Borel measure here is normalized by $E(\R^4)=1$, has $E(\varnothing)=0$, satisfies $E(A)E(B)=E(A\cap B)$ and $E(A)^*=E(A)$ on Borel sets, and is countably additive in the strong operator topology.
+A projection-valued Borel measure here is normalised by $E(\R^4)=1$, has $E(\varnothing)=0$, satisfies $E(A)E(B)=E(A\cap B)$ and $E(A)^*=E(A)$ on Borel sets, and is countably additive in the strong operator topology.
 One can assign arbitrary operators to non-Borel sets, which none of the assertions uses.
-The label map ${}^*$ is not required to be an involution.
+The map ${}^*$ on field labels is not required to be an involution.
 No continuity or finite-dimensionality condition on $\rho$ is included in the data.
 
 \begin{definition}[Wightman conditions]\label{def:wightman}
@@ -257,12 +270,12 @@ U(g)\Phi(\ell,f)\psi=\Phi(\rho(g)\ell,g\cdot f)U(g)\psi\,.
 \end{enumerate}
 \end{definition}
 
-The word span is the domain itself, and includes the vacuum as the empty word.
+The finite products of smeared fields in~\eqref{eq:domain} are called field words.
+Their values on the vacuum span the domain itself; the empty word gives the vacuum.
 The symmetry group is the Poincar\'e group itself rather than its double cover.
 The sign convention in~\eqref{eq:spectrum} is converted to the usual Minkowski pairing by reversing spatial momentum; the forward cone is unchanged.
 
-We collect the continuum objects in a hierarchy: a family of correlations, their phase decomposition, the relativistic fields, and the coefficients for local product expansions.
-The state $\mix$ denotes the average supplied by the lattice limit; a state $\xi\in X$ denotes one phase.
+We collect the continuum objects in a hierarchy: correlations, data for their decomposition into phases, relativistic fields, and coefficients for local product expansions.
 
 \begin{definition}[Hierarchy]\label{def:hierarchy}
 A hierarchy over the Wilson family of Definition~\ref{def:family} consists of the following data.
@@ -270,9 +283,10 @@ A hierarchy over the Wilson family of Definition~\ref{def:family} consists of th
 \item\label{hierarchy:1} A relativistic datum of Definition~\ref{def:relativistic}.
 \item\label{hierarchy:2} For every $d\in\N$, a finite-dimensional complex normed space $F_d$ and a complex linear map $\iota_d:F_d\to\mathcal L$.
 Set $\mathbb F=\bigsqcup_{d\in\N}F_d$, $\deg(d,A)=d$ and $\iota(d,A)=\iota_d A$.
-\item\label{hierarchy:3} A map $\pi:\mathcal T\to\mathbb F$, assigning a continuum field to each lattice observable label (Definition~\ref{def:observables}).
+\item\label{hierarchy:3} A map $\pi:\mathcal T\to\mathbb F$, assigning a continuum field to each observable index (Definition~\ref{def:observables}).
 \item\label{hierarchy:4} A compact metric space $X$, called the phase space, with a Borel measure $\nu$ and a selected point $\xi_*\in X$.
 \item\label{hierarchy:5} For every $n\in\N$ and $s\in X\sqcup\{\mix\}$, a correlation function $S^s(a;x)\in\C$ on $\mathbb F^n\times(\R^4)^n$.
+The extra symbol $\mix$ distinguishes the average state supplied by the lattice limit from the phases $\xi\in X$.
 \item\label{hierarchy:6} For every $n\in\N$, a continuation $\mathsf F_n(a;z,\vec x)\in\C$ on $\mathbb F^n\times\C^n\times(\R^3)^n$.
 \item\label{hierarchy:7} For every $j\in\N$, a finite index set $\Ch j$ and fields $O_{j,\kappa}\in F_j$.
 For every finite index set $I$, $a\in\mathbb F^I$ and $\kappa\in\Ch j$, there is a coefficient function $c_{j,\kappa}(a;x,o)$ on $(\R^4)^I\times\R^4$.
@@ -280,9 +294,17 @@ For every finite index set $I$, $a\in\mathbb F^I$ and $\kappa\in\Ch j$, there is
 \end{enumerate}
 \end{definition}
 
+The maps in~\ref{hierarchy:2}--\ref{hierarchy:3} relate the observable indices, continuum fields and quantum field labels:
+\begin{equation}\label{eq:observable-field-maps}
+v\in\mathcal T\ \xmapsto{\pi}\ (d,A)\in\mathbb F
+\ \xmapsto{\iota}\ \ell=\iota_d A\in\mathcal L\,.
+\end{equation}
+The field label specifies the operator family $f\mapsto\Phi(\ell,f)$ (Definition~\ref{def:relativistic}).
+In our construction, the polynomial describes the classical observable and its index follows the lattice representative.
+
 The degree is an index used in the product estimates below.
 The definition imposes no inclusions between different $F_d$, no prescribed curvature interpretation and no compatibility of the $\iota_d$ across degrees.
-The functions $S^s$ are defined even on collision diagonals, but the conclusions constrain them only at separated points.
+The functions $S^s$ are defined even where points coincide, but the conclusions constrain them only at separated points.
 
 \subsection{Reconstruction and phases}\label{subsec:reconstruction}
 
@@ -296,12 +318,13 @@ Here $s\in X\sqcup\{\mix\}$, $n\in\N$ and $a\in\mathbb F^n$.
 \begin{enumerate}[label=\textup{R\arabic*.},ref=R\arabic*]
 \item\label{recon:1} Its relativistic datum satisfies \ref{wightman:0}--\ref{wightman:3}.
 \item\label{recon:2} For every nonzero $\ell\in\mathcal L$, there exists $f\in\mathcal S$ with $\Phi(\ell,f)\ne0$.
+This is faithfulness: no nonzero field label represents the zero field.
 \item\label{recon:3} Each $\iota_d$ is injective.
 \item\label{recon:4} Some $a\in\mathbb F$ and $f\in\mathcal S$ satisfy $\Phi(\iota(a),f)\ne0$.
 \item\label{recon:5} The map $a\mapsto\iota(a)$ from $\mathbb F$ onto $\mathcal L$ is surjective.
 \item\label{recon:6} The map $\pi:\mathcal T\to\mathbb F$ is surjective.
 \item\label{recon:7} The measure $\nu$ has total mass one.
-\item\label{recon:8} Every nonempty open subset of $X$ has positive $\nu$-measure.
+\item\label{recon:8} Every nonempty open subset of $X$ has positive $\nu$-measure; this is full support.
 \item\label{recon:9} For every state $s$, order $n$, list $a\in\mathbb F^n$, $x\in\Conf n$ and permutation $\sigma$,
 \begin{equation}\label{eq:permutation}
 S^s((a_{\sigma(i)})_i;(x_{\sigma(i)})_i)=S^s(a;x)\,.
@@ -328,13 +351,14 @@ S^s((a_{\sigma(i)})_i;(x_{\sigma(i)})_i)=S^s(a;x)\,.
 \end{enumerate}
 \end{definition}
 
+The scalar on the right of~\eqref{eq:boundary} is the vacuum expectation of the indicated product of smeared fields.
 In~\eqref{eq:boundary} we retain the formal source's convention that the integral of a nonintegrable function is zero.
 No separate positive-height integrability assertion is part of \ref{recon:15}.
 The integrals in the lattice limit and~\eqref{eq:mixture} are ordinary absolutely convergent integrals, by compact support and smoothness in the first case and by phase continuity and compactness in the second.
 
 \subsection{Products and the trace test}\label{subsec:products}
 
-The product expansion replaces a cluster by finitely many single fields at its center.
+The product expansion replaces a cluster by finitely many single fields at its centre.
 Fields whose positions remain away from the cluster are called spectators.
 One choice of coefficients must work with every list of such fields and in every state.
 The threshold on the cluster radius, however, may depend on the fixed spectator fields.
@@ -376,7 +400,7 @@ For small enough $r$, $Mr<c$ ensures that all points in the tested correlations 
 These are finite-truncation estimates; they assert neither an infinite convergent expansion nor uniqueness of its coefficients.
 
 \begin{definition}[The trace two-point function]\label{def:trace-pair}
-For the field $\Theta\in F_4$ of Definition~\ref{def:hierarchy}, set
+For the field $\Theta\in F_4$ of Definition~\ref{def:hierarchy} and $r\in\R$, set
 \begin{equation}\label{eq:trace-pair}
 G_\Theta(r)=S^{\xi_*}\Bigl((4,\Theta),(4,\Theta);-\frac{r}{2}e_4,\frac{r}{2}e_4\Bigr)\,.
 \end{equation}
@@ -384,6 +408,7 @@ G_\Theta(r)=S^{\xi_*}\Bigl((4,\Theta),(4,\Theta);-\frac{r}{2}e_4,\frac{r}{2}e_4\
 
 Free-field two-point functions are built from the energy $E_{\mathsf m}(p)$ of a particle with mass $\mathsf m$ and spatial momentum $p$.
 The following class allows finitely many masses and derivatives, and finite sums of products of the resulting kernels.
+We use these kernels only at positive separations $r>0$.
 It specifies exactly the comparisons excluded by the theorem.
 
 \begin{definition}[Finite Wick profiles]\label{def:wick}
@@ -418,5 +443,6 @@ The hierarchy of Definition~\ref{def:hierarchy} passes the trace test if the fol
 
 The public trace test concerns the chosen degree-four field and the time axis.
 Its definition alone supplies no stress tensor.
-The construction identifies this field with a centered stress trace, as used in the proof of Proposition~\ref{prop:trace} below.
+In the construction, a stress tensor is a tensor of fields whose integral identities express translation and rotation symmetry; its Euclidean trace is the sum of its diagonal components.
+The construction identifies this field with a centred stress trace, as used in the proof of Proposition~\ref{prop:trace} below.
 

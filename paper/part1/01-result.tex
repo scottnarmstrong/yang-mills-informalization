@@ -3,16 +3,17 @@
 How can a model on a lattice give a quantum field theory on continuous space and time?
 We study this question for four-dimensional Yang--Mills theory, starting with Wilson's lattice model.
 On a finite lattice the variables are finitely many unitary matrices, and their law is an ordinary probability measure.
-The problem is to choose the coupling and local observables so that their correlations---the averages of their products---have a limit as the lattice becomes finer and the box becomes larger.
+The coupling is the parameter controlling the weight assigned to the lattice energy; a local observable is a function of matrices near one point.
+The problem is to choose them so that their correlations---the averages of their products---have a limit as the lattice becomes finer and the box becomes larger.
 
-We construct such limits for matrix groups with simple nonabelian Lie algebra.
+We construct such limits for matrix groups with simple nonabelian Lie algebra (Definition~\ref{def:gauge}).
 The spacing tends to zero first, at each fixed box size.
 From any increasing sequence of box sizes, one can then select a subsequence along which all the required correlations converge.
 The limiting correlations are averages of component correlations, called phases.
-One selected phase gives quantum fields on a Hilbert space, with positive energy, relativistic covariance and commutativity at spacelike separation.
-The same local product expansions hold in the average and in every phase.
-A logarithmic correction in a particular two-point function distinguishes it from the finite free-field expressions specified below.
-The result does not establish a mass gap.
+One selected phase gives quantum fields on a Hilbert space, with positive energy, relativistic covariance and commutativity at spacelike separation (Definition~\ref{def:wightman}).
+The same local product expansions, replacing nearby fields by sums of fields at one point, hold in the average and in every phase (Definition~\ref{def:ope}).
+A logarithmic correction to the correlation of two copies of one field distinguishes it from the finite free-field expressions specified below.
+The result does not establish a mass gap, a positive lower bound on energies above the vacuum.
 
 Part~\ref{part:main} begins with definitions of the lattice model and its continuum objects, followed by the precise theorem.
 The strategy then separates the proof into five results: constructing the finite-volume limits, passing to infinite volume and its phases, reconstructing relativistic fields, expanding local products, and proving the logarithmic two-point law.
@@ -21,4 +22,3 @@ It begins with local lattice observables, studies what happens when short-distan
 This order keeps the finite probability model in view while explaining how its limiting correlations become quantum fields.
 
 The statements are matched to the fixed formal-source revision in~\cite{OpenAIYM}.
-The present sections are a revision for review; the detailed arguments still missing from Part~\ref{part:construction} are identified explicitly where they are used.
