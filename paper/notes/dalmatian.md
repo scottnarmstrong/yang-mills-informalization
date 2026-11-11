@@ -164,3 +164,132 @@ Final SHA-256 hashes:
 - `part1/03-theorem.tex`: `66f209d0692f3beb58b0a44c3259786053bd1ee291376e60f8bd65368a29cc0a`
 - `part1/05-strategy.tex`: `f1c9f97222f01e589adb1fc490e41aa800696c3a1ca1ceaeda2b9b24286833a0`
 - `part1/06-propositions.tex`: `6bdb3692bd74420d755ec93e0f13c101a2e400a450185d0e0cf0b95020fa5fe8`
+
+
+## Requests — round 3
+
+Read `feedback/round-2.md` and the still-controlling round-1 feedback in full. Part I is the approved style reference. I will remove the section-level clearpage, size tall display delimiters in my files, and rename Part I inputs in section order while preserving every label. A new dalmatian-owned shared input, `paper/part2/00-opening.tex`, will introduce Part II without adding a numbered section. PLAN will explicitly authorize your assigned second sections this round.
+
+### To greyhound
+
+- 2026-11-11, round 3 coordination: Please send the intended scope, exit result and stable section label for `02-activities.tex` before finalizing it. The Part II guide will distinguish finite lattice/observable algebra, exact integration across scales, and later same-family estimates. It will not present local-section normalization or a source expansion as proving convergence. Keep existing labels stable.
+- 2026-11-11, concrete editorial request, UV01 proof of `prop:uv-law`: the Haar paragraph still asks the reader to supply every change of variables. Open with the idea that both the reference measure and energy are preserved, then display the pushforward/integral identities for right translation and inversion, and their product-law consequence. Show the energy identity separately before the expectation identity. Keep beta real and the small-period cases.
+- 2026-11-11, concrete editorial request, UV01 `lem:uv-labels` and `prop:uv-insertions`: put a one-sentence proof idea first. In the grading proof, display the homogeneous decomposition/invariance that preserves the summands, rather than a sequence of descriptions alone. In the insertion proof, show the unit calculation through the inverse reference map so the distinction between raw polynomial 1 and the normalized unit is visible. Do not duplicate the later activities proof when its input is assumed here.
+- 2026-11-11, concrete editorial request, UV01 local representatives: explain “jet” at its definition as the list of Taylor coefficients. In the transport paragraph, display the iterated-integral estimate or integral equation that proves analyticity; the current six-sentence paragraph hides this mathematical step. Keep the explicit unresolved derivative-bound and transfer obligations.
+- 2026-11-11, global display request: inspect every display in UV01 and the new UV02 for delimiters around fractions, sums, integrals and tall subscripts. In particular check `eq:uv-link-ode`, `eq:uv-section-taylor`, `eq:uv-insertion` and nested insertions in `eq:uv-insertion-covariance`. Repair in your owned sources. No clearpage/newpage before sections. Please note the completed delimiter pass and any unresolved layout issue in your notes.
+
+### To weimaraner
+
+- 2026-11-11, round 3 coordination: Please send the intended scope, exit result and stable section label for `02-maxwell.tex`. I will explain its position between extraction and the later mixed Hilbert-space/rotation/phase arguments, while keeping finite-cutoff estimates with UV. The public `prop:uv-inputs` remains PLANNED; the guide will not promote it to a proved supplier.
+- 2026-11-11, concrete editorial request, `lem:iv-reflection`: begin with the proof idea, split positivity from folding, and show the actual fold inequality for a named mixed assignment and its two folds. Then display the maximizing relation and normalization. The current band-growth/maximizer paragraph remains a wall of descriptions; give a short formula for its one-cell enlargement or a small tiling diagram. Preserve cubical/common even period, seam kind and interiority.
+- 2026-11-11, concrete editorial request, `lem:iv-representatives`: a short route before the proof should explain why projection removes invisible directions and why the rank bound prevents coefficient blow-up. Display the implication ker(P) subset N plus the dimension comparison, then the normalized compactness contradiction. The argument already contains the right formulas; make their purpose explicit before them and avoid another uninterrupted list of operations.
+- 2026-11-11, concrete editorial request, bounds/compactness opening: display the separation/scale conditions `a_m<r`, `6n a_k<a_m` and the resulting correlation bound in one place. Explain the boundary-strip exclusion with that estimate, rather than requiring the reader to reconstruct it from prose. The new section outline should map the five subsections and state what is still deferred. Keep all three chosen-family obligations visible.
+- 2026-11-11, global display request: inspect every display in limit01 and new Maxwell section for tall delimiters. Examples in current limit01 include the normalized reflected-product trace, the cluster-limit pair of fractions, and `G_S((v,x),(w,y))` in the positive matrix. Repair in your own sources; no clearpage/newpage before sections. Please record completion and any unresolved layout issue.
+
+### Shared build coordination
+
+- 2026-11-11: Please avoid simultaneous writes to shared LaTeX auxiliary files; before a build, check whether another latexmk/pdflatex is active. I will record final source/PDF hashes and review only a frozen PDF copy during rendering. Requests about shared macros or labels belong here; no ownership transfer is needed for the Part II opening.
+
+
+### Round 3 guide responses
+
+- 2026-11-11, to greyhound: Read your round-3 scope and stable `sec:uv-activities` label. The shared guide now describes local polynomial construction and products of insertions before integration, then density expansions organized by contributing regions and large plaquette deviations. It explicitly separates this organization from proving the estimates; it does not claim calibrated transfers, positivity or ultraviolet convergence from UV02. No cap change is currently needed for the guide. Your nine-page UV02 cap remains; send a measured request if it is insufficient.
+- 2026-11-11, to weimaraner: Read your round-3 scope. The guide separates the free curvature hierarchy and finite distinguishing tests from the short-distance estimates for the interacting family and the separate dimension bound. It does not infer stress normalization or prescribed-radius compatibility. It explains that mixed Hilbert-space preparation precedes rotations and that rotations precede phase decomposition; full-radius trace and common OPE coefficients remain later work. It currently uses only existing section labels so that it compiles while your new section is being written.
+
+### Round 3 delimiter audit — initial assembled text
+
+Read every display in the assembled Part I, UV01 and limit01 at the start of round 3. All Part I fixes are typographical: the physical representative's coordinate tuple, the single-field term within the OPE remainder, the two-point trace arguments around half-radius fractions, and the Wick kernel with its compound subscript. Existing left/right delimiters around the running-law fraction, volume boxes, OPE sum and trace logarithm already enclose their contents. The theorem and principal-proposition displays require no formula change. Detailed UV/limit examples were sent above for repairs in their owned sources, together with the requirement to inspect their newly authorized second sections. File renaming and delimiter sizing preserve the Part I mathematical text modulo whitespace and sizing commands; this was checked mechanically before rendering. No public clause or visible proof marker was removed.
+
+
+### Round 3 build finding
+
+- 2026-11-11, to greyhound: Your UV01 revision now references `sec:uv-activities`, while UV02 is still empty in the current snapshot. The combined build exits 0 but has that undefined-reference warning. Please provide the actual UV02 section heading/label as you draft it, then check your build. I will wait for that target to exist before recording a clean integration receipt. No shared-file workaround or fabricated target is being installed.
+
+
+## Round 3 correspondence and editorial scope
+
+### Input renaming
+
+| Previous input | Current input |
+|---|---|
+| part1/01-introduction.tex | part1/01-result.tex |
+| part1/02-setting.tex | part1/02-definitions.tex |
+| part1/03-theorem.tex | part1/03-theorem.tex |
+| part1/05-strategy.tex | part1/04-strategy.tex |
+| part1/06-propositions.tex | part1/05-propositions.tex |
+| part1/04-constants.tex | part1/06-constants.tex (still empty) |
+
+The Part I correspondence tables from rounds 1–2 apply at these new paths. Every reference label, mathematical clause and proof marker survives. New delimiters change size only; the section clearpage is removed as requested. Clearpages remain only at the two part boundaries in main.tex.
+
+### New Part II opening
+
+`part2/00-opening.tex` is dalmatian's shared, unnumbered opening, owned explicitly in PLAN; `sec:construction-guide` is its hyperlink anchor. It introduces no definition, theorem or new asserted estimate. The displayed two-stage limit is an unnumbered reading summary of `eq:ordered` and `eq:main-limit`, with exactly the separated-test and support restrictions linked below it. It keeps the family-before-volume-sequence choice and one common refinement.
+
+| Passage | Evidence and exact explanatory scope |
+|---|---|
+| Finite probability model, local Taylor polynomials, reference normalization | `prop:uv-law`, `def:uv-labels`, `def:uv-sections`, `eq:uv-insertion`, `eq:uv-reference-coordinates`; source rows already checked in greyhound's notes. New UV02 scope received through Requests: local sections, insertion algebra and supplied-bound activity sums only. |
+| Normalized averaging preserves integrals | Lean `YM/RG/Block.lean:152–208` (noise mass, kernel total and IsKernel under branch conditions), `YM/RG/Push.lean:17–43` (integrability and exact integral preservation). Read the relevant proofs this round. The opening describes the later construction, without asserting the branch hypotheses for arbitrary kernels. |
+| Gaussian estimates, energy suppression, running curvature coefficient and local volume independence | Same intended mechanisms and deferred proofs as `prop:uv`'s accepted idea and first visible marker; no actual Gaussian, determinant or nonlinear estimate is added by the opening. The volume-independent claim is explicitly for a fixed local observable, not a total partition function or a sum over the whole volume. |
+| Ordered limits and common witnesses | Lean `Construction.lean:15–40`, `HierarchyBridge.lean:44–57`; reread this round, retaining the full spacing sequence at each support-containing volume and only a refined outer sequence. |
+| Extraction, derivatives and quotient fields | Current limit01 and its three explicit upstream obligations; its source correspondences remain in weimaraner's notes. Smoothness is not attributed to compactness alone. |
+| Maxwell tests and comparison maps | Lean `YM/Next/UV_STRESS/Invert.lean:19–115` (all-test separation, finite tests, eventual injectivity and separate dimension upper bound), with equivariant inclusion adjustment in `Arrange.lean:19–123`; relevant statements and proofs reread this round. Weimaraner's scope response explicitly leaves stress/Ward normalization and prescribed radii to later sections. The opening adds neither conclusion. |
+| Hilbert-space preparation, rotations, compressed operators and phases | Existing `sec:strategy`/`prop:limit` proof idea and pinned `YM/Phase/Mixture.lean:23–145` (ground-space compression, representation, barycenter, selected-phase certificate), reread this round. The guide states the construction dependency, without deriving rotations or commutation from positivity. |
+| Selected-phase continuation, trace and common OPE | Existing principal propositions and `HierarchyBridge.lean` public transports. Their five visible manuscript proof obligations are retained. The reading guide explicitly says later arguments are not yet assumed proved. |
+
+Scott's `manuscript/` was not reread this round; the opening is our own exposition, rather than copied prose. Lean pin reverified as `3456e5e75cf8d4cd558955a5c7638fba2d68f464`; no Lean/Lake process was run. Editorial review here is my own reading, not an independent mathematical audit. The HCP reference profile and Amélie's approved Part I guide the presentation; no exemplar PDF comparison is claimed.
+
+
+### Round 3 editorial follow-up on the revised lattice section
+
+- 2026-11-11, to greyhound: Read the revised UV01 source and rendered pages 17–23. The outline, Haar/product/energy identities, proof openings, jet explanation, transport series and unit calculation address the concrete requests. Two small follow-ups: (a) `eq:uv-transport-series` currently puts its equation number on a separate line below the norm bound; moving the condition 0 <= t <= 1 into the following sentence should recover the width without shrinking mathematics. (b) In the analytic-dependence sentence, say that the same factorial majorant holds on a small complex epsilon neighborhood, so normal convergence actually explains analyticity. The fixed-jet coefficient B is polynomial in epsilon, so this needs no additional hypothesis. In the law proof, “Their product then preserves the normalized density” has an ambiguous subject; “Each transformation therefore preserves the Wilson measure” says the intended implication directly.
+- 2026-11-11, to weimaraner: Your revised opening now visible in the combined PDF maps the five subsections. Call these “Subsections” rather than “Sections” when referring to `subsec:iv-*`, matching the actual hierarchy. Existing section labels are stable after my Part I file renames.
+
+
+### Round 3 editorial follow-up on the revised infinite-volume section
+
+- 2026-11-11, to weimaraner: Read the newly revised opening and folding proof. Naming an assignment Z(i), displaying the two folds/maximizer, and showing the band steps make that argument readable; the separation display addresses the earlier scale request. One remaining dense patch is the positivity paragraph before folding: after the double-average formula, show the positive quadratic form that yields the reflected expectation, using the exact boundary form from the source, rather than describing the slice splitting in several sentences alone. The point is the quadratic form of the averaged measures; do not assert that the g,h integrand is pointwise nonnegative when g and h differ. This is a request to expose the existing positive-form argument, not to add another kernel construction.
+
+
+### Round 3 editorial reading of the new activities section
+
+- 2026-11-11, to greyhound: UV02's heading/label is now present and the opening is linked from the shared guide. Read the whole 365-line draft. The outline and each proof's opening idea follow the requested pattern. The section correctly distinguishes supplied-bound activity convergence from identification with an integrated Wilson weight, and its last paragraph correctly allows global bounds to grow with volume. Please display the defining supremum for the seminorm `||F||_{t,k,q;o,X}`; its current prose sentence packs U, derivative order, direction conditions and the order-zero convention together. Keep the derivative directions defined once, and retain the reminder that these are derivatives of the unmasked polynomial. After source-checking `prop:uv-sections`, update UV01's old first unresolved clause to cite that proposition; retain the same-family coefficient-transfer obligation. This is a request to reconcile the marker with the final proved scope, not to hide an unchecked section estimate. Other mathematical source checks for your new statements remain with you and your pinned correspondence.
+
+
+### Round 3 editorial reading of the new Maxwell section
+
+- 2026-11-11, to weimaraner: Read all 483 lines of the new Maxwell draft and linked `sec:maxwell` from the guide. Its five-part outline, explicit Wick example, finite-test argument and the distinction between weak comparison, dimension cap and prescribed radii fit the intended reading order. The two deferred proofs are explicit, and stress normalization stays outside this section. Please declare a fixed norm on each free space `F_d^0` before `lem:mx-tests` and use that domain on the vector/operator norms in the comparison estimates; the interacting norms are already fixed by the preceding section. In `item:mx-bounds` and `prop:mx-smooth`, write derivative order `s in N` explicitly instead of only `s >= 0`. Finally check the nested subscript/argument delimiters in `eq:mx-wick`, including `K_{p_e,p_f}(x_{iota(e)}-x_{iota(f)})`. All other new displays have been read in this editorial pass; source fidelity of your new propositions and the detailed quantifier transport remain your pinned verification, not an independent audit by me.
+
+
+### Round 3 measured allowance and resolved reference
+
+- 2026-11-11, to weimaraner: The current 49-page build puts limit01 on pages 29–41, or 13 touched pages including the boundary with Maxwell. The explicit folding/maximizer displays and the requested proof ideas account for the extra room. I have revised its PLAN target/cap from 9/12 to 10/14 so that the readable proof need not be compressed back into prose. Maxwell currently touches nine pages (41–49), within cap fourteen. No additional section is authorized by this adjustment.
+- 2026-11-11, to greyhound: The UV02 target exists, the shared guide links it, and the combined build is clean. UV01 touches seven pages (17–23), UV02 seven (23–29), within their caps. The earlier undefined-reference finding is resolved. The remaining source checks and small editorial follow-ups remain yours; I have not altered either owned mathematical section.
+
+
+### Round 3 final validation receipt
+
+The prescribed `latexmk -pdf -interaction=nonstopmode main.tex` inside paper completed with exit 0. The final inspected log has no errors, warnings, missing references/citations, or overfull/underfull boxes. The combined snapshot has 49 pages. Reviewed all rendered Part I pages 2–15 after the section-flow and delimiter changes, the new opening on 16–17, the contents page and the adjacent construction opening. Also read the revised lattice section's rendered pages during the editorial pass. After the last concurrent limit revision and clean rebuild, regenerated pages 16–18: their image hashes exactly match the already inspected final images. I do not claim an every-page rendered audit of both writers' new sections; their final source/render verification remains theirs.
+
+Read every current display in Part I, UV01/UV02 and limit01/limit02. Revisited the revised proof openings and folding/positive-form displays. Detailed source and typography follow-ups are recorded in Requests; they are requests for the owners' final revisions, not a claim of independent mathematical acceptance. The shared guide uses the confirmed scopes and links all four current Part II sections. It stays within its two-page cap. Measured per-section page allowances are in PLAN, including the revised infinite-volume cap.
+
+Final assembled-source checks: no duplicate labels, unresolved references or unexpected control bytes; all 41 public property labels and five Part I deferred-proof markers remain. PDF extraction: 1054 linked fragments, 1052 internal page links, all targets in 1–49. Only the two part boundaries have clearpage commands. Ordinary fractions retain frac, and the new guide contains none of the prohibited pilot jargon. Source pin, correspondence and file-renaming invariance are recorded above. No new theorem or definition was added by dalmatian, and the public mathematical contract is unchanged.
+
+Both colleagues' notes/Requests were rechecked before reporting. The temporary UV02 missing target is resolved. The new Maxwell draft explicitly defers strict linear-probe positivity and same-family comparison/dimension inputs; the guide does not assume them proved. The public theorem's five analytic proofs remain OPEN, with the separate ultraviolet-input proposition still PLANNED. No independent reviewer or subagent, Lean/Lake process, heartbeat override, commit, push, or edit outside owned paper files.
+
+Snapshot hashes (later concurrent builds may replace the canonical PDF):
+
+- `main.tex`: `df2c4ec1c3adeecb10ffbf1ee1685871c71a3ac9d2822a773c4847ae6ad953c0`
+- `part1/01-result.tex`: `cc01c94f2049eee718985cbb7d2e0e010386ed6065c789697107ecede1caf63c`
+- `part1/02-definitions.tex`: `c7d8bcd0a7b86bd0543f6bd4b8e7bc5509264ee62e4c6fa524c7ff84cb7584d9`
+- `part1/03-theorem.tex`: `66f209d0692f3beb58b0a44c3259786053bd1ee291376e60f8bd65368a29cc0a`
+- `part1/04-strategy.tex`: `f1c9f97222f01e589adb1fc490e41aa800696c3a1ca1ceaeda2b9b24286833a0`
+- `part1/05-propositions.tex`: `6bdb3692bd74420d755ec93e0f13c101a2e400a450185d0e0cf0b95020fa5fe8`
+- `part1/06-constants.tex`: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+- `part2/00-opening.tex`: `e97c999aa7ace51c97a90025afa0b67beebc57f1007a8c7718097f22158e9679`
+- `dalmatian-round3-review.pdf`: `2931d06238fed8259e39ad3bec6747a2d60969cdb5263c7b4bb7d4ac0eff12a5`
+- `part2/uv/01-lattice.tex`: `bc226cf81478de99cd1f780d4e3fd5e647c64c590b656b875ccf1a5c4afdc289`
+- `part2/uv/02-activities.tex`: `45d2fa03bc5c2cc827fae402466e8b05865d49748c2eb3eec6f946f476739f5f`
+- `part2/limit/01-infinite-volume.tex`: `14af2b138dba1042752a5f35153f98c9e62dedda22662c6888066c4b7260f353`
+- `part2/limit/02-maxwell.tex`: `5c20af030905483d59c67840933cba79d1a27b6aa4e75861c3725f5e84af551d`
+
+Validation recorded 2026-11-11 15:25:07 UTC. The next and final action is report 3; dalmatian then stops and waits.

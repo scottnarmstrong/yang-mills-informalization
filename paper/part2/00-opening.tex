@@ -1,0 +1,74 @@
+\phantomsection\label{sec:construction-guide}
+
+Part~\ref{part:main} states what the limiting theory must satisfy.
+Here we explain how to construct it from the Wilson measure of Definition~\ref{def:wilson-law}.
+The first task is to compare the same physical observation on successively finer lattices.
+The second is to show that its correlations remain controlled when the surrounding box grows.
+Only after these two tasks can we ask how the limit describes fields, symmetries and phases.
+
+\paragraph{Following an observable across scales.}
+Section~\ref{sec:uv-lattice} begins with the exact finite probability model.
+Its symmetries hold before any limiting argument.
+It then describes a local observable by a polynomial in Taylor coefficients of a classical connection, and represents that polynomial using finitely many lattice links.
+The coefficients of this representative change when short-distance variables are integrated out.
+Fixing its normalization at a reference scale lets us compare different fine lattices through the same classical label.
+
+Section~\ref{sec:uv-activities} constructs the local polynomial representatives and organizes products of insertions so that their coefficients can be followed through integration.
+The density expansions also record which lattice regions contribute and which plaquettes have large deviations.
+This organization prepares the estimates; it does not itself prove them.
+
+The later ultraviolet sections perform the integrations.
+Averaging over finer variables produces a probability density for coarser variables; the averaging is normalized so that it preserves the original integrals.
+The difficulty is to control the density and the observables after this operation has been repeated many times.
+Configurations with small plaquette deviations admit Gaussian estimates.
+The complementary configurations must be bounded using their energy cost.
+Local contributions are organized by the regions of the lattice on which they depend, so that estimates for a fixed local observable can be made independent of the surrounding volume.
+The change in the coefficient of squared curvature is included in the running coupling.
+
+These arguments have two different uses.
+At a fixed box size they must prove that the correlations are Cauchy along the entire spacing sequence, as in Proposition~\ref{prop:uv}.
+They must also give bounds on local observables and their difference quotients independent of the box size.
+The latter bounds permit extraction of an infinite-volume limit; the former identify its inner limits with the full fixed-volume limits.
+For the moments of Definition~\ref{def:moments}, the intended passage is the ordered limit~\eqref{eq:ordered}:
+\begin{equation*}
+\begin{aligned}
+ C_{N,p}(v;f)&\longrightarrow R_p &&(N\to\infty,\ p\text{ fixed}),\\
+ R_{p(q(k))}&\longrightarrow\int f(x)S^\mix(\pi(v_1),\ldots,\pi(v_n);x)\,dx
+ &&(k\to\infty).
+\end{aligned}
+\end{equation*}
+Here $f$ is a separated test of Definition~\ref{def:tests}; the inner limit is required at every volume containing its support (Definition~\ref{def:admissible}).
+The family is chosen before the prescribed volume sequence $p$; the refinement $q$ is common to all observables and tests.
+
+\paragraph{From correlation functions to fields.}
+Section~\ref{sec:infinite-volume} uses reflection positivity to bound correlations by products of reflected local observables filling the torus.
+The volume-independent estimates then give a common subsequence for all correlations.
+To identify derivatives, one compares lattice differences with higher-degree observables.
+Coefficients invisible in every correlation are discarded, giving the field spaces of the limit.
+Thus smoothness requires estimates for these comparisons as well as compactness.
+The spacing refinement introduced during extraction is removed using the fixed-volume theorem, leaving exactly the ordered limit of Definition~\ref{def:ordered}.
+
+Section~\ref{sec:maxwell} compares these fields at short distances with free Maxwell curvature fields.
+It supplies finite tests for distinguishing field classes and comparison maps for the later stress-tensor argument.
+These maps require short-distance estimates for the chosen family and a separate dimension bound.
+This comparison does not identify the resulting interacting theory with a free theory.
+The symmetry argument also needs a Hilbert space built from the average correlations: reflection positivity turns products supported at positive times into vectors, with reflected correlations as their inner products.
+In that space, integral identities for the stress tensor will give continuous rotations.
+This is why the construction of that Hilbert space precedes the rotation argument, while the decomposition into phases comes afterward.
+
+\paragraph{Phases and short distances.}
+Long-time averages act on the zero-energy subspace of this Hilbert space.
+The rotation identities are used to prove that the resulting operators commute.
+They can then be represented as continuous functions on the compact phase space, with expectation given by the measure in~\eqref{eq:mixture}.
+A selected phase is continued in time to obtain the relativistic fields of Proposition~\ref{prop:reconstruction}.
+The trace and product sections return to the short-distance estimates for the same construction: the former prove the full-radius logarithmic law, and the latter choose one system of product coefficients valid in every phase.
+
+\paragraph{Reading the construction.}
+On a first reading, follow the lattice law and the reference normalization in Section~\ref{sec:uv-lattice}, then the passage from bounded correlations to smooth fields in Section~\ref{sec:infinite-volume}.
+The intervening ultraviolet arguments explain why those bounds hold for one chosen family.
+The later Maxwell, symmetry, phase and reconstruction arguments explain what additional information is needed to turn that limit into the hierarchy of Theorem~\ref{thm:main}.
+For each quantitative estimate, keep track of what is fixed, what tends to a limit, and whether its constants depend on the volume.
+The proofs must use the same family and the same retained correlations throughout.
+
+This review version contains only the sections drafted so far.
+The visible unresolved markers identify estimates or analytic arguments still needed in the written proof; the reading guide describes their intended places without assuming them proved.

@@ -1,24 +1,32 @@
 STATUS: READY
 # Paper plan — dalmatian, 2026-11-11 UTC
 
-## Round 2 — controlling revision
+## Round 3 — controlling revision
 
-`feedback/round-1.md` overrides earlier architecture and house style. Revise the three pilots only; stop after reports/<name>-2.md. Part I is **The main theorem**; Part II remains **The construction**. Part I's first section is **The result**. All public definitions are gathered once in **Definitions**, before the explicit theorem. A separate **Strategy** section precedes the five principal propositions and their final deduction. No new Part II sections may be written in this round.
+`feedback/round-2.md` controls this round; round-1 feedback still holds. Part I is the approved style reference. Dalmatian makes the small Part I repairs, owns the new unnumbered Part II opening `part2/00-opening.tex` (target 1 / cap 2 pages), and sends concrete editorial requests to the two section owners. Greyhound revises `part2/uv/01-lattice.tex` and writes `part2/uv/02-activities.tex`. Weimaraner revises `part2/limit/01-infinite-volume.tex` and writes `part2/limit/02-maxwell.tex`. Other new Part II sections remain outside this round. Each owner writes report 3 only after source, build and rendered-page checks, then stops and waits.
+
+No clearpage or newpage before a section; a new part may begin on a new page. Size delimiters to fractions, sums, integrals and tall indices in every display. Each Part II section opens with its purpose, intuitive mechanism and reading outline. Every proof longer than a few lines begins with its idea, then carries it out with mathematical displays. Remove repeated explanations and replace unexplained jargon by mathematics. Retain every mathematical hypothesis, label and visible proof obligation. Shared definitions are linked from Part I, never duplicated.
+
+The Part I inputs are renamed in section order as listed below; all reference labels are unchanged. The new construction opening explains the route through local lattice observables, integration across scales, continuum extraction, Maxwell comparison, rotations/phases, reconstruction, trace and products. It distinguishes completed local arguments from explicitly deferred same-family estimates. It is a reading guide, not an additional theorem.
+
+## Round 2 architecture — retained under round 3
+
+`feedback/round-1.md` overrides earlier architecture and house style. The round-2 pilot revisions are complete; the round-3 scope above now controls. Part I is **The main theorem**; Part II remains **The construction**. Part I's first section is **The result**. All public definitions are gathered once in **Definitions**, before the explicit theorem. A separate **Strategy** section precedes the five principal propositions and their final deduction. The former round-2 restriction on new Part II sections is superseded only for the two round-3 assignments above.
 
 | Part I input | Section | Target / cap |
 |---|---|---|
-| part1/01-introduction.tex | The result: accessible problem, contribution and whole-paper outline | 1 / 2 |
-| part1/02-setting.tex | Definitions: public lattice, observables, fields, reconstruction, OPE and trace | 8 / 11 |
+| part1/01-result.tex | The result: accessible problem, contribution and whole-paper outline | 1 / 2 |
+| part1/02-definitions.tex | Definitions: public lattice, observables, fields, reconstruction, OPE and trace | 8 / 11 |
 | part1/03-theorem.tex | The main theorem: explicit four conclusions, choices and nonclaims | 1 / 2 |
-| part1/05-strategy.tex | Strategy: five steps and their mathematical dependence | 1 / 2 |
-| part1/06-propositions.tex | The principal propositions: statements, intuitive proof ideas and deduction | 4 / 6 |
-| part1/04-constants.tex | Reserved later constants section; remains empty this round | 2 / 3 |
+| part1/04-strategy.tex | Strategy: five steps and their mathematical dependence | 1 / 2 |
+| part1/05-propositions.tex | The principal propositions: statements, intuitive proof ideas and deduction | 4 / 6 |
+| part1/06-constants.tex | Reserved later constants section; remains empty this round | 2 / 3 |
 
 Earlier Part I contents rows are superseded by this table; the Part II paths/ownership remain unchanged. Preserve all old reference labels while moving material. New public definition labels and property-item labels are announced in dalmatian's round-2 Requests. Each property item has its own label and every mention/range is linked. Every definition used directly by a statement is linked. Every ordinary mathematical quotient, inline or displayed, uses `\frac`; quotient spaces, lattice quotient groups and URLs retain their slash notation. Use lattice observable label rather than token, a finite set of sites rather than an unexplained stencil, and a test supported inside volume p rather than unexplained p-admissibility. These changes do not alter the mathematical contract. Part II cites Part I definitions and retains only construction-specific definitions.
 
 ## Scope and authority
 
-Canonical entry point: `paper/main.tex`. Round 1 stopped after the three pilots; round 2 revises them under the feedback above and stops after `reports/<name>-2.md`. Mathematical authority: the public contract in `statement.md`, checked against `/root/code/OpenAI-YM-20261028` at `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Source-exposition snapshot: `2668d7cdb485f3c18d743074efdcee9a18a2ca6a`, after `git pull --ff-only`. All source material outside `paper/` is read-only; no commits or pushes.
+Canonical entry point: `paper/main.tex`. Round 1 stopped after the three pilots; round 2 revised them; round 3 follows `feedback/round-2.md` and stops after `reports/<name>-3.md`. Mathematical authority: the public contract in `statement.md`, checked against `/root/code/OpenAI-YM-20261028` at `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Source-exposition snapshot: `2668d7cdb485f3c18d743074efdcee9a18a2ca6a`, after `git pull --ff-only`. All source material outside `paper/` is read-only; no commits or pushes.
 
 We prove the public theorem. Additional construction facts enter as tools with their own hypotheses; they are not silently added to the main theorem. In particular no claim of mass gap, uniqueness/universality, diagonal limits, full OPE convergence, or general exclusion of Gaussian composites is made. The alternative family of III.13 may not supply facts for the public family's proof without an explicit identification.
 
@@ -37,7 +45,7 @@ These are targets and caps for calibration, not measured claims about the eventu
 | II UV | part2/uv/05-step.tex | Seed energy, nonlinear integration, exact reset (III.7, III.9, III.10) | 18 / 24 | greyhound |
 | II UV | part2/uv/06-flow.tex | Growing block ratios, common endpoint, running coupling (III.2, III.14, VII.5 interface) | 8 / 11 | greyhound |
 | II UV | part2/uv/07-observables.tex | Uniform roots, differences, full fixed-volume convergence (III.11–III.12, III.15–III.16); III.13 only with identification | 17 / 23 | greyhound |
-| II limit | part2/limit/01-infinite-volume.tex | **Pilot:** common extraction, full-spacing upgrade, derivative/null-space interface (IV.1) | 9 / 12 | weimaraner |
+| II limit | part2/limit/01-infinite-volume.tex | **Pilot:** common extraction, full-spacing upgrade, derivative/null-space interface (IV.1) | 10 / 14 | weimaraner |
 | II limit | part2/limit/02-maxwell.tex | Free curvature hierarchy, finite detectors, moving frames (VII.1, VI.2, VII.6) | 10 / 14 | weimaraner |
 | II limit | part2/limit/03-ward.tex | OS preparation, shell identities, exterior flux, rotations and stress (VI.1–VI.2) | 12 / 17 | weimaraner |
 | II limit | part2/limit/04-phases.tex | Slab bounds, commutative ground algebra, phases (V.1) | 8 / 11 | weimaraner |
@@ -94,6 +102,14 @@ Recheck both notes before each new section and before reporting. Shared macros a
 
 Dalmatian's first section and report 1 are written. The pilot spans printed pages 2–11 and fits its 20-page allowance. All definitions and numbered assertions/displays have pinned correspondence rows in his notes; five deferred analytic proof markers remain. The shared build succeeds, with a separately reported overfull display in UV01. This READY status authorizes the two collaborators' assigned first sections, not drafting beyond the Phase 2 stopping boundary.
 
-## Round 2 checkpoint
+## Round 2 checkpoint — historical
 
 The revised Part I is ready for Amélie's review: The result; Definitions; the explicit four-clause theorem; Strategy; the five principal propositions with intuitive proof ideas and the deduction. Part I occupies printed pages 2–15, with the construction starting on page 16 in the inspected 31-page PDF. All 41 public property items and directly used definitions have linked targets; ordinary arithmetic fractions use frac. The required build is clean and the rendered Part I and adjacent construction opening have been read. No new Part II section has been drafted. Five analytic proofs remain explicitly deferred; the separate upstream input proposition is still PLANNED. The next action is report 2, followed by the mandatory stop. This status does not authorize further drafting.
+
+## Round 3 checkpoint
+
+Dalmatian's Part I repairs and the unnumbered construction opening are complete. The opening explains local polynomial/activity preparation, exact integration, the two uses of ultraviolet estimates, extraction/derivative comparisons, the Maxwell comparison and separate rank bound, Hilbert-space preparation before rotations, phases, reconstruction, trace and OPE. It links the four currently written Part II sections and retains all deferred proof obligations. Concrete editorial requests, their initial responses and follow-ups are in dalmatian's notes; the owners retain source and rendered-page responsibility for their sections.
+
+Measured combined snapshot: 49 pages. Part I touches pages 2–15; the opening touches 16–17; lattice fields 17–23; local polynomials/activities 23–29; infinite volume 29–41; Maxwell 41–49. These are inclusive touched-page counts, so shared boundary pages occur twice. The opening is within cap 2, UV01 within cap 10, UV02 within cap 9 and Maxwell within cap 14. Infinite volume now touches 13 pages after the requested displayed fold/maximizer and proof explanations. Its target/cap is therefore revised from 9/12 to 10/14; this is a measured allowance for the round-3 readability revision, not permission for further sections.
+
+The required combined build succeeds without warnings/errors or undefined references. Owned rendered pages and the adjacent construction boundary have been reviewed. New Part II statements remain under their owners' pinned source verification; the editor's style reading does not replace that verification. The public theorem's five later analytic proofs remain OPEN, and `prop:uv-inputs` remains PLANNED. Each agent stops immediately after writing report 3.

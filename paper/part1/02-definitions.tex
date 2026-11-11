@@ -1,4 +1,3 @@
-\clearpage
 \section{Definitions}\label{sec:definitions}
 
 We begin with the finite-dimensional lattice model and the observables whose averages will converge.
@@ -126,7 +125,7 @@ Let $r_\ell(j)$ be the representative of $j\in\Z/\ell\Z$ in
 $\left(-\frac{\ell}{2},\frac{\ell}{2}\right]$.
 The physical position of $y\in\Lambda_{\ell_{N,p}}$ is
 \begin{equation}\label{eq:physical-position}
-\hat y=a_N(r_{\ell_{N,p}}(y^\mu))_{\mu=1}^4\,.
+\hat y=a_N\bigl(r_{\ell_{N,p}}(y^\mu)\bigr)_{\mu=1}^4\,.
 \end{equation}
 For a Wilson family (Definition~\ref{def:family}) and $v=(v_1,\ldots,v_n)\in\mathcal T^n$, define the moment and its smearing by a function $f$ by
 \begin{equation}\label{eq:smear}
@@ -365,7 +364,7 @@ For a hierarchy (Definition~\ref{def:hierarchy}), the OPE property consists of t
 \item\label{ope:2} For every finite $I,J$, $a\in\mathbb F^I$, $b\in\mathbb F^J$, $M\ge0$, $\eta,c,\varepsilon>0$ and $D\in\N$, there exists $\delta>0$ such that, for every $0<r<\delta$, every $(r,M,\eta)$-cluster, every $c$-clear spectator configuration and every $s\in X\sqcup\{\mix\}$,
 \begin{equation}\label{eq:ope-remainder}
 \left|S^s(a,x;b,y)-\sum_{j=0}^D\sum_{\kappa\in\Ch j}
- c_{j,\kappa}(a;x,o)S^s((j,O_{j,\kappa}),o;b,y)\right|\le r^{D+1-w(a)-\varepsilon}\,.
+ c_{j,\kappa}(a;x,o)S^s\bigl((j,O_{j,\kappa}),o;b,y\bigr)\right|\le r^{D+1-w(a)-\varepsilon}\,.
 \end{equation}
 \end{enumerate}
 \end{definition}
@@ -379,7 +378,7 @@ These are finite-truncation estimates; they assert neither an infinite convergen
 \begin{definition}[The trace two-point function]\label{def:trace-pair}
 For the field $\Theta\in F_4$ of Definition~\ref{def:hierarchy}, set
 \begin{equation}\label{eq:trace-pair}
-G_\Theta(r)=S^{\xi_*}((4,\Theta),(4,\Theta);-\frac{r}{2}e_4,\frac{r}{2}e_4)\,.
+G_\Theta(r)=S^{\xi_*}\Bigl((4,\Theta),(4,\Theta);-\frac{r}{2}e_4,\frac{r}{2}e_4\Bigr)\,.
 \end{equation}
 \end{definition}
 
@@ -398,7 +397,7 @@ The integrand can be assigned value zero at a zero denominator, a set of measure
 A finite Wick profile is
 \begin{equation}\label{eq:wick}
 W(r)=\sum_{\alpha=1}^A c_\alpha\prod_{\beta=1}^{n_\alpha}
- K_{\mathsf m_{\alpha\beta},q_{\alpha\beta},h_{\alpha\beta}}(r),
+ K_{\mathsf m_{\alpha\beta},q_{\alpha\beta},h_{\alpha\beta}}\bigl(r\bigr),
 \qquad c_\alpha\in\C,\quad A,n_\alpha\in\N\,.
 \end{equation}
 Empty products are allowed.
