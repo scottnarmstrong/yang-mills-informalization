@@ -1,0 +1,214 @@
+\section{Blocking, gauge coordinates and the stationary field}\label{sec:uv-blocking}
+
+Sections~\ref{sec:uv-lattice}--\ref{sec:uv-activities} describe the fine-lattice law and the local terms that enter an integration step. This section defines the probability kernel that sends a fine configuration to a coarser one, and then gives coordinates in which its local action can be studied near the identity. The kernel is exactly normalised on every fine configuration, including configurations where the preferred minimisers are not unique. Removing tree links by Haar invariance gives the gauge-fixed integral. Under an explicit positive lower bound on the second derivative in the free-link variables, the action has a unique analytic stationary field near the identity; this is a local critical point, not a claim of global minimisation. The section first treats the kernel and its covariance, then the tree coordinates, and finally the stationary branch and its uniform local estimates.
+
+\subsection{The block probability kernel}\label{subsec:uv-block-kernel}
+
+Let~$G\subseteq U(m)$ be the compact gauge group of Definition~\ref{def:lattice}, with Lie algebra~$\g$ and matrix size~$m$. Fix positive fine and coarse side lengths~$f,c$ and an odd block side~$L\ge3$ such that~$f=cL$. A step~$S$ consists of a finite block patch, its kernel parameters and this relation between the lattice sides. Write~$\Lambda_f$ and~$\Lambda_c$ for the corresponding periodic lattices, and write~$\mu_f$ and~$\mu_c$ for product probability Haar measure on their link configurations. The patch points are the sites in a fixed finite box about the block centre~$0$; the patch also contains all links used in the constructions below.
+
+The frame tag set~$\mathsf T$ consists of pairs made from a patch point and an ordering of the four coordinate axes. A frame is a map from the patch points to~$G$ which equals~$1$ at the centre. For a link field~$U$ and frame~$h$, the frame-adjusted transport from~$y$ to~$z$ along the path with ordering~$o$ is~$h(y)U(y\to z;o)h(z)^{-1}$. The frame score is the average of the single-plaquette action~$s$ defined in~\eqref{eq:uv-chord} on these transports over all pairs~$y,z$ of patch points and all axis orderings~$o$. A frame minimiser is a frame attaining the least such score. For a fine configuration~$U$, a coarse site~$x$ and a frame tag~$t\in\mathsf T$, let~$h_x(U,t)$ be the frame selected by the construction. A centre axial gauge uses the frame obtained by parallel transport from the centre along the axis-ordered paths. Its axial cost is the sum of the normalised chords~$\chi$ from~\eqref{eq:uv-chord} over all positively oriented links in that gauge. A route holonomy is the transport around a closed walk in this gauge, using the walk convention of Definition~\ref{def:uv-walks}; its chord~$\chi$ measures its distance from the identity. For a coarse positive link~$e=(x,\nu)$, its connector is the field on patch points
+\begin{equation*}
+ Y_e(U,t)(y)=h_x(U,t)(y)\,U_{Lx}(y\to y+Le_\nu)\,h_{x+e_\nu}(U,t)(y+Le_\nu)^{-1},
+\end{equation*}
+where~$U_{Lx}(y\to y+Le_\nu)$ is the ordered fine-link transport along the indicated straight path. A predictor tag~$\tau\in\mathsf P$ selects a coarse group element~$Q_e(U,t,\tau)\in G$ by minimising the weighted sum of the action~$s$ of its discrepancies from this connector. Its finite tag set~$\mathsf P$ is the patch point set. The weights on~$\mathsf P$ are
+\begin{equation}\label{eq:uv-predictor-weights}
+ \omega_L(z)=\frac{1}{|\mathsf B_L|^J}
+   \#\left\{(z_1,\ldots,z_J)\in\mathsf B_L^J:
+                     z_1+\cdots+z_J=z\right\},
+ \qquad
+ \mathsf B_L=\left\{z\in\Z^4:\|z\|_\infty\le\frac{L-1}{2}\right\},
+\end{equation}
+where~$J\ge4$ is fixed by the patch. They are nonnegative and sum to one. These constructions use links in the patch around the block, including the links needed to transport between the two frames.
+
+The step data include positive cutoffs~$\delta,\varepsilon$ and a positive axial factor~$a$. When every route holonomy in every centre axial gauge has chord less than~$\delta$, the minimising frame is unique. When the minimum predictor score is less than~$\varepsilon$, the minimising predictor is unique. The tags are assigned probability masses that sum to one for every input. On either uniqueness region all corresponding tags receive equal mass and select the unique minimiser. Outside the frame uniqueness region, a frame tag is eligible if its axial cost is at most~$a(2R+1)$ times the sum of plaquette chords in the patch, where~$R$ is the patch radius. The frame mass is uniform over eligible tags, and the branch condition requires that at least one is eligible for every configuration. Outside the predictor uniqueness region, predictor tags receive the weights~$\omega_L$ of~\eqref{eq:uv-predictor-weights}. Thus ambiguity is resolved by a finite probability distribution, rather than an arbitrary measurable choice.
+
+For~$\beta\in\R$, define the positive penalty factor and its one-link normaliser by
+\begin{equation}\label{eq:uv-block-penalty}
+ w_\beta(g)=\exp\!\left(-\beta\kappa\,s(g)\right),\qquad
+ z_\beta=\int_G w_\beta(g)\,dg,
+\end{equation}
+where~$\kappa>0$ is the penalty parameter and~$dg$ is probability Haar measure. By~\eqref{eq:uv-chord}--\eqref{eq:uv-chord-square}, $s(g)$ is half the squared normalised chord and is unchanged by conjugation. Compactness of~$G$ and strict positivity of the exponential imply~$0<z_\beta<\infty$ for every real~$\beta$.
+For a coarse configuration~$V$, let
+\begin{equation}\label{eq:uv-block-noise}
+ n_\beta(Q,V)=\prod_{e\in\Lambda_c^{(1)}}z_\beta^{-1}
+                 w_\beta\!\left(V(e)Q(e)^{-1}\right),
+\end{equation}
+where~$\Lambda_c^{(1)}$ is the finite set of positive coarse links. Right translation invariance of Haar gives
+\begin{equation}\label{eq:uv-block-noise-mass}
+ \int n_\beta(Q,V)\,d\mu_c(V)=1
+ \qquad\text{for every coarse configuration }Q.
+\end{equation}
+
+Write~$T=(t,\tau)$ for a complete choice of all frame and predictor tags on the coarse sites and links. Its likelihood~$\ell(U,T)$ is the product of the frame-tag masses and predictor-tag masses, with each predictor mass evaluated at the connector determined by its frame choices. The block kernel is the finite mixture
+\begin{equation}\label{eq:uv-block-kernel}
+ \rho_\beta(U,V)=\sum_T\ell(U,T)\,n_\beta\!\left(Q(U,T),V\right).
+\end{equation}
+\begin{proposition}[Exact block kernel]\label{prop:uv-block-kernel}
+Under the uniqueness and fallback conditions just described,~$\rho_\beta$ is nonnegative, bounded and Borel measurable for every real~$\beta$. For every fine configuration~$U$,
+\begin{equation}\label{eq:uv-block-kernel-mass}
+ \int\rho_\beta(U,V)\,d\mu_c(V)=1.
+\end{equation}
+For every integrable function~$F$ on the fine configuration space, define
+\begin{equation}\label{eq:uv-block-push}
+ (\mathcal P_\beta F)(V)=\int\rho_\beta(U,V)F(U)\,d\mu_f(U).
+\end{equation}
+Then this integral exists for every~$V$, is integrable in~$V$, and
+\begin{equation}\label{eq:uv-block-preservation}
+ \int(\mathcal P_\beta F)(V)\,d\mu_c(V)
+ =\int F(U)\,d\mu_f(U).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+\proofstep{1}{Normalise the tag choices.}
+At each coarse site the frame masses sum to one. Given the frame choices, at each coarse link the predictor masses also sum to one. Since the full tag set is the finite product of these choices, successive finite summation gives
+\begin{equation*}
+ \sum_T\ell(U,T)=1.
+\end{equation*}
+This includes tags assigned mass zero on a given configuration and retains the fallback weights when a minimiser is not unique.
+
+\proofstep{2}{Normalise the coarse noise and the full kernel.}
+For fixed~$Q$, the integral of each factor in~\eqref{eq:uv-block-noise} is~$1$, by translation invariance and the definition of~$z_\beta$. Product integration over the finitely many coarse links therefore gives~\eqref{eq:uv-block-noise-mass}. Applying this identity to each term of the finite sum~\eqref{eq:uv-block-kernel}, then using the tag-mass sum, proves~\eqref{eq:uv-block-kernel-mass}. The same finite formulas show that~$\rho_\beta$ is nonnegative and Borel; compactness bounds every factor and hence the finite sum.
+
+\proofstep{3}{Preserve integrals under the push.}
+For fixed~$V$, boundedness of~$\rho_\beta$ and integrability of~$F$ imply absolute integrability of the integrand in~\eqref{eq:uv-block-push}. Tonelli's theorem applied to its absolute value gives integrability on the product space. Fubini's theorem and~\eqref{eq:uv-block-kernel-mass} now yield
+\begin{equation*}
+ \int\!\int \rho_\beta(U,V)F(U)\,d\mu_f(U)\,d\mu_c(V)
+ =\int F(U)\left(\int\rho_\beta(U,V)\,d\mu_c(V)\right)d\mu_f(U)
+ =\int F(U)\,d\mu_f(U).
+\end{equation*}
+This also proves that the pushed function is integrable.
+\end{proof}
+
+Gauge covariance follows from the way the frames and predictors transform. If~$\gamma$ is a fine gauge transformation, let~$\gamma_c(x)=\gamma(Lx)$ be its restriction to the coarse sites. A change of fine gauge carries each frame and connector to its corresponding gauge transform; the conjugation invariance of~$s$ leaves every noise factor unchanged. Reindexing the finite tag sum gives
+\begin{equation}\label{eq:uv-block-gauge-covariance}
+ \rho_\beta(U^\gamma,V^{\gamma_c})=\rho_\beta(U,V).
+\end{equation}
+The same argument after reindexing sites and links proves covariance under translations and signed permutations of the coordinate axes. These identities hold for all~$\beta\in\R$; no sign restriction on the parameter is used in the kernel normalisation.
+
+\subsection{Tree coordinates and Haar measure}\label{subsec:uv-block-tree}
+
+Choose in each block a rooted tree of positive fine links, with root at the block centre. A forest~$H$ is the union of these trees; its remaining links are called free links. The tree gauge transformation is obtained by parallel transport from each root along its unique tree path. It is the identity at every root and sends every tree link to the identity. Consequently a configuration in this gauge is specified by its free-link values, while the tree-link values are fixed to~$1$.
+
+For any integrable gauge-invariant function~$F$ of the fine configuration, integration over the full product Haar measure reduces exactly to integration over the free links:
+\begin{equation}\label{eq:uv-tree-haar}
+ \int F(U)\,d\mu_f(U)
+ =\int F\bigl(\operatorname{drape}_H(s)\bigr)\,d\mu_{H^{\rm fr}}(s).
+\end{equation}
+Here~$\operatorname{drape}_H(s)$ is the configuration with free-link values~$s$ and tree links equal to~$1$, and~$\mu_{H^{\rm fr}}$ is product probability Haar measure on those free links. The identity is exact: one integrates the root gauge variables using Haar invariance, then changes variables successively along the tree edges. It does not introduce a determinant or a volume factor. The same reduction applies to~$\mathcal P_\beta F$ when the kernel has the gauge covariance~\eqref{eq:uv-block-gauge-covariance} and~$F$ is gauge invariant.
+
+The tree is a coordinate choice for integration. Quantities defined after fixing this choice must therefore be compared if one changes the forest; the stationary action itself and the associated thermal function will be independent of that choice under the hypotheses stated below.
+
+\subsection{The stationary background field}\label{subsec:uv-stationary}
+
+We now describe the local action in the tree coordinates. Identify the Lie algebra~$\g$ with the tangent space of~$G$ at the identity. A coarse field~$x$ assigns a Lie algebra element to each coarse link, and a vertical field~$a$ assigns one to each free fine link. Let~$\iota x$ be the fine field obtained by copying each coarse link matrix to the corresponding positive block-boundary link, expressed in local coordinates. Write~$e^a\mathcal R(e^x)$ for the resulting fine configuration: it equals this copied field times the exponential of~$a$ on free links and equals~$1$ on tree links. The map~$\mathcal R$ is the fixed block-copy map. These coordinates are used only in a neighbourhood of the zero fields.
+
+The clip~$p$ has three real parameters: the direct coefficient~$p_{\rm dir}>0$, the linear tail cutoff~$p_{\rm lin}>0$, and the relaxation radius~$p_{\rm rel}>0$. They obey~$p_{\rm lin}<p_{\rm dir}/16$. The path data~$W$ assign real weights to transported plaquette paths and also supply local cubic, quartic and loop terms; their exponential summability bounds ensure analyticity near the identity. Write~$\ell_W(U)_b$ for the Lie-algebra-valued weighted path sum at plaquette~$b$, and~$C_W(U;x)$ and~$Q_W(U;x)$ for the cubic and quartic terms at site~$x$. Write~$\operatorname{loop}_W(U)$ for the signed-permutation average of the local loop terms in~$W$. With~$H_4$ the signed permutation group from Definition~\ref{def:uv-symmetries}, the real analytic main action is
+\begin{equation}\label{eq:uv-main-action}
+ \begin{aligned}
+ \mathcal M_p(W;U)&=\frac{1}{|H_4|}\sum_{h\in H_4}
+      \bigl[\mathcal M_p^{(2)}(W;h^*U)+C_W(h^*U)+Q_W(h^*U)\bigr],\\
+\mathcal M_p^{(2)}(W;U)&=\sum_{b\in\Lambda_f^{(2)}}
+      \left[p_{\rm dir}s(U_b)+\frac12\|\ell_W(U)_b\|^2\right].
+ \end{aligned}
+\end{equation}
+Here~$\Lambda_f^{(2)}$ is the finite set of fine plaquettes, and~$C_W,Q_W$ sum the cubic and quartic terms over sites. Thus~$\mathcal M_p^{(2)}$ is the direct plaquette action plus the squared norm of the weighted path sum, and~$H_4$ averaging imposes the signed coordinate symmetries. Let~$Q_k$ be the coarse predictor for tag~$k$. The tested action on the tree slice is
+\begin{equation}\label{eq:uv-tested-action}
+ \mathcal T^H_k(x,a)=
+ \mathcal M_p\!\left(W;e^a\mathcal R(e^x)\right)
+ +\kappa\sum_{b\in\Lambda_c^{(1)}}
+ s\!\left(e^{x_b}Q_k\!\left(e^a\mathcal R(e^x)\right)_b^{-1}\right).
+\end{equation}
+The first term is the action of the fine configuration in tree coordinates. The second penalises disagreement between the prescribed coarse field and the predictor of that configuration. A stationary background field is a free-link field~$a=\rho_k(x)$ for which the derivative of~$\mathcal T^H_k$ in every free-link direction vanishes.
+
+The exact second derivative at the identity is the key input. Let~$B$ be the fine quadratic form on plaquette variations and~$C$ the coarse quadratic form on coarse plaquette variations, both supplied by the action data. Let~$d$ and~$d_c$ be the fine and coarse lattice exterior derivatives from link fields to plaquette fields. Define the corresponding quadratic operators by~$K_f=d^*Bd$ and~$K_c=d_c^*Cd_c$, where~$d^*$ and~$d_c^*$ are adjoints for the counting inner products. Let~$P_{\rm lin}$ be the derivative of the predictor at the identity, and let~$A$ be the prescribed linear map from coarse link fields to fine link fields used by the quadratic action. The diagonal matching conditions are
+\begin{equation}\label{eq:uv-diagonal-matching}
+ K_f A=P_{\rm lin}^*K_c,\qquad
+ P_{\rm lin}A=I-\kappa^{-1}K_c.
+\end{equation}
+These equations match the fine quadratic action and the predictor penalty to the prescribed coarse quadratic action. Inner products are sums over sites, directions and matrix coordinates with counting measure. For a pair of variations~$(x,a)$ put~$s=\iota x+a$, extending~$a$ by zero on tree links. If the summable path data are attached to the fine quadratic form and the tested action is analytic near zero, direct differentiation gives zero value and gradient at zero and
+\begin{equation}\label{eq:uv-tested-hessian}
+ D^2\mathcal T^H_k(0)[(x,a),(x',a')]
+ =\langle ds,Bds'\rangle+
+   \kappa\langle x-P_{\rm lin}s,x'-P_{\rm lin}s'\rangle.
+\end{equation}
+Its two terms come respectively from differentiating the fine quadratic action and the predictor penalty. The vertical lower bound needed below is a separate estimate; the quadratic identity alone does not assert it. The precise source hypotheses that identify the fine and coarse quadratic forms must accompany this calculation:
+\gap{The source's block-input and quadratic-matching conditions have not been translated into the displayed operator identities. Verify that translation before using the Hessian formula as a consequence of the construction data.}
+
+\begin{proposition}[Local stationary branch]\label{prop:uv-stationary-branch}
+Assume the tested actions~\eqref{eq:uv-tested-action} are real analytic near zero, have value and gradient zero there, and have the Hessian~\eqref{eq:uv-tested-hessian}. Assume also the vertical lower bound
+\begin{equation}\label{eq:uv-vertical-gap}
+ D_a^2\mathcal T^H_k(0)[v,v]\ge\eta\sum_{e\in H^{\rm fr}}|v_e|^2
+ \qquad(\eta>0)
+\end{equation}
+for every tag~$k$ and vertical field~$v$. Then for each tag there is a local analytic map~$\rho_k$ with~$\rho_k(0)=0$ such that
+\begin{equation}\label{eq:uv-stationary-equation}
+ D_a\mathcal T^H_k(x,\rho_k(x))=0
+\end{equation}
+for~$x$ near zero. The proposition asserts local existence and uniqueness of this branch only.
+\end{proposition}
+
+\begin{proof}
+\proofstep{1}{Invert the vertical Hessian.}
+For any vertical field~$v$, if the derivative of the vertical gradient in direction~$v$ is zero, pairing it with~$v$ gives~$D_a^2\mathcal T^H_k(0)[v,v]=0$. By~\eqref{eq:uv-vertical-gap}, this forces~$v=0$. In finite dimensions injectivity is invertibility. The analytic implicit function theorem applied to~$D_a\mathcal T^H_k(x,a)=0$ at~$(0,0)$ therefore gives an analytic solution~$a=\rho_k(x)$ near zero, with~$\rho_k(0)=0$.
+
+\end{proof}
+
+The tangent and the quadratic value require more than invertibility of the vertical Hessian. In the source, they use the matching inputs for the chosen block, the predictor and the coarse quadratic form. In particular, the tangent is a specific map on the tree slice, not an arbitrary solution of the linearised stationarity equation:
+\gap{The matching hypotheses and the source definition of the relative field needed to identify the branch tangent and its stationary quadratic form are not stated here. Supply those data before claiming the source's tangent or quadratic-value formulas.}
+
+The local branch alone gives no radius uniform in the number of lattice sites. We record a sufficient uniform version with an explicit bound on the inverse vertical Hessian. Let~$I$ and~$J$ be finite sets of horizontal and vertical coordinates, and let~$\ell:I\sqcup J\to\Lambda$ assign each coordinate to a site of a four-dimensional torus. Suppose at most~$K_0$ coordinates are assigned to any one site. Give both coordinate spaces the maximum norm and use the periodic maximum distance~$d_\Lambda$. Fix~$C_0,a_0,r,m_0>0$ and an integer~$n\ge3$. Let~$F:\R^{I\sqcup J}\to\R$ be analytic on~$\|z\|_\infty<r$. Assume that, for all~$1\le k\le n$, all coordinate lists~$q_1,\ldots,q_k\in I\sqcup J$, all~$1\le j\le k$, and all~$z$ in that ball,
+\begin{equation}\label{eq:uv-local-derivative-decay}
+ \left|\partial_{q_1}\cdots\partial_{q_k}F(z)\right|
+ \le C_0\exp\!\left(-a_0\sum_{i=1}^k
+       d_\Lambda\bigl(\ell(q_j),\ell(q_i)\bigr)\right).
+\end{equation}
+Assume~$\nabla_JF(0)=0$. Fix~$r_{\rm safe}<r$ and~$M_0>0$, and suppose throughout~$\|z\|_\infty\le r_{\rm safe}$ that~$D^2_{JJ}F(z)\ge m_0 I$ and~$\|(D^2_{JJ}F(z))^{-1}\|_{\infty\to\infty}\le M_0$. The first bound gives strict convexity in the vertical variables; the second makes the implicit-function estimates uniform in the number of coordinates.
+\begin{proposition}[A volume-independent stationary ball]\label{prop:uv-uniform-branch}
+There are radii
+\begin{equation}\label{eq:uv-uniform-radii}
+ \begin{aligned}
+ 0&<r_{\rm hor}\le r_{\rm zone}/2<r_{\rm zone}<r_{\rm safe}<r,\\
+ (r_{\rm hor},r_{\rm zone})&\text{ depend only on }(K_0,C_0,a_0,r,m_0,r_{\rm safe},M_0).
+ \end{aligned}
+\end{equation}
+and a map~$g$ analytic on~$\{x\in\R^I:\|x\|_\infty<r_{\rm hor}\}$, with values in~$\R^J$ and~$g(0)=0$, such that~$g(x)$ is the unique vertical critical point in~$\|y\|_\infty\le r_{\rm zone}$ and~$\|g(x)\|_\infty\le r_{\rm zone}/2$. The radii do not depend on the sizes of~$I,J,\Lambda$.
+\end{proposition}
+
+\begin{proof}
+\proofstep{1}{Sum the decaying coordinate derivatives.}
+For a fixed site~$x$, let~$N_s$ be the number of lattice sites at maximum distance exactly~$s$. The number of coordinates at such sites is at most~$K_0N_s$, and
+\begin{equation*}
+ \sum_{q:\,\ell(q)\in\Lambda}
+ e^{-a_0d_\Lambda(x,\ell(q))}
+ \le K_0\sum_{s\ge0}N_se^{-a_0s}
+ \le K_0\sum_{s\ge0}(2s+1)^4e^{-a_0s}=:K_0S_4<\infty.
+\end{equation*}
+Fixing one coordinate of an order-~$k$ derivative tensor and summing the remaining~$k-1$ coordinates therefore bounds that coordinate row sum by~$C_0(K_0S_4)^{k-1}$ for every~$k\le n$. These bounds are independent of the torus and coordinate counts.
+
+\proofstep{2}{Choose a uniform implicit-function neighbourhood.}
+The vertical Hessian is invertible throughout the safe ball with inverse norm at most~$M_0$. The derivative bounds through order~$n\ge3$ control the change of the vertical gradient and its first two derivatives on a smaller ball by constants depending only on the displayed data. The quantitative analytic implicit-function theorem therefore supplies a horizontal radius and a vertical uniqueness zone, both independent of~$|I|,|J|,|\Lambda|$; shrink them so~$r_{\rm hor}\le r_{\rm zone}/2$ and~$r_{\rm zone}<r_{\rm safe}$. Strict convexity gives uniqueness of a critical point in the zone. Differentiating~$\nabla_JF(x,g(x))=0$ gives, at first order,
+\begin{equation*}
+ Dg(x)=-\bigl(D^2_{JJ}F(x,g(x))\bigr)^{-1}D^2_{JI}F(x,g(x)),
+\end{equation*}
+and repeated differentiation gives the corresponding bounds through the available orders.
+\end{proof}
+
+The source's local estimates must supply the uniform inverse bound assumed above from its geometric and path-data hypotheses:
+\gap{Prove the uniform inverse-Hessian estimate for the tested action, with constants independent of the torus, before applying Proposition~\ref{prop:uv-uniform-branch} to it.}
+
+To apply the uniform-branch proposition to the tested action, one needs uniform coordinate-derivative bounds through order~$N+3$ from the geometric and path-data hypotheses, together with the inverse-Hessian estimate stated above. If those inputs hold, differentiation of the stationary equation gives exponential decay bounds for the branch and action derivatives through the corresponding orders, and for derivatives of the vertical Hessian, its inverse and log determinant through order~$N+1$. The constants depend on the derivative bounds and the radii; this gives no volume-independent bound on the values of the action or log determinant. The exact path-data bounds and their transfer to these quantities are not stated here:
+\gap{State the source path-data bounds and prove the derivative transfer before using these decay estimates.}
+The uniform free-kernel estimates used in the Gaussian step require a separate Fourier analysis:
+\gap{The free-kernel argument of III.3 is not supplied here. It must establish the zero-momentum identities, exponential decay, and positivity of the repaired quadratic forms from the stated kernel hypotheses before those forms can be used in the Gaussian integration of the next section.}
+
+For a chosen local exponential chart, write~$J_{\mathrm{chart}}(z)$ for the density of probability Haar measure with respect to Lebesgue measure in exponential coordinates~$z$. Define the thermal function along the branch by
+\begin{equation}\label{eq:uv-thermal-function}
+ \Theta^H_k(x)=
+ \operatorname{loop}_W\!\left(e^{\rho_k(x)}\mathcal R(e^x)\right)
+ +\frac12\log\det D_a^2\mathcal T^H_k(x,\rho_k(x))
+ -\sum_{e\in H^{\rm fr}}\log J_{\mathrm{chart}}(\rho_k(x)_e).
+\end{equation}
+Here~$\operatorname{loop}_W$ is the loop part of the action and the determinant is taken on the finite-dimensional space of free-link coordinates. The common tag-branch condition means that the tested actions for the same tag choices have the required local critical branches in both forests. The local chart ratio is the ratio of the product Haar densities in the two tree-coordinate charts; it is required to be positive near zero. The source's forest comparison also assumes the exponential path-data bounds and a positive vertical bound. Under these conditions the gauge change between tree coordinates changes the Hessian determinant by the square of its Jacobian determinant. That factor cancels the change in the product of chart densities. Consequently the stationary action and~$\Theta^H_k$ agree locally for the two forests. This equality is local near zero and uses the same chart ratio; it does not assert equality of arbitrary off-branch actions.
+
+The estimates above provide the local coordinates and stationary field used by the next section's Gaussian integration. The global kernel is Borel and exactly normalised, while analyticity and uniqueness are local statements on the selected branches. The uniform-radius derivative result controls local dependence on the volume, but does not bound the total value of the thermal function uniformly in volume.

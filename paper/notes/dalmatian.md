@@ -598,3 +598,55 @@ Changes made to `part1/05-propositions.tex`, recorded as required by §5 of the 
 Theorem `thm:main` is shortened in P2 and P3; the definitions retain their exact domains, quantifiers and subclauses. The Part II opening now has a five-stage guide that points to the existing ordered-limit definition instead of repeating its display. Self-check rows above record the additional explanatory notation (`rho_j`, `H`, `P_0`, the OS words/reflection, and the roadmap indices/tests); these symbols are glossed or linked at first use. The five existing analytic proof obligations remain visible.
 
 Final verification, 2026-11-12 UTC: `latexmk -pdf -interaction=nonstopmode main.tex` exited 0; `main.pdf` has 60 pages. The log has no errors, undefined references, overfull/underfull boxes or warnings. I reread the rendered theorem, strategy, all five propositions and deduction (pages 10–16), the full Part II opening (pages 17–18), and the adjoining Lattice fields start (page 19). Final PDF SHA-256: `4856bc535cdde6e11f983ceefea742c3ef24477f4c96047a5bb28e0fd97cdbaa`. Owned source hashes are recorded in report 5. Part II editorial requests UV5-1–3, IV5-1 and MX5-1 are sent above; no other owner's file was edited.
+
+## Round 7 — proof-step format and constants section
+
+Read `feedback/round-6.md` and the current `RULES.md` in full. This round's owned files are `macros.tex`, Part I, `part2/00-opening.tex`, this notes file, the Ward audit file, and `reports/dalmatian-7.md`; no other owner's source is in my write set. The Part II opening has no proof steps in the old enumerate format, so it needed no conversion.
+
+### Proof-step conversion
+
+Added `\proofstep{#1}{#2}` to `macros.tex` with the exact prescribed rendering. Converted the five proof-idea lists in `part1/05-propositions.tex` to the new macro: five steps for `prop:uv`, five for `prop:limit`, four for `prop:reconstruction`, three for `prop:ope`, and four for `prop:trace`. Each step carries its existing argument and display; the propositions, hypotheses, formulas, and five visible mathematical obligations are retained. A source search finds no remaining `Step` enumerate or `\item \emph{...}` proof-step format in Part I or the Part II opening. The shorter deduction remains an ordinary proof without steps.
+
+### New section and pinned source correspondence
+
+`part1/06-constants.tex` now contains `sec:constants`, within its 2/3-page allowance. Its job is to explain the choice dependencies, not list numerical values or add a principal theorem. The displayed schedule and each reader-facing assertion map to the pinned source as follows.
+
+| Section item | Source and checked content |
+|---|---|
+| Public penalty and family precede the volume sequence | `YM/Nonperturbative/Headlines.lean:19–25`; `YM/Nonperturbative/Continuum.lean:40–48`; `Construction.lean:13–20`. Positive `b` is fixed before the family; for each later `p`, one `q` and table data follow. |
+| Stage data fixed before block ratios | `YM/Price/Intent.lean:22–35`; `outline/notes/III-2.md`, Proposition III.2.1. The `Sheet` fixes the kernel, patch branch conditions, profile at each index, first index, monotonic orders/powers/support exponents, and block floor. The detailed notes supply the prose description of the profile and the one-loop error constant. |
+| Block ratios pay for earlier requirements | `YM/Price/Intent.lean:37–48,79–90`; `outline/notes/III-2.md`, order of choices. Odd factors are at least 3 and meet the earlier floor; drift and the logarithm of the fixed stage cost are small relative to `log ell_j`. Protection follows the factors. |
+| Entry thresholds, barrier, and waits | `YM/Price/Intent.lean:113–139`; `YM/Price/Length.lean:19–36`; `outline/notes/III-2.md`, detailed choice order. The barrier can exceed an arbitrary lower bound; the wait includes a sublinear comparison window and a minimum period. |
+| Schedule display `eq:constants-schedule` | `YM/Lattice/Scale.lean:28–34,115–124`; `YM/RG/History.lean:79`; `YM/Price/Intent.lean:145–158`. These define odd block ratios, accumulated logarithmic scale, and the reference coupling `bar + slope * scale`, with `L_m=ell_{J_{m+1}}` in the paid schedule. |
+| Selected coupling drift and uniform running law | `YM/Shoot/Race.lean:67–69`; `YM/RG/History.lean` selected trajectory and running fields; `outline/notes/III-2.md`, Proposition III.2.3. The selected paths start at `bar`, pay one drift bound per step, and imply the uniform `o(s_m)` running law. |
+
+No Lean build was run. The listed declarations and proof locations were read at pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`; the `III-2` outline and detailed notes were used only to explain internal names in ordinary terms. This section is a source-checked account of the construction schedule, not an independent proof of its internal estimates.
+
+### Definition and rule self-check
+
+| Symbol or term | Definition or explanation | First use and status |
+|---|---|---|
+| `b`, gauge group, Wilson family `W` | Theorem `thm:main`, Definitions `def:gauge` and `def:family`; `b>0` is the kernel penalty | Public-choice paragraph; roles explained and family-before-volume quantifier recalled |
+| Kernel, starting index, stage profile | `YM/Price/Intent.lean`, `Sheet` and `Stage`; profile contents are described in the paragraph | Pre-ratio paragraph; construction-specific objects explained at first use |
+| `j`, `omega_j` | Regularity index and its allowed coupling drift in that stage profile | Introduced as the profile's index and named drift allowance before block-ratio comparison |
+| `ell_j` | Odd stage block factor chosen after the pre-ratio data | Defined in the block-ratio paragraph; lower bound and role stated |
+| Smallness exponents, post-block costs, entry and volume thresholds | `Protection`, `Delays`, `Bar` in `YM/Price/Intent.lean`; explained as later requirements paid after factors | Block-ratio paragraph; choice order given |
+| Barrier `bar`, waiting windows, minimum period | `Bar` and `Wait` in `YM/Price/Intent.lean`; barrier lower bound also in `Bar.exists_above` | Explained before the schedule; distinct later choices named |
+| `J_m`, `L_m`, `s_m`, `kappa`, `hat beta_m` | Display `eq:constants-schedule`; `kappa` links to `reg:1`; schedule and reference-coupling definitions are source-linked in footnote | Introduced before/at the display, with the meaning of each quantity stated after it; `s_0=0` specified |
+| `beta_{N,p,m}` and `o(s_m)` | Selected effective coupling at cutoff `N`, volume `p`, level `m`; error is uniform for `N>=m` and all `p` | Defined in the paragraph before the drift display; the uniform limiting meaning is stated |
+
+Rule-by-rule check of this packet against `RULES.md`: A0, scanned the converted owned Part I proof ideas for the old step-list class; B1–B7, read the section linearly for first-use explanations, stable references, reader-facing language and no project mechanics; C1–C11, preserved Part-I/Part-II architecture, opened with the section's purpose and route, kept the mathematical formulas after their explanation, used `\proofstep` only for substantial proof stages, used `\frac` for the written quotient, retained label links, British spelling and no section page break; D1–D2, matched the family quantifiers and scale/drift formulas to the pinned sources and did not promote internal construction estimates to a proved public claim; E1–E4, recorded this self-check, left other owners' files untouched, and did not commit or alter git configuration. The new equation's fraction uses `\frac`; ordinary slash use in untouched material was not normalized.
+
+### Initial typeset check
+
+The required `latexmk -pdf -interaction=nonstopmode main.tex` was run in `paper/` after my edits. It produced a 73-page PDF but returned failure because of unresolved cross-references in the still-drafted `part2/uv/03-blocking.tex` and `part2/limit/03-ward.tex`. The 27 unresolved references are outside my write set; no shared target was fabricated. The rendered constants section begins on printed page 17 and ends on page 18, within its cap. Pages 17–18 were inspected; the shared Part II boundary on page 19 was also inspected. Final build and reference checks must be repeated after the owners' drafts and round-7 repairs land.
+
+## Round 7 audit and final source/render check
+
+Greyhound's audit findings 1–4 were repaired in `part1/06-constants.tex`; the owner response is recorded in `paper/audits/r7-dalmatian-response.md`. Source identifiers with underscores use `\nolinkurl`; the section now defines the profile roles and stage-cost formula, explains each later threshold family, and displays the telescoping drift estimate with its uniform quantifiers. The full Part I and Part II opening source sweep found no remaining old proof-step enumerate format.
+
+Audited Weimaraner's ready Ward section, then reread both repair rounds in rendered pages 70–76. The audit and verification appendices are in `paper/audits/r7-dalmatian-on-weimaraner.md`: the original four findings and the second-pass findings 5–8 are fixed, except that marker 40 is stranded after the stress-normalisation gap on page 76. The exact finite-cutoff identity and analytic inputs remain open proof obligations. Finding 7's original orphan marker 38 was fixed; this second orphan is recorded for owner repair. The older infinite-volume and Maxwell sections pass the class S sweep. Greyhound's verification ends `VERIFIED` with all four of my constants repairs fixed. No other owner's source was edited.
+
+Final canonical `latexmk -pdf -interaction=nonstopmode main.tex` succeeds: 76 pages, no TeX errors, unresolved references, or overfull/underfull boxes. The only log warning is the existing empty bibliography. Rendered and checked Part I pages 12–18, the Part II opening boundary on page 19, and Ward pages 70–76; the page-76 orphan marker is the one remaining layout finding. PDF SHA-256: `8aa989c654e24ae390689049e73f7690bebaa01123fc4266f1cd788c8c38f730`. No Lean build was run.
+
+READY FOR AUDIT

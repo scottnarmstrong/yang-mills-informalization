@@ -1,0 +1,42 @@
+\section{The constants and the order of their choice}\label{sec:constants}
+
+The construction requires each scale to be large enough for estimates whose constants were fixed earlier. This section explains that order. It first separates the positive penalty chosen before the Wilson family from the later numerical choices inside the construction. It then records how the block ratios pay for those choices and how the coupling trajectory is selected. The resulting order matches the family-before-volume choice in Theorem~\ref{thm:main} and Proposition~\ref{prop:uv}.
+
+\paragraph{The public choice.}
+Fix a gauge group with simple Lie algebra and choose a penalty $b>0$. The construction then chooses one Wilson family $\W$ with that penalty. Only after the family is fixed does one prescribe an increasing volume sequence; for that sequence, Proposition~\ref{prop:limit} chooses a common refinement and hierarchy. Thus the penalty and family are independent of the later volume sequence, while the refinement and continuum data may depend on it.\sourcefootnote{`YM/Nonperturbative/Headlines.lean`, theorem `existence`; `YM/Nonperturbative/Continuum.lean`, theorem \nolinkurl{continuum_with_position_tests}; `Construction.lean`, theorem `constructed`.}
+
+\paragraph{Choices made before the block ratios.}
+At each regularity index, the construction first fixes the data that a later block must accommodate: a kernel with the prescribed penalty, a starting index, and a stage profile. The profile sets the work required at that index: derivative order and spatial power govern the correlation estimates, support exponent and width govern the local terms, path count and column bound control how many terms are carried, and the clip relaxation and drift allowance limit losses at one step. Write $\omega_j$ for the drift allowance at index $j$. The one-loop error bound is fixed at this stage as well. These data describe the accuracy and cost required at each level; they are chosen before any block ratio is selected.\sourcefootnote{`YM/Price/Intent.lean`, structures `Sheet` and `Stage`; `outline/notes/III-2.md`, order of choices.}
+
+\paragraph{Block ratios and later thresholds.}
+Next choose one nondecreasing sequence of odd block factors large enough to meet every earlier stage requirement. To specify the stage cost, let $\varpi_j$ be the path count, $w_j$ the width, $\gamma_j$ the column bound, $r_j$ the clip relaxation and $a_j$ the support exponent in the profile, and set
+\begin{equation}\label{eq:constants-stage-cost}
+ \mathcal C_j=1+\varpi_j+w_j^{-1}+\gamma_j+r_j+a_j\,.
+\end{equation}
+The factors are chosen so that, at each sufficiently large index $j$,
+\begin{equation*}
+ \frac{\omega_j}{\log\ell_j}\leq\min\left(\frac{\kappa}{4},j^{-2}\right),\qquad
+ \frac{\log\mathcal C_j}{\log\ell_j}\leq j^{-2}\,.
+\end{equation*}
+Thus each step's allowed coupling drift and the logarithmic cost of the stage data are small compared with the logarithmic increase in lattice size. The smallness exponents then limit errors in the post-block estimates; post-block costs record the further bounds those estimates must pay. Entry thresholds specify how large the reference coupling and accumulated scale must be before a stage is used. Volume conditions require the torus to contain the stage's patches and comparison regions. After choosing these quantities, choose the barrier $\bar\beta$, which supplies the initial coupling and may exceed any prescribed lower bound. Finally choose waiting windows, which keep a fixed regularity index available long enough for its comparisons, and a minimum period length for the tori.\sourcefootnote{`YM/Price/Intent.lean`, `Rolls`, `Protection`, `Delays`, `Bar` and `Wait`; `YM/Price/Length.lean`, theorem \nolinkurl{Bar.exists_above}.}
+
+\paragraph{One schedule for every cutoff.}
+After these data are fixed, assign the regularity indices $J_m$ to the successive scales. The sequence is nondecreasing, increases by at most one at each step, and tends to infinity. Let $\kappa>0$ be the group-dependent one-loop slope in~\ref{reg:1}. The scale and block ratio at step $m$ are
+\begin{equation}\label{eq:constants-schedule}
+ s_m=\sum_{i=0}^{m-1}\log L_i,\qquad L_m=\ell_{J_{m+1}},\qquad
+ \widehat\beta_m=\bar\beta+\kappa s_m\,.
+\end{equation}
+Here $s_m$ is the accumulated logarithmic change of lattice size (with $s_0=0$), and $\widehat\beta_m$ is the reference coupling at that scale. The same sequence $(L_m)$ is used for every cutoff and volume. The schedule makes $\omega_{J_{m+1}}/\log L_m$ tend to zero; since $J_m$ tends to infinity, the accumulated drift is $o(s_m)$.
+
+For fixed cutoff $N$ and volume index $p$, the shooting argument selects effective couplings $\beta_{N,p,m}$ along the scales, starting at the barrier and obeying
+\begin{equation*}
+ \beta_{N,p,0}=\bar\beta,\qquad
+ \left|\beta_{N,p,m+1}-\beta_{N,p,m}-\kappa\log L_m\right|
+ \leq \omega_{J_{m+1}}\,.
+\end{equation*}
+Summing the one-step drift and using the common initial value gives
+\begin{equation*}
+ \left|\beta_{N,p,m}-\widehat\beta_m\right|
+ \leq \sum_{i=0}^{m-1}\omega_{J_{i+1}}\,.
+\end{equation*}
+For every $\varepsilon>0$, the factor choice makes $\omega_{J_{i+1}}\leq\varepsilon\log L_i$ for all sufficiently large $i$, since $J_i\to\infty$. The finitely many earlier drift allowances have a fixed sum, and $s_m\to\infty$. Dividing the sum by $s_m=\sum_{i<m}\log L_i$ therefore gives $o(1)$. The bound is uniform in $N\geq m$ and $p$, because each one-step drift bound is uniform in those indices. Hence $\beta_{N,p,m}-\widehat\beta_m=o(s_m)$ as $m\to\infty$, uniformly in $N\geq m$ and $p$. This is the running-coupling estimate used in Definition~\ref{def:regular}. It records an order of construction, not numerical values for the intermediate constants.\sourcefootnote{`YM/Lattice/Scale.lean`, `Schedule.scale`; `YM/RG/History.lean`, `Calendar.hatBeta`; `YM/Price/Intent.lean`, `Selected`; `YM/Shoot/Race.lean`, theorem `Recipe.races`.}

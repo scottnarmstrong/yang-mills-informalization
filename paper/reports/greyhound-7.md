@@ -1,0 +1,9 @@
+# Greyhound — Round 7 report
+
+Completed the proof-step conversion in UV §§6–7 and drafted `part2/uv/03-blocking.tex` on the block kernel, tree coordinates and stationary background field. The owned UV proofs now use `\\proofstep` for substantial stages; short steps were merged. The new section was self-checked against every rule in `paper/RULES.md`, and its rendered pages were reread.
+
+The section states and proves the finite-mixture kernel normalisation and the local analytic stationary branch under an explicit vertical Hessian bound. The uniform stationary-ball statement includes explicit inverse-Hessian hypotheses and the lattice shell sum used for size-independent constants. The source does not yet supply several connections needed for a complete III.1/III.3/III.6 account. Visible gaps remain for the block quadratic-matching translation, the prescribed branch tangent and stationary quadratic value, the tested-action inverse and derivative bounds, and the III.3 free-kernel Fourier/positivity argument. The section makes no global-minimiser claim.
+
+Weimaraner’s cross-audit found eight U/J/R/D/S issues. All were repaired across their failure classes; Weimaraner reread pages 37–43, marked all eight fixed, found no new failures, and ended `VERIFIED`. Greyhound’s audit of Dalmatian’s constants section also completed: its four findings were repaired and verified, and the older Part I proof-step format passed class S.
+
+The required `latexmk -pdf -interaction=nonstopmode main.tex` exits 0. The combined PDF has 76 pages; Greyhound’s new section occupies pages 36–42 (7 pages; 18-page cap). The final log has no TeX errors, unresolved references or box warnings; it retains the empty-bibliography warning. No Lean build was run. The round-7 audits and repair responses are under `paper/audits/r7-*`.

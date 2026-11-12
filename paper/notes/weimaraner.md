@@ -504,3 +504,83 @@ The five original local obligations remain: three in Infinite volume (chosen-fam
 ### Verification receipt
 
 The prescribed `latexmk -pdf -interaction=nonstopmode main.tex` completed successfully. The 59-page PDF log has no LaTeX warnings/errors, missing references/citations, or overfull/underfull boxes. Infinite volume touches pages 34–48 (15 pages, cap 15); Maxwell touches pages 49–59 (11 pages, cap 14). I reread every freshly rendered page in both owned sections and their shared boundary. The final source hashes are `3b19a039e0bc7d9096ecd71a06bd7985113c84c729afb196991d30e751d124c0` for `01-infinite-volume.tex` and `a7443d060217da8c10bf7013f4419cc7f0f8ae9ccd702417a4aa8f197a055c9c` for `02-maxwell.tex`; final PDF SHA-256 is `738484aa7559b41b4fbabd5d2d3991462f60b0497c0e1f635b1186cbe7e1418b`. No fresh Lean/source proof audit was performed. The one-page report is the final action for this round; stop and wait.
+
+## Round 7 — Ward section, proof-step pruning, and self-check
+
+The existing proof-stage lists in §§8–9 (`part2/limit/01-infinite-volume.tex` and `02-maxwell.tex`) were revised to use the shared `\\proofstep` macro only for substantial argument stages. I removed headings that were outside a proof, one-sentence lists duplicating the following calculation, and unnecessary steps in short proofs. The infinite-volume compactness steps now sit with the local bound, slice movement, diagonal extraction, and smearing arguments; the Euclidean-property steps sit with the lattice symmetry, positivity, and distance-bound arguments. The Maxwell steps sit with the Gaussian factorisation, finite-dimensional extraction/correction, tested derivative recovery, and Fourier estimate. A class-wide search of §§8–10 finds no old `enumerate[Step]`, `\\item \\emph{...}` step list, or unconverted `Step n` prose label.
+
+### §10 source correspondence and visible limits
+
+The new Ward section is `part2/limit/03-ward.tex`, planned within the approved 12-page target and 17-page cap. It occupies the end of printed page 68 through page 73 in the current rendered PDF, within the cap. Its statements were checked against the pinned source `/root/code/OpenAI-YM-20261028`, commit `3456e5e75cf8d4cd558955a5c7638fba2d68f464`:
+
+| Section claim | Source check and scope retained |
+|---|---|
+| Mixed coordinate OS spaces and semigroups | `YM/OS/Dynamics.lean`, `YM/OS/Flow.lean`: reflection form, heat semigroups, parallel translations and strong continuity. No phase decomposition, clustering or mass gap is asserted. |
+| Slab insertion operators | `YM/OS/Slabs.lean`, `Train.lean`, `Halves.lean`: the all-width operator estimate is conditional on the reflected-train estimate. The selected-family uniform reflected-train input remains a visible gap. |
+| Finite shell-flux relation | `YM/Push/STRESS_FLUX/Discrete.lean`, `Ward.lean`: calibrated divergence, anomaly, exterior support and the specified estimate form. The manuscript does not claim the Wilson-measure proof exists; proving the identity and the centre/outer-shell anomaly bound remains explicit. |
+| Continuum translation/angular identities | `YM/Push/STRESS_FLUX/Scaling.lean`, `Weak.lean`, Work A01–A05: the actual weighted anomaly limit remains open. Constant and linear vector fields imply the stated charges only after that limit. |
+| Collinear angular continuation and bracket | `YM/Ward/Extreme.lean`, `Walk.lean`, `Axis.lean`, Work A08–A09: analytic continuation is conditional on collinear jet and OS bounds; propagation from the line uses distinctness-preserving coordinate paths and continuity. The bracket is stated on the all-spectator quotient. |
+| Exact orthogonal action | `YM/Spin/Isolates.lean`, `Sheets.lean`, `Close.lean`, `Lands.lean`, Work A10–A17: common Casimir, compatibility and boost-uniqueness inputs are still required. A degreewise Lie identity is not promoted to a full action. |
+| Conserved stress candidate and calibration | `YM/Push/STRESS_FLUX/Conserved.lean`, `FreeBridge.lean`, `Tune.lean`, Work A15: finite-rank existence is conditional on simplicity, hierarchy, signed symmetries and real-rank data in degrees four and five. Its unit coefficient is not called the physical Ward normalisation; same-family Maxwell calibration, sign and averaging remain open. |
+
+### Rule-by-rule rendered self-check (RULES.md)
+
+| Rule | Check against the rendered Ward pages and §§8–9 |
+|---|---|
+| A0 | Searched the owned sections for the failure classes surfaced in prior reviews: stray/one-sentence steps, missing first-use definitions, unsupported phase/clustering assumptions, false unconditional Ward conclusions, and incomplete source obligations. All listed occurrences in §§8–9 were handled; §10 states each missing input as a mathematical gap. |
+| B1 | Read pages 68–73 as a first-time mathematical reader. The section explains mixed OS spaces first, then shell charges, rotations and stress. |
+| B2 | Checked notation and first-use meanings for the half-space, Hilbert completion, heat/translation operators, ground space, buffered slab words, anomaly, flux/charge, skew generator, field action, Casimir, rank data and stress coefficient. Definitions or local explanations precede use. |
+| B3 | Reused objects have displayed definitions in §10 (`def:ward-os`, the ground-space display, divergence/anomaly/flux identities and stress candidate) or a link to the earlier field and correlation definitions. |
+| B4 | Checked reused fields, symmetries, derivatives, reflection forms and Ward identities for links to §§8–10. |
+| B5 | Replaced project shorthand with reader-facing operations; source identifiers appear only in correspondence footnotes. Standard OS and stress-tensor terms are used in context. |
+| B6 | Read for repeated roadmaps and definitions. The opening gives one route; the closing only locates phase analysis after rotation restoration. |
+| B7 | The prose contains no Lean names or writing-process commentary; missing mathematics is stated directly in visible gaps. |
+| C1 | Section is in Part II, “The construction,” after infinite volume and Maxwell. |
+| C2 | The opening names what is built, why it is needed, and the subsection route with concrete references. |
+| C3 | Each operator, flux identity, angular identity and stress candidate is motivated before its formula. |
+| C4 | Long arguments are introduced by their idea; the source-backed calculation is stated after it, with remaining work in gaps. |
+| C5 | Key constructions use displays for the OS operators, slab bound, anomaly, finite flux relation, continuum identities, bracket, and stress coefficient. |
+| C6 | Searched all owned §§8–10 for former step-list forms. The converted headings now precede their substantial arguments; short proof lists were removed or consolidated. The `\\proofstep` macro renders as specified. |
+| C7 | Checked the changed mathematical text for ordinary slash fractions and delimiter sizing; no slash fraction was introduced. |
+| C8 | Checked named property-item references in the owned text remain linked. |
+| C9 | §10 links to Part I/§8 definitions for gauge, fields, derivatives and OS forms; it adds no competing definitions of those objects. |
+| C10 | Checked new prose for British spelling, including normalisation, centred, and one-dimensional. |
+| C11 | No `\\clearpage` was added before a section. |
+| D1 | Read the pinned declarations and proof bodies listed in the source table above. Conditional quantifiers and remaining producer inputs are retained. |
+| D2 | The six construction gaps remain visible; no theorem is strengthened to cover an unproved selected-family input. |
+| E1 | This table records the rule-by-rule review of the rendered section. Pages 68–73 were visually checked. A final fresh render remains required after the shared build repair. |
+| E2 | Dalmatian's independent audit of this section and Greyhound's audit of `03-blocking.tex` are pending. |
+| E3 | Edited only weimaraner-owned files. No subagents, commits, pushes or git configuration changes. |
+| E4 | The current combined build is blocked by four missing-math-delimiter errors in Dalmatian-owned `part1/06-constants.tex`; Ward and blocking references resolve. Final successful build and full-PDF check remain pending that owner's repair. |
+
+The current 73-page PDF renders the Ward section legibly, from the end of page 68 through page 73. No overfull display was seen in these pages. The current `latexmk -g -pdf -interaction=nonstopmode main.tex` exits 12 solely on the four `Missing $ inserted` errors in `part1/06-constants.tex` lines 6 and 12; it nevertheless emits a PDF after TeX recovery, which is not accepted as a successful build. I have not edited that file.
+
+READY FOR AUDIT
+
+## Round 7 — repairs after Dalmatian's second verification
+
+Dalmatian's latest review marked original finding 2 not fixed and added findings 5–8. I repaired them in `paper/part2/limit/03-ward.tex` and appended the owner response to `paper/audits/r7-weimaraner-response.md`; that response now ends `REPAIR COMPLETE`.
+
+| Finding / rule class | Repair and class-wide check |
+|---|---|
+| 2, U/J: finite shell data | Defined the lattice stress insertion from the degree-four polynomial, its centred divergence, plaquette holonomy and colour projection, signed clover, oriented link bump, link derivative/contact, link force and equation insertion, and the directed degree-five equation term. Rechecked every later use of T, D, B, Flux, Charge, clover, contact and anomaly. The finite identity and anomaly estimate remain gaps. |
+| 5, D/U: slab bound | Replaced the false contraction with the source bound on formal combinations, using the same factor to show null relations are preserved. |
+| 6, U/D: rank assumptions | Defined the real signed-symmetry-compatible degree-four tensor and degree-five vector spaces. Stated the exact assumptions Mat is an isomorphism and the degree-five dimension is at most two, together with the compatible hierarchy and simplicity assumptions. |
+| 7, R: footnote placement | Moved the action-construction citation into the paragraph it supports and shortened it; marker and note are together on rendered page 74. Checked the full Ward footnote sequence. |
+| 8, D: empty word | Restricted the power estimate to nonempty words and separately defined the empty-word operator as the identity. Searched §12.1 for all word-length powers and the zero-word case. |
+
+Rule check: A0 class-wide search covered every occurrence of the named notation and first-use definitions in §12. B2/B3 definitions and links precede reuse. B6 has no duplicate stress-map definition. C4/D1 source statements retain their assumptions; D2's unresolved mathematics remains visible. E1: inspected the fresh 76-page rendering, including Ward pages 70–76. E4: forced `latexmk -g -pdf -interaction=nonstopmode main.tex` exited 0; no TeX errors, unresolved references or overfull/underfull boxes; the empty-bibliography warning remains. No report is written yet because Dalmatian's recheck is pending.
+
+**Dalmatian — please recheck `paper/part2/limit/03-ward.tex` against findings 2 and 5–8 in `paper/audits/r7-dalmatian-on-weimaraner.md`, and reread the repaired rendered pages 70–76. Append fixed/not-fixed status for each finding, note any new class instances, and end your verification with `VERIFIED`. I will write the round report after that verification.**
+
+READY FOR DALMATIAN RECHECK
+
+## Round 7 coordinator handoff
+
+I completed the requested rendered-PDF cross-audit of Greyhound's repaired `part2/uv/03-blocking.tex`: findings 1–8 are each marked fixed in `paper/audits/r7-weimaraner-on-greyhound.md`, no new section failures were observed on pages 37–43, and the file ends `VERIFIED`.
+
+Dalmatian: my Ward repairs for finding 2 and findings 5–8 remain recorded in `paper/audits/r7-weimaraner-response.md`, whose final marker is `REPAIR COMPLETE`. Please perform the independent recheck against `paper/audits/r7-dalmatian-on-weimaraner.md` and the current rendered Ward pages 70–76; append a fixed/not-fixed status for each finding and end with `VERIFIED`. The coordinator has now directed me to write the round 7 report after this handoff.
+
+## Round 7 report status
+
+The coordinator's latest sequence is complete through Greyhound verification, Ward repair/response, and Dalmatian handoff. The round 7 report is being written now; independent Dalmatian re-verification remains pending.

@@ -16,20 +16,23 @@ for every separated test $f$ supported inside volume $p$ (Definitions~\ref{def:m
 \end{proposition}
 
 \emph{Idea of the proof.}
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Integrate the fine link variables while holding the coarse link variables fixed. If $\rho_j$ is the density before this step and $\rho_{j+1}$ the resulting density, the integration preserves the total integral:
+\proofstep{1}{Integrate the fine variables while retaining the coarse ones.}
+If $\rho_j$ is the density before this step and $\rho_{j+1}$ the resulting density, the integration preserves the total integral:
 \begin{equation*}
  \int \rho_{j+1}(U')\,dU'=\int \rho_j(U)\,dU.
 \end{equation*}
-\item Split the integral according to whether each plaquette matrix is close to the identity, using the distance and threshold of~\eqref{eq:uv-chord} and~\eqref{eq:uv-good-configurations}. Near the identity, the Wilson energy is compared with its quadratic approximation. This term is the squared size of the infinitesimal transport around a small square (the curvature). Away from the identity, an energy bound controls the contribution. Both regions remain in the integral.
-\item Repeating the integrations changes the coefficient of this quadratic curvature term. Choose the bare coupling to compensate for that change, with the logarithmic growth in~\ref{reg:1}.
-\item Change the insertion coefficients along with the density, using the same reference level in Definition~\ref{def:uv-reference-normalisation}. In~\eqref{eq:uv-insertion}, $P_d$ turns a classical polynomial into a polynomial of nearby links, $S_{\theta_N^{-1}}$ rescales its number of factors, $\tau_{N,p,d}^{-1}$ carries the chosen reference coefficients back to the fine level, and $a_N^{-d}$ supplies the physical scaling. This keeps the reference coefficients fixed when cutoffs are compared.
-\item Compare two cutoffs by stopping both at the same intermediate spacing. If $C_{N,p}^{(j)}$ denotes the moment after the integrations stop at spacing $j$, the comparison has the form
+\proofstep{2}{Separate plaquettes near the identity from those farther away.}
+Use the distance and threshold of~\eqref{eq:uv-chord} and~\eqref{eq:uv-good-configurations}. Near the identity, compare the Wilson energy with its quadratic approximation, the squared size of infinitesimal transport around a small square (the curvature). Away from the identity, bound the contribution by its energy. Both regions remain in the integral.
+\proofstep{3}{Choose the coupling to follow the changed quadratic coefficient.}
+Repeating the integrations changes the coefficient of this quadratic curvature term. Choose the bare coupling to compensate for that change, with the logarithmic growth in~\ref{reg:1}.
+\proofstep{4}{Change the insertion coefficients with the density.}
+Use the same reference level in Definition~\ref{def:uv-reference-normalisation}. In~\eqref{eq:uv-insertion}, $P_d$ turns a classical polynomial into a polynomial of nearby links, $S_{\theta_N^{-1}}$ rescales its number of factors, $\tau_{N,p,d}^{-1}$ carries the chosen reference coefficients back to the fine level, and $a_N^{-d}$ supplies the physical scaling. This keeps the reference coefficients fixed when cutoffs are compared.
+\proofstep{5}{Compare both cutoffs at one intermediate spacing.}
+If $C_{N,p}^{(j)}$ denotes the moment after the integrations stop at spacing $j$, the comparison has the form
 \begin{equation*}
  |C_{N,p}-C_{M,p}|\le |C_{N,p}-C_{N,p}^{(j)}|+|C_{N,p}^{(j)}-C_{M,p}^{(j)}|+|C_{M,p}^{(j)}-C_{M,p}|.
 \end{equation*}
-Make the two fine-spacing errors small by choosing $j$, then let $N,M$ increase at that fixed $j$. This is the intended Cauchy argument for the full sequence.
-\end{enumerate}
+Make the two fine-spacing errors small by choosing $j$, then let $N,M$ increase at that fixed $j$. This is the Cauchy argument for the full sequence.
 
 \gap{The paper still needs bounds for both parts of the plaquette split, a proof of the change in the quadratic energy coefficient after each integration, and a fixed-spacing Cauchy estimate whose remaining fine-spacing error is uniform in the cutoff. These estimates are needed to prove the fixed-volume limit in the proposition.}
 
@@ -43,29 +46,32 @@ For the jointly chosen family of Proposition~\ref{prop:uv} and every strictly in
 \end{proposition}
 
 \emph{Idea of the proof.}
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Divide the box into reflected cells $C$ as in Definition~\ref{def:iv-reflections}. For a positive-time observable $F_C$ in a cell, $\Theta_C F_C$ is its reflected, complex-conjugated copy; $\|F_C\|_{\mathcal C}$ is the one-cell bound of~\eqref{eq:iv-root}. Reflection positivity and the volume-independent bound~\eqref{eq:iv-centered} give
+\proofstep{1}{Reflect each positive-time observable into its cell.}
+For the reflected cells $C$ of Definition~\ref{def:iv-reflections}, $\Theta_C F_C$ is the reflected, complex-conjugated copy of an observable $F_C$; $\|F_C\|_{\mathcal C}$ is its one-cell bound from~\eqref{eq:iv-root}. Reflection positivity and the volume-independent bound~\eqref{eq:iv-centered} give
 \begin{equation*}
  \left|\left\langle\prod_C\Theta_C F_C\right\rangle\right|
  \leq\prod_C\|F_C\|_{\mathcal C}.
 \end{equation*}
 Thus the joint bound does not grow with the surrounding box.
-\item Integrating the insertion along one coordinate slice bounds the change when its point moves by $h$:
+\proofstep{2}{Control motion of one insertion by integrating across a slice.}
+With the other labels and positions fixed, integrating along a coordinate slice bounds the change when the point moves by $h$:
 \begin{equation*}
  \left|S^s(a;x_1,\ldots,x_i+h e_\mu,\ldots,x_n)-S^s(a;x_1,\ldots,x_i,\ldots,x_n)\right|\leq C|h|.
 \end{equation*}
 All other insertion labels and positions are fixed in this estimate, and the segment from $x_i$ to $x_i+h e_\mu$ stays away from the other points. Uniform boundedness and this continuity estimate give a common convergent subsequence for the countable polynomial-basis lists. For a smooth compactly supported test $f$, summation by parts moves the finite difference from the correlation to $f$; its limit is the distributional derivative, represented by the correlation with the corresponding higher-degree insertion.
-\item The full fixed-volume limits from Proposition~\ref{prop:uv} identify the inner limits. Only the outer volume refinement remains, in the order of~\eqref{eq:ordered}.
-\item The reflection inner product completes to a Hilbert space. Its nonnegative energy operator $H$ generates positive-time evolution $e^{-tH}$; $P_0$ denotes the orthogonal projection onto $\ker H$. The spectral theorem gives
+\proofstep{3}{Use the fixed-volume limit to identify the inner limit.}
+The full fixed-volume limits from Proposition~\ref{prop:uv} identify the inner limits. Only the outer volume refinement remains, in the order of~\eqref{eq:ordered}.
+\proofstep{4}{Project the positive-time evolution onto zero energy.}
+The reflection inner product completes to a Hilbert space. Its nonnegative energy operator $H$ generates positive-time evolution $e^{-tH}$; $P_0$ denotes the orthogonal projection onto $\ker H$. The spectral theorem gives
 \begin{equation*}
  e^{-tH}\xrightarrow[t\to\infty]{}P_0.
 \end{equation*}
 Inserting observations between long evolutions gives operators on this subspace. The required rotation argument must show that each such pair satisfies $AB=BA$; that identity is still unproved, as recorded in the gap below.
-\item If these bounded operators commute, their joint spectral representation assigns them coordinate functions on their compact joint-value space $X$. The vacuum vector induces a probability measure $\nu$ there, so the mixed correlation is the average of the component correlations:
+\proofstep{5}{Represent the commuting operators by phase values.}
+If these bounded operators commute, their joint spectral representation assigns them coordinate functions on their compact joint-value space $X$. The vacuum vector induces a probability measure $\nu$ there, so the mixed correlation is the average of the component correlations:
 \begin{equation*}
  S^{\mix}(a;x)=\int_X S^\xi(a;x)\,\nu(d\xi).
 \end{equation*}
-\end{enumerate}
 
 \gap{The proof still needs volume-independent bounds for this chosen family's local observables and their derivative representatives. It must also show that a stress-tensor integral supported arbitrarily far away contributes zero in the limit, and prove the displayed commutation of the long-time operators. Compactness gives none of these estimates.}
 
@@ -79,12 +85,14 @@ For the jointly chosen hierarchy of Proposition~\ref{prop:limit}, the selected t
 \end{proposition}
 
 \emph{Idea of the proof.}
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Test each insertion with a smooth function supported in a positive-time interval, with the intervals separated and ordered. Shrinking their widths gives limits of the ordered products as distributions, meaning after integration against smooth tests.
-\item Use the positive-time reflected form described in the construction guide for the field words generated by~\eqref{eq:domain}. Identify vectors of zero norm and complete; a further smeared field acts by adding it to the left of a word.
-\item Once the required Euclidean rotation identities are proved, continue them to the corresponding spacetime transformations. The nonnegative Euclidean energy gives the forward-cone momentum condition. When two supports are spacelike separated, the two analytic orderings agree, so the fields commute there.
-\item Identify two field labels if every tested correlation involving their difference is zero, as in Proposition~\ref{prop:iv-smooth}. This quotient gives faithful labels; the constant lattice observable gives a nonzero field.
-\end{enumerate}
+\proofstep{1}{Take limits of separated, ordered smearings.}
+Test each insertion with a smooth function supported in a positive-time interval, with the intervals separated and ordered. Shrinking their widths gives limits of the ordered products as distributions, meaning after integration against smooth tests.
+\proofstep{2}{Build the field space from the positive reflected form.}
+Use the form described in the construction guide for the field words generated by~\eqref{eq:domain}. Identify vectors of zero norm and complete; a further smeared field acts by adding it to the left of a word.
+\proofstep{3}{Continue the Euclidean identities to spacetime.}
+Once the required Euclidean rotation identities are proved, continue them to the corresponding spacetime transformations. The nonnegative Euclidean energy gives the forward-cone momentum condition. When two supports are spacelike separated, the two analytic orderings agree, so the fields commute there.
+\proofstep{4}{Remove only fields invisible to every tested correlation.}
+Identify two field labels if every tested correlation involving their difference is zero, as in Proposition~\ref{prop:iv-smooth}. This quotient gives faithful labels; the constant lattice observable gives a nonzero field.
 
 \gap{The reconstruction proof still needs the Euclidean rotation identities, uniform bounds as the imaginary-time separations vanish, and a proof that the two analytic orderings have the same boundary values at spacelike separation. It must also verify that the null-correlation quotient preserves the stated field domains and symmetries.}
 
@@ -98,17 +106,18 @@ The fields and coefficients in~\ref{hierarchy:7} of the jointly chosen hierarchy
 \end{proposition}
 
 \emph{Idea of the proof.}
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Fix the nearby insertion positions and move the cluster's centre to the origin by translation. Compare its correlations with those of the finite list of fields $O_{j,\kappa}$ placed at that centre. The coefficients are selected before specifying any distant insertions, so the same list is tested against every later choice.
-\item Keep degrees at most~$D$. The first omitted degree controls the error, with an arbitrarily small loss to absorb logarithmic factors:
+\proofstep{1}{Translate the cluster and choose its coefficients before the spectators.}
+Fix the nearby insertion positions and move the cluster's centre to the origin by translation. Compare its correlations with those of the finite list of fields $O_{j,\kappa}$ placed at that centre. The coefficients are selected before specifying any distant insertions, so the same list is tested against every later choice.
+\proofstep{2}{Truncate at degree $D$ and bound the first omitted terms.}
+The first omitted degree controls the error, with an arbitrarily small loss to absorb logarithmic factors:
 \begin{equation*}
 \left|S^s(a,x;b,y)-\sum_{j=0}^D\sum_{\kappa\in\Ch j}
  c_{j,\kappa}(a;x,o)S^s\bigl((j,O_{j,\kappa}),o;b,y\bigr)\right|
 \le r^{D+1-w(a)-\varepsilon},
 \end{equation*}
 the estimate of~\eqref{eq:ope-remainder}.
-\item Choose the coefficients using a fixed collection of distant-field correlations, before choosing the spectators or state. To make that choice work for every later correlation, the proof must bound the remainder as an operator on the Hilbert space; taking its expectation in any phase or in the average then preserves the bound.
-\end{enumerate}
+\proofstep{3}{Use one operator bound for all later states and spectators.}
+Choose the coefficients using a fixed collection of distant-field correlations, before choosing the spectators or state. To make that choice work for every later correlation, the proof must bound the remainder as an operator on the Hilbert space; taking its expectation in any phase or in the average then preserves the bound.
 
 \gap{The product argument still needs to prove the coefficient bound~\eqref{eq:ope-coefficient}, the finite-sum remainder bound~\eqref{eq:ope-remainder}, and the operator bound that makes one coefficient choice valid for every spectator list and state.}
 
@@ -122,21 +131,23 @@ The field $\Theta\in F_4$ of the jointly chosen hierarchy satisfies~\ref{trace:1
 \end{proposition}
 
 \emph{Idea of the proof.}
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Compare each normalised trace insertion at short distance with the corresponding free Maxwell curvature expression of Section~\ref{sec:maxwell}. Its coefficient contains one factor of the inverse running coupling; the two insertions therefore contribute two inverse-coupling factors.
-\item The logarithmic growth required by~\ref{reg:1} turns those two factors into the short-distance law
+\proofstep{1}{Compare each trace insertion with a free curvature field.}
+Its coefficient contains one factor of the inverse running coupling; the two insertions therefore contribute two inverse-coupling factors.
+\proofstep{2}{Convert the coupling growth into the two-point limit.}
+The logarithmic growth required by~\ref{reg:1} turns those two factors into the short-distance law
 \begin{equation*}
  \lim_{r\downarrow0}r^8\left(\log\frac1r\right)^2G_\Theta(r)
  =\frac{3\dim_\R\g}{\pi^4},
 \end{equation*}
 as in~\eqref{eq:trace-law}; the coefficient of the coupling's logarithmic growth and the trace normalisation determine the amplitude.
-\item First the comparison is proved on a sequence of radii. Positivity of energy gives a positive measure $\sigma$ and the Laplace representation
+\proofstep{3}{Extend a sequence of radius bounds to all radii.}
+First the comparison is proved on a sequence of radii. Positivity of energy gives a positive measure $\sigma$ and the Laplace representation
 \begin{equation*}
  G_\Theta(r)=\int_{[0,\infty)}e^{-rE}\,d\sigma(E),\qquad d\sigma\ge0,
 \end{equation*}
 where $\sigma$ is the positive spectral measure supplied by the spectral theorem for the selected trace two-point function and the nonnegative energy operator $H$ from Proposition~\ref{prop:limit}. Thus $G_\Theta$ decreases for $r>0$. Bounds at neighbouring radii in the sequence then squeeze every intermediate value and give the full right limit.
-\item Each finite profile in Definition~\ref{def:wick} is a finite sum of products of the displayed momentum integrals. Its small-radius expansion has a different power-and-logarithm form from the positive inverse-logarithmic law in~\eqref{eq:trace-law}; this proves the stated exclusion once those expansions are established.
-\end{enumerate}
+\proofstep{4}{Compare the limit with each finite free-field profile.}
+Each finite profile in Definition~\ref{def:wick} is a finite sum of products of the displayed momentum integrals. Its small-radius expansion has a different power-and-logarithm form from the positive inverse-logarithmic law in~\eqref{eq:trace-law}; this proves the stated exclusion once those expansions are established.
 
 \gap{The trace proof still needs the normalisation of the stress trace, the comparison on a sequence dense enough to squeeze all positive radii, and the small-radius expansions of the kernels in~\eqref{eq:mode}. It must show that every finite profile has an asymptotic incompatible with~\eqref{eq:trace-law}.}
 

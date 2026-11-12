@@ -1,0 +1,226 @@
+\section{Ward identities, rotations and stress}
+\label{sec:ward}
+
+This section prepares the mixed Osterwalder--Schrader (OS) Hilbert spaces, then explains how shell identities constrain translations and rotations, and finally identifies the stress tensor that carries those identities. The mixed spaces are built from the correlation functions of Proposition~\ref{prop:iv-euclidean}; they are not yet a decomposition into pure phases. Subsection~\ref{subsec:ward-os} gives the Hilbert-space and slab construction, Subsections~\ref{subsec:ward-flux}--\ref{subsec:ward-rotations} treat shell and rotation identities, and Subsection~\ref{subsec:ward-stress} identifies the stress tensor. The later phase analysis uses the restored rotations to prove that the mixed ground-state algebra is commutative.
+
+\subsection{Mixed OS spaces and slabs}
+\label{subsec:ward-os}
+
+Fix a coordinate direction $\mu$. The positive half-space is $x^\mu>0$, and reflection in its boundary is $r_{\mu,0}$ from Definition~\ref{def:iv-reflections}. The reflected forms in~\eqref{eq:iv-os-form} and~\eqref{eq:iv-os-smear} are positive by~\ref{item:iv-reflection}. They define a pre-Hilbert space by taking finite linear combinations of positive-side tests, using the smeared form as the inner product, and identifying vectors of zero norm. Its Hilbert completion is the OS space for the direction $\mu$.
+
+\begin{definition}[Mixed OS operators]\label{def:ward-os}
+Write $\mathcal H_\mu$ for this Hilbert completion. For $t\ge0$, let $E_\mu(t)$ be the operator induced by translating a positive-side test a distance $t$ farther into the half-space. For $z\in\mathbb R^4$ with $z^\mu=0$, let $U_\mu(z)$ be the operator induced by translating the test by $z$ parallel to the reflection plane. These are the coordinate heat and spatial translation operators, respectively. Their defining relations are
+\begin{equation}\label{eq:ward-os-operators}
+\begin{aligned}
+ E_\mu(0)&=1,& E_\mu(s+t)&=E_\mu(s)E_\mu(t),& E_\mu(t)^*&=E_\mu(t),& \|E_\mu(t)\|&\le1,\\
+ U_\mu(0)&=1,& U_\mu(z+w)&=U_\mu(z)U_\mu(w),& \|U_\mu(z)v\|&=\|v\|,\\
+ E_\mu(t)U_\mu(z)&=U_\mu(z)E_\mu(t).
+\end{aligned}
+\end{equation}
+The operators are strongly continuous: for each fixed vector, their value varies continuously with the parameter.
+\end{definition}
+
+The OS positivity and Euclidean translation laws give the semigroup and unitary relations in~\eqref{eq:ward-os-operators}. Strong continuity follows first on the dense span of test vectors from continuity of the correlations, and then on the completion using the operator norm bounds. This is the mixed construction: no phase is selected, and no clustering or positive mass gap is assumed.\sourcefootnote{\nolinkurl{YM/OS/Dynamics.lean} and \nolinkurl{YM/OS/Flow.lean}: coordinate OS semigroups and strong continuity}
+
+The mixed ground space is the subspace fixed by every heat operator:
+\begin{equation}\label{eq:ward-ground-space}
+ \mathcal H_\mu^0=\{v\in\mathcal H_\mu:E_\mu(t)v=v\text{ for every }t\ge0\}.
+\end{equation}
+This definition does not assert that the subspace is one-dimensional; choosing a phase with a one-dimensional fixed space is a later step.
+
+For later use, a slab of width $d>0$ is the region $0<x^\mu<d$. A word $w$ in a slab is a finite ordered list of positive-side tests supported in that region. It is $r$-buffered if its insertion points are pairwise at least $r$ apart and each is at least $r$ from both boundary planes. Write $|w|$ for the number of factors, and call a word $(D,R)$-bounded if each field degree is at most $D$ and each field norm is at most $R$. A future word $v$ is any finite ordered list of tests supported in the positive half-space; let $\Phi_v$ be its OS vector. The finite linear span $\mathcal D_\mu$ of all such vectors is dense in $\mathcal H_\mu$.
+
+Let $\mathcal W_\mu$ be the vector space of formal finite linear combinations of future words, with the map $q_\mu:\mathcal W_\mu\to\mathcal D_\mu$ sending a word $v$ to $\Phi_v$. Inserting $w$ and translating each test of $v$ through the slab defines a linear map $P^{\rm form}_{\mu,d}(w)$ on $\mathcal W_\mu$ by concatenation. It gives an operator on $\mathcal D_\mu$ only if it respects the kernel of $q_\mu$, that is, if a zero-norm combination of future words is sent to another zero-norm combination.
+
+The reflected-train estimate is the input for this descent and the operator bound. If the mixed correlations supply it at every degree and norm bound, then for every $D,R$ there are $C>0$ and an integer $\kappa\ge0$, independent of $d,r,w$, such that, for every nonempty $(D,R)$-bounded, $r$-buffered word and every $u\in\mathcal W_\mu$,
+\begin{equation*}
+ \bigl\|q_\mu(P^{\rm form}_{\mu,d}(w)u)\bigr\|
+ \le C^{|w|}\left(\frac{|w|}{r}\right)^{\kappa|w|}\bigl\|q_\mu(u)\bigr\|
+ \qquad(0<r\le1).
+\end{equation*}
+This bound sends the kernel of $q_\mu$ into itself, so the induced operator $P_{\mu,d}(w)$ is well defined on $\mathcal D_\mu$ and extends to its Hilbert completion with
+\begin{equation}\label{eq:ward-slab-bound}
+ \|P_{\mu,d}(w)\|
+ \le C^{|w|}\left(\frac{|w|}{r}\right)^{\kappa|w|}
+\end{equation}
+for nonempty words. For the empty word, define $P_{\mu,d}(\varnothing)=1$, whose norm is one. The proof first bounds alternating reflected copies of the slab word by the train estimate; reflection positivity then turns these bounds on powers into an operator norm bound. Concatenation and reflection give the adjoint and product relations for the slab operators.\sourcefootnote{\nolinkurl{YM/OS/Slabs.lean}, \nolinkurl{Train.lean}, and \nolinkurl{Halves.lean}: slab operators, the reflected-train power estimate, and the conditional all-width bound}
+
+\gap{For the selected Wilson family and its common refinement, prove the reflected-train input at every degree and norm bound, uniformly over buffered words and slab widths. The conditional argument above then gives~\eqref{eq:ward-slab-bound}. Pointwise reflection positivity and convergence of each fixed word do not supply this uniform input.}
+
+\subsection{Shell flux and translation identities}
+\label{subsec:ward-flux}
+
+The stress insertion is a symmetric array $J=(J_{ab})_{a,b=1}^4$ of degree-four fields. Its divergence is the degree-five array
+\begin{equation}\label{eq:ward-divergence}
+ (\nabla J)_b=\sum_{a=1}^4\partial_aJ_{ab}.
+\end{equation}
+Here the derivative is the field derivative of Proposition~\ref{prop:iv-smooth}; vanishing of~\eqref{eq:ward-divergence} means conservation in every correlation with separated spectator fields. A cutoff $\chi$ is a smooth compactly supported real function, and $V$ is a smooth vector field. The shell flux is the correlation obtained by inserting $J_{ab}$ against the derivative of $\chi$ and the component $V_b$. Its support lies where the cutoff changes, the shell around the region where $\chi=1$.
+
+Let $Q_0=(Q_{0,ij})$ be the degree-zero curvature Taylor coefficient of Definition~\ref{def:mx-jets}; each entry is a Lie-algebra-valued two-form component. Use the invariant colour inner product~\eqref{eq:mx-colors}. For a coefficient array $w=(w_0,w_1,w_2,w_3)\in\mathbb R^4$, define the degree-four polynomials
+\begin{equation}\label{def:ward-stress-polynomial}
+ m_{ab}(w;Q_0)=
+ \begin{cases}
+ w_0\mathbf1+w_1\displaystyle\sum_i\langle Q_{0,ai},Q_{0,ai}\rangle_{\g}
+ +w_2\displaystyle\sum_{i,j}\langle Q_{0,ij},Q_{0,ij}\rangle_{\g},&a=b,\\[2pt]
+ w_3\displaystyle\sum_i\langle Q_{0,ai},Q_{0,bi}\rangle_{\g},&a\ne b.
+ \end{cases}
+\end{equation}
+They define the symmetric field array
+\begin{equation}\label{def:ward-stress-map}
+ \operatorname{Mat}(w)_{ab}=\pi_4[m_{ab}(w;Q_0)]\in F_4,
+\end{equation}
+where $\pi_4$ is the quotient map of Definition~\ref{def:iv-fields}. Regard each $m_{ab}(w;Q_0)$ as its coefficient in $V_4$. For the same coefficient array, $T_{ab}^{N,p}(w;x;U)$ denotes the finite-lattice insertion $I_{N,p}((4,m_{ab}(w;Q_0)),x;U)$ of~\eqref{eq:uv-insertion}. This specifies which lattice representative is used in the shell formula.
+
+The finite-cutoff shell relation has an explicit remainder. Let $\operatorname{step}_i$ be one lattice step in coordinate direction $i$, and let $a_N$ be its physical length. For a fixed coefficient array $w$, its centred lattice divergence is
+\begin{equation*}
+ \mathcal D_b^{N,p}(w;x;U)=\frac{1}{2a_N}\sum_{a=1}^4
+ \left(T_{ab}^{N,p}(w;x+\operatorname{step}_a;U)-T_{ab}^{N,p}(w;x-\operatorname{step}_a;U)\right).
+\end{equation*}
+To define the equation and contact insertions, let $U[x,d]$ be the group matrix on the link from $x$ in directed step $d$, with a reversed link read as the inverse of the same edge matrix. The plaquette holonomy is
+\begin{equation*}
+\begin{aligned}
+ H_{x,d,e}(U)&=U[x,d]U[x+d,e]U[x+e,d]^{-1}U[x,e]^{-1},\\
+ P_{x,d,e}(U)&=\operatorname{proj}_{\g}\!\left(\frac{H_{x,d,e}(U)-H_{x,d,e}(U)^{-1}}{2}\right).
+\end{aligned}
+\end{equation*}
+where $\operatorname{proj}_{\g}$ is orthogonal projection onto the real Lie algebra in the fixed colour coordinates. Let $E_\alpha$ be the orthonormal colour basis fixed in~\eqref{eq:mx-colors}. For $d=\pm\operatorname{step}_i$, the colour-valued clover on the $b,d$ face is
+\begin{equation*}
+\begin{aligned}
+ X_{x,b,d}(U)&=\frac14\left(P_{x,+\operatorname{step}_b,d}(U)-P_{x,+\operatorname{step}_b,-d}(U)
+ -P_{x,-\operatorname{step}_b,d}(U)+P_{x,-\operatorname{step}_b,-d}(U)\right)\\
+ &=\sum_\alpha X_{x,b,d,\alpha}(U)E_\alpha.
+\end{aligned}
+\end{equation*}
+Thus the group-valued plaquette transports are first converted to Lie-algebra colour components and then combined with the four signed coefficients.
+
+For a test observable $F$, define the link bump by changing only the edge used by $(x,d)$: if $d$ is forward, replace its matrix $U(e)$ by $\exp(tE_\alpha)U(e)$; if $d$ is reversed, replace it by $U(e)\exp(-tE_\alpha)$. The link derivative and contact are
+\begin{equation*}
+ D_{x,d,\alpha}F(U)=\left.\frac{d}{dt}\right|_{t=0}F(\operatorname{bump}(x,d,tE_\alpha,U)),\qquad
+ C_{x,b,d}(F;U)=\sum_\alpha X_{x,b,d,\alpha}(U)D_{x,d,\alpha}F(U).
+\end{equation*}
+When $d=\pm\operatorname{step}_i$, define the force on that link and the corresponding equation insertion for a colour-valued function $X(U)=\sum_\alpha X_\alpha(U)E_\alpha$ by
+\begin{equation*}
+\begin{aligned}
+ \mathcal F_{x,d}(U)&=\sum_{j\ne i}\left(P_{x,d,+\operatorname{step}_j}(U)+P_{x,d,-\operatorname{step}_j}(U)\right),\\
+ \mathcal E_{N,p}(x,d;X;U)&=\beta_{N,p}\langle X(U),\mathcal F_{x,d}(U)\rangle_{\g}
+ -\sum_\alpha D_{x,d,\alpha}X_\alpha(U).
+\end{aligned}
+\end{equation*}
+The centred degree-five equation insertion is the directed clover difference
+\begin{equation*}
+\begin{aligned}
+ \mathcal B_b^{N,p}(x;U)=\frac{1}{2a_N^5}\sum_{i=1}^4\Bigl(&
+ \mathcal E_{N,p}(x,+\operatorname{step}_i;X_{x,b,+\operatorname{step}_i};U)\\[-2pt]
+ &-\mathcal E_{N,p}(x,-\operatorname{step}_i;X_{x,b,-\operatorname{step}_i};U)\Bigr).
+\end{aligned}
+\end{equation*}
+For the chosen calibration, let $Z_\delta$ be the scalar multiplying this equation insertion. Their difference after calibration is the anomaly
+\begin{equation}\label{eq:ward-anomaly}
+ \mathcal A_b^{N,p}=\mathcal D_b^{N,p}-Z_\delta\mathcal B_b^{N,p}.
+\end{equation}
+The shifted boundary weight at site $x$, direction $i$, and vector component $b$ is
+\begin{equation*}
+ B_{N,p}(x,i,b)=\frac{1}{2a_N}\Bigl[(\chi(x+\operatorname{step}_i)-\chi(x))V_b(x+\operatorname{step}_i)
+ +(\chi(x)-\chi(x-\operatorname{step}_i))V_b(x-\operatorname{step}_i)\Bigr].
+\end{equation*}
+Here both values of $V$ are evaluated at the adjacent sites, not at the Ward centre.
+
+The contact stencil and its directed difference are
+\begin{equation*}
+ \mathcal V_{N,p}(x,b;F;U)=\frac{1}{2a_N^5}\sum_{i=1}^4
+ \bigl(C_{x,b,+\operatorname{step}_i}(F;U)-C_{x,b,-\operatorname{step}_i}(F;U)\bigr).
+\end{equation*}
+Call $x$ an active Ward centre when $\chi(x)\ne0$. The exterior-support condition on $E$ means that each local factor in $E$ has link support away from every active Ward centre; distinct insertion points alone do not imply this. For bounded lattice observables $F$ and $E$ satisfying this condition, define the two finite sums by
+\begin{align*}
+ \operatorname{Flux}_{N,p}(T,\chi,V;F E)
+ &=-a_N^4\sum_x\sum_{b=1}^4\sum_{i=1}^4
+ B_{N,p}(x,i,b)\left\langle T_{ib}^{N,p}(x)F E\right\rangle_{N,p},\\
+ \operatorname{Charge}_{N,p}(Z_\delta,\chi,V;F,E)
+ &=a_N^4\sum_x\sum_{b=1}^4\chi(x)V_b(x)Z_\delta
+ \left\langle\mathcal V_{N,p}(x,b;F)E\right\rangle_{N,p}.
+\end{align*}
+The first sum has the outward-flux minus sign. These are the precise shifted boundary weight and contact stencil in the finite-cutoff relation required for the continuum argument:
+\begin{equation}\label{eq:ward-finite-flux}
+ \operatorname{Flux}_{N,p}(T,\chi,V;F E)
+ =\operatorname{Charge}_{N,p}(Z_\delta,\chi,V;F,E)
+  +a_N^4\sum_x\sum_b \chi(x)V_b(x)
+       \left\langle \mathcal A_b^{N,p}(x)F E\right\rangle_{N,p}.
+\end{equation}
+In addition to the identity, the required error control is
+\begin{equation*}
+ \left|\operatorname{Flux}_{N,p}-\operatorname{Charge}_{N,p}\right|
+ \le a_N^4\sum_x\sum_b |\chi(x)V_b(x)|
+       \left|\left\langle\mathcal A_b^{N,p}(x)F E\right\rangle_{N,p}\right|.
+\end{equation*}
+This exterior condition is stronger than merely requiring the insertion points to be distinct.
+
+The required identity retains the anomaly on the enclosed insertion as well as at all other sites. It does not assert that this term is small. In particular, the identity between the equation insertion and the divergence on unweighted smooth tests does not by itself permit discarding the anomaly under the weighted shell sum.\sourcefootnote{\nolinkurl{YM/Push/STRESS_FLUX/Discrete.lean}, \nolinkurl{Ward.lean}: calibrated divergence, anomaly, exterior support, and the stated finite shell estimate}
+
+\gap{Establish this finite-cutoff identity and error bound from the Wilson measure for the stated calibration and exterior-support condition. The cited result specifies the estimate's form, including the anomaly sum, but does not provide a proof of it here. In particular, the contact stencil and shifted boundary weight must be retained exactly.}
+
+\gap{To pass~\eqref{eq:ward-finite-flux} to the selected continuum family, prove a bound for the anomaly sum with the actual cutoff $\chi$, vector field $V$, contact stencil and exterior supports. The bound must control the contribution at the Ward centre and show that the outer-shell remainder vanishes in the required limit. No clustering or mass-gap estimate is available to replace this calculation. Until this estimate is supplied, neither the continuum translation charge nor the angular charge follows from the finite identity.\sourcefootnote{\nolinkurl{YM/Push/STRESS_FLUX/Scaling.lean}, \nolinkurl{Weak.lean}, and Work A01--A05: cutoff weights, scale limits and the required shell comparison}}
+
+For a real skew-symmetric $4\times4$ matrix $K$, let $R_t=e^{tK}$. On a raw polynomial representative $v\in V_d$, rotate every spacetime index by $R_t$ and transform each two-form index pair by the same orthogonal change; denote this pullback on coefficient polynomials by $\rho_d^{\rm raw}(R_t)$. Define its infinitesimal variation by
+\begin{equation}\label{eq:ward-raw-generator}
+ \widetilde D_Kv=\left.\frac{d}{dt}\right|_{t=0}\rho_d^{\rm raw}(R_t)v.
+\end{equation}
+This is a linear map on raw coefficients. It induces a map $D_K$ on the quotient field space $F_d=V_d/N_d$ only if it preserves the invisible subspace $N_d$ of Definition~\ref{def:iv-fields}; the rotation argument below must establish that descent. When the continuum flux identities and this descent are available, constant vector fields give the translation Ward identity, while the linear vector field $V(y)=K(y-x_0)$ gives the angular identity about $x_0$. For fields $A_1,\ldots,A_n$ at distinct points $x_1,\ldots,x_n$, write $S_n(A;x)$ for their correlation as in Section~\ref{sec:infinite-volume}. The resulting identities have the form
+\begin{equation}\label{eq:ward-continuum-identities}
+\begin{aligned}
+ \sum_{i=1}^n\partial_{i,b}S_n(A;x)&=0,\\
+ \sum_{i=1}^n\left((Kx_i)\cdot\nabla_{x_i}S_n(A;x)
+       +S_n(A_1,\ldots,D_KA_i,\ldots,A_n;x)\right)&=0.
+\end{aligned}
+\end{equation}
+The second line includes both the motion of each point and the infinitesimal action on its field. The sign is fixed by the outward-flux convention in~\eqref{eq:ward-finite-flux}; a change of convention changes both terms together. These continuum identities are used below only after the missing exterior-flux limit has been established.
+
+\subsection{From infinitesimal rotations to an exact action}
+\label{subsec:ward-rotations}
+
+The limiting correlations already have translations and signed coordinate symmetries by~\ref{item:iv-symmetries}. These discrete symmetries do not imply covariance under all of $O(4)$. For a skew matrix $K$, the angular identity in~\eqref{eq:ward-continuum-identities} uses both the positional derivative $X_K$ and the field map $D_K$. Its collinear form is the assertion that the angular variation vanishes when every insertion point lies on one coordinate line.
+
+The OS argument first obtains that collinear identity. Moving one point while it remains strictly first or last in its coordinate projection makes the corresponding OS vector analytic in that coordinate. The derivative identities give all Taylor coefficients at the line; analyticity then gives the identity along the permitted segment. The mixed slab estimate controls the vectors uniformly as the other insertions vary. This is the analytic input that produces the collinear identity from the shell charges.
+
+\gap{Derive the collinear angular identity from the continuum shell charges for every degree list and every coordinate line. The argument must supply the OS analytic-vector bounds for moving an insertion, with the required uniformity in the remaining slab tests. The cited argument proves analytic continuation conditional on these bounds and on the collinear jet identities; the uniform slab-word estimate above and the continuum shell limit are not supplied here.}
+
+Once the collinear identity is known, a geometric argument moves a general separated configuration to one on a coordinate line, changing one point-coordinate at a time while preserving distinctness. Continuity of the correlations and their derivatives then gives the angular identity at the original configuration. This propagation is conditional only on the collinear identity, the differentiability of the correlations, and compatibility of the field derivatives. It does not require analytic continuation from the line at every configuration.\sourcefootnote{\nolinkurl{YM/Ward/Extreme.lean}, \nolinkurl{Walk.lean}, and \nolinkurl{Axis.lean}: analytic motion in an extreme coordinate, paths preserving distinctness, and propagation from collinear configurations}
+
+If the angular identity has been extended to all separated configurations, applying two angular derivatives in opposite orders compares the positional Lie bracket with the commutator of the field maps. The positional vector fields satisfy $[X_K,X_L]=-X_{[K,L]}$ under the convention of the source. Thus the Ward identities determine the field commutator only up to a linear map that is invisible in all separated correlations. The all-spectator quotient of Definition~\ref{def:iv-fields} removes precisely such maps once the Ward identity holds in every spectator context.
+
+\begin{equation}\label{eq:ward-lie-relation}
+ [D_K,D_L]=D_{[K,L]}\quad\text{on the all-spectator quotient}.
+\end{equation}
+
+The passage from an invisible defect to zero is a quotient argument, not an assumption that the finite-cutoff generators already form a representation. The cited Ward argument establishes the bracket identity and angular continuation conditional on their inputs\sourcefootnote{\nolinkurl{YM/Ward/Axis.lean}, \nolinkurl{YM/Work/A08.lean}, and \nolinkurl{YM/Work/A09.lean}: collinear propagation and the Lie-bracket defect}; those assumptions remain necessary here.
+
+An exact orthogonal action requires more than~\eqref{eq:ward-lie-relation}: one must integrate the infinitesimal maps and make the resulting actions agree across all degrees and inclusions. In this construction, each finite-dimensional degree is compared with the free rotation action. A polynomial in the quadratic Casimir, the sum of squares of the infinitesimal rotation generators, isolates the desired part of that finite-dimensional action. The resulting approximate projection is corrected to an idempotent (an operator $P$ satisfying $P^2=P$) by iteration of $p\mapsto3p^2-2p^3$. The corrected degreewise actions are then matched to one another through the field inclusions. Finally, Lorentz boosts, which mix the time direction with a spatial direction after continuation, are determined by uniqueness for their one-parameter differential equations.\sourcefootnote{\nolinkurl{YM/Spin/Isolates.lean}, \nolinkurl{Sheets.lean}, \nolinkurl{Close.lean}, \nolinkurl{Lands.lean}; Work A10--A17}
+
+\gap{Supply the common degreewise Casimir comparison and compatibility inputs, and prove that the corrected actions preserve the real structure, signed symmetries, unit and field inclusions. Then integrate the generators and establish uniqueness for the boost differential equations. A Lie-algebra identity at each degree alone does not give one compatible $O(4)$ action on the full field system.}
+
+\subsection{The conserved stress tensor}
+\label{subsec:ward-stress}
+
+The shell identities use a stress tensor with the right translation and rotation charges. The source first constructs a nonzero conserved candidate, then calibrates it against the free Maxwell stress tensor, and finally averages over the restored rotation action. The conservation equation alone does not determine the overall scale or sign of the flux.
+
+The stress polynomial map $\operatorname{Mat}$ and its coefficient array $w\in\mathbb R^4$ were defined in~\eqref{def:ward-stress-map}; its entries use the degree-zero curvature coefficient and colour inner product from Definition~\ref{def:mx-jets} and~\eqref{eq:mx-colors}. Its divergence is~\eqref{eq:ward-divergence}.
+
+Here are the finite-dimensional rank assumptions needed for the existence argument. Write $h e_a=\epsilon_a(h)e_{\sigma_h(a)}$ for the sign $\epsilon_a(h)\in\{\pm1\}$ and permutation $\sigma_h$ associated to a signed coordinate permutation $h\in H_4$ of Definition~\ref{def:uv-symmetries}. Let $\mathcal T_4$ be the real vector space of symmetric arrays $A_{ab}\in F_4$ satisfying $\overline{A_{ab}}=A_{ab}$ and
+\[
+ \rho_4(h)A_{ab}=\epsilon_a(h)\epsilon_b(h)A_{\sigma_h(a),\sigma_h(b)}\qquad(h\in H_4).
+\]
+Let $\mathcal V_5$ be the real vector space of arrays $B_b\in F_5$ satisfying $\overline{B_b}=B_b$ and
+\[
+ \rho_5(h)B_b=\epsilon_b(h)B_{\sigma_h(b)}\qquad(h\in H_4).
+\]
+Assume the field hierarchy and derivative maps respect the displayed reality and signed-coordinate actions, and that the gauge Lie algebra is simple. Also assume the degree-four comparison makes $\operatorname{Mat}:\mathbb R^4\to\mathcal T_4$ an isomorphism, and the degree-five comparison gives $\dim_{\mathbb R}\mathcal V_5\le2$. These are separate inputs: they do not follow from the Ward flux identities or from one another. The divergence maps $\mathcal T_4$ linearly into $\mathcal V_5$. Thus the map $J\mapsto(\nabla J,\operatorname{Re}S_1(J_{11};0))$ has target dimension at most three, while $\mathcal T_4$ has dimension four. Its kernel contains a nonzero element; the isomorphism $\operatorname{Mat}$ supplies a nonzero coefficient vector, which can be normalised to give
+\begin{equation}\label{eq:ward-stress-candidate}
+ \|w\|=1,\qquad \nabla\operatorname{Mat}(w)=0,\qquad
+ S_1(\operatorname{Mat}(w)_{ab};0)=0,\qquad \operatorname{Mat}(w)\ne0.
+\end{equation}
+The signed symmetries give the zero one-point value for every component from the displayed real condition. The unit norm in~\eqref{eq:ward-stress-candidate} fixes a coefficient convention only; it is not the physical Ward normalisation. The degree-four isomorphism and degree-five bound are the exact comparison inputs used here.\sourcefootnote{\nolinkurl{YM/Push/STRESS_FLUX/Conserved.lean} and \nolinkurl{Lift.lean}: existence under simplicity, an oriented hierarchy, degree-four/five real-spin-compatible comparisons}
+
+The Maxwell comparison fixes the physical coefficient by matching the continuum shell flux, with its source sign, to the charge generated by translations and rotations. The finite-cutoff comparison must use the same Wilson family, field maps and coupling as the Ward identity; changing the regulator or the stress discretisation would not identify the same charge. Averaging over the exact orthogonal action makes the tensor covariant while preserving conservation and the matched flux laws.
+
+\gap{Prove that the actual continuum stress flux equals the calibrated Maxwell flux on separated tests, with the same family and the same field maps, and determine its nonzero scalar and sign from the translation Ward identity. Then verify that averaging over the exact action preserves both flux laws and gives one common stress tensor. The finite-rank existence in~\eqref{eq:ward-stress-candidate} does not supply this normalisation.}\sourcefootnote{\nolinkurl{YM/Push/STRESS_FLUX/FreeBridge.lean}, \nolinkurl{Tune.lean}, and \nolinkurl{Work/A15.lean}: free calibration, flux-law averaging, and sign-sensitive normalisation}
+
+Once these identities and the common action are established, the phase analysis can compress slab words to the mixed ground space and prove commutativity there. This section does not select a phase: phase selection and the phasewise consequences come only after this rotation-restoration step.

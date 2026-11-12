@@ -1,6 +1,9 @@
 # Brief: our manuscript on the construction of four-dimensional Yang–Mills theory
 
 Three agents work here: **dalmatian**, **greyhound** and **weimaraner**. Read this whole file before doing anything.
+
+**Also read `paper/RULES.md`: it collects every standing rule from the feedback rounds, and every section is written
+and audited against it. Never launch subagents.**
 The person directing the work is Amélie Loher; she and Claude (her coordinator) read your reports.
 
 ## Goal

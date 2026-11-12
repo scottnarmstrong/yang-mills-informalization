@@ -82,13 +82,10 @@ Consequently~\eqref{eq:mx-leg} is well defined on~$\mathcal H_j^*\times\mathcal 
 \end{lemma}
 
 \begin{proof}
-The verification has three steps. Here the curl is the antisymmetric derivative~$d$ defined above; the cyclic equation says its next exterior derivative vanishes, while harmonicity of~$\Gamma$ gives zero divergence away from the origin.
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Taking a curl at both endpoints gives the displayed covariance; antisymmetry and commuting derivatives give the cyclic equation.
-\item Harmonicity of~$\Gamma$ gives the divergence equation.
-\item Endpoint exchange and homogeneity give~\eqref{eq:mx-leg-laws}; the equations make the contraction independent of how each functional is extended.
-\end{enumerate}
-For the second step, write~$\Delta=\sum_a\partial_a^2$ for the Laplacian and suppress the colour factor:
+Here the curl is the antisymmetric derivative~$d$ defined above; the cyclic equation says its next exterior derivative vanishes, while harmonicity of~$\Gamma$ gives zero divergence away from the origin.
+The two differential equations follow by differentiating the explicit covariance: antisymmetry and commuting derivatives give the cyclic equation, while harmonicity of~$\Gamma$ gives zero divergence away from the origin. Endpoint exchange gives the equations in the other tensor indices.
+
+For the divergence calculation, write~$\Delta=\sum_a\partial_a^2$ for the Laplacian and suppress the colour factor:
 \begin{equation*}
  \sum_a\partial_a C_{ab,ef}
  =\delta_{be}\partial_f\Delta\Gamma-\delta_{bf}\partial_e\Delta\Gamma=0
@@ -209,14 +206,7 @@ The correlations~\eqref{eq:mx-wick} descend faithfully to~$F_d^0$ in~\eqref{eq:m
 \end{proposition}
 
 \begin{proof}
-The proof has four steps. First we rewrite the reflection matrix as the ordinary inner product of polynomials with positive weights. Strict positivity then shows that only polynomials already zero in the Maxwell quotient are invisible. The remaining properties follow from the same matching formula: constants and symmetries pass directly, and differentiating a matching is the same as differentiating one insertion.
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item A positive definite finite matrix has a square-root factorisation~$H=L^{\mathsf T}L$. Use one independent standard complex Gaussian variable~$z_a$ for each coordinate and represent probe~$e$ by~$\sum_aL_{ae}z_a$. The complex Gaussian moment rule pairs barred with unbarred coordinates; expanding products gives the polynomial inner product~$\sum_\gamma\gamma!\,\overline{P_\gamma}Q_\gamma$.
-\item Strictness at one point makes this representation injective, so the only null coefficients are~$\mathcal I_d$.
-\item The same finite matching formula gives positivity, normalization and symmetries.
-\item Differentiating the matching formula gives the field operations and the homogeneous-kernel bounds.
-\end{enumerate}
-
+\proofstep{1}{Factor the reflected Gram matrix as a polynomial inner product.}
 For a finite collection of products supported on the positive side, use the finite set of all their linear factors as the matrix indices.
 Within each product, sum over partial matchings between distinct insertion points, and replace each unpaired occurrence~$e$ by~$\sum_aL_{ae}z_a$.
 This produces a polynomial~$Q_\alpha(z)$ for each product~$\alpha$.
@@ -243,6 +233,7 @@ Thus the only separated null coefficients in~$V_d$ are~$\mathcal I_d$.
 Integrating point Gram matrices against finite sums of positive-side joint tests gives smeared positivity.
 The integrals converge absolutely on the separated compact supports, by the explicit kernels.
 
+\proofstep{2}{Read the field laws from the matching formula.}
 The constant polynomial and the matching rule give the normalisation and unit identities.
 The kernel is invariant under translations and transforms as a two-form under~$O(4)$; permuting occurrences proves permutation symmetry and conjugating coefficients proves reality.
 All these identities descend to the quotient.
@@ -277,12 +268,8 @@ For each~$d$, finitely many functionals~\eqref{eq:mx-tests} and a constant~$c_d>
 \end{lemma}
 
 \begin{proof}
-The proof has two steps. First, strict positivity says that no nonzero vector is missed by all possible measurements. Then choose one measurement that detects a vector in the remaining common kernel; each choice lowers its dimension, so the process stops after finitely many choices.
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item By~\eqref{eq:mx-strict}, every nonzero field has a correlation detected by some test, so the common kernel of all functionals~\eqref{eq:mx-tests} is zero.
-\item Choose each next functional nonzero on the current common kernel; its dimension drops at every step, leaving finitely many tests, and compactness of the unit sphere gives the positive constant in~\eqref{eq:mx-detection}.
-\end{enumerate}
-In detail, starting with~$F_d^0$, choose a functional nonzero on the current common kernel until its dimension reaches zero:
+\proofstep{1}{Reduce the common kernel to zero, then use compactness of the unit sphere.}
+Strictness in~\eqref{eq:mx-strict} says every nonzero vector is detected by a functional~\eqref{eq:mx-tests}. Starting with~$F_d^0$, choose one nonzero on the current common kernel at each stage; its dimension drops:
 \begin{equation*}
  E_0=F_d^0,\qquad E_{a+1}=E_a\cap\ker\ell_{a+1},
  \qquad E_a\ne0\ \Longrightarrow\ \dim E_{a+1}<\dim E_a.
@@ -346,12 +333,7 @@ for all the tuples and tests in~\eqref{eq:mx-cutoff-comparison}.
 \end{lemma}
 
 \begin{proof}
-There are two steps.
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item The bounded finite-dimensional maps have a common cluster limit~$A_d$ on the ordered tails; set~$U_d=\pi_dA_d$.
-\item Local bounds replace the varying coefficients by~$A_d$ in correlations, and the ordered limit turns the finite-cutoff estimate into~\eqref{eq:mx-continuum-comparison} for the same~$S$.
-\end{enumerate}
-
+\proofstep{1}{Extract common finite-dimensional limits and control coefficient replacement.}
 More precisely, use a refining ultrafilter as in Definition~\ref{def:iv-tails} and write its limits as~$A_d$.
 Expansion in fixed polynomial bases and~\eqref{eq:iv-separated-bound} give, for the fixed rescaled test,
 \begin{equation*}
@@ -363,6 +345,7 @@ The retained ordered limit and the change of variables~$y=rx$ yield
 \begin{equation*}
  C_{N,p}(A_{N,p}q;f_r)\longrightarrow\int f(x)S_n(Uq;rx)\,dx.
 \end{equation*}
+\proofstep{2}{Pass the finite comparison to the retained continuum family.}
 All symmetry and unit identities pass through the finite-dimensional limits.
 For each fixed test, take the limit in~\eqref{eq:mx-cutoff-comparison}, then let~$\eta\downarrow0$.
 The same cluster maps work for every test because they were chosen before any test was fixed. For each fixed tuple and test, the local bound in~\eqref{eq:iv-separated-bound} controls the coefficient replacement; the finite-cutoff inequality then passes to the limit along that already chosen common refinement.\sourcefootnote{\nolinkurl{YM/Next/UV_STRESS/Station.lean}, especially \texttt{zoom\_integral} and \texttt{harvested}}
@@ -415,14 +398,7 @@ For each fixed~$d\le e$, eventually in~$k$,
 \end{proposition}
 
 \begin{proof}
-The construction has four steps.
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item At stage~$k$, require accuracy through degree and number of insertions~$k$, and choose~$r_k\downarrow0$.
-\item Correct each map on the lower-degree image using a left inverse, so~$\widetilde U_{k,d+1}j_d^0=j_d\widetilde U_{k,d}$ while preserving conjugation and signed symmetries.
-\item Finite separating tests give~$\|B_kv\|_\infty\ge(c_d/2)\|v\|$, hence each fixed-degree map is eventually injective.
-\item The independent dimension bound gives~$\dim F_d^0\le\dim F_d\le\dim F_d^0$, hence eventual isomorphisms degree by degree.
-\end{enumerate}
-
+\proofstep{1}{Choose radii that meet successively larger finite requirements.}
 Apply Lemma~\ref{lem:mx-passage} with
 \begin{equation*}
  D_k=N_{*,k}=k,\qquad R_k=k+1,\qquad
@@ -433,6 +409,7 @@ The comparison hypothesis permits the last condition by choosing the next radius
 Each compact separated set eventually fits inside~$K_{R_k,n}$.
 For each fixed tuple,~\eqref{eq:mx-continuum-comparison} therefore gives~\eqref{eq:mx-weak} for the initial maps.
 
+\proofstep{2}{Correct each higher-degree map on the included lower-degree space.}
 Write~$j_d^0=j^0_{d,d+1}$ and~$j_d=j_{d,d+1}$.
 Choose a linear left inverse~$R_d:F_{d+1}^0\to F_d^0$, so~$R_dj_d^0=1$.
 It extracts from a higher-degree field the component lying in the copy of degree~$d$. Thus~$1-j_d^0R_d$ removes that old component before the new part is mapped.
@@ -455,6 +432,7 @@ After finitely many expansions it is a sum of original comparisons with fixed fr
 The inclusion identities in both theories identify the corresponding sum of free correlations with~$W_n(q;x)$.
 Thus the corrected maps retain~\eqref{eq:mx-weak}.
 
+\proofstep{3}{Use separating tests and the rank bound to obtain isomorphisms.}
 Fix~$d$ and choose the finite functionals of Lemma~\ref{lem:mx-tests}.
 Use their maps~$B_k:F_d^0\to\C^{s_d}$ and~$B$ from Definition~\ref{def:mx-moving-tests}, with the corrected comparisons~$\widetilde U_k$.
 Then~\eqref{eq:mx-weak}, evaluated on a basis, gives operator-norm convergence to~$B=(\ell_a)_a$.
@@ -492,13 +470,7 @@ For every fixed tuple~$q$, compact~$K\subset\Conf n$ and~$s\in\N$,
 \end{proposition}
 
 \begin{proof}
-The proof has three steps.
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Integration by parts identifies the transported derivative through the finite tests:~$B_kD_{k,d,\mu}q\to B\partial_\mu^0q$.
-\item Repeated differentiation and finite-dimensional multilinearity give uniform tested convergence for every derivative list, hence~$\|D^\alpha E_k\|_{L^1(K)}\to0$.
-\item A compactly supported cutoff and Fourier inversion give~$\|D^s(\chi E_k)\|_\infty\to0$ on the target compact set.
-\end{enumerate}
-
+\proofstep{1}{Recover the transported derivative from finitely many observations.}
 Put~$D_{k,d,\mu}=r_kU_{k,d+1}^{-1}\partial_\mu U_{k,d}$. The factor~$r_k$ converts differentiation in the rescaled coordinate~$r_kx$ back to differentiation in the original coordinate.
 The field derivative identity~\eqref{eq:iv-field-derivative} and the chain rule give
 \begin{equation*}
@@ -521,6 +493,7 @@ Then~$LB_k\to1$, and for large~$k$,
 \end{equation*}
 Convergence on a finite basis gives~\eqref{eq:mx-transported-derivative}.
 
+\proofstep{2}{Extend tested convergence to every positional derivative.}
 Repeated differentiation expresses each positional derivative in terms of higher-degree fields whose free coordinates converge, by~\eqref{eq:mx-transported-derivative}.
 Multilinearity and expansion in finite bases extend~\eqref{eq:mx-weak} to these converging coordinate lists.
 For a coordinate multi-index~$\alpha$ and compact~$K\Subset\Conf n$, this gives
@@ -533,6 +506,7 @@ Uniform control of integrals against all tests with sup norm at most one control
  \|D^\alpha E_k(q;\cdot)\|_{L^1(K)}\longrightarrow0.
 \end{equation*}
 
+\proofstep{3}{Use a cutoff and Fourier inversion for uniform derivative bounds.}
 Choose a smooth cutoff function~$\chi$ supported in that larger set and equal to one near~$K$. The L1 convergence of every derivative makes the Fourier transform decay uniformly after integration by parts; Fourier inversion then bounds the derivatives pointwise.
 Writing~$a=4n$ for the dimension of the point configuration space and~$\alpha$ for a coordinate multi-index, integration by parts in the Fourier transform and Fourier inversion give
 \begin{equation*}
@@ -555,12 +529,7 @@ Under~\eqref{eq:mx-rank}, the interacting space also satisfies~$F_d=\C\mathbf1$.
 \end{corollary}
 
 \begin{proof}
-There are two steps.
-\begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Below weight four, only a single curvature or first-derivative coefficient could occur; gauge invariance would require a linear functional~$\lambda:\g\to\C$.
-\item Since~$[\g,\g]=\g$, such a functional vanishes, leaving only constants; the unit survives in both quotients under the stated dimension bound.
-\end{enumerate}
-Indeed, simplicity and noncommutativity imply~$[\g,\g]=\g$, so
+Simplicity and noncommutativity imply~$[\g,\g]=\g$. Below weight four only a single curvature coefficient or its first derivative could occur; gauge invariance would require a linear functional~$\lambda:\g\to\C$ vanishing on all commutators, and hence~$\lambda=0$:
 \begin{equation*}
  \lambda([X,Y])=0\ \text{for all }X,Y\in\g
  \quad\Longrightarrow\quad\lambda=0.

@@ -121,14 +121,7 @@ For the Wilson measure of Definition~\ref{def:wilson-law} on an even torus, $\be
 \end{lemma}
 
 \begin{proof}
-The proof first establishes positivity across one reflection plane, then repeats reflections to bound products over all cells, and finally removes a small regularising term.
-\begin{enumerate}[label=\textup{Step \arabic*.},nosep]
-\item For bond reflection, the factors crossing the plane form a positive matrix kernel on boundary-slice configurations; its positive quadratic form is derived below from the trace inner product. For site reflection, the two halves separate directly. Integrating their weights against this kernel gives
-\(\langle\Theta_rF\,F\rangle_\beta\ge0\).
-\item Fix a finite list of observables. An assignment \(i=(i_C)\) chooses one list member for each cell; let \(\mathcal Z(i)\) be the absolute reflected expectation of that choice. A fold copies either half of the assignment across the reflection plane, giving choices \(i^+,i^-\). Reflected Cauchy--Schwarz gives \(\mathcal Z(i)^2\le\mathcal Z(i^+)\mathcal Z(i^-)\). The maximisation argument below shows that a largest value is attained when every cell has the same observable.
-\item Divide each cell observable by its chessboard root plus \(\eta\). A constant assignment then has absolute expectation at most one; the maximisation from Step 2 bounds every assignment by one. Let \(\eta\downarrow0\).
-\end{enumerate}
-
+\proofstep{1}{Prove positivity across a single reflection plane.}
 \emph{Positivity.}
 For the reflection plane under consideration, call an unoriented link~$\{x,x+a_Ne_\mu\}$ a crossing link when its endpoints lie on opposite sides of the plane.
 Such a link joins the two halves of the torus, so it is the only kind of link whose matrix is shared across the reflection plane. For bond reflection the crossing-link interaction can be written as a kernel of the two boundary-slice configurations; for site reflection no such link crosses the plane.
@@ -168,8 +161,9 @@ With normalised product Haar measures on these data, the density factors into th
 \end{equation}
 All functions are measurable and bounded on compact configuration spaces, so the changes of integration order are valid.\sourcefootnote{\nolinkurl{YM/Slice/Positive.lean}, \texttt{averaged} and \texttt{step\_positive}; \nolinkurl{YM/Slice/Gate.lean}, \texttt{wall}, \texttt{links} and \texttt{portPos}; \nolinkurl{YM/Slice/Reflection.lean}, \texttt{readers} and \texttt{link\_positive}: the exact boundary form}
 
+\proofstep{2}{Use repeated reflections to bound products over all cells.}
 \emph{Repeated reflections.}
-Choose the finite list of base-cell observables~$F_1,\ldots,F_s$ from the proof outline. With the assignment notation introduced there, write
+Choose a finite list of base-cell observables~$F_1,\ldots,F_s$ to compare. An assignment~$i=(i_C)$ chooses one list member for each cell~$C$; write
 \begin{equation*}
  \mathcal Z(i)=\left|\left\langle\prod_{C\in\mathcal C}\Theta_C F_{i_C}\right\rangle_\beta\right|.
 \end{equation*}
@@ -200,11 +194,13 @@ The second step reflects a constant half-circle onto its complement.
 These folds preserve constancy in coordinates already treated.
 Doing this in all four coordinates gives a constant maximising assignment.
 
+\proofstep{3}{Complete the repeated-cell estimate.}
 \emph{Normalisation.}
 For the observables in~\eqref{eq:iv-chessboard}, set
 \begin{equation*}
  \widetilde F_C=\frac{F_C}{\|F_C\|_{\mathcal C}+\eta},\qquad \eta>0.
 \end{equation*}
+The positive~$\eta$ keeps each denominator nonzero even when a chessboard root vanishes; after proving the bound, we let it decrease to zero.
 Every constant assignment from this finite list has expectation of absolute value at most~$1$, because its root is exactly the denominator in~\eqref{eq:iv-root}.
 The maximising argument therefore gives
 \begin{equation*}
@@ -225,11 +221,6 @@ Taking the root proves subadditivity.\sourcefootnote{\nolinkurl{Cells/Flood.lean
 \subsection{Bounds and compactness}\label{subsec:iv-compactness}
 
 The next three estimates turn point separation into compactness.
-\begin{enumerate}[label=\textup{Step \arabic*.},nosep]
-\item Choose cell sizes with \(a_m<r\) and \(6na_k<a_m\); the centred root bound then gives a uniform bound when the insertion points are pairwise at least \(r\) apart.
-\item In one coordinate direction, the insertions occupy slabs and the empty slices between successive slabs are gaps; let \(Y_i\) count the slices in gap \(i\). Moving a slab by \(h\) steps changes two adjacent counts from \((Y_i,Y_j)\) to \((Y_i+h,Y_j-h)\). The transfer kernel between slice configurations has nonnegative quadratic form; this positivity bounds the change in correlation by a constant times the physical displacement.
-\item Local boundedness and this movement estimate give uniform Cauchy convergence on compact sets; a diagonal choice over the countable polynomial bases and compact exhaustions gives one subsequence for all correlations.
-\end{enumerate}
 
 \begin{definition}[Coordinate separation]\label{def:iv-coordinate-separated}
 For the configuration space of Definition~\ref{def:tests}, put
@@ -280,14 +271,7 @@ Every pair of strictly increasing spacing and volume sequences has refinements~$
 \end{proposition}
 
 \begin{proof}
-We now prove these estimates in order.
-\begin{enumerate}[label=\textup{Step \arabic*.},nosep]
-\item The centred roots give local bounds on separated configurations; the cell choices satisfy~$a_m<r$ and~$6na_k<a_m$.
-\item Slice positivity controls movements by~$|M^{\mathrm{step}}_{N,p}(v;x)-M^{\mathrm{step}}_{N,p}(v;y)|\le C_K|x-y|+o(1)$.
-\item A finite-net argument gives locally uniform limits, first at each volume and then along one common volume refinement.
-\item Dominated convergence of the step-function smearings gives the two ordered limits for every separated test.
-\end{enumerate}
-
+\proofstep{1}{Use reflected-cell bounds to control separated insertions.}
 \emph{Local bounds.}
 The centred estimate~\eqref{eq:iv-centered} controls an observable repeated in cells centred on its insertion site.
 It also controls repetitions in translated cells, provided the insertion stays away from their boundaries.
@@ -317,8 +301,9 @@ Since~$6na_k<a_m$, some translation avoids all forbidden intervals. Use it to pu
 The finite supports fit inside their cells once~$N$ is sufficiently large.
 Thus fixed separated compact sets have local bounds, uniform in volume on the ordered tails of Definition~\ref{def:iv-tails}.
 
+\proofstep{2}{Bound the change in correlation when an insertion moves.}
 \emph{Moving an insertion.}
-For at least two insertions, group links into slices perpendicular to an axis. The positive transfer kernel~$K$ acts across each gap, and the trace identifies the first and last slice around the torus.
+For at least two insertions, fix an axis and group the links into slices perpendicular to it. An insertion occupies a slab of~$w$ consecutive slices; the remaining empty slices between successive slabs are gaps, and~$Y_i$ denotes the number in gap~$i$ around the torus. Integrating one lattice layer defines a transfer operator~$K$ on slice configurations. Reflection positivity gives this operator a nonnegative quadratic form, the property used below to control changes in the gap lengths. The insertion in slab~$i$ is represented by a kernel~$B_i$, and the trace joins the first and last slices cyclically around the torus.
 If the torus has~$M$ slices and each slab has~$w$ slices, the Wilson factorisation gives
 \begin{equation*}
  \langle\prod_i I_i\rangle
@@ -377,6 +362,7 @@ uniformly in~$x,y$.
 For fixed~$K\subset\operatorname{Gen}_n$, the same constants work independently of sufficiently large volumes on ordered tails.
 For one insertion use translation invariance; for no insertions the moment is~$1$.
 
+\proofstep{3}{Choose common limits using finite nets and diagonal extraction.}
 \emph{Common subsequences.}
 Fix a coefficient basis tuple and a compact set~$K$.
 Local boundedness gives a subsequence converging at every point of a countable dense subset.
@@ -396,6 +382,7 @@ Take the diagonal over all fixed volumes, numbers of insertions, degree lists, b
 There are countably many such choices, so a diagonal subsequence gives every~$P_p$; the same argument gives one volume subsequence and~$S_0$. Bounds and movement estimates pass to the limits, and multilinearity extends them from the bases.
 Set the limits to zero off their coordinate-separated domains; the omitted configurations form a measure-zero set.
 
+\proofstep{4}{Pass the ordered limits through each separated smearing.}
 \emph{Smeared limits.}
 Write the weighted lattice sum as the integral of its step function. A compact neighbourhood of~$\supp f$ stays separated and avoids periodic collisions once the volume contains it; local bounds dominate, and rounding changes~$f$ by~$o(1)$.
 Dominated convergence first in~$N_j$ and then in~$p_k$ gives both limits in~\eqref{eq:iv-auxiliary-limit}.
@@ -477,13 +464,7 @@ such that, for every separated test of Definition~\ref{def:tests} and functional
 \end{lemma}
 
 \begin{proof}
-The proof has two steps.
-\begin{enumerate}[label=\textup{Step \arabic*.},nosep]
-\item Identify the invisible directions using
-\(\ker P_d\subset N_d\) and \(\dim N_d\le\dim\ker P_d\), hence \(N_d=\ker P_d\).
-\item Divide each projected representative by \(1+\|P_{e,N,p}w_{N,p}\|\); compactness gives a nonzero normalised limit, which can be rescaled to represent every target correlation at once.
-\end{enumerate}
-
+\proofstep{1}{Show that the null coefficients are exactly the projection kernel.}
 An error small in reflected cells has vanishing separated smearings. Choose its cell below the fixed separation and a finer centred scale for the other insertions; the margin factor~$8(q+1)$ avoids the boundary strips for any fixed number of slots.
 The translated-cell estimate and~\eqref{eq:iv-chessboard} bound the mixed moment by $C\eta_{N,p}$.
 The weighted count of sites meeting $\supp f$ is bounded by the volume of a fixed neighbourhood, independently of $N,p$.
@@ -496,6 +477,7 @@ The dimension input closes the identification:
  \quad\Longrightarrow\quad N_d=\ker P_d.
 \end{equation*}
 
+\proofstep{2}{Use summation by parts and compactness to choose common representatives.}
 Let~$\Delta_{i,\mu}$ be the forward lattice difference in slot~$i$ and direction~$\mu$, and let~$e_{i,\mu}$ be that coordinate vector in the point list.
 Summation by parts on the torus gives
 \begin{equation*}
@@ -571,16 +553,10 @@ The notation~$S_n(A;x)$ denotes the induced correlation of quotient fields, with
 \end{proposition}
 
 \begin{proof}
-The weak identities give integrable kernels for every derivative. The following steps use cutoffs and Fourier inversion to obtain smooth representatives and show that they agree on overlaps.
-\begin{enumerate}[label=\textup{Step \arabic*.},nosep]
-\item The weak identities~\eqref{eq:iv-weak-identities} represent each coordinate derivative by another locally integrable correlation.
-\item For every compactly supported smooth cutoff \(\chi\),
-\(\sup_\xi(1+|\xi|)^b|\widehat{\chi S_0(v)}(\xi)|<\infty\) for all \(b\), so Fourier inversion gives a smooth local representative.
-\item These representatives agree on overlaps; their pointwise identities descend to the quotient fields.
-\end{enumerate}
-
+\proofstep{1}{Iterate the weak identities to obtain every weak derivative.}
 Equation~\eqref{eq:iv-weak-identities} represents every weak coordinate derivative by another locally integrable kernel.
 Iteration gives derivatives of every order.
+\proofstep{2}{Use Fourier decay to construct smooth local representatives.}
 For a smooth cutoff function~$\chi$ supported in~$\Conf n$, meaning a smooth function with compact support there, each derivative of $\chi S_0(v)$ is a finite sum of integrable compactly supported kernels.
 Integration by parts in the Fourier transform gives, for every integer $b\ge0$,
 \begin{equation*}
@@ -588,6 +564,7 @@ Integration by parts in the Fourier transform gives, for every integer $b\ge0$,
 \end{equation*}
 Fourier inversion supplies a smooth representative.
 Choose $\chi=1$ near an arbitrary distinct-point configuration.
+\proofstep{3}{Glue the representatives and descend the field identities to the quotient.}
 The local representatives agree almost everywhere on overlaps, hence everywhere there by continuity.
 They glue to $S$ and equal $S_0$ on the set~\eqref{eq:iv-coordinate-separated}.
 The same argument preserves multilinearity and smearings.\sourcefootnote{\nolinkurl{Dash/Regular.lean}, \nolinkurl{Dash/Twist.lean}, and \nolinkurl{Org/Input.lean}: smooth representatives with the retained extraction}
@@ -645,14 +622,8 @@ The identities descend through~$\pi_d$ to the quotient fields: $\pi_d$ forgets e
 \end{proposition}
 
 \begin{proof}
-The three steps pass the exact symmetries, reflected positivity and collision bounds to the limit.
-\begin{enumerate}[label=\textup{Step \arabic*.},nosep]
-\item Exact lattice identities pass to the limit at grid points; density and continuity extend them from coordinate-separated configurations to all of $\Conf n$.
-\item Lattice reflection positivity gives a positive semidefinite matrix for any finite list of joint positive-side tests.  Each entry converges as a separated smear, so the limiting matrix is positive semidefinite; concentrating smooth tests gives point positivity.
-\item If $a_m<r/2$ and $6na_k<a_m$, the two first-crossing bounds give $a_k\ge c'r^4$.  The centred estimate at scale $a_k$ then yields a power bound in $r$, and derivative identities give the stated derivative bound.
-\end{enumerate}
-
-For the first step, at grid configurations $y$ and lattice translations $b$, the exact identities include
+\proofstep{1}{Pass the exact lattice symmetries through the ordered limit.}
+At grid configurations~$y$ and lattice translations~$b$, the exact identities include
 \begin{equation*}
 \begin{aligned}
  M_{N,p}(v\circ\sigma;y\circ\sigma)&=M_{N,p}(v;y),&
@@ -664,7 +635,8 @@ For the first step, at grid configurations $y$ and lattice translations $b$, the
 The unit and empty-list identities pass in the same way.
 Equation~\eqref{eq:iv-point-limits} passes these formulas to the limit on $\operatorname{Gen}_n$; density and smoothness extend them throughout $\Conf n$ and to every real translation.
 
-For the second step, fix finitely many joint tests supported in positive-side separated configurations and let $\mathcal O_{N,\alpha}$ denote their lattice smearings.
+\proofstep{2}{Pass reflection positivity through joint positive-side tests.}
+Fix finitely many joint tests supported in positive-side separated configurations and let $\mathcal O_{N,\alpha}$ denote their lattice smearings.
 Each insertion depends on finitely many links, whose physical distances from its insertion site tend to zero.
 Thus, for large $p$ and then large $N$, these links lie strictly inside the positive half-torus, and Lemma~\ref{lem:iv-reflection} gives
 \begin{equation*}
@@ -675,7 +647,8 @@ Pass each entry through the ordered limit~\eqref{eq:iv-auxiliary-limit}; absolut
 Therefore~\eqref{eq:iv-os-positive} holds for joint tests.
 Choose smooth nonnegative tests of integral one supported in shrinking neighbourhoods of each fixed positive configuration. Continuity makes their smeared matrix converge entrywise to the pointwise matrix, and positivity is preserved in this limit.
 
-For the position-independent bound, \eqref{eq:iv-gentle} implies $a_{j+1}\ge ca_j^2$ for some $c>0$, after adjusting finitely many levels.
+\proofstep{3}{Convert slow scale growth into distance and derivative bounds.}
+The position-independent bound follows because~\eqref{eq:iv-gentle} implies $a_{j+1}\ge ca_j^2$ for some $c>0$, after adjusting finitely many levels.
 At the first scale with $a_j<\delta$, the previous scale is at least~$\delta$; using~$a_j\ge ca_{j-1}^2$ gives~$a_j\ge c\delta^2$ (with the finite initial levels absorbed into~$c$).
 For~$n\ge1$ and fixed~$v$, set~$D=1+\max_i d_i$.
 Choose the first sufficiently large $m$ with $a_m<\frac{r}{2}$, then the first $k\ge m$ with $a_k<\frac{a_m}{6(n+1)}$.

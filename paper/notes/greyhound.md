@@ -64,6 +64,8 @@ Use representation size m_G (or n_G), volume side L_p, block ratio ell_m, invers
 
 ### Dalmatian
 
+- 2026-11-12, Round 7 combined build: `latexmk -g -pdf -interaction=nonstopmode main.tex` reports four `Missing $ inserted` errors in `part1/06-constants.tex` at lines 6 and 12, around inline Lean source names containing underscores. Please repair these in your file. The final log still records undefined `sec:phases` references originating in Weimaraner's new ward section; that request is under Weimaraner below. I will rerun the full build after both corrections.
+
 - 2026-11-11, ROUND 4 final response: Rechecked your terminology decision, UV4-1–UV4-7 requests and acceptance of the defining targets. All are resolved in the owned text. The self-check tables are complete (UV01 46 rows; UV02 51 rows), and all 73 numbered items have pinned correspondence. The final inspected 56-page snapshot has UV01 on 18–25 (eight touched pages) and UV02 on 25–32 (eight); infinite volume starts on 33, with no UV content on that page. The required build and final-pass log are clean. Every owned page was reread after the final reflow; no cap or shared-file adjustment is requested. The sole UV transfer obligation remains explicit. Report 4 follows the verification receipt and cleanup, then I stop.
 
 - 2026-11-11, ROUND 4 audit response UV4-1–UV4-7: All seven requests are implemented. `def:uv-walks` / `eq:uv-walk-transport` gives the ordered signed steps and link product, including reverse links and the empty walk; UV02 links it. Reduction modulo ell replaces “cover links/vertices”. `def:uv-actions` now explains O(4), and the image-square paragraph defines the indicator. `def:uv-bases` and new `def:uv-reference-normalisation` / `eq:uv-factor-scaling` provide linkable homes for the reused bases, r(d), S_t and insertion formula. `def:uv-test-links` is reused for J_d/A^J/sc/test links. Sampling now qualifies curvature as first order and displays its link first variation before the square curl. The Taylor polynomial and input tuple are recalled at the construction. Derivative paths and actual links in fixed walks replace the requested jargon. `def:uv-covers` / `eq:uv-cover-number` displays the periodic balls and the minimum number with connected union, with exact source connectedness; activity sums retain all bad-site and indicator-read conditions. “Charged”, “masked” and “reset” are removed from the prose. Both complete self-check tables are below. Please link `def:uv-reference-normalisation` for the reference level and factor scaling in the limit sections.
@@ -89,6 +91,8 @@ Use representation size m_G (or n_G), volume side L_p, block ratio ell_m, invers
 - 2026-11-11, ROUND 3 final editorial response: All requested UV revisions are complete: the Haar proof has explicit preservation formulas, the transport-series bound states its range and separates complex analyticity from real group membership, the activity seminorm is displayed, and differentiation precedes the cutoff. The local-section marker clause is replaced by the checked proposition; coefficient transfers remain visibly deferred. The final inspected snapshot puts UV01 on pages 17–23 (seven touched pages) and UV02 on 23–30 (eight), within caps ten and nine. Every rendered page 17–30 has been read. No shared-file change or decision is requested.
 
 ### Weimaraner
+
+- 2026-11-12, Round 7 combined build: `part2/limit/03-ward.tex` references `sec:phases` on its opening page and again near the close, but no section in `part2/limit/04-phases.tex` currently defines that label. Please add the intended stable label or update those references. The first build also reported an overfull display at line 48 (24.84 pt); please reflow it. I will rerun the full build after these corrections.
 
 - 2026-11-11, ROUND 4 final interface: `def:uv-bases` defines the chosen real homogeneous bases, and `def:uv-reference-normalisation` / `eq:uv-factor-scaling` define r(d), S_t and the conditional insertion formula. All earlier interface labels remain. The latest combined build resolves `def:iv-tails` and has a clean final pass. My final snapshot puts UV01 on 18–25 and UV02 on 25–32; I inspected your adjoining opening on 33 for the transition only. No additional root/comparison/rank/fixed-volume estimate is supplied by these revisions.
 
@@ -441,3 +445,46 @@ The formulas restate existing definitions or conclusions. Correspondence tables 
 Ran the prescribed `latexmk -pdf -interaction=nonstopmode main.tex` in `paper/`; it completed successfully with 60 pages. A forced rerun after the last formula edit also completed successfully. The final log has no errors, warnings, undefined references or citations. The shared snapshot now places UV01 on pages 19–26 (8 touched pages; cap 10) and UV02 on pages 26–34 (9; cap 9); page 26 is shared at the section boundary, and Infinite volume begins on page 34. Read every rendered UV page 19–34; reread final pages 26 and 29 after the last formula edits. The proof lists and their page transitions are legible. The UV self-check tables remain complete. The public analytic inputs and `prop:uv-inputs` status are unchanged.
 
 No change was made outside Greyhound-owned paper files, and no commit, push, git configuration change, Lean/Lake process, subagent, or background loop was used. The next and final action is `paper/reports/greyhound-5.md`; stop and wait immediately after writing it.
+
+## Round 7: blocking section, proof-step format, audit and verification
+
+Read `paper/RULES.md` and `paper/feedback/round-6.md` in full. Source pin: `/root/code/OpenAI-YM-20261028`, commit `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. New section: `part2/uv/03-blocking.tex`; planned subject is the normalised block kernel, tree coordinates and local stationary branch.
+
+### Rule-by-rule self-check of §7
+
+| Rule | Check and disposition |
+|---|---|
+| A0 | Searched the whole owned UV text for each named step-list, unsupported global-minimum claim, source-status prose and mathematical gap class. §6–7 proof steps use `\\proofstep`; one-sentence steps were merged. |
+| B1 | Read §7 as a first-time mathematical reader; section opening states kernel, tree-coordinate and stationary-branch purposes and order. |
+| B2 | Scanned each symbol and technical term at first use, including frame/predictor tags, price, probability Haar, tree/free links, action, predictor derivative, vertical field, Hessian and thermal function. Some source-specific branch-matching objects remain explicitly named gaps below rather than silently introduced. |
+| B3 | Reused objects are defined in displays or linked to Part I; local notation is introduced in §7 before use. |
+| B4 | Added equation/definition references for the predictor weights, kernel, Haar reduction, action, Hessian and derivative-decay assumptions. The reused plaquette action and chord now link to `eq:uv-chord` rather than being redefined. |
+| B5 | Replaced working shorthand by reader-facing descriptions; the exact free-kernel estimates and the precise stationary tangent inputs remain mathematical `\\gap` statements. |
+| B6 | Read for repeated roadmaps and repeated definitions; removed the unsupported claim that the stationary tangent and quadratic value followed from the abbreviated matching assumptions. |
+| B7 | Searched reader-facing prose for Lean identifiers and writing-process commentary; none are present. Source names stay in notes/correspondence. |
+| C1 | Section remains in Part II after the construction opening; no Part I structure changed. |
+| C2 | Opening identifies what the section constructs, why the kernel and tree coordinates matter, and its reading order. |
+| C3 | The kernel and stationary-branch claims are introduced in words before their statements. |
+| C4 | Long proofs begin with the mechanism; calculations stay inside the proof. |
+| C5 | Normalisation, push-forward and stationary existence arguments display their key equalities. |
+| C6 | Converted proof-step lists in UV §§6–7 to `\\proofstep`; consolidated short one-sentence items; remaining enumerates are statement/task lists, not proof steps. |
+| C7 | Checked new formulae for `\\frac` and sized delimiters. |
+| C8 | All referenced property items are linked. |
+| C9 | Part II points back to Part I gauge and symmetry definitions; the reused plaquette action and chord are linked to their existing UV definition. |
+| C10 | Searched owned new prose for British spelling; normalise, centre, penalise and neighbourhood are used. |
+| C11 | No `\\clearpage` was added before the section. |
+| D1 | Read source declarations/proof bodies for the kernel (`YM/RG/Block.lean`), price/clip (`YM/RG/PathActions.lean`), tree chart and stationary branch (`YM/PCalc/Chart.lean`, `YM/Work/F04.lean`), and thermal forest comparison (`YM/Work/F05.lean`). Claims not fully translated are explicitly gapped. No Lean build claimed. |
+| D2 | No global minimiser is claimed. The missing translation of block quadratic matching, relative tangent, forest comparison hypotheses and III.3 free-kernel estimates remains visible as gaps. |
+| E1 | Read the final rendered §7 pages 36–42 against every rule after the last source edits; the final combined build exits 0. |
+| E2 | Dalmatian’s audit of §6 and Weimaraner’s audit of §7 both completed repair and verification; their audit files end `VERIFIED`. |
+| E3 | Only Greyhound-owned UV files, notes, report and audit-response files are within my write set. No subagents, commits, pushes or git configuration changes. |
+| E4 | Final required combined build exits 0; its sole warning is the empty bibliography environment. |
+
+### Source correspondence and visible limits
+
+The exact kernel mixture and probability masses correspond to `YM/RG/Block.lean` and its `YM/Branch/Covariant.lean` inputs; the chart definitions are in `YM/PCalc/Chart.lean`; fixed-step branch and tangent/value results are in `YM/Work/F04.lean`; forest thermal comparison is `YM/Work/F05.lean`. The present exposition fully states the kernel normalization and the local implicit-function argument under the explicit hypotheses displayed. It does not yet translate the exact `Inputs`, `Comptroller`, `PriceGap`, `Critical` and `LocalRatio` hypotheses into the displayed branch formulas, and does not supply the Fourier/positive-form argument of III.3. Those missing connections are marked in `03-blocking.tex`; the tested-action decay application is conditional on those missing inputs. The section is not a complete proof of all planned III.1/III.3/III.6 material.
+
+
+The current §7 draft was ready for independent audit and has since had all eight findings repaired. After the final notation repair, the exact required `latexmk -pdf -interaction=nonstopmode main.tex` exited 0 at 76 pages (the Ward owner then repaired unrelated TeX errors and expanded that section). Read all rendered pages 36–42; the section is legible and within its 18-page cap. The final log has no TeX errors, undefined references, citations or box warnings; only the empty bibliography warning remains. Dalmatian’s section was separately audited, repaired and verified by me. My response to Weimaraner ends `REPAIR COMPLETE`; its auditor reread pages 37–43, marked all eight findings fixed, found no new failures, and ended `VERIFIED`.
+
+READY FOR AUDIT
