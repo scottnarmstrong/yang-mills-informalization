@@ -483,3 +483,24 @@ Final inspected SHA-256 values:
 - `main.pdf`: `df368d1a0837289b83b0e7c3c298712a461a600e4c280a2fef12579b9f729a5b`
 
 The owned source hashes match the inspected final PDF snapshot. The temporary baseline, preview PDFs, receipt JSON and page images were removed after checking; the canonical PDF and ordinary build artifacts remain. No further section, shared-source edit, read-only-source edit, Lean/Lake process, heartbeat override, subagent, background loop, commit, push or git-configuration change. No mathematical completeness claim or fresh independent audit is made. The next and final action is writing report 4, followed by the required stop and wait.
+
+## Round 5 revision and consistency reread
+
+Completed 2026-11-12. I reread both owned sections paragraph by paragraph against all four feedback rounds, then checked the final rebuilt PDF pages 34–59. The work is revision only; no new section or result was added.
+
+### §5 consistency repairs
+
+| Passage | Former reader-facing problem | Round 5 repair |
+|---|---|---|
+| Infinite volume, lines 140–190 | Proof steps were prose-led; “crossing links” came after its first use, and “interiority” was unexplained. | Enumerated the proof mechanism; defined a crossing link before reuse by its endpoints and plane; stated the supported-link condition explicitly and replaced the vague interiority sentence by completion independence. |
+| Infinite volume, lines 249–254 and 312–319 | Compactness/extraction ideas lacked a compact mathematical roadmap. | Numbered the cell-scale, slice-movement, finite-net and smearing steps with their inequalities and ordered limits. |
+| Infinite volume, lines 524–555 and 624–673 | Representative and smoothness proofs needed their linear-algebra and regularity mechanisms stated before the details. | Added numbered proof steps for the null-space dimension comparison, normalized representatives, weak differences and Fourier regularity. |
+| Infinite volume, lines 701–755 | Euclidean properties were described as a sentence sequence without the lattice identities and their limiting objects. | Displayed exact lattice symmetries, joint lattice smearings, their positive matrices and the scale estimate before passing to the ordered limit. |
+| Infinite volume, lines 756–777 | The spacing-removal explanation repeated the extraction setup and pushed its visible gap onto a further page. | Condensed only the prose around the same fixed-volume limit and retained the unchanged full-spacing obligation; the section now occupies pages 34–48 (15 pages, within the approved cap). |
+| Maxwell, lines 89–580 (all seven proof blocks) | Several proofs lacked the requested step structure and formula-led roadmap. | Added numbered mathematical proof steps to the kernel, free-field, finite-test, continuum-passage, compatible-frame, smooth-limit and low-degree arguments. The two Maxwell gaps remain visible. |
+
+The five original local obligations remain: three in Infinite volume (chosen-family lattice inputs, the same-family representative/comparison/rank package, and full-spacing fixed-volume convergence) and two in Maxwell (analytic reflected-probe positivity/strictness and the same-family finite-cutoff comparison plus rank input). No conditional conclusion was promoted to an unconditional result.
+
+### Verification receipt
+
+The prescribed `latexmk -pdf -interaction=nonstopmode main.tex` completed successfully. The 59-page PDF log has no LaTeX warnings/errors, missing references/citations, or overfull/underfull boxes. Infinite volume touches pages 34–48 (15 pages, cap 15); Maxwell touches pages 49–59 (11 pages, cap 14). I reread every freshly rendered page in both owned sections and their shared boundary. The final source hashes are `3b19a039e0bc7d9096ecd71a06bd7985113c84c729afb196991d30e751d124c0` for `01-infinite-volume.tex` and `a7443d060217da8c10bf7013f4419cc7f0f8ae9ccd702417a4aa8f197a055c9c` for `02-maxwell.tex`; final PDF SHA-256 is `738484aa7559b41b4fbabd5d2d3991462f60b0497c0e1f635b1186cbe7e1418b`. No fresh Lean/source proof audit was performed. The one-page report is the final action for this round; stop and wait.

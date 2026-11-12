@@ -87,9 +87,13 @@ Consequently~\eqref{eq:mx-leg} is well defined on~$\mathcal H_j^*\times\mathcal 
 \end{lemma}
 
 \begin{proof}
-The curvature kernel is obtained by taking a curl at each endpoint of the scalar potential kernel.
-Commuting derivatives gives the cyclic equation; harmonicity of~$\Gamma$ gives the divergence equation.
-For example, write~$\Delta=\sum_a\partial_a^2$ for the Laplacian and suppress the colour factor:
+The verification has three steps.
+\begin{enumerate}[label=\textup{Step \arabic*.}]
+\item Taking a curl at both endpoints gives the displayed covariance; antisymmetry and commuting derivatives give the cyclic equation.
+\item Harmonicity of~$\Gamma$ gives the divergence equation.
+\item Endpoint exchange and homogeneity give~\eqref{eq:mx-leg-laws}; the equations make the contraction independent of how each functional is extended.
+\end{enumerate}
+For the second step, write~$\Delta=\sum_a\partial_a^2$ for the Laplacian and suppress the colour factor:
 \begin{equation*}
  \sum_a\partial_a C_{ab,ef}
  =\delta_{be}\partial_f\Delta\Gamma-\delta_{bf}\partial_e\Delta\Gamma=0
@@ -213,10 +217,13 @@ The correlations~\eqref{eq:mx-wick} descend faithfully to~$F_d^0$ in~\eqref{eq:m
 \end{proposition}
 
 \begin{proof}
-Factor the real reflected matrix as~$H=L^{\mathsf T}L$, with~$L$ real; thus its adjoint~$L^*$ equals~$L^{\mathsf T}$.
-The Wick matching rule then expresses reflected polynomial correlations as inner products of finite polynomials.
-Strictness of the one-point matrix makes that polynomial representation injective.
-The remaining properties follow by differentiating the same finite matching sums.
+The proof has four steps.
+\begin{enumerate}[label=\textup{Step \arabic*.}]
+\item Factor the real reflected matrix as~$H=L^{\mathsf T}L$; the matching rule then gives a polynomial inner product.
+\item Strictness at one point makes this representation injective, so the only null coefficients are~$\mathcal I_d$.
+\item The same finite matching formula gives positivity, normalization and symmetries.
+\item Differentiating the matching formula gives the field operations and the homogeneous-kernel bounds.
+\end{enumerate}
 
 For a finite collection of positive-side products, use the finite set of all their linear occurrences as the matrix indices.
 Within each product, sum over partial matchings between distinct insertion points, and replace each unpaired occurrence~$e$ by~$\sum_aL_{ae}z_a$.
@@ -279,9 +286,12 @@ For each~$d$, finitely many functionals~\eqref{eq:mx-tests} and a constant~$c_d>
 \end{lemma}
 
 \begin{proof}
-Each nonzero field has a nonzero correlation by~\eqref{eq:mx-strict}, and a test supported in a sufficiently small neighbourhood detects it.
-Thus the common kernel of all the functionals~\eqref{eq:mx-tests} is zero.
-Starting with~$F_d^0$, choose a functional nonzero on the current common kernel until its dimension reaches zero:
+The proof has two steps.
+\begin{enumerate}[label=\textup{Step \arabic*.}]
+\item By~\eqref{eq:mx-strict}, every nonzero field has a correlation detected by some test, so the common kernel of all functionals~\eqref{eq:mx-tests} is zero.
+\item Choose each next functional nonzero on the current common kernel; its dimension drops at every step, leaving finitely many tests, and compactness of the unit sphere gives the positive constant in~\eqref{eq:mx-detection}.
+\end{enumerate}
+In detail, starting with~$F_d^0$, choose a functional nonzero on the current common kernel until its dimension reaches zero:
 \begin{equation*}
  E_0=F_d^0,\qquad E_{a+1}=E_a\cap\ker\ell_{a+1},
  \qquad E_a\ne0\ \Longrightarrow\ \dim E_{a+1}<\dim E_a.
@@ -345,8 +355,11 @@ for all the tuples and tests in~\eqref{eq:mx-cutoff-comparison}.
 \end{lemma}
 
 \begin{proof}
-Take a cluster limit of all matrix entries of the finitely many maps~$A_{N,p,d}$, and project it to~$F_d$.
-Local correlation bounds allow coefficients varying with the cutoff to be replaced by these limiting coefficients.
+There are two steps.
+\begin{enumerate}[label=\textup{Step \arabic*.}]
+\item The bounded finite-dimensional maps have a common cluster limit~$A_d$ on the ordered tails; set~$U_d=\pi_dA_d$.
+\item Local bounds replace the varying coefficients by~$A_d$ in correlations, and the ordered limit turns the finite-cutoff estimate into~\eqref{eq:mx-continuum-comparison} for the same~$S$.
+\end{enumerate}
 
 More precisely, use a refining ultrafilter as in Definition~\ref{def:iv-tails} and write its limits as~$A_d$.
 Expansion in fixed polynomial bases and~\eqref{eq:iv-separated-bound} give, for the fixed rescaled test,
@@ -411,9 +424,13 @@ For each fixed~$d\le e$, eventually in~$k$,
 \end{proposition}
 
 \begin{proof}
-Choose increasingly accurate comparisons through increasing degrees and numbers of insertions.
-We separate the lower-degree subspace from its complement and correct the map on that subspace, preserving its symmetries.
-Finite separating tests then force injectivity, and the dimension bound supplies surjectivity.
+The construction has four steps.
+\begin{enumerate}[label=\textup{Step \arabic*.}]
+\item At stage~$k$, require accuracy through degree and number of insertions~$k$, and choose~$r_k\downarrow0$.
+\item Correct each map on the lower-degree image using a left inverse, so~$\widetilde U_{k,d+1}j_d^0=j_d\widetilde U_{k,d}$ while preserving conjugation and signed symmetries.
+\item Finite separating tests give~$\|B_kv\|_\infty\ge(c_d/2)\|v\|$, hence each fixed-degree map is eventually injective.
+\item The independent dimension bound gives~$\dim F_d^0\le\dim F_d\le\dim F_d^0$, hence eventual isomorphisms degree by degree.
+\end{enumerate}
 
 Apply Lemma~\ref{lem:mx-passage} with
 \begin{equation*}
@@ -484,9 +501,12 @@ For every fixed tuple~$q$, compact~$K\subset\Conf n$ and~$s\in\N$,
 \end{proposition}
 
 \begin{proof}
-First recover the derivative coefficients from finitely many tested correlations.
-Then differentiate the correlation identities repeatedly.
-The uniform bound in joint tests supplies local integral convergence, and a cutoff Fourier estimate converts it to uniform convergence of derivatives.
+The proof has three steps.
+\begin{enumerate}[label=\textup{Step \arabic*.}]
+\item Integration by parts identifies the transported derivative through the finite tests:~$B_kD_{k,d,\mu}q\to B\partial_\mu^0q$.
+\item Repeated differentiation and finite-dimensional multilinearity give uniform tested convergence for every derivative list, hence~$\|D^\alpha E_k\|_{L^1(K)}\to0$.
+\item A compactly supported cutoff and Fourier inversion give~$\|D^s(\chi E_k)\|_\infty\to0$ on the target compact set.
+\end{enumerate}
 
 Put~$D_{k,d,\mu}=r_kU_{k,d+1}^{-1}\partial_\mu U_{k,d}$.
 The field derivative identity~\eqref{eq:iv-field-derivative} and the chain rule give
@@ -545,9 +565,12 @@ Under~\eqref{eq:mx-rank}, the interacting space also satisfies~$F_d=\C\mathbf1$.
 \end{corollary}
 
 \begin{proof}
-Below weight four, a nonconstant monomial can contain only one Taylor coefficient: curvature has weight two and its first derivative weight three.
-A gauge-invariant linear coefficient would give an invariant linear functional~$\lambda:\g\to\C$.
-Simplicity and noncommutativity imply~$[\g,\g]=\g$, so
+There are two steps.
+\begin{enumerate}[label=\textup{Step \arabic*.}]
+\item Below weight four, only a single curvature or first-derivative coefficient could occur; gauge invariance would require a linear functional~$\lambda:\g\to\C$.
+\item Since~$[\g,\g]=\g$, such a functional vanishes, leaving only constants; the unit survives in both quotients under the stated dimension bound.
+\end{enumerate}
+Indeed, simplicity and noncommutativity imply~$[\g,\g]=\g$, so
 \begin{equation*}
  \lambda([X,Y])=0\ \text{for all }X,Y\in\g
  \quad\Longrightarrow\quad\lambda=0.

@@ -419,3 +419,25 @@ Checked SHA-256 values:
 - Inspected combined PDF: `e68a55022fafd897a087548a4f2131090efcdb218689c01ac597d987061d13fe`
 
 The owned temporary review PDF, sixteen page images and captured build log are removed after inspection; subsequent shared builds may replace the canonical PDF. No edit outside owned paper files, git commit/push/configuration change, subagent, background loop, Lean process or heartbeat override. After cleanup, writing report 4 is the final action; stop and wait immediately afterwards.
+
+## Round 5 revision: proof structure and consistency reread
+
+Read `paper/feedback/round-4.md` in full, with rounds 1–3 and the standing British-spelling, definition, readability and source-fidelity rules retained. Re-read every paragraph in the two owned UV sections. No new section, theorem, hypothesis, symbol definition or source claim was added. The two existing section self-check tables remain complete (UV01 46 rows; UV02 51 rows); this pass changed proof exposition only, and no definition/first-use repair was needed.
+
+### §5 consistency reread: passages revised
+
+- UV01, `prop:uv-law` proof: the previous opening and continuous proof paragraphs did not show the argument's stages. Reorganised them as three steps (normalisation/integrability, product Haar, action) and displayed the transformed density identity.
+- UV01, `lem:uv-labels` proof: the basis argument was one unstructured paragraph. Reorganised it into finite monomials, evaluation and homogeneous pieces, and nested real bases.
+- UV01, `prop:uv-insertions` proof: the locality, covariance and unit arguments were not visibly separated. Reorganised them into three steps and restated the defining insertion formula at the locality step.
+- UV02, `lem:uv-sampling` proof: the detection, finite-subfamily and inverse-function arguments lacked an enumerated roadmap. Added a three-step structure and a displayed measurement/recovery target.
+- UV02, `prop:uv-sections` proof: the Taylor construction, signed averaging and derivative estimate were not staged for the reader. Added a three-step outline and a display of the Taylor and threshold bounds.
+- UV02, `prop:uv-marker` proof: its norm and nilpotence calculations were in an unnumbered sequence. Reorganised them into product, exponential norm and exponential identity steps, each with a formula.
+- UV02, `prop:uv-activity-sums` proof: changed the paragraph-led argument into three steps for individual bounds, selection sums and inherited properties, including a displayed density bound.
+
+The formulas restate existing definitions or conclusions. Correspondence tables and all mathematical labels are unchanged; the single transfer-construction obligation in UV01 remains visible. No Lean/Lake process or fresh source audit was run, since the round-5 changes are expository only.
+
+### Round 5 verification receipt
+
+Ran the prescribed `latexmk -pdf -interaction=nonstopmode main.tex` in `paper/`; it completed successfully with 60 pages. A forced rerun after the last formula edit also completed successfully. The final log has no errors, warnings, undefined references or citations. The shared snapshot now places UV01 on pages 19–26 (8 touched pages; cap 10) and UV02 on pages 26–34 (9; cap 9); page 26 is shared at the section boundary, and Infinite volume begins on page 34. Read every rendered UV page 19–34; reread final pages 26 and 29 after the last formula edits. The proof lists and their page transitions are legible. The UV self-check tables remain complete. The public analytic inputs and `prop:uv-inputs` status are unchanged.
+
+No change was made outside Greyhound-owned paper files, and no commit, push, git configuration change, Lean/Lake process, subagent, or background loop was used. The next and final action is `paper/reports/greyhound-5.md`; stop and wait immediately after writing it.

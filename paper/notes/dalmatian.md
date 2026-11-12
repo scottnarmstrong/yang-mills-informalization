@@ -472,11 +472,13 @@ Method: read each owned section in reader order, list every mathematical object 
 | every formal object in prop:uv | def:gauge, def:family, def:regular, def:periodic, def:moments, def:tests, def:admissible | UV statement | Direct definition links retained |
 | K_{p,v}; full spacing limit | prop:uv, eq:fixed-volume | UV statement | Kernel introduced there; formula unchanged |
 | Gaussian integral, small/large fluctuations | UV proof idea; same scope as sec:strategy | first proof idea | Quadratic-energy meaning added; no estimate assumed proved |
+| Effective densities $\rho_j$ and fine/coarse link variables $U,U'$ | UV construction proof idea; scale $j$ denotes the effective law after integrating finer links | Step 1 | Added for the displayed preservation of the total integral; explanatory notation only |
 | reference spacing, cutoff, effective law, Cauchy estimate | def:family, sec:strategy, first proof idea | UV mechanism | Order of intermediate scale then cutoff made explicit |
 | polynomial basis tuples, slice integration, uniform movement bounds | lem:uv-labels, subsec:iv-compactness | limit proof idea | Replaced finite label bases and unexplained transfer operator |
 | every formal object in prop:limit | def:hierarchy, def:reconstructed, main:1 | limit statement | Formal clauses and common hierarchy retained |
-| long-time evolution, zero energy, commuting operators, phase functions | def:wightman, eq:mixture; limit proof idea | phase mechanism | Gives the operation and consequence rather than only “spectral representation of an algebra” |
+| Long-time evolution, nonnegative energy operator $H$, zero-energy projection $P_0$, commuting operators, phase functions | def:wightman, eq:mixture; limit proof idea | phase mechanism | Names the operator and projection in the displayed $e^{-tH}$ limit |
 | every formal object in prop:reconstruction | def:hierarchy, def:reconstructed | reconstruction statement | Links retained |
+| Positive-time field words $F,G$, reflected conjugate $\Theta F$, OS inner product | eq:domain, def:iv-reflections; reconstruction proof idea | reconstruction mechanism | The formula defines the OS pairing before completing the word space |
 | field words, vacuum, operator action, distributional limits | eq:domain, eq:boundary | reconstruction proof idea | Word definition linked; “adding a letter” replaced by multiplying a smeared field |
 | polynomial null relations, quotient, faithful field labels; constant 1 | prop:iv-smooth, recon:2 | end of reconstruction idea | Generic discarded “label” replaced by precise object and references |
 | every formal object in prop:ope | hierarchy:7, def:ope, def:cluster | OPE statement | Existing direct links retained |
@@ -498,6 +500,7 @@ Method: read each owned section in reader order, list every mathematical object 
 | Gaussian comparison, plaquette deviations, energy cost | def:plaquette; local quadratic-energy explanation | integration paragraph | Bare “Gaussian estimates” replaced by the comparison performed |
 | running coupling, fixed reference law | def:regular, sec:strategy | integration paragraph | Existing concepts recalled, no new coefficient law |
 | C,R,p,q,N,k,f,pi,S^mix | def:moments, def:tests, def:admissible, def:ordered, def:hierarchy | displayed two-stage passage | Links and full-inner/outer-refinement choices unchanged |
+| Observable indices, separated tests, five construction stages | def:observables, def:tests, eq:uv-insertion, eq:ordered, eq:mixture | opening roadmap | Links the prescribed ordered limit instead of duplicating its later display |
 | reflection positivity; difference representative; quotient | lem:iv-reflection, prop:iv-smooth, sec:infinite-volume | fields paragraph | Explanatory operation; no undeclared supplier |
 | Maxwell curvature and finite tests, independent dimension bound | sec:maxwell | Maxwell paragraph | Linked and distinguished from stress normalisation |
 | Hilbert space; reflected positive-time products | def:relativistic, def:wightman; fields paragraph | symmetry preparation | Inner-product meaning explicit |
@@ -560,3 +563,38 @@ Snapshot SHA-256:
 Typography and definition closure do not close the five public analytic proofs: those remain OPEN, and the upstream `prop:uv-inputs` remains PLANNED. No independent mathematical audit is claimed. No new mathematical scope decision is requested. The next action is the at-most-one-page report `reports/dalmatian-4.md`, followed immediately by the required stop and wait.
 
 Final static check before reporting: no duplicate assembled labels, missing reference targets, unexpected control bytes or owned prose about the marker mechanism. The canonical PDF still matched the inspected snapshot. Removed only dalmatian round-4 render/link scratch and the temporary PDF copy; retained `main.pdf`, its build artifacts and `dalmatian-round4-build.txt`. No further TeX edit followed the inspected build.
+
+## Round 5 editorial pass
+
+Read `feedback/round-4.md` in full. Round 5 authorises revision only: the theorem and proof ideas, the Part II opening, and an editorial review of all four current Part II sections. No additional section or mathematical result is added. The four Part II source files were read in full; the other owners' notes were skimmed through their round-4 responses and verification receipts. The owned TeX files had no edits within the last few minutes at session start.
+
+### Requests — round 5 consistency review
+
+#### To greyhound
+
+- 2026-11-12, UV5-1: In `part2/uv/01-lattice.tex`, the proof-idea openings of `prop:uv-law`, `lem:uv-labels` and `prop:uv-insertions` are still unnumbered prose. Please make each a short enumerated sequence of steps, with the change-of-variables/energy identities, homogeneous decomposition, and reference-unit calculation displayed or linked at the corresponding step. Keep the already checked hypotheses and conclusions unchanged.
+- 2026-11-12, UV5-2: In `prop:uv-sections`, state the proof route as numbered steps (Taylor recovery, symmetry average, derivative bound) and attach the existing formulas to those steps. The current opening idea is followed by a long sequence of prose transitions, so it is hard to see which construction establishes each clause of the proposition.
+- 2026-11-12, UV5-3: In `part2/uv/02-activities.tex`, give the proof ideas of `prop:uv-marker` and `prop:uv-activity-sums` the same numbered structure. In particular, make the disjoint-variable product estimate and the finite-selection majorant the displayed mathematical reason for the two conclusions; retain the present finite-volume scope and the closing statement that construction of supplied activities remains open.
+
+#### To weimaraner
+
+- 2026-11-12, IV5-1: In `part2/limit/01-infinite-volume.tex`, `prop:iv-raw` has the right local-bound, movement, compactness and smearing calculations, but its proof's route is split among italic subheads rather than a numbered proof idea. Number these four stages and put their key estimates—`eq:iv-separated-bound`, `eq:iv-oscillation`, the finite-net Cauchy bound, and the ordered smear limit—at the matching step. `prop:iv-euclidean` and `lem:iv-reflection` already have the requested enumerated outlines and displayed limit/positivity calculations; retain them.
+- 2026-11-12, MX5-1: In `part2/limit/02-maxwell.tex`, the proof-idea openings of `lem:mx-kernel`, `prop:mx-free`, `lem:mx-tests`, `lem:mx-passage`, `prop:mx-frames` and `prop:mx-smooth` remain unnumbered prose summaries. Please enumerate their proof steps and attach the existing curl/divergence, Wick Gram factorisation, finite-kernel reduction, cluster-limit, compatibility/injectivity, and tested-derivative/Fourier formulas to the relevant steps. Keep the analytic input for strict Maxwell positivity visible as the existing obligation.
+
+These requests record editorial consistency findings, not a mathematical reassessment or permission to alter any quantified statement. I will record their disposition from the owners' reports/notes after my own Part I and rendered checks.
+
+### Section 5 revision log and verification
+
+Changes made to `part1/05-propositions.tex`, recorded as required by §5 of the round-5 feedback:
+
+| Passage | Problem in the previous version | Round-5 revision |
+|---|---|---|
+| Proposition `prop:uv` idea | Long unnumbered mechanism description | Five steps now show normalized integration, the small/large field split, coupling adjustment, reference-normalised insertion and intermediate-scale Cauchy order. |
+| Proposition `prop:limit` idea | Two dense prose paragraphs mixed compactness with phase construction | Five steps separate reflection-root bounds, movement/compactness, ordered limits, zero-energy projection and the phase-mixture formula. |
+| Proposition `prop:reconstruction` idea | Construction and analytic continuation appeared in paragraph form | Four steps show smearing limits, the OS pairing, continuation/locality and the null quotient. |
+| Proposition `prop:ope` idea | Coefficient choice and remainder mechanism lacked visible estimate | Three steps isolate cluster replacement, the displayed `D+1-w(a)-epsilon` remainder and coefficients fixed before spectators/phases. |
+| Proposition `prop:trace` idea | Scale comparison and full-radius upgrade were prose-only | Four steps show the exact trace limit, positive spectral Laplace representation, radius squeezing and finite-profile exclusion. |
+
+Theorem `thm:main` is shortened in P2 and P3; the definitions retain their exact domains, quantifiers and subclauses. The Part II opening now has a five-stage guide that points to the existing ordered-limit definition instead of repeating its display. Self-check rows above record the additional explanatory notation (`rho_j`, `H`, `P_0`, the OS words/reflection, and the roadmap indices/tests); these symbols are glossed or linked at first use. The five existing analytic proof obligations remain visible.
+
+Final verification, 2026-11-12 UTC: `latexmk -pdf -interaction=nonstopmode main.tex` exited 0; `main.pdf` has 60 pages. The log has no errors, undefined references, overfull/underfull boxes or warnings. I reread the rendered theorem, strategy, all five propositions and deduction (pages 10–16), the full Part II opening (pages 17–18), and the adjoining Lattice fields start (page 19). Final PDF SHA-256: `4856bc535cdde6e11f983ceefea742c3ef24477f4c96047a5bb28e0fd97cdbaa`. Owned source hashes are recorded in report 5. Part II editorial requests UV5-1–3, IV5-1 and MX5-1 are sent above; no other owner's file was edited.

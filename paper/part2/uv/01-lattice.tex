@@ -83,10 +83,12 @@ For every gauge transformation~$\gamma$ of Definition~\ref{def:gauge-transform},
 \end{proposition}
 
 \begin{proof}
-We preserve the reference product measure and the energy separately.
-Each transformation therefore preserves the Wilson measure.
+There are three checks: the density is finite and positive, each change of variables preserves product Haar measure, and each preserves the action.
+Together they preserve the probability law.
 Write~$\eta_\ell$ for the product Haar measure in~\eqref{eq:wilson-law}.
 
+\begin{enumerate}
+\item \emph{Normalisation and integrability.}
 The closed group~$G\subset U(m)$ and its finite configuration space are compact.
 There are six plaquettes per site, each with energy in~$[0,2]$.
 Thus
@@ -97,6 +99,7 @@ Thus
 Integrating against probability Haar gives a finite positive normalising constant~$Z_{\ell,\beta}$ as in~\eqref{eq:wilson-law}.
 A continuous function on the configuration space is bounded, so both classes in~\eqref{eq:uv-law} are integrable.
 
+\item \emph{Reference measure.}
 Haar invariance allows a fixed matrix to be multiplied on either side of a link, and allows its orientation to be reversed.
 Let~$h$ be the probability Haar measure of Definition~\ref{def:wilson-law}; $T_*h$ denotes its image under a map~$T$.
 For~$R_g(u)=ug$, $\mathrm{inv}(u)=u^{-1}$ and every integrable~$f:G\to\C$, the identities are
@@ -113,7 +116,7 @@ Applying these identities independently to each link gives, for the gauge map~$\
 \end{equation}
 For the second identity, the coordinate symmetry permutes the positive links and inverts those whose image orientation is negative.
 
-It remains to check the energy.
+\item \emph{Action.}
 By~\eqref{eq:uv-gauge}, a gauge transformation conjugates a plaquette transport at its initial vertex.
 A coordinate symmetry sends an elementary square to another one, up to a change of initial corner and orientation.
 To check the counting, write~$he_\mu=\sigma_\mu e_{\pi(\mu)}$, with~$\sigma_\mu\in\{-1,1\}$.
@@ -129,6 +132,11 @@ Since conjugation and inversion preserve~$s$, we have
 \begin{equation}\label{eq:uv-energy-invariance}
  E_\ell(U^\gamma)=E_\ell(U),\qquad E_\ell(A^*U)=E_\ell(U)\,.
 \end{equation}
+Thus the transformed density agrees pointwise with the original density:
+\begin{equation*}
+ e^{-\beta E_\ell(TU)}=e^{-\beta E_\ell(U)},
+ \qquad T\in\{\Gamma_\gamma,A^*\}.
+\end{equation*}
 For either~$T=\Gamma_\gamma$ or~$T=A^*$, equations~\eqref{eq:uv-product-changes} and~\eqref{eq:uv-energy-invariance} now give
 \begin{equation*}
  \int F(TU)\,d\mu_{\ell,\beta}(U)
@@ -136,6 +144,7 @@ For either~$T=\Gamma_\gamma$ or~$T=A^*$, equations~\eqref{eq:uv-product-changes}
  =\int F(U)\,d\mu_{\ell,\beta}(U)\,.
 \end{equation*}
 This proves~\eqref{eq:uv-expectation-symmetry} for every integrable~$F$.
+\end{enumerate}
 \end{proof}
 
 \subsection{Classical polynomials}\label{subsec:uv-labels}
@@ -193,11 +202,16 @@ There are nested real bases, homogeneous in both gradings and containing~$1$.
 \end{lemma}
 
 \begin{proof}
-The weight bound reduces the problem to finitely many monomials; we then choose bases separately in their real homogeneous components.
+The basis claim follows from three finite-dimensional facts: only finitely many monomials occur, the invariant condition splits by the two grades, and each real homogeneous piece has a real basis.
+
+\begin{enumerate}
+\item \emph{Finitely many monomials.}
 
 Only coordinates with~$j+2\le d$ can occur in a monomial of weight at most~$d$.
 There are finitely many such coordinates, and the exponent of each is bounded by~$d$.
 Thus finitely many monomials span the polynomials under consideration, and their invariant subspace is finite dimensional.
+
+\item \emph{Evaluation and homogeneous pieces.}
 A complex polynomial vanishing on every real jet vanishes identically, by the one-variable polynomial identity theorem applied successively in these finitely many real coordinates.
 
 Conjugation acts linearly within each~$\mathcal A_j$ and therefore preserves both grades.
@@ -210,7 +224,10 @@ Thus the homogeneous parts of an invariant polynomial are themselves invariant.
 Every coordinate has weight at least two; in particular the factor number cannot exceed the weight, giving the index range in~\eqref{eq:uv-label-grading}.
 The same linearity argument applies to~\eqref{eq:uv-label-action}, and these real linear changes commute with coefficient conjugation.
 Each invariant homogeneous component is the complex span of its real polynomials, by decomposition into real and imaginary coefficient parts.
+
+\item \emph{Nested real bases.}
 Choose a real basis in each component, beginning with~$\{1\}$ for the constant component, and retain these choices as~$d$ increases.
+\end{enumerate}
 \end{proof}
 
 \begin{definition}[Chosen polynomial bases]\label{def:uv-bases}
@@ -382,16 +399,26 @@ for~$A(o)=ho+z$, $h\in H_4$, as in Definition~\ref{def:uv-symmetries}.
 \end{proposition}
 
 \begin{proof}
-Polynomial dependence gives continuity and finite-site locality; the endpoint condition then identifies which polynomial represents the constant observable.
+The conclusions follow in three steps: the defining polynomial gives regularity and locality, the symmetries of its factors give covariance, and the transfer endpoint fixes the unit.
+
+\begin{enumerate}
+\item \emph{Locality and continuity.}
 
 The coefficient changes in~\eqref{eq:uv-insertion} are complex linear.
 A polynomial in link entries and their conjugates is continuous, and the section is gauge invariant by~\eqref{eq:uv-section-symmetry}; this proves~\ref{reg:2} and~\ref{reg:3}.
 Placement~\eqref{eq:uv-placement} reads only links with both endpoints in~$o+[\Sigma_d]_{L_pD_N}$, proving~\ref{reg:4}.
 Identifying vertices of~$\Z^4$ after reduction modulo~$L_pD_N$ does not enlarge that set.
 Translating the placement proves~\eqref{eq:uv-insertion-translation}.
+In particular, the dependencies are
+\begin{equation*}
+ I_{N,p}((d,v),o;U)=\frac{1}{a_N^d}P_d[S_{\theta_N^{-1}}\tau_{N,p,d}^{-1}v](o;U).
+\end{equation*}
 
+\item \emph{Reality and coordinate covariance.}
 Factor scaling commutes with coefficient conjugation and~$H_4$, since both actions preserve factor number by Lemma~\ref{lem:uv-labels}.
 Together with~\eqref{eq:uv-transfer-symmetry} and~\eqref{eq:uv-section-symmetry}, this gives the first two identities in~\eqref{eq:uv-insertion-covariance}.
+
+\item \emph{Reference unit.}
 For the unit, the endpoint conditions~\eqref{eq:uv-reference-coordinates} give
 \begin{equation}\label{eq:uv-unit-calculation}
  \begin{aligned}
@@ -402,6 +429,7 @@ For the unit, the endpoint conditions~\eqref{eq:uv-reference-coordinates} give
  \end{aligned}
 \end{equation}
 The remaining identity follows by applying the reference endpoint condition to~$\tau_{N,p,d}^{-1}v$.
+\end{enumerate}
 \end{proof}
 
 The set of observable indices in Definition~\ref{def:observables} is therefore~$\mathcal T=\bigsqcup_dV_d$ for this construction.

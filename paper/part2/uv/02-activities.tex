@@ -60,8 +60,15 @@ The last two equalities hold near the origin, for each fixed~$g\in G$; the test 
 \end{lemma}
 
 \begin{proof}
-We first show that the linear plaquette measurements have common kernel zero.
-Finite dimensionality then leaves a finite collection, and the analytic inverse function theorem supplies the recovery.
+The recovery has three steps: all square measurements together detect every jet, finite dimensionality reduces them to finitely many measurements, and the inverse function theorem recovers the jet from their nonlinear values.
+The two properties to establish are
+\begin{equation*}
+ \mathcal Q_d(J)=\bigl(Q_{\omega_a,p_a}(U_{J,1})\bigr)_{a=1}^{M_d},
+ \qquad R_d\mathcal Q_d(J)=J\ \text{ near }0.
+\end{equation*}
+
+\begin{enumerate}
+\item \emph{All square measurements detect the jet.}
 
 Recall that~$A_\mu^J=\sum_{j+2\le d}A_{j,\mu}$ is the truncated connection of Definition~\ref{def:uv-test-links}.
 Vary its size by~$\lambda\in\R$ in the transport equation~\eqref{eq:uv-link-ode}, keeping the edge fixed.
@@ -89,10 +96,13 @@ Differentiating the radial identity~\eqref{eq:uv-radial} and using homogeneity g
  =\sum_\nu z^\nu(\partial_\nu A_{j,\mu}-\partial_\mu A_{j,\nu})(z)\,.
 \end{equation}
 Thus~$A_j=0$, and descending in degree proves~$J=0$.
+
+\item \emph{Retain finitely many measurements.}
 The kernels of the linear measurements have zero intersection.
 While their intersection is nonzero, another measurement decreases its dimension, so finitely many suffice.
 For~$d<2$ the source space is zero and the assertion is immediate.
 
+\item \emph{Invert the finite nonlinear map.}
 The map~$\mathcal Q_d$ is analytic near zero by the transport series~\eqref{eq:uv-transport-series}.
 Set~$B=D\mathcal Q_d(0)$.
 Conjugating the connection by a constant~$g\in G$ conjugates its test links, by uniqueness of~\eqref{eq:uv-link-ode}.
@@ -112,6 +122,7 @@ The linear map~$C=B^{-1}\Pi$ satisfies
 Since~$\mathcal Q_d(0)=0$, the analytic inverse function theorem gives a local inverse~$g_d$ of~$C\mathcal Q_d$ fixing~$0$.
 Then~$R_d=g_dC$ has the first two properties in~\eqref{eq:uv-recovery}.
 The last identity in~\eqref{eq:uv-recovery} follows from uniqueness of the local inverse, for each fixed~$g\in G$.
+\end{enumerate}
 \end{proof}
 
 \subsection{Constructing the local polynomials}\label{subsec:uv-section-build}
@@ -173,8 +184,18 @@ For every~$k,q\in\N$ with~$k\ge6$, $q\ge2$, there is~$A_{d,k,q}\ge0$ such that
 \end{proposition}
 
 \begin{proof}
-Truncate the recovery map, not the final observable.
-Its zero constant term preserves the lower bound on factor number; this lower bound will give the threshold power after differentiation.
+The construction has three parts: approximate the inverse to the required Taylor order, average over signed coordinate changes, and estimate each product of transported plaquettes on the good set.
+The two key controls are
+\begin{equation*}
+ \left.\frac{d^r}{d\varepsilon^r}R_d^{[d]}\!\left(\mathcal Q_d(\operatorname{sc}_\varepsilon J)\right)\right|_{\varepsilon=0}
+ =\left.\frac{d^r}{d\varepsilon^r}\operatorname{sc}_\varepsilon J\right|_{\varepsilon=0}\quad(0\le r\le d),
+ \qquad \|P_d[b_{d,i}]\|_{t,k,q;o,\,o+[\Sigma_d]_\ell}
+ \le A_{d,k,q}t^{f_{d,i}}.
+\end{equation*}
+The recovery identity~\eqref{eq:uv-recovery} makes the Taylor polynomial reproduce the identity through degree~$d$.
+
+\begin{enumerate}
+\item \emph{Match the Taylor coefficients and retain factors.}
 
 Let~$R_d^{[d]}$ be the ordinary Taylor polynomial at~$0$ of the recovery map~$R_d$ in Lemma~\ref{lem:uv-sampling}, through degree~$d$.
 Apply it to the finite tuple of transported plaquettes chosen in that lemma and set
@@ -194,6 +215,7 @@ For the scaling of jets in Definition~\ref{def:uv-test-links}, homogeneity in th
 The compositions~$R_d^{[d]}\mathcal Q_d$ and~$R_d\mathcal Q_d$ have equal Taylor coefficients through degree~$d$ at zero.
 Composing with~$\operatorname{sc}_\varepsilon J$ and then~$v$ proves~\eqref{eq:uv-section-taylor} for~$P_d^0$.
 
+\item \emph{Restore the exact signed symmetries.}
 Average over the group of Definition~\ref{def:uv-symmetries}:
 \begin{equation}\label{eq:uv-section-average}
  P_d[v](U)=\frac{1}{|H_4|}\sum_{h\in H_4}P_d^0[h^{-1}\cdot v](h^*U)\,.
@@ -210,6 +232,7 @@ Since the action on polynomials preserves factor number, the lower factor bound 
 Enclose all walks and plaquettes occurring in this finite sum in one centred integer cube~$\Sigma_d$.
 This gives every condition in Definition~\ref{def:uv-sections}.
 
+\item \emph{Bound derivatives on the good set.}
 For the bound, each transported curvature~$Q$ has value at most~$t$ on the good set.
 All links occurring in its fixed walks and plaquettes have maximum distance at most a fixed~$R$ from the origin on~$\Z^4$.
 After periodic placement their distance is still at most~$R$, so the allowed direction there has size at most~$t(1+R)^q$.
@@ -223,6 +246,7 @@ The constant includes the fixed matrix projection and finitely many path factors
 Leibniz's rule therefore gives~$Ct^s$ for every derivative through order~$k$ of a monomial with~$s$ factors.
 Sum its finitely many coefficients and use~$s\ge f_{d,i}$ and~$t\le1$ to obtain~\eqref{eq:uv-section-bound}.
 Repeated links on a small torus affect only the finite differentiation multiplicities, so the constant is independent of~$\ell$.
+\end{enumerate}
 \end{proof}
 
 These polynomial functions are smooth along the link variations~\eqref{eq:uv-left-derivative} at every configuration; the estimate applies on the closed good set, including its boundary.
@@ -269,19 +293,34 @@ If~$a_\varnothing=b_\varnothing=0$, then~$a^{|V|+1}=0$ and the finite exponentia
 \end{proposition}
 
 \begin{proof}
-Expand by the sets of variables that occur.
-A nonzero product uses disjoint sets, so its weight is the product of their weights.
-Consequently,
+The norm estimate follows because only disjoint variable sets multiply nontrivially, and their weights multiply.
+The exponential identities follow from nilpotence and the finite binomial formula.
+We prove these as follows.
+\begin{enumerate}
+\item \emph{Product bound.} A nonzero coefficient in~$ab$ comes from disjoint sets~$I,J$, with~$\omega^{I\cup J}=\omega^I\omega^J$; hence
 \begin{equation*}
  \|ab\|_\omega
  \le\sum_{\substack{I,J\in\mathcal R\\I\cap J=\varnothing,\ I\cup J\in\mathcal R}}
        \omega^I\omega^J|a_I||b_J|
  \le\left(\sum_I\omega^I|a_I|\right)\left(\sum_J\omega^J|b_J|\right)\,.
 \end{equation*}
-The unit and exponential estimates follow by the triangle inequality and the scalar exponential series.
+
+\item \emph{Norm of the finite exponential.} Since~$\|1\|_\omega=1$, submultiplicativity and the triangle inequality give
+\begin{equation*}
+ \|\operatorname{Exp}(a)\|_\omega
+ \le\sum_{r=0}^{|V|}\frac{\|a\|_\omega^r}{r!}
+ \le e^{\|a\|_\omega}.
+\end{equation*}
+
+\item \emph{Exponential identities.}
 If the constant coefficient vanishes, every factor of~$a$ uses a nonempty set of variables.
 A product of more than~$|V|$ such factors is zero.
-The binomial formula now proves~\eqref{eq:uv-marker-exponential}, since every term of total degree greater than~$|V|$ vanishes.
+Thus~$a^{|V|+1}=b^{|V|+1}=0$, and the binomial formula yields
+\begin{equation*}
+ \operatorname{Exp}(a+b)=\operatorname{Exp}(a)\operatorname{Exp}(b),
+ \qquad \operatorname{Exp}(-a)\operatorname{Exp}(a)=1.
+\end{equation*}
+\end{enumerate}
 \end{proof}
 
 The same norm justifies countable summation: if~$\|a_j\|_\omega\le c_j$ and~$\sum_jc_j<\infty$, the partial sums are Cauchy and~$\|\sum_ja_j\|_\omega\le\sum_jc_j$.
@@ -395,16 +434,20 @@ If~$\mathcal B_t(U)=\varnothing$, then~$\mathcal Z_K(U)=1$.
 \end{proposition}
 
 \begin{proof}
-Sum the local bounds over sites to obtain summable majorants for the individual activities.
-Then bound the sum over disjoint selections by the larger sum over all finite selections.
+At fixed finite volume, the per-site hypotheses give summable bounds for individual terms; the sum over compatible selections is then bounded by an unrestricted product.
+The argument has three steps.
 
+\begin{enumerate}
+\item \emph{Sum individual activities.}
 Since each regular term has one chosen site and every~$Y_j$ is nonempty, the weights in~\eqref{eq:uv-activity-bounds} are at least one and give
 \begin{equation}\label{eq:uv-total-majorants}
  \sum_i e_i\le|\Lambda_\ell|\delta,\qquad
  \sum_j k_j\le|\Lambda_\ell|w\,.
 \end{equation}
 The regular term~$\mathbf1_{\mathcal G_t(X_i)}E_i$ is bounded by~$e_i$ everywhere, so its series converges uniformly and absolutely.
-For the disjoint-region sum, the configuration-independent majorant satisfies
+
+\item \emph{Sum the selections.}
+The disjoint-region sum is dominated by all finite selections, whose configuration-independent majorant satisfies
 \begin{equation}\label{eq:uv-selection-majorant}
  \sum_{J\subset\N\ \mathrm{finite}}\prod_{j\in J}k_j
  =\prod_{j\ge0}(1+k_j)
@@ -412,9 +455,16 @@ For the disjoint-region sum, the configuration-independent majorant satisfies
 \end{equation}
 The equality follows by expanding finite products and taking increasing limits; the inequality uses~$1+s\le e^s$ for~$s\ge0$.
 This proves absolute uniform convergence and the first two bounds in~\eqref{eq:uv-activity-global-bounds}.
+
+\item \emph{Pass the properties to the sum.}
 All indicators in~\eqref{eq:uv-activity-weight} are Borel and gauge invariant, as are the activities, so the limits have these properties.
-The last bound follows from the first two, and product Haar is a probability measure.
+The exponent in~$\rho$ is bounded using~$|S(U)|\le\|S\|_\infty$ and~$|E_t(U)|\le|\Lambda_\ell|\delta$; thus
+\begin{equation*}
+ |\rho(U)|\le e^{c|\Lambda_\ell|+\|S\|_\infty+|\Lambda_\ell|(\delta+w)}.
+\end{equation*}
+Product Haar is a probability measure, so this bound gives integrability.
 If there are no bad sites, a nonempty selection cannot have empty union of its nonempty~$I_j$; only the empty selection remains.
+\end{enumerate}
 \end{proof}
 
 The estimates here allow the local bounds~$\delta,w$ to be independent of volume, while their global sums grow with~$|\Lambda_\ell|$.
