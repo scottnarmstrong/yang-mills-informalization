@@ -1,58 +1,54 @@
 \section{Free Maxwell fields}\label{sec:maxwell}
 
-The limiting fields of Section~\ref{sec:infinite-volume} are described by their correlations.
-To identify their behaviour at short distances, we compare them with a model whose correlations are explicit: the free Maxwell field, with one component for each Lie algebra direction in Definition~\ref{def:gauge}.
-Its local observables are polynomials in the curvature and its derivatives, subject to the linear Maxwell equations.
+The limiting fields of Section~\ref{sec:infinite-volume} are described by their correlations, meaning the expectations of products of local polynomial measurements.
+For a short-distance comparison we use the free Maxwell field: the linear, non-interacting theory of a curvature two-form. It has one component for each basis direction in the Lie algebra of Definition~\ref{def:gauge}; the index~$c$ below records that basis direction (often called colour). Its local observables are polynomials in the curvature and its derivatives. The two linear Maxwell equations say, respectively, that the curvature has zero cyclic derivative and zero divergence. In coordinates, the first says the signed sum around each three-index cycle vanishes; the second says each column has zero divergence.
 
-We first construct those polynomial correlations in Subsection~\ref{subsec:mx-curvature}.
-Subsection~\ref{subsec:mx-positive} identifies their null coefficients and explains why finitely many smeared observations detect every field of a fixed degree.
-Subsection~\ref{subsec:mx-comparison} states the precise lattice comparison estimate needed from the ultraviolet construction and passes it to continuum fields.
-Subsection~\ref{subsec:mx-bases} turns the resulting maps into compatible isomorphisms.
-Subsection~\ref{subsec:mx-smooth} then recovers convergence of all positional derivatives.
-The radii and field maps are chosen together; a prescribed sequence of radii requires further estimates used later in the trace argument.
+Subsection~\ref{subsec:mx-curvature} defines the Taylor coefficients of a Maxwell curvature and computes their free correlations by differentiating the curvature two-point function.
+Subsection~\ref{subsec:mx-positive} starts with positive pairings of reflected linear observations. To see the finite matching rule, use independent standard complex Gaussian coordinates~$z_a$, each with density~$\pi^{-1}e^{-|z_a|^2}$: they satisfy~$\mathbb E[z_a\overline z_b]=\delta_{ab}$ and~$\mathbb E[z_az_b]=0$. Thus a product has nonzero expectation only when each unbarred factor is paired with a barred factor of the same coordinate. The field correlations below are Wick ordered: pairings within one insertion are removed, leaving the matching rule between distinct insertions. This representation gives polynomial positivity, identifies coefficients that represent the same field, and supplies finitely many detecting tests at each degree.
+Subsection~\ref{subsec:mx-comparison} states the additional same-family lattice estimate needed to compare free correlations with the already chosen continuum correlations.
+Subsection~\ref{subsec:mx-bases} makes the comparison maps agree across degrees and shows they are isomorphisms.
+Subsection~\ref{subsec:mx-smooth} upgrades convergence of tested correlations to convergence of all derivatives in the insertion positions.
+The radii and field maps are chosen together. The further uniformity needed for a prescribed radius sequence is left to the later trace argument.
 
-The polynomial positivity argument uses the estimate for reflected linear observations in Lemma~\ref{lem:mx-linear-positive}.
-The comparison with the interacting fields uses the lattice estimates~\eqref{eq:mx-lifts}--\eqref{eq:mx-cutoff-comparison} and the separate dimension bound~\eqref{eq:mx-rank}.
-Given these estimates, finite-dimensional linear algebra identifies the field spaces and their short-distance correlations.
 
 \subsection{Curvature correlations}\label{subsec:mx-curvature}
 
 Use the gauge group of Definition~\ref{def:gauge}, the classical polynomial spaces~$V_d$ of Definition~\ref{def:uv-labels}, and their norms from Definition~\ref{def:iv-coefficients}.
-The physical inner product and a corresponding colour basis~$E^1,\ldots,E^{\dim\g}$ are normalised by
+The inner product on the Lie algebra and a corresponding orthonormal basis~$E^1,\ldots,E^{\dim\g}$ are fixed by
 \begin{equation}\label{eq:mx-colors}
  \langle X,Y\rangle_{\g}=-\frac{1}{m}\operatorname{Re}\tr(XY),
  \qquad \langle E^c,E^{c'}\rangle_{\g}=\delta_{cc'}.
 \end{equation}
-Here~$m$ is the defining matrix size, as in Definition~\ref{def:gauge}; the basis component~$c$ is called a colour index.\sourcefootnote{\nolinkurl{YM/Gauge/Colors.lean}, lines 43--83: physical colour coordinates and normalised trace}
+Here~$m$ is the defining matrix size, as in Definition~\ref{def:gauge}. Thus $c$ records which Lie-algebra component of the curvature is being measured; the normalisation fixes the trace convention in every later two-point function.\sourcefootnote{\nolinkurl{YM/Gauge/Colors.lean}, lines 43--83: physical colour coordinates and normalised trace}
 
 \begin{definition}[Maxwell Taylor coefficients]\label{def:mx-jets}
 The indices~$a,b,k$ range over the four coordinate directions.
-A Maxwell field is a smooth array~$f=(f_{ab})$ of~$\g$-valued functions, viewed as a two-form by antisymmetry, satisfying
+A Maxwell field is a smooth array~$f=(f_{ab})$ of~$\g$-valued functions. Antisymmetry makes it a two-form: each component is attached to an oriented coordinate area, and reversing the area changes its sign. The cyclic equation is the zero exterior derivative condition, and the last equation is zero divergence. It satisfies
 \begin{equation}\label{eq:mx-equations}
  f_{ab}=-f_{ba},\qquad
  \partial_af_{bk}+\partial_bf_{ka}+\partial_kf_{ab}=0,\qquad
  \sum_a\partial_af_{ab}=0.
 \end{equation}
-For~$j\in\N$, let~$\mathcal H_j$ be the finite-dimensional real space of homogeneous polynomial solutions of degree~$j$.
-A homogeneous polynomial~$Q_j$ is identified with its symmetric multilinear coefficient by evaluation on repeated arguments.
+For~$j\in\N$, let~$\mathcal H_j$ be the finite-dimensional real space of homogeneous polynomial solutions of degree~$j$; these are the possible degree-$j$ Taylor terms of a Maxwell curvature near the origin.
+A homogeneous polynomial~$Q_j$ is identified with its symmetric multilinear coefficient by evaluation on repeated arguments: its value at~$z$ is obtained by putting the same vector~$z$ in every Taylor slot.
 Our Taylor convention is
 \begin{equation*}
  Q_j(z)=\frac{1}{j!}D^jf(0)[z,\ldots,z].
 \end{equation*}
-Thus a Taylor tensor here includes the factorial denominator.
+Thus a Taylor tensor here includes the factorial denominator, so the sequence $(Q_j)$ is exactly the formal Taylor expansion of the curvature.
 A sequence~$Q=(Q_j)_{j\ge0}$ with~$Q_j\in\mathcal H_j$ is a formal Maxwell Taylor series; convergence of this series is not required.
-For a one-form~$A$, use~$z\cdot A=\sum_a z^aA_a$ and~$(dA)_{ab}=\partial_aA_b-\partial_bA_a$.
-The radial potential associated with~$Q\in\mathcal H_j$ is
+For a one-form~$A$, use~$z\cdot A=\sum_a z^aA_a$ and~$(dA)_{ab}=\partial_aA_b-\partial_bA_a$. The radial potential is a polynomial one-form reconstructed from the curvature, with~$dA=Q$. The condition~$z\cdot A(z)=0$ fixes the radial gauge; its explicit formula is
 \begin{equation}\label{eq:mx-radial}
  (\kappa_jQ)_a(z)=\frac{1}{j+2}\sum_b z^bQ_{ba}(z),
  \qquad z\cdot\kappa_jQ(z)=0,\qquad d(\kappa_jQ)=Q.
 \end{equation}
+For example, when~$Q_0$ is a constant antisymmetric matrix, the formula gives~$(\kappa_0Q_0)_a(z)=\frac12\sum_bz^b(Q_0)_{ba}$, a linear one-form whose curl is~$Q_0$.
 \end{definition}
 
-The last identity follows by differentiating the first formula, using the cyclic equation in~\eqref{eq:mx-equations} and Euler's identity for a homogeneous polynomial.
+The last identity follows by differentiating the formula and using the cyclic equation in~\eqref{eq:mx-equations}. Euler’s identity, $z\cdot\nabla Q_j=jQ_j$, supplies the factor~$j+2$ in the denominator.
 Thus the coefficients may also be read in the radial coordinates of~\eqref{eq:uv-radial}.\sourcefootnote{\nolinkurl{YM/Maxwell/Shell.lean}: the constrained Taylor space and inverse radial curl}
 
-For~$z\in\R^4\setminus\{0\}$, the scalar Green function determines the covariance, or two-point pairing, between curvature components at distinct points.
+For~$z\in\R^4\setminus\{0\}$, the scalar Green function~$\Gamma$ is the fundamental solution of the four-dimensional Laplacian. Its second derivatives are the two-point covariance: they give the free expectation of two linear curvature measurements at separation~$z$.
 The indices~$a,b,e,f$ specify coordinate directions; $c,c'$ are the colour indices of~\eqref{eq:mx-colors}.
 Set
 \begin{equation}\label{eq:mx-kernel}
@@ -66,16 +62,15 @@ Set
 \end{aligned}
 \end{equation}
 The signs include differentiation at the second endpoint of a covariance depending on~$x-y$.
-A linear probe of order~$j$ is a real linear functional on~$\mathcal H_j$: it measures a specified linear combination of the Taylor coefficients.
+A linear probe of order~$j$ is a real linear functional on~$\mathcal H_j$; it measures a specified linear combination of the degree-$j$ Taylor coefficients.
 For probes~$p\in\mathcal H_j^*$ and~$q\in\mathcal H_\ell^*$, the dual spaces of these real tensor spaces, define
 \begin{equation}\label{eq:mx-leg}
  K_{p,q}(z)=\frac{(-1)^\ell}{j!\,\ell!}
  (p\otimes q)\bigl[D^{j+\ell}C(z)\bigr].
 \end{equation}
-The first~$j$ derivative slots belong to~$p$ and the remaining~$\ell$ slots to~$q$.
+The first~$j$ derivative slots belong to~$p$ and the remaining~$\ell$ slots to~$q$. Thus~$p$ and~$q$ select one Taylor coefficient at each of the two points; the factorials match the Taylor convention in~\eqref{eq:mx-radial}.
 Colour and form indices are contracted by the two functionals themselves; no extra antisymmetry factor is inserted.
-One may extend these functionals to unconstrained tensors to evaluate the formula.
-The following observation shows that the answer is independent of those extensions.
+One may extend these functionals to all tensors to evaluate the formula. The next lemma shows that the equations force the differentiated covariance into the Maxwell solution spaces, so the chosen extensions cannot affect the answer.
 
 \begin{lemma}[The contraction kernel]\label{lem:mx-kernel}
 For~$z\ne0$, the kernel~\eqref{eq:mx-kernel} satisfies~\eqref{eq:mx-equations} in both groups of tensor indices.
@@ -87,7 +82,7 @@ Consequently~\eqref{eq:mx-leg} is well defined on~$\mathcal H_j^*\times\mathcal 
 \end{lemma}
 
 \begin{proof}
-The verification has three steps.
+The verification has three steps. Here the curl is the antisymmetric derivative~$d$ defined above; the cyclic equation says its next exterior derivative vanishes, while harmonicity of~$\Gamma$ gives zero divergence away from the origin.
 \begin{enumerate}[label=\textup{Step \arabic*.}]
 \item Taking a curl at both endpoints gives the displayed covariance; antisymmetry and commuting derivatives give the cyclic equation.
 \item Harmonicity of~$\Gamma$ gives the divergence equation.
@@ -107,8 +102,8 @@ The exchange and scaling identities follow by differentiating the even, homogene
 \end{proof}
 
 \begin{definition}[Free polynomial fields]\label{def:mx-fields}
-Choose coordinates on the spaces~$\mathcal H_j$ of Definition~\ref{def:mx-jets} and give each coordinate weight~$j+2$.
-Substitution of~\eqref{eq:mx-radial} in a radial polynomial defines a linear map~$\operatorname{res}_d$ on~$V_d$.
+Choose coordinates on the spaces~$\mathcal H_j$ of Definition~\ref{def:mx-jets} and give each coordinate weight~$j+2$, its scaling degree as a curvature Taylor coefficient.
+Substitute the reconstructed potential~\eqref{eq:mx-radial} into a polynomial in the radial gauge fields. This gives the restriction map~$\operatorname{res}_d$ on~$V_d$; its kernel consists exactly of polynomials that vanish on every Maxwell solution.
 Write
 \begin{equation}\label{eq:mx-polynomials}
 \begin{aligned}
@@ -124,12 +119,11 @@ The free unit is the constant class~$\mathbf1=[1]$.
 The interacting unit is~$\pi_du_d$ in Definition~\ref{def:iv-fields}; the comparison maps below will send the free unit to that class.
 \end{definition}
 
-Wick ordering removes pairings between coefficients at the same insertion point.
-Only pairings between distinct observations remain in their correlation.
+Wick ordering means subtracting the self-contractions at each insertion. In the resulting correlations, pairings join different insertion points only.
 The following finite sum implements this rule.
 \begin{definition}[Wick correlations]\label{def:mx-wick}
-For monomials~$q_i=\prod_{e\in E_i}p_e$ in the linear probes defined above, let~$E$ be their disjoint union and let~$i(e)=i$ identify the insertion containing~$e$.
-A perfect matching is a partition of~$E$ into pairs.
+For monomials~$q_i=\prod_{e\in E_i}p_e$ in the linear probes defined above, regard each repeated factor as a separate occurrence. Let~$E$ be the union of these occurrence sets and let~$i(e)=i$ identify the insertion containing~$e$.
+A perfect matching pairs every occurrence with exactly one other occurrence. The disjoint-union convention keeps two copies of the same probe distinct when a monomial repeats it.
 Let~$\mathfrak M_{\ne}(E)$ be the matchings that never pair two members of the same~$E_i$.
 Set
 \begin{equation}\label{eq:mx-wick}
@@ -152,8 +146,7 @@ Empty products give~$W_0=1$.\sourcefootnote{\nolinkurl{YM/Maxwell/Equation.lean}
 
 \subsection{Positivity and finite observations}\label{subsec:mx-positive}
 
-Reflection positivity must hold for polynomials, not just for the linear curvature.
-The analytic input concerns linear probes; finite-dimensional Gaussian algebra will then handle every polynomial.
+This subsection proves positivity for polynomial observations from the analytic result for linear probes.
 \begin{definition}[Reflected Maxwell observations]\label{def:mx-reflection}
 Fix an axis~$\mu$ and let~$\theta=r_{\mu,0}$ be the reflection of Definition~\ref{def:iv-reflections}.
 A positive-side point has~$x^\mu>0$.
@@ -175,31 +168,30 @@ The reflected point is separated from every positive-side point, even when two o
 
 \begin{lemma}[Reflected linear probes]\label{lem:mx-linear-positive}
 The matrix~\eqref{eq:mx-linear-gram} is positive semidefinite.
-If all~$x_\alpha=x$ and the probes~$p_\alpha$ are linearly independent as functionals on~$\prod_j\mathcal H_j$, it is positive definite.
+If all~$x_\alpha=x$ and the probes~$p_\alpha$ are linearly independent as functionals on~$\prod_j\mathcal H_j$, it is positive definite: every nonzero linear combination has strictly positive reflected norm.
 \end{lemma}
 
-\gap{The analytic proof of Lemma~\ref{lem:mx-linear-positive} is still missing from this manuscript. It must prove nonnegativity for arbitrary positive-side probe lists and strictness at one point modulo exactly the Maxwell equations. The source uses a nonnegative energy integral, analytic continuation of a vanishing response and tests against homogeneous Maxwell solutions; positivity alone does not establish the strict assertion.\sourcefootnote{\nolinkurl{YM/Next/MAXWELL/Gram.lean}, lines 52--108; \nolinkurl{YM/Next/MAXWELL/Strict.lean}, especially \texttt{level\_detects}, and its imported energy estimates}}
+\gap{The analytic proof of Lemma~\ref{lem:mx-linear-positive} is still missing from this manuscript. It must prove nonnegativity for arbitrary positive-side probe lists and strictness at one point modulo exactly the Maxwell equations. In the strictness argument, the response is the pairing of a linear probe with the curvature field: if it vanishes on the reflected open set, analytic continuation makes it vanish at all separated points, and tests against homogeneous Maxwell solutions must then show that the probe is zero on~$\mathcal H_j$. Positivity alone does not establish this strict assertion.\sourcefootnote{\nolinkurl{YM/Next/MAXWELL/Gram.lean}, lines 52--108; \nolinkurl{YM/Next/MAXWELL/Strict.lean}, especially \texttt{level\_detects}, and its imported energy estimates}}
 
-The strict assertion detects every nonzero local polynomial, including its constant term.
-It therefore identifies the quotient~\eqref{eq:mx-polynomials} with the quotient by all separated null correlations, just as required for the interacting fields in~\ref{item:iv-smooth-null}.
+Once strictness is established, it identifies the quotient~\eqref{eq:mx-polynomials} with the quotient by all separated null correlations, just as required for the interacting fields in~\ref{item:iv-smooth-null}.
 
-The inclusions and derivatives below are defined directly on the polynomial realisation~$\mathcal P_d^0$ of Definition~\ref{def:mx-fields}.
+An inclusion keeps the same polynomial when the allowed degree is enlarged. A derivative moves the insertion point infinitesimally: the coefficient at degree~$j+1$ contributes to the derivative at degree~$j$, with the factor~$j+1$ fixed by the Taylor factorials.
 
 \begin{definition}[Free field operations]\label{def:mx-operations}
 Write~$j^0_{d,e}$ for the inclusion induced by~$V_d\subset V_e$, for~$d\le e$.
-For a formal Taylor series~$Q$ as in Definition~\ref{def:mx-jets}, its infinitesimal translation in direction~$\mu$ has components
+For a formal Taylor series~$Q$ as in Definition~\ref{def:mx-jets}, translating the observation point infinitesimally in direction~$\mu$ shifts the Taylor coefficients as follows:
 \begin{equation*}
  (\mathcal D_\mu Q)_j=(j+1)Q_{j+1}(e_\mu,\cdot,\ldots,\cdot).
 \end{equation*}
 Here~$e_\mu$ is the coordinate unit vector and the remaining arguments are the~$j$ symmetric Taylor arguments; form indices are retained.
-For a polynomial~$q$, let~$D_jq$ denote its derivative in the~$Q_j$ variable and define
+For a polynomial~$q$, let~$D_jq$ denote its ordinary finite-dimensional derivative in the~$Q_j$ variable and define
 \begin{equation}\label{eq:mx-polynomial-derivative}
  (\partial_\mu^0q)(Q)=\sum_j D_jq(Q)\bigl[(\mathcal D_\mu Q)_j\bigr].
 \end{equation}
 The sum is finite, since~$q$ uses only finitely many~$Q_j$.
 \end{definition}
 
-The proof below shows that this derivative maps~$\mathcal P_d^0$ into~$\mathcal P_{d+1}^0$ and gives the positional derivative of its correlations.
+The proof below shows that this operation maps~$\mathcal P_d^0$ into~$\mathcal P_{d+1}^0$ and differentiates its correlations with respect to the insertion point.
 In derivative bounds, $D_x^s$ denotes the total Fr\'echet derivative with its operator norm, as in Definition~\ref{def:iv-analysis}.
 
 \begin{proposition}[Free fields]\label{prop:mx-free}
@@ -217,15 +209,15 @@ The correlations~\eqref{eq:mx-wick} descend faithfully to~$F_d^0$ in~\eqref{eq:m
 \end{proposition}
 
 \begin{proof}
-The proof has four steps.
+The proof has four steps. First we rewrite the reflection matrix as the ordinary inner product of polynomials with positive weights. Strict positivity then shows that only polynomials already zero in the Maxwell quotient are invisible. The remaining properties follow from the same matching formula: constants and symmetries pass directly, and differentiating a matching is the same as differentiating one insertion.
 \begin{enumerate}[label=\textup{Step \arabic*.}]
-\item Factor the real reflected matrix as~$H=L^{\mathsf T}L$; the matching rule then gives a polynomial inner product.
+\item A positive definite finite matrix has a square-root factorisation~$H=L^{\mathsf T}L$. Use one independent standard complex Gaussian variable~$z_a$ for each coordinate and represent probe~$e$ by~$\sum_aL_{ae}z_a$. The complex Gaussian moment rule pairs barred with unbarred coordinates; expanding products gives the polynomial inner product~$\sum_\gamma\gamma!\,\overline{P_\gamma}Q_\gamma$.
 \item Strictness at one point makes this representation injective, so the only null coefficients are~$\mathcal I_d$.
 \item The same finite matching formula gives positivity, normalization and symmetries.
 \item Differentiating the matching formula gives the field operations and the homogeneous-kernel bounds.
 \end{enumerate}
 
-For a finite collection of positive-side products, use the finite set of all their linear occurrences as the matrix indices.
+For a finite collection of products supported on the positive side, use the finite set of all their linear factors as the matrix indices.
 Within each product, sum over partial matchings between distinct insertion points, and replace each unpaired occurrence~$e$ by~$\sum_aL_{ae}z_a$.
 This produces a polynomial~$Q_\alpha(z)$ for each product~$\alpha$.
 Every full matching splits uniquely into a matching within each half and the pairs crossing between them.
@@ -239,7 +231,7 @@ The reflected Gram matrix is then
  =\sum_\gamma\gamma!\,\overline{P_\gamma}Q_\gamma,
  \qquad \gamma!=\prod_a\gamma_a!.
 \end{equation}
-This proves point positivity, since every weight~$\gamma!$ is positive.
+This is the finite-dimensional Gaussian factorisation: the reflected pairing is an ordinary polynomial inner product, and every monomial square has the positive weight~$\gamma!$. Hence the reflected matrix is positive semidefinite.
 For a single insertion there are no internal pairs, so~$Q(z)=q(L^{\mathsf T}z)$.
 For independent coordinate probes at one point, Lemma~\ref{lem:mx-linear-positive} makes~$L$ invertible and hence
 \begin{equation}\label{eq:mx-strict}
@@ -266,8 +258,7 @@ Finally, each derivative of a contraction is homogeneous of a fixed negative deg
 The finite sums of products in~\eqref{eq:mx-wick} give~\eqref{eq:mx-bounds}, including the empty-list case.\sourcefootnote{\nolinkurl{YM/Next/MAXWELL/Fock.lean}, \nolinkurl{YM/Next/MAXWELL/Studio.lean} and \nolinkurl{YM/Next/MAXWELL/Core.lean}: polynomial factorisation and strictness; \nolinkurl{YM/Next/MAXWELL/System.lean}, lines 29--114: quotient and derivative operations; \nolinkurl{YM/Next/MAXWELL/Caps.lean}: analyticity and bounds}
 \end{proof}
 
-Faithfulness can be tested with finitely many observations at each degree.
-This converts convergence of correlations into information about coefficient maps, by using only finitely many measurements.
+Faithfulness means that every nonzero field is detected by some correlation. At each fixed degree, finitely many observations suffice: they turn convergence of correlations into information about the finite-dimensional coefficient maps.
 \begin{definition}[Tested observations]\label{def:mx-tests}
 For~$v\in F_d^0$, a fixed list~$b=(b_1,\ldots,b_n)$ of free fields in the other insertion slots, and a separated test~$f$ of Definition~\ref{def:tests}, write
 \begin{equation}\label{eq:mx-tests}
@@ -286,7 +277,7 @@ For each~$d$, finitely many functionals~\eqref{eq:mx-tests} and a constant~$c_d>
 \end{lemma}
 
 \begin{proof}
-The proof has two steps.
+The proof has two steps. First, strict positivity says that no nonzero vector is missed by all possible measurements. Then choose one measurement that detects a vector in the remaining common kernel; each choice lowers its dimension, so the process stops after finitely many choices.
 \begin{enumerate}[label=\textup{Step \arabic*.}]
 \item By~\eqref{eq:mx-strict}, every nonzero field has a correlation detected by some test, so the common kernel of all functionals~\eqref{eq:mx-tests} is zero.
 \item Choose each next functional nonzero on the current common kernel; its dimension drops at every step, leaving finitely many tests, and compactness of the unit sphere gives the positive constant in~\eqref{eq:mx-detection}.
@@ -297,7 +288,7 @@ In detail, starting with~$F_d^0$, choose a functional nonzero on the current com
  \qquad E_a\ne0\ \Longrightarrow\ \dim E_{a+1}<\dim E_a.
 \end{equation*}
 Only finitely many choices are needed.
-The maximum in~\eqref{eq:mx-detection} is then positive on the unit sphere; its minimum there is~$c_d>0$.\sourcefootnote{\nolinkurl{YM/Next/UV_STRESS/Invert.lean}, lines 48--65; \nolinkurl{YM/Work/A04.lean}, lines 14--36}
+The maximum in~\eqref{eq:mx-detection} is then a continuous positive function on the compact unit sphere. Its minimum is the positive constant~$c_d$.\sourcefootnote{\nolinkurl{YM/Next/UV_STRESS/Invert.lean}, lines 48--65; \nolinkurl{YM/Work/A04.lean}, lines 14--36}
 \end{proof}
 
 \subsection{The comparison estimate}\label{subsec:mx-comparison}
@@ -328,7 +319,7 @@ For every~$n\le N_*$, $d_i\le D$, fixed tuple~$q_i\in F_{d_i}^0$, separated test
  \qquad f_r(y)=r^{-4n}f\Bigl(\frac{y}{r}\Bigr).
 \end{equation}
 The moments and tests are those of Definitions~\ref{def:moments} and~\ref{def:tests}.
-The radius and maps precede the choice of tuple and test.
+The order is: fix accuracy, degree and point-separation window; then choose the radius and coefficient maps; only after that choose any fixed field tuple and test. This order is what makes one comparison map serve every such test.
 The cutoff threshold may depend on that tuple, test,~$M$ and~$\eta$; no common cutoff threshold for all tests is required.
 \end{definition}
 
@@ -342,7 +333,7 @@ We also need the independent dimension bound
 For maps~$U_d:F_d^0\to F_d$, write~$Uq=(U_{d_i}q_i)_i$, just as for the coefficient maps in Definition~\ref{def:mx-comparison}.
 First pass that comparison to the already constructed continuum theory.
 Bounded coefficient maps have a common cluster limit in finite dimensions.
-The extraction is used to estimate the same~$S$, rather than to construct another limiting law.
+The extraction is used to estimate the same~$S$, rather than to construct another limiting law. Equal coordinate projections are needed because the comparison tests are supported on configurations where distinct points may share one coordinate; those configurations belong to~$\Conf n$ even though the first compactness extraction used a smaller full-measure set.
 
 \begin{lemma}[Passage to continuum fields]\label{lem:mx-passage}
 Assume~\eqref{eq:mx-lifts}--\eqref{eq:mx-cutoff-comparison} and the conclusions of Propositions~\ref{prop:iv-raw}, \ref{prop:iv-smooth} and~\ref{prop:iv-euclidean}.
@@ -374,14 +365,14 @@ The retained ordered limit and the change of variables~$y=rx$ yield
 \end{equation*}
 All symmetry and unit identities pass through the finite-dimensional limits.
 For each fixed test, take the limit in~\eqref{eq:mx-cutoff-comparison}, then let~$\eta\downarrow0$.
-The same cluster maps work for every test because they were chosen before any test was fixed.\sourcefootnote{\nolinkurl{YM/Next/UV_STRESS/Station.lean}, especially \texttt{zoom\_integral} and \texttt{harvested}}
+The same cluster maps work for every test because they were chosen before any test was fixed. For each fixed tuple and test, the local bound in~\eqref{eq:iv-separated-bound} controls the coefficient replacement; the finite-cutoff inequality then passes to the limit along that already chosen common refinement.\sourcefootnote{\nolinkurl{YM/Next/UV_STRESS/Station.lean}, especially \texttt{zoom\_integral} and \texttt{harvested}}
 \end{proof}
 
 \subsection{Compatible field bases}\label{subsec:mx-bases}
 
-We next choose comparisons at successively smaller radii.
-The maps obtained in Lemma~\ref{lem:mx-passage} need not initially agree on a field that is included in two different degrees.
-We correct this discrepancy on the lower-degree subspaces before proving invertibility.
+We next choose comparisons at successively smaller radii. Compatibility means that if a free polynomial is included from degree~$d$ into degree~$e$, its image is the same interacting field under either map.
+The same free field can appear in two degree spaces through an inclusion. The maps of Lemma~\ref{lem:mx-passage} may initially send these two copies to different interacting fields, so we correct the higher-degree map to agree on the already included lower-degree part.
+
 
 For a radius sequence~$r_k$ and maps~$U_{k,d}:F_d^0\to F_d$, write
 \begin{equation}\label{eq:mx-difference}
@@ -398,7 +389,7 @@ For every fixed field tuple, the convergence used below is
 Here~$K\Subset\Conf n$ means a compact subset of the separated configuration space.
 \end{definition}
 
-The supremum controls all tests with the same size bound on~$K$, so this is stronger than convergence for each test separately.
+The supremum controls every test supported in the same compact region with the same size bound. This uniformity lets us use tests that vary with~$k$ in the derivative argument; convergence for one fixed test would not suffice.
 
 \begin{definition}[Moving tested observations]\label{def:mx-moving-tests}
 For a finite list of tested observations~$\ell_a$ on~$F_d^0$ from Definition~\ref{def:mx-tests}, let~$f_a$ be its test and~$b_a$ its list of~$m_a$ other fields.
@@ -444,7 +435,7 @@ For each fixed tuple,~\eqref{eq:mx-continuum-comparison} therefore gives~\eqref{
 
 Write~$j_d^0=j^0_{d,d+1}$ and~$j_d=j_{d,d+1}$.
 Choose a linear left inverse~$R_d:F_{d+1}^0\to F_d^0$, so~$R_dj_d^0=1$.
-It extracts the part of a higher-degree field already present at degree~$d$.
+It extracts from a higher-degree field the component lying in the copy of degree~$d$. Thus~$1-j_d^0R_d$ removes that old component before the new part is mapped.
 It may be chosen real and commuting with the~$H_4$ action of Definition~\ref{def:iv-coefficients}: average any left inverse first with its conjugate and then over~$H_4$.
 Both averages remain left inverses because~$j_d^0$ intertwines these symmetries.
 For~$d<D_k$, define corrected maps recursively by
@@ -474,12 +465,12 @@ For large~$k$,~\eqref{eq:mx-detection} implies
  \widetilde U_{k,d}v=0\ \Longrightarrow\ B_kv=0\ \Longrightarrow\ v=0.
 \end{equation*}
 Hence~$\widetilde U_{k,d}$ is injective.
-Together with~\eqref{eq:mx-rank},
+Injectivity says the image has at least the free-space dimension. Together with the independent upper bound~\eqref{eq:mx-rank},
 \begin{equation*}
  \dim F_d^0\le\dim F_d\le\dim F_d^0,
 \end{equation*}
 so it is an isomorphism eventually at each fixed degree.
-Fill in or replace the finitely many exceptional early terms at each degree by any fixed isomorphism.
+Fill the finitely many exceptional early terms at each degree with any fixed isomorphism; the assertions are eventual.
 For a fixed tuple or a fixed pair of degrees these replacements have no effect on the eventual assertions, proving~\eqref{eq:mx-compatible} and~\eqref{eq:mx-weak}.\sourcefootnote{\nolinkurl{YM/Next/UV_STRESS/Rates.lean}: diagonal choice of radii; \nolinkurl{YM/Next/UV_STRESS/Arrange.lean}: equivariant retractions and exact degree correction; \nolinkurl{YM/Next/UV_STRESS/Invert.lean}, especially \texttt{Stations.equivalences}: eventual injectivity and isomorphisms}
 \end{proof}
 
@@ -508,7 +499,7 @@ The proof has three steps.
 \item A compactly supported cutoff and Fourier inversion give~$\|D^s(\chi E_k)\|_\infty\to0$ on the target compact set.
 \end{enumerate}
 
-Put~$D_{k,d,\mu}=r_kU_{k,d+1}^{-1}\partial_\mu U_{k,d}$.
+Put~$D_{k,d,\mu}=r_kU_{k,d+1}^{-1}\partial_\mu U_{k,d}$. The factor~$r_k$ converts differentiation in the rescaled coordinate~$r_kx$ back to differentiation in the original coordinate.
 The field derivative identity~\eqref{eq:iv-field-derivative} and the chain rule give
 \begin{equation*}
  \partial_{i,\mu}S_n(U_kq;r_kx)
@@ -537,13 +528,12 @@ For a coordinate multi-index~$\alpha$ and compact~$K\Subset\Conf n$, this gives
  \sup_{\substack{f\text{ as in Definition }\ref{def:tests}\\\supp f\subset K,\ \|f\|_\infty\le1}}
  \left|\int f(x)D^\alpha E_k(q;x)\,dx\right|\longrightarrow0.
 \end{equation*}
-Take a slightly larger compact neighbourhood of~$K$ inside~$\Conf n$.
-Approximating bounded measurable tests there by smooth tests gives the dual formula for the integral of an absolute value, hence
+Uniform control of integrals against all tests with sup norm at most one controls the integral of the absolute value: approximate the complex sign of each derivative by smooth tests on a slightly larger compact neighbourhood of~$K$ inside~$\Conf n$. The dual formula for the integral of an absolute value therefore gives
 \begin{equation*}
  \|D^\alpha E_k(q;\cdot)\|_{L^1(K)}\longrightarrow0.
 \end{equation*}
 
-Choose a smooth cutoff function~$\chi$ supported in that larger set and equal to one near~$K$.
+Choose a smooth cutoff function~$\chi$ supported in that larger set and equal to one near~$K$. The L1 convergence of every derivative makes the Fourier transform decay uniformly after integration by parts; Fourier inversion then bounds the derivatives pointwise.
 Writing~$a=4n$ for the dimension of the point configuration space and~$\alpha$ for a coordinate multi-index, integration by parts in the Fourier transform and Fourier inversion give
 \begin{equation*}
  \|D^s(\chi E_k)\|_\infty
@@ -553,8 +543,8 @@ Writing~$a=4n$ for the dimension of the point configuration space and~$\alpha$ f
 This proves~\eqref{eq:mx-smooth-limit}; the zero-dimensional case is just convergence of constants.\sourcefootnote{\nolinkurl{YM/Next/UV_STRESS/Focus.lean}, especially \texttt{head\_tilt}, \texttt{bend\_limit} and \texttt{travels\_jet}; \nolinkurl{YM/Work/A04.lean}, \texttt{tendsto\_of\_fitted}: recovery from varying finite tests}
 \end{proof}
 
-For simple nonabelian~$\g$, no gauge-invariant linear functional on~$\g$ is nonzero.
-Since a nonconstant polynomial of weight below four could only be linear, this determines the lowest field spaces.
+A simple nonabelian Lie algebra has no nonzero invariant linear functional: invariance forces~$\lambda([X,Y])=0$, while its commutators span~$\g$.
+Apart from constants, each curvature coefficient has weight at least two, so a product of two has weight at least four. Below weight four, only one curvature coefficient or its first derivative can occur; gauge invariance would require an invariant linear functional on~$\g$.
 
 \begin{corollary}[Degrees below four]\label{cor:mx-low}
 If~$\g$ is simple in Definition~\ref{def:gauge}, then, for~$d<4$,
@@ -579,8 +569,7 @@ Thus~$V_d$ consists of constants, and~$W_1(1)=1$ shows that the constant survive
 The dimension bound and the nonzero interacting unit from~\eqref{eq:iv-symmetries} give the last assertion.\sourcefootnote{\nolinkurl{YM/UVNext/FREE_STRESS_CERTIFICATE/Size.lean}, \texttt{just\_one} and \texttt{dim\_before}; \nolinkurl{YM/Trace2/Transfer.lean}, \texttt{first\_grade}}
 \end{proof}
 
-The construction of Proposition~\ref{prop:mx-frames} chooses its radii to satisfy successive finite requirements.
-It does not ensure that those radii form a subsequence of a previously specified sequence.
+At each stage, Proposition~\ref{prop:mx-frames} chooses a radius small enough for finitely many degree and test requirements. The construction does not ensure these radii form a subsequence of a sequence specified in advance.
 That stronger choice requires comparison estimates uniform over varying scale intervals, and is reserved for the trace section.
-Identifying and normalising the degree-four observable of Proposition~\ref{prop:trace} requires further identities for differentiated correlations.
+The degree-four observable in Proposition~\ref{prop:trace} is the first nonconstant gauge-invariant field retained by this comparison. Identifying its normalisation requires further identities for differentiated correlations; the radii must also work uniformly across the prescribed scale intervals.
 Those later arguments use the field spaces and derivative limits established here.

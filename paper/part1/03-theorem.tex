@@ -15,14 +15,14 @@ For every gauge group $(m,G,\g)$ with $\g$ simple (Definition~\ref{def:gauge}), 
 \end{aligned}
 \end{equation}
 Here $C_{N,j}$ is the Wilson moment of Definition~\ref{def:moments}; these are the ordered limits of Definition~\ref{def:ordered}.
-\item\label{main:2} The selected relativistic datum satisfies the Wightman conditions~\ref{wightman:0}--\ref{wightman:3} of Definition~\ref{def:wightman}.
-The hierarchy has all reconstruction properties~\ref{recon:1}--\ref{recon:15} of Definition~\ref{def:reconstructed}, including the selected phase and its continuation.
+\item\label{main:2} The datum reconstructed from the selected point~$\xi_*$ satisfies the Wightman conditions~\ref{wightman:0}--\ref{wightman:3} of Definition~\ref{def:wightman}.
+The hierarchy has all reconstruction properties~\ref{recon:1}--\ref{recon:15} of Definition~\ref{def:reconstructed}; in particular, its continuation has the selected phase's Euclidean correlations as values at ordered imaginary times.
 The mixed correlations are the phase average
 \begin{equation*}
 S^\mix(a;x)=\int_X S^\xi(a;x)\,\nu(d\xi)\qquad(x\in\Conf n)\,.
 \end{equation*}
 \item\label{main:3} The single coefficient system in~\ref{hierarchy:7} satisfies both OPE estimates of Definition~\ref{def:ope}.
-\item\label{main:4} The field $\Theta\in F_4$ is centred and its selected-phase two-point function (Definition~\ref{def:trace-pair}) satisfies
+\item\label{main:4} The field $\Theta\in F_4$ has zero vacuum expectation as in~\ref{trace:1}, and its selected-phase two-point function (Definition~\ref{def:trace-pair}) satisfies
 \begin{equation*}
 \lim_{r\downarrow0}r^8\left(\log\frac{1}{r}\right)^2G_\Theta(r)
 =\frac{3\dim_\R\g}{\pi^4}>0\,.
@@ -37,7 +37,9 @@ The refinement, field spaces, phases, selected relativistic theory, product coef
 The same refinement works for all orders of correlation, observable indices and separated tests.
 The lattice limit in~\ref{main:1} is the mixture; the relativistic theory in~\ref{main:2} is attached to $\xi_*$.
 
-The theorem does not assert uniqueness of the infinite-volume limit, independence of the limit from the lattice choices, or convergence along simultaneous cutoff and volume limits.
-It does not assert a mass gap, factorisation of the mixture's correlations at large separations, agreement of phases, or that an individual phase is a lattice-state limit.
-It gives no distributional extension across coincident points, and excludes only the finite profiles of Definition~\ref{def:wick}, not all composites of Gaussian fields or continuous-mass generalised free fields (Gaussian fields whose covariances involve a continuous distribution of masses).
+The theorem does not choose a unique infinite-volume limit, show that different lattice choices give the same limit, or take the spacing and volume limits simultaneously.
+It does not prove a mass gap, meaning a positive lower bound on nonzero energies above the vacuum.
+It does not show that widely separated groups of observations become independent in the mixed state, that different phases agree, or that any one phase is itself the limit of lattice states.
+The correlations are defined only when insertion points are distinct; the theorem does not define their smeared extension at coincident points.
+The comparison excludes only the finite profiles in Definition~\ref{def:wick}; it does not exclude every polynomial combination of free fields or theories built from a continuum of free-field masses.
 No Euclidean covariance or reflection-positivity assertion is included among~\ref{main:1}--\ref{main:4}; those properties are established internally in the construction.

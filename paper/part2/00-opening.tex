@@ -2,42 +2,31 @@
 
 Part~\ref{part:main} states what the limiting theory must satisfy.
 Here we explain how to construct it from the Wilson measure of Definition~\ref{def:wilson-law}.
-The first task is to compare the same physical observation on successively finer lattices.
-The second is to show that its correlations remain controlled when the surrounding box grows.
-Only after these two tasks can we ask how the limit describes fields, symmetries and phases.
-
-The construction has five stages:
-\begin{enumerate}[label=\textup{\arabic*.}]
-\item Choose local link polynomials and normalise each insertion at a fixed reference level, as in~\eqref{eq:uv-insertion}.
-\item Integrate successively finer variables while preserving the probability integral; prove the fixed-volume limit and the bounds independent of volume needed for extraction.
-\item Select one common refinement giving the ordered limits~\eqref{eq:ordered} for every list of observable indices and every separated test.
-\item Use reflection positivity to build the Hilbert space, establish rotations, and only then represent the long-time operators by phase functions, giving~\eqref{eq:mixture}.
-\item On this same hierarchy, construct the selected relativistic theory and prove the common product estimates and the trace law.
-\end{enumerate}
+The construction first removes the spacing at each fixed volume, then takes a subsequence as the volume grows. The later sections explain how those limiting correlations define fields, symmetries and phases.
 
 \paragraph{Following an observable across scales.}
-Section~\ref{sec:uv-lattice} begins with the exact finite probability model.
-Its symmetries hold before any limiting argument.
-It then describes a local observable by a gauge-invariant polynomial in the Taylor coefficients of a classical connection (Definition~\ref{def:uv-labels}), and represents that polynomial using finitely many lattice links.
-The coefficients of this representative change when short-distance variables are integrated out.
-Fixing its coefficients at a reference scale lets us follow the same observable index through different fine lattices, as in Definition~\ref{def:observables} and~\eqref{eq:uv-insertion}.
+Section~\ref{sec:uv-lattice} starts with the finite probability law and its exact symmetries.
+It describes a classical local observable by a gauge-invariant polynomial in the Taylor coefficients of a smooth connection (Definition~\ref{def:uv-labels}); the connection specifies infinitesimal parallel transport, and these coefficients record its behaviour near one point.
+A polynomial in nearby link matrices represents that classical polynomial on the lattice.
+Integrating out fine links can change its coefficients, so Definition~\ref{def:observables} gives it a fixed index and~\eqref{eq:uv-insertion} fixes the coefficients at a reference level.
+This lets us follow one observable through different lattice spacings.
 
-Section~\ref{sec:uv-activities} constructs the local polynomial representatives and organises products of insertions so that their coefficients can be followed through integration.
-The density expansions also record which lattice regions contribute and which plaquettes have large deviations.
-This organisation prepares the estimates; it does not itself prove them.
+Section~\ref{sec:uv-activities} constructs the link polynomials and organises products of insertions for integration.
+It records each contribution together with the lattice region on which it depends; terms where a plaquette is far from the identity are kept and tracked by their sites.
+This bookkeeping prepares the estimates but does not prove them.
 
-The later ultraviolet sections perform the integrations.
-Averaging over finer variables produces a probability density for coarser variables; the averaging is normalised so that it preserves the original integrals.
-The difficulty is to control the density and the observables after this operation has been repeated many times.
-Configurations with plaquette matrices close to the identity admit comparison with an integral having quadratic energy.
-The complementary configurations must be bounded using their energy cost.
-Local contributions are organised by the regions of the lattice on which they depend, so that estimates for a fixed local observable can be made independent of the surrounding volume.
-The change in the coefficient of squared curvature is included in the running coupling.
+The later ultraviolet sections perform these integrations one spacing at a time.
+They average over finer link variables to produce a density for the remaining coarse links, preserving the original integral.
+The estimates must control both this density and each insertion after many such steps.
+When every plaquette matrix in a region is close to the identity, the Wilson energy is compared with its quadratic approximation.
+When a plaquette is farther away, its contribution is bounded using the energy instead of being discarded.
+Contributions are grouped by the sites on which they depend, which is what allows bounds for one local observable to be independent of the surrounding box.
+The change in the coefficient of the quadratic curvature term is included in the coupling assigned to the original lattice measure.
 
-These arguments have two different uses.
-At a fixed box size they must prove that the correlations are Cauchy along the entire spacing sequence, as in Proposition~\ref{prop:uv}.
-They must also give bounds on local observables and their difference quotients independent of the box size.
-The latter bounds permit extraction of an infinite-volume limit; the former identify its inner limits with the full fixed-volume limits.
+These arguments must provide two kinds of estimates.
+At a fixed box size, they must show that correlations approach a limit along the full sequence of spacings, as in Proposition~\ref{prop:uv}.
+Uniform bounds on local observables and on their finite differences as an insertion point moves must also hold independently of box size.
+The latter bounds give a convergent subsequence as the box grows; the fixed-volume limits identify its inner limits with those of the full spacing sequence.
 For the moments of Definition~\ref{def:moments}, the intended passage is the ordered limit~\eqref{eq:ordered}:
 \begin{equation*}
 \begin{aligned}
@@ -47,36 +36,25 @@ For the moments of Definition~\ref{def:moments}, the intended passage is the ord
 \end{aligned}
 \end{equation*}
 Here $f$ is a separated test of Definition~\ref{def:tests}; the inner limit is required at every volume containing its support (Definition~\ref{def:admissible}).
-The family is chosen before the prescribed volume sequence $p$; the refinement $q$ is common to all observables and tests.
+The family is chosen before the prescribed volume sequence $p$, and the subsequence $q$ is the same for every observable list and test.
 
 \paragraph{From correlation functions to fields.}
-Section~\ref{sec:infinite-volume} uses reflection positivity to bound correlations by products of reflected local observables filling the torus.
-The volume-independent estimates then give a common subsequence for all correlations.
-To identify derivatives, one compares lattice differences with higher-degree observables.
-Coefficients invisible in every correlation are discarded, giving the field spaces of the limit.
-Thus smoothness requires estimates for these comparisons as well as compactness.
-The spacing refinement introduced during extraction is removed using the fixed-volume theorem, leaving exactly the ordered limit of Definition~\ref{def:ordered}.
+Section~\ref{sec:infinite-volume} applies reflection positivity: for positive-time products $F,G$, reflect $F$ across time zero and take its complex conjugate, writing the result as $\vartheta F$.
+The resulting positive form is $S^{\mix}((\vartheta F)G)\ge0$; the finite-lattice inequality is~\eqref{eq:iv-lattice-rp}, and its repeated-cell version is~\eqref{eq:iv-chessboard}.
+Repeated reflection bounds a joint correlation by one-cell bounds, which do not grow with the box.
+These bounds give one subsequence for all correlations.
+To identify derivatives, the proof compares a finite difference of an insertion's position with a higher-degree observable.
+Two observables are identified as the same continuum field when every tested limiting correlation of their difference is zero; removing this null subspace gives the field spaces of the limit.
+Smoothness therefore needs estimates for these comparisons, not just compactness.
+Finally the fixed-volume theorem removes the temporary spacing subsequence and gives the ordered limit of Definition~\ref{def:ordered}.
 
-Section~\ref{sec:maxwell} compares these fields at short distances with free Maxwell curvature fields.
-It supplies finite tests for distinguishing field classes and comparison maps for the later stress-tensor argument.
-These maps require short-distance estimates for the chosen family and a separate dimension bound.
-This comparison does not identify the resulting interacting theory with a free theory.
-The symmetry argument also needs a Hilbert space built from the average correlations: reflection positivity turns products supported at positive times into vectors, with reflected correlations as their inner products.
-In that space, integral identities for the stress tensor will give continuous rotations.
-This is why the construction of that Hilbert space precedes the rotation argument, while the decomposition into phases comes afterward.
-
-\paragraph{Phases and short distances.}
-Long-time evolution suppresses positive energies and leaves the zero-energy vectors.
-Observables placed between long evolutions therefore act on this zero-energy subspace.
-The rotation identities are used to prove that the resulting operators commute.
-These operators can then be represented as continuous functions on the compact phase space of Definition~\ref{def:hierarchy}, with expectation given by the measure in~\eqref{eq:mixture}.
-A selected phase is continued in time to obtain the relativistic fields of Proposition~\ref{prop:reconstruction}.
-The trace and product sections return to the short-distance estimates for the same construction: the former prove the full-radius logarithmic law, and the latter choose one system of product coefficients valid in every phase.
+Section~\ref{sec:maxwell} compares the limiting fields at short distances with the explicit curvature fields of the free Maxwell theory.
+These are the field strengths of a free electromagnetic field; finite tests distinguish the field classes, and comparison maps transfer the stress-tensor estimates to the interacting theory.
+Constructing these maps requires short-distance bounds and a separate dimension bound.
+The comparison does not make the interacting theory free.
+For the symmetry argument, the stress-tensor integral identities are a separate required input to establish continuous rotations on this space; they are not proved in the sections presented here.
 
 \paragraph{Reading the construction.}
-On a first reading, follow the lattice law and the reference normalisation in Section~\ref{sec:uv-lattice}, then the passage from bounded correlations to smooth fields in Section~\ref{sec:infinite-volume}.
-The intervening ultraviolet arguments explain why those bounds hold for one chosen family.
-The later Maxwell, symmetry, phase and reconstruction arguments explain what additional information is needed to turn that limit into the hierarchy of Theorem~\ref{thm:main}.
-For each quantitative estimate, keep track of what is fixed, what tends to a limit, and whether its constants depend on the volume.
-The proofs must use the same family and the same retained correlations throughout.
+When reading an estimate, identify the quantities held fixed, the limit being taken, and whether its bound depends on volume.
+This is especially important when a fixed-volume spacing limit is used inside the later volume subsequence.
 

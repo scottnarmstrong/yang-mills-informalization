@@ -1,34 +1,30 @@
 \section{Strategy}\label{sec:strategy}
 
-The proof has two limiting operations and then three ways of reading the same limiting correlations.
-First we remove the lattice spacing while keeping the physical box fixed.
-Then we enlarge the box, allowing a subsequence of volumes.
-The later arguments recover relativistic fields, compare products at nearby points, and distinguish a two-point function from the specified free-field profiles.
-None of them may replace the correlations obtained in the first two steps.
+The diagram records which proposition depends on which earlier conclusion.
 
 \paragraph{From small spacings to a fixed box.}
-Refining the lattice adds new fluctuations at shorter distances.
-We integrate these fluctuations a few scales at a time.
-The resulting probability law is the effective law at the larger spacing; its coupling must be compared at one fixed reference spacing.
-We adjust the bare coupling so that this reference coupling is always the same.
-The observables must be adjusted along with the probability law; otherwise their correlations need not remain finite.
-Proposition~\ref{prop:uv} produces one family of observables with these adjustments and proves their limits at each fixed volume.
-Its estimates are local, so they can later control regions inside arbitrarily large boxes.
+Refining the lattice adds variables describing shorter distances.
+We integrate groups of these variables while retaining the variables on the coarser lattice; this produces a density for the coarse variables with the same total probability integral.
+After each integration, we compare the coefficient of the quadratic energy at one fixed reference spacing.
+The bare coupling is chosen so that this reference coefficient stays fixed.
+The insertion coefficients are changed at the same time, using the reference normalisation of Definition~\ref{def:uv-reference-normalisation}, so the same labelled observable is followed through the refinements.
+Proposition~\ref{prop:uv} gives one such family and the limit at each fixed volume.
+Its local estimates can then be used in boxes of any size.
 
 \paragraph{From boxes to phases.}
-Local bounds independent of box size allow a subsequence on which the correlations converge.
-This is the compactness step in Proposition~\ref{prop:limit}.
-The result can still be an average of different states.
-Reflection positivity turns its positive-time correlations into inner products, and averages at widely separated times distinguish its components.
-After continuous rotations have been established, these averages commute and can be represented as functions on a compact space of phases.
-Their expectation is integration against a probability measure, giving the mixture formula~\eqref{eq:mixture}.
-The phase construction is therefore an additional argument after compactness.
+Bounds that do not grow with box size allow a subsequence on which all correlations converge; this is the compactness step in Proposition~\ref{prop:limit}.
+The limit may still average several component states.
+The positive-time reflection estimate in Section~\ref{sec:infinite-volume} supplies the Hilbert-space construction used in the later field and phase arguments.
+Long-time averages isolate the zero-energy part of this inner-product space.
+Once rotations are established, the resulting operators commute; the phase argument represents them as functions on a compact space $X$.
+Integrating those functions against a probability measure gives~\eqref{eq:mixture}.
+This decomposition is a further step after compactness.
 
 \paragraph{Three conclusions from one hierarchy.}
-Proposition~\ref{prop:reconstruction} selects a phase with a unique vacuum and continues its time variables to obtain relativistic fields.
-Proposition~\ref{prop:ope} replaces a product at nearby points by a finite sum of fields at one point, with a controlled error inside any correlation with distant fields.
-Its coefficients are chosen once, so the expansion also holds in every phase.
-Proposition~\ref{prop:trace} studies the centred trace of the stress tensor: a logarithmic correction to its two-point singularity rules out the finite Wick profiles.
+Proposition~\ref{prop:reconstruction} uses the component at $\xi_*$; its ordered Euclidean-time correlations extend to complex times and give the relativistic field expectations at the boundary.
+Proposition~\ref{prop:ope} replaces a nearby product by a finite sum of fields at its centre, with an error bound inside correlations that also contain separated insertions.
+The coefficients are selected once and work for every phase and for the average.
+Proposition~\ref{prop:trace} uses the degree-four field identified with the centred stress trace; its logarithmic two-point limit rules out the finite comparison profiles in Definition~\ref{def:wick}.
 The dependence of these five results is summarised by
 \begin{center}
 \begin{tikzpicture}[every node/.style={align=center,inner sep=5pt}]
@@ -43,10 +39,5 @@ The dependence of these five results is summarised by
 \draw[->] (reconstruction) -- (trace);
 \end{tikzpicture}
 \end{center}
-Here the last three results all use estimates for the same lattice family and the same continuum hierarchy supplied by the first two.
-The arrows show the order of construction, not a claim that compactness alone gives their analytic inputs.
-
-For each gauge group, we make one joint choice of the family in Proposition~\ref{prop:uv}.
-For each prescribed increasing volume sequence, we then make one joint choice of a refinement and hierarchy for Propositions~\ref{prop:limit}--\ref{prop:trace}.
-Their conclusions are not asserted for an arbitrary regular family or an arbitrary smooth table of correlations.
-With these common choices, the deduction of Theorem~\ref{thm:main} is just the assembly of the five conclusions; it appears at the end of the next section.
+For each gauge group, Proposition~\ref{prop:uv} chooses one family; for each prescribed increasing volume sequence, Proposition~\ref{prop:limit} chooses one subsequence and one hierarchy used by all five propositions.
+The arrows record this order; compactness alone does not supply the later estimates.

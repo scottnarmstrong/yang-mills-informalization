@@ -3,24 +3,27 @@
 Section~\ref{sec:uv-lattice} specified which classical observable a lattice polynomial must reproduce at small spacing.
 We now construct those polynomials and introduce the form in which local interactions will be carried through the integration over scales.
 The common principle is to retain the region and the coefficients of every term: this allows multiplication and summation without losing the estimates on individual observables.
+An activity is a scalar function attached to a finite set of lattice sites, used to represent one term in the weight after some link variables have been integrated out.
 
 Subsection~\ref{subsec:uv-sampling} recovers finitely many Taylor coefficients from finitely many transported plaquettes.
-Subsection~\ref{subsec:uv-section-build} turns this recovery into the sections of Definition~\ref{def:uv-sections}, with derivative bounds independent of the torus size.
+Subsection~\ref{subsec:uv-section-build} turns this recovery into the local representative maps of Definition~\ref{def:uv-sections}, with derivative bounds independent of the torus size.
 Subsection~\ref{subsec:uv-markers} records insertions as coefficients of auxiliary commuting variables whose squares vanish.
-Subsection~\ref{subsec:uv-activity-format} defines the local activity bounds and proves absolute convergence of the resulting sums.
-Constructing the coefficient transfers and proving the bounds after an integration step remain later tasks.
+Subsection~\ref{subsec:uv-activity-format} gives bounds for these activities and proves absolute convergence of their sums.
 
 \subsection{Recovering Taylor coefficients}\label{subsec:uv-sampling}
 
-A plaquette transport has, to first order near the zero connection, the curvature averaged over its square.
-Different squares therefore give different linear measurements of the Taylor coefficients of a connection.
-For any fixed degree, finitely many such measurements suffice; radial gauge is what makes recovery of the connection from its curvature possible.
+The curvature of a connection~$A$ is the two-form with components
+\begin{equation*}
+ F_{\mu\nu}(A)=\partial_\mu A_\nu-\partial_\nu A_\mu+[A_\mu,A_\nu].
+\end{equation*}
+At first order in the size of~$A$, a plaquette transport records the average of the linear part~$\partial_\mu A_\nu-\partial_\nu A_\mu$ over its square. The commutator term is quadratic, so it does not enter this first variation.
+Different squares give different linear measurements of the Taylor coefficients. For any fixed degree, finitely many such measurements suffice; radial gauge makes recovery of the connection from this linear curvature possible.
 
 Fix~$d\in\N$.
 Use the spaces~$\mathcal A_j,V_d$ of Definition~\ref{def:uv-labels} and the finite tuples~$J\in\mathcal J_d$ of Definition~\ref{def:uv-test-links}.
 Such a tuple specifies the polynomial connection~$A^J$ and the test links~$U_{J,\varepsilon}$ defined there.
 On~$\g$ use the norm~$|X|_\g=\frac{\|X\|_{\mathrm F}}{\sqrt m}$, and let~$P_\g$ be real Frobenius orthogonal projection onto~$\g$.
-The following matrix-valued function extracts the leading curvature; here~$u\in G$, and~$\chi$ is the distance from the identity in~\eqref{eq:uv-chord}:
+The following matrix-valued function maps a plaquette matrix to the Lie algebra; its derivative at the identity is the identity map, so it retains the linear curvature term just described. Here~$u\in G$, and~$\chi$ is the distance from the identity in~\eqref{eq:uv-chord}:
 \begin{equation}\label{eq:uv-curvature}
  \mathcal F(u)=P_\g\!\left(\frac{u-u^{-1}}{2}\right),\qquad
  |\mathcal F(u)|_\g\le\chi(u),\qquad
@@ -42,7 +45,7 @@ All these quantities now transform at the same site, so invariant polynomials in
 They read only links in the walk and plaquette, with both endpoints included.
 
 The next lemma supplies a local analytic recovery map.
-It is a recovery from the joint collection of plaquettes, rather than a logarithm of a single plaquette.
+It uses several plaquettes because their combined measurements have enough independent components to recover all Taylor coefficients through degree~$d$.
 
 \begin{lemma}[Finite sampling]\label{lem:uv-sampling}
 There is a finite family~$(\omega_a,p_a)_{a=1}^{M_d}$ for which
@@ -111,8 +114,8 @@ Equation~\eqref{eq:uv-transported-curvature} and differentiation therefore give
  \mathcal Q_d(\Ad(g)J)=\Ad(g)\mathcal Q_d(J),\qquad
  B\Ad(g)=\Ad(g)B\,.
 \end{equation*}
-The adjoint action on~$\g^{M_d}$ is orthogonal and preserves~$\operatorname{ran}B$ in both directions.
-Its orthogonal projection~$\Pi$ therefore commutes with that action.
+The adjoint action on~$\g^{M_d}$ is orthogonal and preserves the range~$\operatorname{ran}B=\{BJ:J\in\mathcal J_d\}$ of~$B$ in both directions.
+Let~$\Pi$ be the orthogonal projection onto this range; it commutes with that action.
 Here~$B^{-1}$ denotes the inverse from~$\operatorname{ran}B$ to~$\mathcal J_d$.
 The linear map~$C=B^{-1}\Pi$ satisfies
 \begin{equation*}
@@ -170,10 +173,10 @@ For~$r=0$, the expression under the supremum is~$|F(U)|$.
 This is a seminorm on functions with these derivatives; no value outside~$\mathcal G_t(X)$ is measured.
 
 The small factor in the following bound counts the number of classical factors, independently of their weights.
-The section is chosen before the derivative order, the threshold and the torus.
+The local representative maps are chosen before the derivative order, the threshold and the torus.
 
-\begin{proposition}[Normalised sections]\label{prop:uv-sections}
-For the bases~$b_{d,i}$ and factor numbers~$f_{d,i}$ of Definition~\ref{def:uv-bases}, one can choose sections~$P_d$ satisfying Definition~\ref{def:uv-sections}, simultaneously for all~$d$.
+\begin{proposition}[Normalised local representative maps]\label{prop:uv-sections}
+For the bases~$b_{d,i}$ and factor numbers~$f_{d,i}$ of Definition~\ref{def:uv-bases}, one can choose local representative maps~$P_d$ satisfying Definition~\ref{def:uv-sections}, simultaneously for all~$d$.
 Each~$P_d[b_{d,i}]$ is a polynomial in real coordinates of finitely many quantities~\eqref{eq:uv-transported-curvature}, with every monomial containing at least~$f_{d,i}$ factors.
 For every~$k,q\in\N$ with~$k\ge6$, $q\ge2$, there is~$A_{d,k,q}\ge0$ such that
 \begin{equation}\label{eq:uv-section-bound}
@@ -192,7 +195,7 @@ The two key controls are
  \qquad \|P_d[b_{d,i}]\|_{t,k,q;o,\,o+[\Sigma_d]_\ell}
  \le A_{d,k,q}t^{f_{d,i}}.
 \end{equation*}
-The recovery identity~\eqref{eq:uv-recovery} makes the Taylor polynomial reproduce the identity through degree~$d$.
+By~\eqref{eq:uv-recovery}, the composition~$R_d^{[d]}\mathcal Q_d(J)$ has the same Taylor coefficients as~$J$ through order~$d$ at~$J=0$.
 
 \begin{enumerate}
 \item \emph{Match the Taylor coefficients and retain factors.}
@@ -206,7 +209,7 @@ The polynomial~$R_d^{[d]}$ has zero constant term, real coefficients, and commut
 Hence~$P_d^0$ is gauge invariant, respects coefficient conjugation, and sends~$1$ to~$1$.
 Inverses of unitary matrices are conjugate transposes, so~\eqref{eq:uv-unsymmetrized-section} is a polynomial function of link entries and their conjugates.
 Substituting polynomials with zero constant term into a classical observable polynomial with~$f_{d,i}$ factors leaves at least that many transported-curvature factors in every monomial.
-The final polynomial is not truncated again.
+Only the recovery map~$R_d$ is replaced by its degree-~$d$ Taylor polynomial. After composition with~$v$, we keep the full resulting polynomial in the link variables, so it is defined on every link configuration.
 
 For the scaling of jets in Definition~\ref{def:uv-test-links}, homogeneity in the transport equation and uniqueness give
 \begin{equation}\label{eq:uv-scaled-jet}
@@ -251,11 +254,11 @@ Repeated links on a small torus affect only the finite differentiation multiplic
 
 These polynomial functions are smooth along the link variations~\eqref{eq:uv-left-derivative} at every configuration; the estimate applies on the closed good set, including its boundary.
 The derivatives are taken on the polynomial itself, before multiplying by any indicator of the good set.
-This distinction will also be used for the regular activities below.
+When regular terms are defined in Subsection~\ref{subsec:uv-activity-format}, their derivatives are likewise taken before multiplication by the good-set indicator.
 
 \subsection{Products of insertions}\label{subsec:uv-markers}
 
-To carry one insertion through an identity of weights, introduce a commuting formal variable~$\zeta$ with~$\zeta^2=0$.
+To record one observable in a weighted product, introduce a commuting formal variable~$\zeta$ with~$\zeta^2=0$.
 The coefficient of~$\zeta$ then records exactly one insertion.
 Several such variables record finite lists of insertions, and restrictions on allowed lists can be imposed in the same algebra.
 
@@ -273,8 +276,7 @@ Define the algebra and its weighted coefficient norm by
  \omega^I=\prod_{v\in I}\omega_v,\quad \omega_v>0\,.
  \end{gathered}
 \end{equation}
-The variables commute; their squares, and products excluded by~$\mathcal R$, are zero.
-Associativity follows by viewing this as the quotient of~$\C[\zeta_v:v\in V]$ by those monomials.
+The variables commute; their squares, and products excluded by~$\mathcal R$, are zero. For three factors, either both orders of multiplication give zero, or both give the monomial indexed by the union of their pairwise disjoint variable sets; hence multiplication is associative.
 
 The weights multiply exactly when disjoint insertions are combined.
 Thus the estimates below have no extra factor depending on the number of formal variables.
@@ -326,35 +328,47 @@ Thus~$a^{|V|+1}=b^{|V|+1}=0$, and the binomial formula yields
 The same norm justifies countable summation: if~$\|a_j\|_\omega\le c_j$ and~$\sum_jc_j<\infty$, the partial sums are Cauchy and~$\|\sum_ja_j\|_\omega\le\sum_jc_j$.
 Completeness follows from finite dimensionality.
 For one variable, let~$\rho$ be a scalar weight and~$I$ an observable, viewed as functions of the link configuration.
-For a finite index set~$J$, let~$K_j$ be scalar factors and~$H_j$ the factors with an insertion.
+Multiplication by~$1+\zeta I$ records the term containing one copy of~$I$ while leaving the weight attached.
+For a finite index set~$\mathcal I$, let~$K_j$ be scalar factors and~$H_j$ the factors with an insertion, for~$j\in\mathcal I$.
 The insertion rule is then
 \begin{equation}\label{eq:uv-one-insertion}
  [\zeta]\,\rho(1+\zeta I)=\rho I,\qquad
- [\zeta]\prod_{j\in J}(K_j+\zeta H_j)
- =\sum_{j\in J}H_j\prod_{i\in J\setminus\{j\}}K_i\,.
+ [\zeta]\prod_{j\in\mathcal I}(K_j+\zeta H_j)
+ =\sum_{j\in\mathcal I}H_j\prod_{i\in\mathcal I\setminus\{j\}}K_i\,.
 \end{equation}
 Here~$[\zeta]$ means the coefficient of~$\zeta$.
-These identities explain why an inserted observable must be integrated together with its weight.
+For any measure~$\mu$ for which these functions are integrable, linearity of integration gives the corresponding identity
+\begin{equation*}
+ \int [\zeta]\rho(1+\zeta I)\,d\mu
+ =\int\rho I\,d\mu
+ =[\zeta]\int\rho(1+\zeta I)\,d\mu.
+\end{equation*}
+For the finite product in~\eqref{eq:uv-one-insertion}, the same fact is the displayed identity
+\begin{equation*}
+ \int [\zeta]\prod_{j\in\mathcal I}(K_j+\zeta H_j)\,d\mu
+ =\sum_{j\in\mathcal I}\int H_j\prod_{i\in\mathcal I\setminus\{j\}}K_i\,d\mu
+ =[\zeta]\int\prod_{j\in\mathcal I}(K_j+\zeta H_j)\,d\mu,
+\end{equation*}
+provided the terms are integrable.
+Thus the coefficient of an insertion in an expectation is obtained by integrating the product of that observable and its weight.
 
 \subsection{Local interactions}\label{subsec:uv-activity-format}
 
-After integration over a scale, the effective weight is a sum of interactions on finite regions.
-Where all nearby plaquettes are small, these interactions can be controlled by derivatives.
-The remaining terms must keep track of the actual sites incident to large plaquettes.
-They are not discarded.
-An activity is the scalar function assigned to one such region; different indices may refer to the same region.
+When links at one lattice spacing are integrated out, the resulting function of the remaining links is the effective weight.
+We seek to write it as a sum of scalar terms, each assigned to a finite set of sites; different indices may refer to the same set.
+For a region~$X$, the good-set condition~$\mathcal G_t(X)$ from~\eqref{eq:uv-good-configurations} means that every plaquette touching~$X$ has~$\chi(U_p)\le t$.
+Activities controlled by derivatives on this good set are the regular terms. Terms supported on configurations with large plaquette distances retain the sites where~$\chi(U_p)>t$; the formula below calls these bad sites.
 
 Use the lattice of Definition~\ref{def:lattice}, the threshold~$0<t\le1$, the derivative order~$k\ge6$ and distance exponent~$q\ge2$ from~\eqref{eq:uv-activity-seminorm}.
-The support weight will measure both the size of a region and the cost of joining its separated pieces.
+The support weight counts the balls in a smallest connected cover: each ball contributes a factor~$e^\alpha$, so a larger or more separated region receives a larger weight.
 
 \begin{definition}[Connected ball covers]\label{def:uv-covers}
 Fix an integer radius~$B\ge1$ and~$\alpha>0$.
-For~$a\in\Lambda_\ell$, let~$\mathbb B_{\ell,B}(a)$ be its closed ball in the distance~\eqref{eq:uv-periodic-distance}.
+A ball of radius~$B$ about~$a$ is~$\mathbb B_{\ell,B}(a)=\{x\in\Lambda_\ell:d_\ell(x,a)\le B\}$.
 A set of sites is connected if any two of its sites can be joined within the set by a finite sequence of steps of maximum distance at most one.
 For~$X\subseteq\Lambda_\ell$, define
 \begin{equation}\label{eq:uv-cover-number}
  \begin{aligned}
- \mathbb B_{\ell,B}(a)&=\{x\in\Lambda_\ell:d_\ell(x,a)\le B\},\\
  \mathfrak c_B(X)&=\min_{\substack{D\subseteq\Lambda_\ell\\
                     X\subseteq\bigcup_{a\in D}\mathbb B_{\ell,B}(a)\\
                     \bigcup_{a\in D}\mathbb B_{\ell,B}(a)\ \mathrm{connected}}}|D|\,.
@@ -369,14 +383,12 @@ We call the activities controlled by derivatives on good configurations the regu
 Fix finite sets of sites~$X_i\subseteq\Lambda_\ell$, sites~$o_i\in X_i$, and real Borel gauge-invariant functions~$E_i$ supported on the links inside~$X_i$ in Definition~\ref{def:observables}.
 They have the derivatives measured by~\eqref{eq:uv-left-derivative} on the good set~$\mathcal G_t(X_i)$ of~\eqref{eq:uv-good-configurations}.
 Their contribution is~$\mathbf1_{\mathcal G_t(X_i)}E_i$.
-For the other terms, fix finite sets of sites~$Y_j\subseteq\Lambda_\ell$, nonempty sets~$I_j\subseteq Y_j$, and real Borel gauge-invariant functions~$K_j$ such that
+For the other terms, fix finite site sets~$Y_j\subseteq\Lambda_\ell$. Choose a nonempty set~$I_j\subseteq Y_j$ of sites that the term requires to be bad, and an optional extra condition~$\mathcal E_j$ on configurations; if no extra condition is imposed, take~$\mathcal E_j=\mathcal U_\ell$. Require~$\mathcal E_j$ to be Borel and gauge invariant. For each~$j$, choose a real Borel gauge-invariant function~$K_j$ that vanishes unless all sites of~$I_j$ and no other sites of~$Y_j$ are bad and~$\mathcal E_j$ holds:
 \begin{equation}\label{eq:uv-forced-eligibility}
  K_j(U)\ne0\ \Longrightarrow\ Y_j\cap\mathcal B_t(U)=I_j
  \quad\text{and}\quad U\in\mathcal E_j\,.
 \end{equation}
-The optional extra condition~$\mathcal E_j$ is Borel and gauge invariant.
-Both~$K_j$ and~$\mathcal E_j$ depend only on the internal links of~$Y_j$ and the bad-site indicators there.
-Thus~$I_j$ specifies the exact bad sites in that region, not just a subset of them.
+Here the internal links of~$Y_j$ are those with both endpoints in~$Y_j$, as in the link-support convention of Definition~\ref{def:observables}. Both~$K_j$ and~$\mathcal E_j$ depend only on those links and the bad-site indicators in~$Y_j$.
 The fixed sets and extra conditions are retained when an insertion changes the coefficients.
 
 Evaluating the bad-site indicators of~\eqref{eq:uv-good-configurations}, either for a regular term or for the conditions~\eqref{eq:uv-forced-eligibility}, may require extra links.
@@ -386,8 +398,6 @@ All such links have endpoints in
  \widehat Y=Y\cup\bigcup_{\operatorname{vertices}(p)\cap Y\ne\varnothing}
                  \operatorname{vertices}(p)\,.
 \end{equation}
-Two of the regions~$Y_j$ may occur together only when they are disjoint; this condition uses~$Y_j$, while~$\widehat Y_j$ contains the endpoints of the links used to evaluate its indicators.
-
 The two activity bounds count terms differently: regular terms are summed at their chosen site, and the other terms at every site in their support.
 Precisely, bounds~$\delta,w\ge0$ mean that there exist nonnegative majorants~$e_i,k_j$ (upper bounds for the individual activities) with
 \begin{equation}\label{eq:uv-activity-bounds}
@@ -401,22 +411,30 @@ Precisely, bounds~$\delta,w\ge0$ mean that there exist nonnegative majorants~$e_
 The last two sums are convergent series of nonnegative terms.
 Indices range over~$\N$ and zero functions may be added.
 
-Let~$c\in\R$, and let~$S$ be the part of the action kept separate from the activities, assumed bounded, real, Borel and gauge invariant; write~$\|S\|_\infty=\sup_U|S(U)|$.
-For a finite selection~$J\subset\N$ of indices, multiply the factors~$K_j$.
+Let~$c\in\R$ be a chosen constant per site; it contributes the overall factor~$e^{c|\Lambda_\ell|}$ to the weight. Let~$S$ be the part of the action kept separate from the activities, assumed bounded, real, Borel and gauge invariant; write~$\|S\|_\infty=\sup_U|S(U)|$.
+For a finite selection~$\mathcal I\subset\N$ of indices, multiply the factors~$K_j$.
 The sum~$\mathcal Z_K$ retains only disjoint regions whose specified bad sites cover the entire measured bad set; $E_t$ sums the regular contributions:
 \begin{equation}\label{eq:uv-activity-weight}
  \begin{aligned}
  E_t(U)&=\sum_i\mathbf1_{\mathcal G_t(X_i)}(U)E_i(U),\\
- \mathcal Z_K(U)&=\sum_{\substack{J\subset\N\ \mathrm{finite}\\
-              Y_j\ (j\in J)\ \mathrm{pairwise\ disjoint}\\
-              \bigcup_{j\in J}I_j=\mathcal B_t(U)}}\ \prod_{j\in J}K_j(U),\\
+ \mathcal Z_K(U)&=\sum_{\substack{\mathcal I\subset\N\ \mathrm{finite}\\
+              Y_j\ (j\in\mathcal I)\ \mathrm{pairwise\ disjoint}\\
+              \bigcup_{j\in\mathcal I}I_j=\mathcal B_t(U)}}\ \prod_{j\in\mathcal I}K_j(U),\\
  \rho(U)&=\exp\!\bigl(c|\Lambda_\ell|-S(U)-E_t(U)\bigr)\mathcal Z_K(U)\,.
  \end{aligned}
 \end{equation}
 The empty selection contributes~$1$ precisely when~$\mathcal B_t(U)=\varnothing$.
+The sum requires the regions~$Y_j$ to be disjoint, but their inspected sets~$\widehat Y_j$ may overlap: those larger sets only record the extra links needed to decide which sites are bad.
+The function~$\rho$ is an unnormalised scalar factor intended to be integrated against product Haar; positivity and probability normalisation are not asserted here.
 
 These formulas are useful only if their infinite sums converge absolutely.
-The per-site bounds give this convergence at each finite volume; identifying the represented weight with an integrated Wilson weight is a later step.
+The per-site bounds give this convergence at each finite volume. To identify the represented weight with one obtained from the Wilson measure, a later step must:
+\begin{enumerate}
+\item integrate links at one spacing;
+\item collect the resulting terms by finite site region; and
+\item verify the prescribed values and Taylor terms of total degree two at the identity, together with the activity bounds.
+\end{enumerate}
+Here the identity configuration is~$U(x,\mu)=1$ for every positive link. Nearby links are written~$U(x,\mu)=\exp(X_{x,\mu})$ with~$X_{x,\mu}\in\g$ near zero, so the degree-two terms are the homogeneous Taylor terms of total degree two in these coordinates. This construction is not supplied here.
 
 \begin{proposition}[Convergence of the activity sums]\label{prop:uv-activity-sums}
 Under~\eqref{eq:uv-forced-eligibility}--\eqref{eq:uv-activity-bounds}, both series in~\eqref{eq:uv-activity-weight} converge absolutely and uniformly in~$U$.
@@ -429,7 +447,7 @@ They are Borel and gauge invariant, and
  \exp\!\bigl(c|\Lambda_\ell|+\|S\|_\infty+|\Lambda_\ell|(\delta+w)\bigr)\,.
  \end{aligned}
 \end{equation}
-In particular~$\rho$ is integrable against product Haar.
+In particular~$\rho$ is integrable against the product Haar measure~$\eta_\ell$ of Definition~\ref{def:wilson-law}.
 If~$\mathcal B_t(U)=\varnothing$, then~$\mathcal Z_K(U)=1$.
 \end{proposition}
 
@@ -449,7 +467,7 @@ The regular term~$\mathbf1_{\mathcal G_t(X_i)}E_i$ is bounded by~$e_i$ everywher
 \item \emph{Sum the selections.}
 The disjoint-region sum is dominated by all finite selections, whose configuration-independent majorant satisfies
 \begin{equation}\label{eq:uv-selection-majorant}
- \sum_{J\subset\N\ \mathrm{finite}}\prod_{j\in J}k_j
+ \sum_{\mathcal I\subset\N\ \mathrm{finite}}\prod_{j\in\mathcal I}k_j
  =\prod_{j\ge0}(1+k_j)
  \le\exp\!\left(\sum_jk_j\right)\,.
 \end{equation}
@@ -462,11 +480,10 @@ The exponent in~$\rho$ is bounded using~$|S(U)|\le\|S\|_\infty$ and~$|E_t(U)|\le
 \begin{equation*}
  |\rho(U)|\le e^{c|\Lambda_\ell|+\|S\|_\infty+|\Lambda_\ell|(\delta+w)}.
 \end{equation*}
-Product Haar is a probability measure, so this bound gives integrability.
+The product of the normalised Haar measures in Definition~\ref{def:wilson-law}, equation~\eqref{eq:wilson-law}, is a probability measure, so this bound gives integrability.
 If there are no bad sites, a nonempty selection cannot have empty union of its nonempty~$I_j$; only the empty selection remains.
 \end{enumerate}
 \end{proof}
 
 The estimates here allow the local bounds~$\delta,w$ to be independent of volume, while their global sums grow with~$|\Lambda_\ell|$.
 They justify summation and integration of supplied activities.
-The integration over a scale and subsequent regrouping must still construct those activities, impose the required conditions on their values and quadratic Taylor coefficients at~$U(e)=1$, and prove the bounds for the same chosen family.

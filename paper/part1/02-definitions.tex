@@ -1,8 +1,9 @@
 \section{Definitions}\label{sec:definitions}
 
-We begin with the finite-dimensional lattice model and the observables whose averages will converge.
-We then specify the continuum correlations, their decomposition into phases and the relativistic fields reconstructed from one phase.
-The last definitions give the two short-distance tests in the theorem.
+We begin with the finite lattice model and the observables whose averages will converge.
+The limiting correlations may be averages of correlations from component states; we call the components phases.
+We then define the fields reconstructed from one selected phase.
+The last definitions state the two short-distance tests: one compares nearby products with fields at one point, and the other specifies a two-point limit and the free-field kernels it excludes.
 Throughout, $\N=\{0,1,\ldots\}$; empty products equal $1$, and correlation functions of order zero are included.
 
 \subsection{The lattice and its measure}\label{subsec:lattice-family}
@@ -12,7 +13,9 @@ A gauge group consists of an integer $m\ge1$, a closed subgroup $G$ of the group
 \begin{equation}\label{eq:gauge}
 X\in\g\quad\Longleftrightarrow\quad \exp(sX)\in G\text{ for every }s\in\R\,.
 \end{equation}
-Its Lie algebra $\g$ is simple if $[X,Y]=XY-YX\ne0$ for some $X,Y\in\g$, and every real subspace $J\subset\g$ with $[\g,J]\subset J$ equals $0$ or $\g$.
+The elements of $\g$ are the infinitesimal directions in which a matrix in $G$ can move away from the identity; this set of directions is the Lie algebra of $G$.
+It is simple if $[X,Y]=XY-YX\ne0$ for some $X,Y\in\g$, and every real subspace $J\subset\g$ with $[\g,J]\subset J$ equals $0$ or $\g$.
+The condition says that these directions do not contain a smaller nonzero subspace preserved by commutation with every direction in $\g$.
 \end{definition}
 
 The matrices in $G$ will be the variables of the lattice model.
@@ -92,7 +95,8 @@ The insertion is supported on the links inside $y+(\Sigma\bmod\ell)$ if it takes
 \end{definition}
 
 The index set is arbitrary at this stage; no linear structure or degree is required.
-Our construction uses pairs consisting of a degree and a gauge-invariant polynomial in the Taylor coefficients of a classical connection, a smooth $\g$-valued one-form describing parallel transport (Definition~\ref{def:uv-labels}).
+Our construction uses pairs consisting of a degree and a gauge-invariant polynomial in the Taylor coefficients of a classical connection (Definition~\ref{def:uv-labels}).
+A connection is a smooth $\g$-valued one-form that specifies infinitesimal parallel transport; its Taylor coefficients record its local behaviour near a point.
 That polynomial specifies the classical observable to be represented, while the insertion is its actual function of link matrices.
 The continuum field obtained from an observable index will be part of the hierarchy below.
 We next choose the physical sizes of the lattices.
@@ -138,6 +142,7 @@ The physical position of $y\in\Lambda_{\ell_{N,p}}$ is
 \begin{equation}\label{eq:physical-position}
 \hat y=a_N\bigl(r_{\ell_{N,p}}(y^\mu)\bigr)_{\mu=1}^4\,.
 \end{equation}
+For each tuple of sites, first take the expectation of the product of insertions. The moment $M_{N,p}$ is this expectation; the smeared quantity $C_{N,p}$ then weights these moments by a test function and sums over physical positions.
 For a Wilson family (Definition~\ref{def:family}) and $v=(v_1,\ldots,v_n)\in\mathcal T^n$, define the moment and its smearing by a function $f$ by
 \begin{equation}\label{eq:smear}
 \begin{aligned}
@@ -148,8 +153,8 @@ C_{N,p}(v;f)&=a_N^{4n}\sum_{y\in\Lambda_{\ell_{N,p}}^n}
 \end{equation}
 \end{definition}
 
-A correlation is an average of a product of observables.
-Smearing averages its spatial arguments against a test function, so the lattice sum can be compared with a continuum integral.
+A correlation is the expected product of the insertions at the chosen sites.
+The factor $a_N^{4n}$ is the lattice-volume factor in the sum, which is compared with a continuum integral.
 We test only configurations of distinct points.
 
 \begin{definition}[Separated tests]\label{def:tests}\label{def:separated-test}
@@ -175,7 +180,7 @@ A separated test $f$ (Definition~\ref{def:tests}) is supported inside volume $p$
 
 \begin{definition}[Ordered limit]\label{def:ordered}
 For a Wilson family (Definition~\ref{def:family}), $P:\N\to\N$ and kernels $K_n(v;x)$, convergence along $P$ means the following.
-For every $n\in\N$, $v\in\mathcal T^n$ and separated test $f$ (Definition~\ref{def:tests}), the test is supported inside volume $P(k)$ eventually in $k$, and there exist $R_p\in\C$ such that
+For each fixed $n$, list $v\in\mathcal T^n$ and separated test $f$ (Definition~\ref{def:tests}), the test is supported inside volume $P(k)$ eventually in $k$, and there are numbers $R_p=R_p(n,v,f)\in\C$ such that
 \begin{equation}\label{eq:ordered}
 \begin{aligned}
 \lim_{N\to\infty}C_{N,p}(v;f)&=R_p
@@ -186,6 +191,7 @@ For every $n\in\N$, $v\in\mathcal T^n$ and separated test $f$ (Definition~\ref{d
 \end{definition}
 
 Here the moments are those of Definition~\ref{def:moments} and the support condition is Definition~\ref{def:admissible}.
+The kernel is indexed by $n$ and $v$; the numbers $R_p$ may also depend on the test $f$.
 The first limit uses the entire spacing sequence at every volume containing the test.
 The second limit enlarges the volume along $P$.
 At volumes not containing the support, $R_p$ is unconstrained.
@@ -211,6 +217,11 @@ Write $x=(\vec x,t(x))\in\R^3\times\R$ for spacetime, with $t(x)=x^4$, Euclidean
 \end{equation}
 A vector is spacelike if $\mathsf m(x)<0$.
 Let $\mathcal S=\Sch$, the smooth complex functions whose derivatives decay faster than every inverse power of $|x|$, with the corresponding Schwartz topology.
+This topology is generated by the seminorms
+\begin{equation*}
+ p_{M,\alpha}(f)=\sup_{x\in\R^4}(1+|x|)^M|\partial^\alpha f(x)|
+ \qquad(M\in\N,\ \alpha\in\N^4).
+\end{equation*}
 \end{definition}
 
 Hilbert inner products are antilinear in the first variable.
@@ -220,10 +231,12 @@ A field is smeared against a Schwartz function because its value at a single poi
 \begin{definition}[Relativistic data]\label{def:relativistic}
 A relativistic datum consists of a complex Hilbert space $\mathcal H$, a complex vector space $\mathcal L$ of field labels, a linear subspace $\mathcal D\subset\mathcal H$, a vector $\Omega\in\mathcal D$ called the vacuum, and fields $\Phi(\ell,f):\mathcal D\to\mathcal D$ linear over $\C$ in $\ell\in\mathcal L$ and $f\in\mathcal S$ (Definition~\ref{def:spacetime}).
 The field label $\ell$ specifies which quantum field is smeared; the test function $f$ specifies how it is tested in space and time.
-It includes an antilinear map $\ell\mapsto\ell^*$, a strongly continuous unitary translation representation $T(b)$ and a projection-valued Borel measure $E$ on $\R^4$.
-Its diagonal finite measures satisfy $\mu_\psi(A)=\langle\psi,E(A)\psi\rangle$ on Borel sets.
+It includes an antilinear map $\ell\mapsto\ell^*$, a unitary translation representation $T(b)$ that varies continuously when applied to any vector, and a projection-valued Borel measure $E$ on $\R^4$.
+The measure $E$ records the joint momentum spectrum of translations: its value on a Borel set is the projection onto states with momenta in that set.
+For each vector $\psi$, its diagonal measure $\mu_\psi(A)=\langle\psi,E(A)\psi\rangle$ is finite, with total mass $\|\psi\|^2$.
 
-There is also a strongly continuous unitary representation $U$ of a topological group $\mathcal P$, identified by a homeomorphism $\kappa$ with the proper orthochronous Poincar\'e group.
+There is also a unitary representation $U$ of a group $\mathcal P$ of spacetime translations and orientation- and time-preserving Lorentz transformations; it varies continuously when applied to any vector.
+An identification $\kappa$ gives $\mathcal P$ the same transformations and topology as the proper orthochronous Poincar\'e group.
 Writing $\kappa(g)=(\Lambda_g,b_g)$, this identification respects identity and the multiplication
 \begin{equation}\label{eq:poincare}
 (\Lambda,b)(\Lambda',b')=(\Lambda\Lambda',\Lambda b'+b)\,.
@@ -234,13 +247,13 @@ For each $g\in\mathcal P$ there is a complex linear bijection $\rho(g)$ of $\mat
 The action on tests is $(g\cdot f)(x)=f(\Lambda_g^{-1}(x-b_g))$.
 \end{definition}
 
-A projection-valued Borel measure here is normalised by $E(\R^4)=1$, has $E(\varnothing)=0$, satisfies $E(A)E(B)=E(A\cap B)$ and $E(A)^*=E(A)$ on Borel sets, and is countably additive in the strong operator topology.
+A projection-valued Borel measure here is normalised by $E(\R^4)=1$, has $E(\varnothing)=0$, satisfies $E(A)E(B)=E(A\cap B)$ and $E(A)^*=E(A)$ on Borel sets, and is countably additive: for disjoint Borel sets, finite sums of their projections converge on every vector to the projection of their union.
 One can assign arbitrary operators to non-Borel sets, which none of the assertions uses.
 The map ${}^*$ on field labels is not required to be an involution.
 No continuity or finite-dimensionality condition on $\rho$ is included in the data.
 
 \begin{definition}[Wightman conditions]\label{def:wightman}
-The relativistic datum of Definition~\ref{def:relativistic} satisfies the following conditions, with spacetime and test functions as in Definition~\ref{def:spacetime} and $p\cdot b$ the Euclidean pairing.
+The relativistic datum of Definition~\ref{def:relativistic} satisfies the following conditions, with spacetime and test functions as in Definition~\ref{def:spacetime} and $p\cdot b$ the Euclidean dot product.
 \begin{enumerate}[label=\textup{W\arabic*.},ref=W\arabic*,start=0]
 \item\label{wightman:0} For every $\psi\in\mathcal H$ and $b\in\R^4$,
 \begin{equation}\label{eq:spectrum}
@@ -272,10 +285,10 @@ U(g)\Phi(\ell,f)\psi=\Phi(\rho(g)\ell,g\cdot f)U(g)\psi\,.
 
 The finite products of smeared fields in~\eqref{eq:domain} are called field words.
 Their values on the vacuum span the domain itself; the empty word gives the vacuum.
-The symmetry group is the Poincar\'e group itself rather than its double cover.
-The sign convention in~\eqref{eq:spectrum} is converted to the usual Minkowski pairing by reversing spatial momentum; the forward cone is unchanged.
+We use the Poincar\'e transformations themselves.
+In~\eqref{eq:spectrum}, $p\cdot b$ is the Euclidean dot product; the forward-cone condition uses the Minkowski form $\mathsf m$ from Definition~\ref{def:spacetime}.
 
-We collect the continuum objects in a hierarchy: correlations, data for their decomposition into phases, relativistic fields, and coefficients for local product expansions.
+We collect the continuum objects in a hierarchy: fields and their correlations, the component states and their average, the continuation used to recover real-time field expectations, and the coefficients for local product expansions.
 
 \begin{definition}[Hierarchy]\label{def:hierarchy}
 A hierarchy over the Wilson family of Definition~\ref{def:family} consists of the following data.
@@ -287,20 +300,21 @@ Set $\mathbb F=\bigsqcup_{d\in\N}F_d$, $\deg(d,A)=d$ and $\iota(d,A)=\iota_d A$.
 \item\label{hierarchy:4} A compact metric space $X$, called the phase space, with a Borel measure $\nu$ and a selected point $\xi_*\in X$.
 \item\label{hierarchy:5} For every $n\in\N$ and $s\in X\sqcup\{\mix\}$, a correlation function $S^s(a;x)\in\C$ on $\mathbb F^n\times(\R^4)^n$.
 The extra symbol $\mix$ distinguishes the average state supplied by the lattice limit from the phases $\xi\in X$.
-\item\label{hierarchy:6} For every $n\in\N$, a continuation $\mathsf F_n(a;z,\vec x)\in\C$ on $\mathbb F^n\times\C^n\times(\R^3)^n$.
-\item\label{hierarchy:7} For every $j\in\N$, a finite index set $\Ch j$ and fields $O_{j,\kappa}\in F_j$.
+\item\label{hierarchy:6} For every $n\in\N$, a continuation $\mathsf F_n(a;z,\vec x)\in\C$ on $\mathbb F^n\times\C^n\times(\R^3)^n$. It extends ordered Euclidean-time correlations to complex times, from which real-time field expectations are obtained as boundary values.
+\item\label{hierarchy:7} For every $j\in\N$, a finite index set $\Ch j$ naming the fields retained at degree $j$, and fields $O_{j,\kappa}\in F_j$ for those indices.
 For every finite index set $I$, $a\in\mathbb F^I$ and $\kappa\in\Ch j$, there is a coefficient function $c_{j,\kappa}(a;x,o)$ on $(\R^4)^I\times\R^4$.
-\item\label{hierarchy:8} An element $\Theta\in F_4$.
+Here $x=(x_i)_{i\in I}$ is the list of insertion positions and $o$ is the centre at which the cluster is replaced by $O_{j,\kappa}$.
+\item\label{hierarchy:8} A distinguished degree-four field $\Theta\in F_4$, used in the trace two-point test below.
 \end{enumerate}
 \end{definition}
 
-The maps in~\ref{hierarchy:2}--\ref{hierarchy:3} relate the observable indices, continuum fields and quantum field labels:
+The maps in~\ref{hierarchy:2}--\ref{hierarchy:3} relate three different objects: a lattice observable index $v$, the resulting continuum field $(d,A)$, and its quantum field label $\ell$:
 \begin{equation}\label{eq:observable-field-maps}
 v\in\mathcal T\ \xmapsto{\pi}\ (d,A)\in\mathbb F
 \ \xmapsto{\iota}\ \ell=\iota_d A\in\mathcal L\,.
 \end{equation}
 The field label specifies the operator family $f\mapsto\Phi(\ell,f)$ (Definition~\ref{def:relativistic}).
-In our construction, the polynomial describes the classical observable and its index follows the lattice representative.
+In our construction, $v$ is the degree-and-polynomial index from Definition~\ref{def:uv-labels}; it identifies which classical local quantity the lattice insertion represents.
 
 The degree is an index used in the product estimates below.
 The definition imposes no inclusions between different $F_d$, no prescribed curvature interpretation and no compatibility of the $\iota_d$ across degrees.
@@ -308,9 +322,9 @@ The functions $S^s$ are defined even where points coincide, but the conclusions 
 
 \subsection{Reconstruction and phases}\label{subsec:reconstruction}
 
-The mixture will be the limit of lattice moments.
-The point $\xi_*$ instead selects the Euclidean correlations that continue to the relativistic fields.
-These two roles are related by a phase average, not by identifying the two states.
+The mixed state is the limit of lattice moments and averages the component correlations over $X$.
+The selected point $\xi_*$ picks one component; only that component's Euclidean correlations are continued to the relativistic fields.
+Thus the mixed state and the selected state have different roles.
 
 \begin{definition}[Reconstruction properties]\label{def:reconstructed}
 A hierarchy of Definition~\ref{def:hierarchy} has the reconstruction properties if the following hold.
@@ -352,14 +366,13 @@ S^s((a_{\sigma(i)})_i;(x_{\sigma(i)})_i)=S^s(a;x)\,.
 \end{definition}
 
 The scalar on the right of~\eqref{eq:boundary} is the vacuum expectation of the indicated product of smeared fields.
-In~\eqref{eq:boundary} we retain the formal source's convention that the integral of a nonintegrable function is zero.
-No separate positive-height integrability assertion is part of \ref{recon:15}.
+In~\eqref{eq:boundary}, the integral is assigned the value zero if its integrand is not integrable; this convention makes the boundary-value limit a defined statement without asserting positive-height integrability.
 The integrals in the lattice limit and~\eqref{eq:mixture} are ordinary absolutely convergent integrals, by compact support and smoothness in the first case and by phase continuity and compactness in the second.
 
 \subsection{Products and the trace test}\label{subsec:products}
 
-The product expansion replaces a cluster by finitely many single fields at its centre.
-Fields whose positions remain away from the cluster are called spectators.
+The product expansion groups nearby insertions into a cluster and replaces them by a finite sum of fields at the cluster centre.
+The other fixed insertions, kept a positive distance from that centre, are called spectators.
 One choice of coefficients must work with every list of such fields and in every state.
 The threshold on the cluster radius, however, may depend on the fixed spectator fields.
 
@@ -379,7 +392,7 @@ Set $w(a)=\sum_{i\in I}\deg a_i$.
 \end{definition}
 
 \begin{definition}[Operator product expansion]\label{def:ope}
-For a hierarchy (Definition~\ref{def:hierarchy}), the OPE property consists of the following estimates on clusters and distant points as in Definition~\ref{def:cluster}.
+For a hierarchy (Definition~\ref{def:hierarchy}), the operator product expansion (OPE) property consists of the following estimates on clusters and distant points as in Definition~\ref{def:cluster}.
 \begin{enumerate}[label=\textup{O\arabic*.},ref=O\arabic*]
 \item\label{ope:1} For every finite $I$, $a\in\mathbb F^I$, $M\ge0$, $\eta,\varepsilon>0$, $j\in\N$ and $\kappa\in\Ch j$, there exists $\delta>0$ such that, for every $0<r<\delta$ and every $(r,M,\eta)$-cluster,
 \begin{equation}\label{eq:ope-coefficient}
@@ -393,11 +406,10 @@ For a hierarchy (Definition~\ref{def:hierarchy}), the OPE property consists of t
 \end{enumerate}
 \end{definition}
 
-The coefficient functions are those already chosen in \ref{hierarchy:7}.
-They do not depend on spectators, state or truncation degree.
-Both estimates have constant $1$, with the dependence absorbed into $\delta$.
+The coefficient functions are those already chosen in~\ref{hierarchy:7}; the same coefficients work for all spectators, states and truncation degrees.
+The bounds are written with constant $1$: all dependence on the fixed data is absorbed by choosing $\delta$ smaller.
 For small enough $r$, $Mr<c$ ensures that all points in the tested correlations are separated.
-These are finite-truncation estimates; they assert neither an infinite convergent expansion nor uniqueness of its coefficients.
+The sum stops at degree $D$ because the assertion controls only a finite approximation; it does not claim convergence of an infinite series or uniqueness of the coefficients.
 
 \begin{definition}[The trace two-point function]\label{def:trace-pair}
 For the field $\Theta\in F_4$ of Definition~\ref{def:hierarchy} and $r\in\R$, set
@@ -406,13 +418,13 @@ G_\Theta(r)=S^{\xi_*}\Bigl((4,\Theta),(4,\Theta);-\frac{r}{2}e_4,\frac{r}{2}e_4\
 \end{equation}
 \end{definition}
 
-Free-field two-point functions are built from the energy $E_{\mathsf m}(p)$ of a particle with mass $\mathsf m$ and spatial momentum $p$.
-The following class allows finitely many masses and derivatives, and finite sums of products of the resulting kernels.
+Free-field two-point kernels are built from the energy $E_{\mathsf m}(p)$ associated with mass $\mathsf m$ and spatial momentum $p$.
+In the next definition, $q$ specifies a power of this energy and $h$ is a spatial-momentum factor of homogeneity degree $j$; the comparison class uses finitely many such kernels, their products and finite sums.
 We use these kernels only at positive separations $r>0$.
 It specifies exactly the comparisons excluded by the theorem.
 
 \begin{definition}[Finite Wick profiles]\label{def:wick}
-A mode consists of $\mathsf m\ge0$, integers $j,q\in\N$ and a continuous real function $h$ on $\R^3$ satisfying $h(\lambda p)=\lambda^jh(p)$ for every $\lambda>0$.
+A mode here means one kernel specified by a mass $\mathsf m\ge0$, integers $j,q\in\N$, and a continuous real function $h$ on $\R^3$ satisfying $h(\lambda p)=\lambda^jh(p)$ for every $\lambda>0$.
 Set
 \begin{equation}\label{eq:mode}
 E_{\mathsf m}(p)=\sqrt{\mathsf m^2+|p|^2},
@@ -428,6 +440,11 @@ W(r)=\sum_{\alpha=1}^A c_\alpha\prod_{\beta=1}^{n_\alpha}
 Empty products are allowed.
 \end{definition}
 
+The trace field is intended to come from the stress tensor: a collection of fields whose integrals express how translations and rotations act.
+Its Euclidean trace is the sum of its diagonal fields.
+The construction subtracts the vacuum expectation of this trace; “centred” means this subtraction makes every vacuum one-point expectation zero.
+The hierarchy below still specifies only the resulting degree-four field, not a stress tensor.
+
 \begin{definition}[Trace test]\label{def:trace}
 The hierarchy of Definition~\ref{def:hierarchy} passes the trace test if the following hold, with $G_\Theta$ as in Definition~\ref{def:trace-pair} and Wick profiles as in Definition~\ref{def:wick}.
 \begin{enumerate}[label=\textup{T\arabic*.},ref=T\arabic*]
@@ -441,8 +458,5 @@ The hierarchy of Definition~\ref{def:hierarchy} passes the trace test if the fol
 \end{enumerate}
 \end{definition}
 
-The public trace test concerns the chosen degree-four field and the time axis.
-Its definition alone supplies no stress tensor.
-In the construction, a stress tensor is a tensor of fields whose integral identities express translation and rotation symmetry; its Euclidean trace is the sum of its diagonal components.
-The construction identifies this field with a centred stress trace, as used in the proof of Proposition~\ref{prop:trace} below.
+The public trace test concerns the chosen degree-four field and the time axis; the construction identifies it with the centred trace just described, as used in Proposition~\ref{prop:trace}.
 
